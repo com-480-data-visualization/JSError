@@ -44,6 +44,9 @@ The origins of religion can be traced back to at least 100,000 years ago, and it
 
 ### Exploratory Data Analysis
 
+https://github.com/com-480-data-visualization/JSError/blob/master/Milestone1/EDA_Eastern_Europe.ipynb
+https://github.com/com-480-data-visualization/JSError/blob/master/Milestone1/EDA_Western_Europe.ipynb
+
 > Pre-processing of the data set you chose
 >
 > - Show some basic statistics and get insights about the data
