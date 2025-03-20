@@ -5,7 +5,7 @@ Project of Data Visualization (COM-480)
 | Student's name | SCIPER |
 | -------------- | ------ |
 | Ruyin Feng | 389977 |
-| | |
+| Martynas Rimkevicius | 371159 |
 | | |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
