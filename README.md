@@ -23,7 +23,7 @@ Please, fill the following sections about your project.
 
 All datasets used in this project are sourced from the Pew Research Center. Pew Research Center is a nonpartisan fact tank that informs the public about the issues, attitudes and trends shaping the world. This project primarily selects data from the [International religion survey data](https://www.pewresearch.org/religion-datasets/international-religion-survey-data/), [U.S. religion survey data](https://www.pewresearch.org/religion-datasets/us-religion-survey-data/) and [International Restrictions on Religion Data](https://www.pewresearch.org/religion-datasets/international-restrictions-on-religion-data/). Below is our detailed data list:
 
-- **2023-24 Religious Landscape Study (RLS) Dataset**: This survey was conducted among a nationally representative sample of adults to provide estimates of the U.S. population’s religious composition, beliefs and practices.
+- **2023-24 Religious Landscape Study (RLS) Dataset**: This survey was conducted among a nationally representative sample of adults to provide estimates of the U.S. population’s religious composition, beliefs and practices (this dataset is too big to fit on Github repository so we keep it local)
 - **East Asian Societies Survey Dataset**: 10,390 adults across Hong Kong, Japan, South Korea, Taiwan and Vietnam about religious identify, beliefs and practices. The survey was administered from June to September 2023, in seven languages.
 - **South and Southeast Asia Survey Dataset**: 13,122 adults across six countries in South and Southeast Asia about religious identify, beliefs and practices. The survey was administered from June to September 2022, in eight languages.
 - **India Survey Dataset**: 29,999 Indian adults about religious beliefs and practices, religious identity, nationalism, and tolerance in Indian society. The survey was administered from Nov. 17, 2019, to March 23, 2020, in 17 languages.  
@@ -57,10 +57,15 @@ The origins of religion can be traced back to at least 100,000 years ago, and it
 
 ### Related work
 
+We want to make the map of religions showcase not only explore the regional comparisons, but also provide insight how religion can affect happiness and satisfiction levels and visualize them.
+
+Source of inspiration to visualize world data: https://github.com/com-480-data-visualization/com480DataVisualization_Vinemap
+
+We found this infographic that was based on the same data: https://www.visualcapitalist.com/mapped-major-religions-of-the-world/
 
 > - What others have already done with the data?
 > - Why is your approach original?
-> - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
+> - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data)
 > - In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
 
 ## Milestone 2 (18th April, 5pm)
