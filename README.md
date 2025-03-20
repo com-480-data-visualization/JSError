@@ -6,7 +6,7 @@ Project of Data Visualization (COM-480)
 | -------------------- | ------ |
 | Martynas Rimkevicius | 371159 |
 | Alaa El Ouahabi      | 300390 |
-| Raphael Lyu          | 404082 |
+| Zheyang Lyu          | 404082 |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
