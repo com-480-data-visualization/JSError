@@ -1,0 +1,14 @@
+Pew Research Center conducted random probability-based surveys among a total of 10,390 adults (ages 18 and older) in five places: Hong Kong, Japan, South Korea, Taiwan and Vietnam. Interviewing in Japan, South Korea and Taiwan was carried out under the direction of Langer Research Associates, and interviewing in Hong Kong and Vietnam was carried out under the direction of D3 Systems. In Hong Kong, Japan, South Korea and Taiwan, interviews were conducted via computer-assisted telephone interviewing (CATI). In Vietnam, interviews were administered face-to-face using tablet devices, also known as computer-assisted personal interviewing (CAPI). All surveys were conducted between June 2 and Sept. 17, 2023.
+
+This project was produced by Pew Research Center as part of the Pew-Templeton Global Religious Futures project, which analyzes religious change and its impact on societies around the world.
+Funding for the Global Religious Futures project comes from The Pew Charitable Trusts and the John Templeton Foundation.
+
+As of June 2024, one report has been published that focuses on the findings from this data:
+•Religion and Spirituality in East Asian Societies: https://www.pewresearch.org/religion/2024/06/17/religion-and-spirituality-in-east-asian-societies/
+
+The following files are contained in the East Asian Societies dataset .zip file:
+•SPSS dataset – contains all the publicly released variables from the East Asian Societies dataset
+•CSV dataset – contains all the publicly released variables from the East Asian Societies dataset (without any labels) in an open-source format
+•DDI metadata – contains the publicly released dataset’s metadata
+•Codebook – the questionnaire administered to respondents, along with a short description of the methodology and the variables included in the dataset that did not come from the questionnaire
+•Recodes syntax – SPSS syntax text copied into an open-source format. The syntax file is in 3 sections: 1) syntax which creates the most common analytic variables in the survey report; 2) syntax which recreates some of the recodes and analyses used in each chapter of the survey report; 3) syntax which creates the merged variables that are reported on in the toplines (available for download from the website page associated with the East Asian Societies report).

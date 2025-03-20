@@ -1,0 +1,286 @@
+
+*********************************************************************************************************************************
+*********************************************************************************************************************************
+****Recodes used to create the most common break variables seen throughout the South and Southeast Asia report.****
+These recodes are used by Pew Research Center to guarantee a large enough sample size within each analyzed subgroup.
+Some demographic characteristics (such as age) include multiple recode options.
+For analyses using these recodes, researchers looked at the patterns across the different recode options to determine which tells
+the most coherent and parsimonious story for each of the dependent variables studied.
+*********************************************************************************************************************************
+*********************************************************************************************************************************
+
+
+*********************************************************************************************************************************
+****Part 1. Recoding variables to create demographic variables used for analysis throughout report (ex. recoding ******
+                    age into 2 categories: younger (18-34) and older (35+) adults                    
+*********************************************************************************************************************************
+
+***** Recoding Age into variables with 2 and 3 categories, for analysis*****
+
+recode qage (18 thru 25 = 1)(26 thru 34 = 2)(35 thru 97 = 3)(else = copy) into Age3Cat.
+recode qage (18 thru 34 = 1)(35 thru 97 = 2)(else = copy) into Age2Cat.
+
+variable labels
+age2cat 'Age2Cat. Age in two categories (18-34/35+)'
+age3cat 'Age3Cat. Age in three categories (18-25/26-34/35+)'.
+value labels
+age2cat 1 '18-34' 2 '35+' 998 "Don't know" 999 'Refused'.
+value labels
+age3cat 1 '18-25' 2 '26-34' 3 '35+' 998 "Don't know" 999 'Refused'.
+
+***** Recoding Religious Salience (Q28. How important is religion?) into those who say it's very important and everyone else, for analysis*****
+
+recode q28 (1=1)(2 thru 4 = 2)(else=copy) into Q28Rec.
+variable labels Q28Rec 'Q28Rec. Salience recoded in two categories'.
+value labels Q28Rec 1 'Religion very important' 2 'Religion less important' 98 "Don't know" 99 'Refused'.
+
+***** Recoding Frequency of Prayer into two categories: those who pray daily and everyone else, for analysis*****
+
+recode Q50 (1 thru 2 =1) (3 thru 7 = 2) (else = copy) into PrayDaily.
+variable labels PrayDaily 'PrayDaily. Prayer in two categories'.
+Value Labels PrayDaily 1 'Pray Daily' 2 'Pray Less than Daily' 98 'DK' 99 'Refused'.
+
+***** Recoding Attendance Frequency (church, mosque, etc)  into two categories: those who attend weekly and everyone else, for analysis*****
+
+recode QATTEND (1 thru 3 =1) (4 thru 7 = 2) (else = copy) into AttendWeekly.
+variable labels AttendWeekly 'AttendWeekly. Attendance in two categories'. 
+Value Labels AttendWeekly 1 'Attend Weekly' 2 'Attend Less than Weekly' 98 'DK' 99 'Refused' 999 'DK/ Refused'.
+
+***** Recoding Education into higher/lower categories. We used ISCED classification and,
+       for the purpose of comparing education groups across countries, we standardize education 
+       levels based on the UN's Inernational Standard Classification of Education*****
+
+compute Edu2Cat = $sysmis.
+if (country=1 or country=2 or country=6 or country=7) & (isced =0 or isced =1 or isced = 2) edu2cat =1.
+if (country=1 or country=2 or country=6 or country=7) & (isced =3 or isced =4 or isced = 5) edu2cat =2.
+if (country=3 or country=5) & (isced =0 or isced =1 or isced = 2 or isced=3) edu2cat =1.
+if (country=3 or country=5) & (isced =4 or isced = 5) edu2cat =2.
+if (isced = 98 or isced=99) edu2cat= 999.
+
+variable labels edu2cat 'Edu2Cat. Education in two categories (Lower Education/Higher Education)'.
+value labels edu2cat 1 'Lower Education' 2 'Higher Education' 999 "DK/ Refused".
+
+****Gender recode variable which combines the interviewer-observed with the self-ID, where available.****
+****Note: the .sav and .csv files already contain this recoded 'Gender' variable; as such, the variables 'qgen,' 'qgenb' and 'qgenc' are not in the .sav and .csv files. The syntax below is included to show how the 'Gender' variable was created. ****
+
+*compute gender=$sysmis.
+*if (country =1 or country =2 or country=6) gender=qgen.
+*if (country =3 or country =5) gender=qgenb.
+*if country=7 gender=qgenc.
+*if (gender=3 or gender = 98 or gender=99) gender=999.
+
+*variable labels gender 'Gender'.
+*value labels gender 1 'Man' 2 'Woman' 999 'Other/DK/Ref'.
+
+
+*********************************************************************************************************************************
+****Part 2. Recoding variables for  specific questions and chapters analysis  ******                       
+*********************************************************************************************************************************
+
+****Recoding QGODa and QGODc into two categories: those who believe in God and/or unseen beings and those who believe in neither, for analysis. This 
+    recode appears in the report's Overview.****
+    
+compute qgodacREC=0.
+if qgoda=1 qgodacREC=1.
+if qgodc=1 qgodacREC=1.
+VALUE LABELS qgodacREC
+    0 "believes in neither"
+    1 "believes in god and/or unseen beings".
+
+****Recoding Way of Life (Q26a-f) into two categories: those who say they feel a
+     personal connection to that religion's way of life and those who do not. The
+     new variables are used to determine affinity: If a respondent says they feel a
+     personal connection to a religion's way of life, they are considered to have an
+     affinity for that religion. This recode appears in Chapter 2 of the report.****
+    
+compute BuddhistWofL=2.
+if Q26a=1 BuddhistWofL=1.
+compute MuslimWofL=2.
+if Q26b=1 MuslimWofL=1.
+compute ChristianWofL=2.
+if Q26c=1 ChristianWofL=1.
+compute HinduWofL=2.
+if Q26d=1 HinduWofL=1.
+compute LocalWofL=2.
+if Q26f=1 LocalWofL=1.
+
+****Creating a total affinity recode variable which identifies if respondent selected any 
+    affinity BESIDES their self-identified religion, for analysis. This is accomplished by
+    first recoding the way of life variables (26a-f) into dummy variables with two
+    categories: those with that affinity and everyone else. The dummy variables are 
+    then recoded into a new variable, TotalAffinity, where the different response values
+    are the sum of every affinity that respondent has except for the one corresponding 
+    to the respondent's own religion, to measure how many total affinities that
+    respondent has. We removed those who didn't even indicate an affinity for their own religion
+    Finally, another new variable, TotalAffinity2, is created which sorts
+    respondents into three categories by their TotalAffinity: those with no affinities, 
+    those with one or two affinities, and those with three or more affinities. Chinese 
+    traditional way of life (Q26e) removed and not analyzed in the report. This recode 
+    appears in Chapter 2 of the report.****
+
+RECODE Q26a (1=1) (else=0) into Q26aREC.
+RECODE Q26b (1=1) (else=0) into Q26bREC.
+RECODE Q26c (1=1) (else=0) into Q26cREC.
+RECODE Q26d (1=1) (else=0) into Q26dREC.
+RECODE Q26f (1=1) (else=0) into Q26fREC.
+compute TotalAffinity=0.
+if qcurrel=1 TotalAffinity=Q26bREC+Q26cREC+Q26dREC+Q26fREC.
+if qcurrel=2 TotalAffinity=Q26aREC+Q26cREC+Q26dREC+Q26fREC.
+if qcurrel=3 TotalAffinity=Q26aREC+Q26bREC+Q26dREC+Q26fREC.
+if qcurrel=4 TotalAffinity=Q26aREC+Q26bREC+Q26cREC+Q26fREC.
+if qcurrel=5 TotalAffinity=Q26aREC+Q26bREC+Q26cREC+Q26dREC+Q26fREC.
+if qcurrel=6 TotalAffinity=Q26aREC+Q26bREC+Q26cREC+Q26dREC.
+if qcurrel>6 TotalAffinity=Q26aREC+Q26bREC+Q26cREC+Q26dREC+Q26fREC.
+
+compute TotalAffinity2=0.
+if TotalAffinity>0 and TotalAffinity <3 TotalAffinity2=1.
+if TotalAffinity > 2 TotalAffinity2 = 2.
+
+
+*********************************************************************************************************************************
+******************Part 3. Example of regressions with independent and dependent variable recodes********************                  
+*********************************************************************************************************************************
+
+****Preparing independent variables by turning into dummy variables****
+
+recode country (1=1)(else=0) into cambodia.
+recode country (2=1)(else=0) into indonesia.
+recode country (3=1)(else=0) into malaysia.
+recode country (6=1)(else=0) into srilanka.
+recode country (7=1)(else=0) into thailand.
+recode q28 (1=1)(else=0) into salience.
+recode edu2cat (2=1)(else=0) into college.
+recode age2cat (1=1)(else=0) into young.
+recode gender (1=1)(else=0) into men.
+recode q1 (1,2=1)(else=0) into economicgood.
+
+****The final independent variable prepared here, Q81dQ88, is for "religion-state integrationists",
+    as explored in the report's Outline. This recodes Q81d (importance of being Buddhist/Muslim
+    to national identity) and Q88a-b (making sharia/Buddhist dharma the official law of the land)
+    into two categories: those who say being Buddhist/Muslim is very important to national
+    identity and that sharia/Buddhist dharma should be the official law of the land and everyone
+    else.****
+
+compute Q81dQ88=$sysmis.
+if qcurrel=1 & (country=1 | country=6 | country=7) Q81dQ88=0.
+if qcurrel=1 & (country=1 | country=6 | country=7) & Q81d=1 & Q88a=1 Q81dQ88=1.
+if qcurrel=2 & (country=2 | country=3) Q81dQ88=0.
+if qcurrel=2 & (country=2 | country=3) & Q81d=1 & Q88b=1 Q81dQ88=1.
+VALUE LABELS Q81dQ88
+    1 "religion=national ID & national religious law"
+    0 "everyone else".
+
+****Preparing dependent variables by turning into dummy variables.****
+
+recode Q86b (1=1)(else=0) into politicians.
+recode Q86a (1=1)(else=0) into talkpublicly.
+recode Q25b (2=1)(else=0) into disrespect.
+recode Q86c (1=1)(else=0) into protest.
+recode Q86d (1=1)(else=0) into vote.
+
+recode Q80c (1=1)(else=0) into chrcompat.
+recode Q78c (1=1)(else=0) into chrneigh.
+recode Q80d (1=1)(else=0) into hincompat.
+recode Q78d (1=1)(else=0) into hinneigh.
+recode Q80a (1=1)(else=0) into budcompat.
+recode Q78a (1=1)(else=0) into budneigh.
+recode Q80b (1=1)(else=0) into muscompat.
+recode Q78b (1=1)(else=0) into musneigh.
+
+compute tourists=0.
+if q96a=1 | q97a=1 tourists=1.
+compute China=0.
+if q96b=1 | q97b=1 China=1.
+compute US=0.
+if q96c=1 | q97c=1 US=1.
+compute growMus=0.
+if q96d=1 growMus=1.
+compute growChr=0.
+if q96e=1 | q97d=1 growChr=1.
+compute growBud=0.
+if q97e=1 growBud=1.
+compute extreme=0.
+if q96f=1 | q97f=1 extreme=1.
+
+******The following are three example regressions, which we used for the report.******
+
+****Example 1: Regression to use when question asked across all 5 communities. The dependent variable is whether religious extremists are a threat to Buddhism/Islam ****
+
+weight by weight.
+temp.
+select if (country=1 & qcurrel=1) | (country=2 & qcurrel=2) | (country=3 & qcurrel=2) | (country=6 & qcurrel=1) | (country=7 & qcurrel=1).
+LOGISTIC REGRESSION VARIABLES extreme
+  /METHOD=ENTER salience Q81dQ88 college young men economicgood indonesia malaysia srilanka thailand
+  /CRITERIA=PIN(.05) POUT(.10) ITERATE(20) CUT(.5).
+
+****Example 2: Regression to use when question asked of Muslims in Indonesia and Malaysia. The dependent variable is whether the perceived growing number of Buddhists are a threat to Islam****
+
+weight by weight.
+temp.
+select if (country=2 & qcurrel=2) | (country=3 & qcurrel=2).
+LOGISTIC REGRESSION VARIABLES growBud
+  /METHOD=ENTER salience Q81dQ88 college young men economicgood indonesia
+  /CRITERIA=PIN(.05) POUT(.10) ITERATE(20) CUT(.5).
+
+****Example 3: Regression to use when question asked of Buddhists in Cambodia, Sri Lanka and Thailand. The dependent variable is whether the perceived growing number of Muslims are a threat to Buddhism****
+
+weight by weight.
+temp.
+select if (country=1 & qcurrel=1) | (country=6 & qcurrel=1) | (country=7 & qcurrel=1).
+LOGISTIC REGRESSION VARIABLES growMus
+  /METHOD=ENTER salience Q81dQ88 college young men economicgood srilanka thailand
+  /CRITERIA=PIN(.05) POUT(.10) ITERATE(20) CUT(.5).
+
+
+
+*********************************************************************************************************************************
+****Part 4. Recoding variables to match how they appear in the topline ******                       
+*********************************************************************************************************************************
+
+****Merging QGODa and QGODb so the resulting variable appears as in the topline 
+        A modified version of this recode appears in Chapter 3 of the report.****
+
+recode QGODb (1=1) (2=2) (3=3) (4=4) (98, 99, 999 = 5) into QGODab.
+recode QGODa (2=6) (98, 99, 999 = 999) into QGODab.
+
+Add Value Labels QGODab 1 'Believe in God, absolutely certain' 2 'Believe in God, fairly certain' 3 'Believe in God, not very certain' 4 'Believe in God, not at all certain' 5 'Believe in God, DK/ refused how certain' 6 'Does not believe in God' 999 'DK/ Refused if believe in God'.
+Variable Labels QGODab 'QGODab. Do you believe in God? [If yes] How certain are you about this belief, if at all?'.
+
+****Merging QGODc and QGODd so the resulting variable appears as in the topline 
+        A modified version of this recode appears in Chapter 3 of the report.****
+
+recode QGODd (1=1) (2=2) (3=3) (4=4) (98, 99, 999 = 5) into QGODcd.
+recode QGODc (2=6) (98, 99, 999 = 999) into QGODcd.
+
+Add Value Labels QGODcd 1 'Believe in unseen beings, absolutely certain' 2 'Believe in unseen beings, fairly certain' 3 'Believe in unseen beings, not very certain' 4 'Believe in unseen beings, not at all certain' 5 'Believe in unseen beings, DK/ refused how certain' 6 'Does not believe in unseen beings' 999 'DK/ Refused if believe in unseen beings'.
+Variable Labels QGODcd 'QGODcd. Do you think there are unseen beings in the world, like deities or spirits? [If yes] How certain are you, if at all, about the existence of unseen beings in the world?'.
+    
+****Merging Q50 and Q51 among Muslim respondents so the resulting variable appears as in the topline. ****
+
+compute Q5051 = $sysmis.
+if (qcurrel=2 & Q50=1 & Q51=1) Q5051=1.
+if (qcurrel=2 & Q50=1 & Q51=2) Q5051=2.
+if (qcurrel=2 & Q50=1 & (Q51=98 OR Q51=99)) Q5051=3.
+if (qcurrel=2 & (Q50=2 OR Q50=3 OR Q50=4 OR Q50=5 OR Q50=6 OR Q50=7)) Q5051=4.
+if (qcurrel=2 & (Q50=98 OR Q50=99)) Q5051=999.
+
+Variable Labels Q5051 'Q5051. How often do you pray, if at all? [If does so several times a day] Do you pray five salah every day, or not?'.
+Value Labels Q5051 1 'Prays several times a day, prays five salah every day' 2 'Prays several times a day, does not pray five salah every day' 3 'Prays several times a day, don’t know/ refused prays five salah' 4 'Prays less often' 999 'DK/ Refused'.
+
+****Merging Q40a and Q40b so the resulting variable appears as in the topline
+       A version of this recode appears in the report's Overview as well as in Chapter 5.****
+
+recode q40b (1=1) (2=2) (98, 99, 999 = 3) into q40ab.
+recode q40a (2=4) (98, 99, 999 = 5) into q40ab.
+
+Add Value Labels q40ab 1 'Has a family gravesite, pays money to maintain it' 2 'Has a family gravesite, does not pay money to maintain it' 3 'Has a family gravesite, DK/ refused if pays money to maintain it' 4 'Does not have a family gravesite' 5 'DK/ Refused if has a family gravesite'.
+Variable Labels q40ab 'Q40ab. Do you have a family gravesite where the remains of deceased family members reside, or not? [If yes] Do you or someone in your household pay money to maintain the family gravesite, or not?'.
+    
+****Merging Q40a and Q40c so the resulting variable appears as in the topline
+       A version of this recode appears in the report's Overview as well as in Chapter 5.*****
+
+recode q40c (1=1) (2=2) (98, 99, 999 = 3) into q40ac.
+recode q40a (2=4) (98, 99, 999 = 5) into q40ac.
+
+Add Value Labels q40ac 1 'Has a family gravesite, looks after it by sweeping or cleaning' 2 'Has a family gravesite, does not look after it by sweeping or cleaning' 3 'Has a family gravesite, DK/ refused if looks after it by sweeping or cleaning' 4 'Does not have a family gravesite' 5 'DK/ Refused if has a family gravesite'.
+Variable Labels q40ac 'Q40ac. Do you have a family gravesite where the remains of deceased family members reside, or not? [If yes] Do you or someone in your household look after the family gravesite by sweeping or cleaning it?'.
