@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="generator" content="pandoc">
+    <meta name="description" content="">
+
+    <title>Milestone 2 description</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">.sidebar ul{padding-left: 10px;}</style>
+    <link rel="stylesheet" href="css/cg_report.css" />
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="sidebar" class="col-sm-3 col-md-2 sidebar">
+          <!--<ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+          </ul>-->
+          <ul>
+          <li><a href="#project-goal" id="toc-project-goal">Project
+          goal</a></li>
+          <li><a href="#implementation-pieces"
+          id="toc-implementation-pieces">Implementation pieces</a>
+          <ul>
+          <li><a href="#map-of-europe-minimal-viable-product"
+          id="toc-map-of-europe-minimal-viable-product">Map of Europe
+          (minimal viable product)</a></li>
+          <li><a href="#individual-country-plots"
+          id="toc-individual-country-plots">Individual country
+          plots</a></li>
+          <li><a href="#general-correlation-analysis"
+          id="toc-general-correlation-analysis">General correlation
+          analysis</a></li>
+          </ul></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        
+<h2 id="project-goal">Project goal</h2>
+<blockquote>
+<ul>
+<li>Include sketches of the vizualiation you want to make in your final
+product.</li>
+<li>List the tools that you will use for each visualization and which
+(past or future) lectures you will need.</li>
+<li>Break down your goal into independent pieces to implement. Try to
+design a core visualization (minimal viable product) that will be
+required at the end. Then list extra ideas (more creative or
+challenging) that will enhance the visualization but could be dropped
+without endangering the meaning of the project.</li>
+</ul>
+</blockquote>
+<h2 id="implementation-pieces">Implementation pieces</h2>
+<h3 id="map-of-europe-minimal-viable-product">Map of Europe (minimal
+viable product)</h3>
+<p>We want to show a map of Europe where each country could be colored
+according to the selected parameters:</p>
+<ul>
+<li>Religion</li>
+<li>Economic state perception</li>
+<li>…..</li>
+</ul>
+<p>For each of the countries, we want to be able to click and compare
+the selected parameters with another country in plots.</p>
+<h3 id="individual-country-plots">Individual country plots</h3>
+<p>When comparing countries</p>
+<h3 id="general-correlation-analysis">General correlation analysis</h3>
+<p>We want to answer a question if there is a correlation between
+economic state perception and religious groups, and if there is which
+religions stand out.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+    <script>
+        //document.getElementById('sidebar').getElementsByTagName('ul')[0].className += "nav nav-sidebar";
+        
+        /* ajust the height when click the toc
+           the code is from https://github.com/twbs/bootstrap/issues/1768
+        */
+        var shiftWindow = function() { scrollBy(0, -50) };
+        window.addEventListener("hashchange", shiftWindow);
+        function load() { if (window.location.hash) shiftWindow(); }
+        
+        /*add Bootstrap styles to tables*/
+        var tables = document.getElementsByTagName("table");
+        for(var i = 0; i < tables.length; ++i){
+            tables[i].className += "table table-bordered table-hover";
+        }
+    </script>
+  </body>
+</html>
