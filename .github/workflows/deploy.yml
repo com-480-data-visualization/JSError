@@ -1,26 +1,20 @@
-name: Deploy Website
-
+name: Deploy website
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: ["master"]
+    paths: [".github/**", "website/**"]
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: (Optional) Build Website
-        run: |
-          # If you have a build step (e.g., for a static site generator), run it here.
-          # For this simple example, no build step is needed.
-          echo "No build steps defined; deploying static files."
-
-      - name: Deploy Website
-        uses: ./github/actions/deploy-website
-        env:
-          # GitHub automatically provides a GITHUB_TOKEN secret for API actions.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          folder: website
+          clean: true
+          clean-exclude: |
+            .nojekyll
