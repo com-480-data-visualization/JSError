@@ -4,9 +4,9 @@ Project of Data Visualization (COM-480)
 
 | Student's name       | SCIPER |
 | -------------------- | ------ |
-| Ruyin Feng           | 389977 |
 | Martynas Rimkevicius | 371159 |
-|                      |        |
+| Alaa El Ouahabi      | 300390 |
+| Zheyang Lyu          | 404082 |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
@@ -44,6 +44,9 @@ The origins of religion can be traced back to at least 100,000 years ago, and it
 > - Think of an overview for the project, your motivation, and the target audience.
 
 ### Exploratory Data Analysis
+
+https://github.com/com-480-data-visualization/JSError/blob/master/Milestone1/EDA_Eastern_Europe.ipynb
+https://github.com/com-480-data-visualization/JSError/blob/master/Milestone1/EDA_Western_Europe.ipynb
 
 > Pre-processing of the data set you chose
 >
