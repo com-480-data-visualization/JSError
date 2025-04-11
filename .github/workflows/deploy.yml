@@ -1,0 +1,26 @@
+name: Deploy Website
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: (Optional) Build Website
+        run: |
+          # If you have a build step (e.g., for a static site generator), run it here.
+          # For this simple example, no build step is needed.
+          echo "No build steps defined; deploying static files."
+
+      - name: Deploy Website
+        uses: ./github/actions/deploy-website
+        env:
+          # GitHub automatically provides a GITHUB_TOKEN secret for API actions.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

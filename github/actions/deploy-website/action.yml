@@ -1,0 +1,10 @@
+name: "Deploy Website"
+description: "Deploys the static website to GitHub Pages"
+inputs:
+  deploy_path:
+    description: "The directory to deploy (default: the repository root)"
+    required: false
+    default: "website_build"
+runs:
+  using: "node16"
+  main: "deploy.js"
