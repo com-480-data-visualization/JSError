@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Map of Europe's Predominant Religions</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Interactive Map of Europe's Predominant Religions</h1>
+      <p>Hover over the markers to see each country's predominant religion.</p>
+    </header>
+
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <footer>
+      <p>&copy; 2025 Religions of Europe Visualization</p>
+    </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Initialize the map centered on Europe.
+      var map = L.map("map").setView([54.526, 15.2551], 4);
+
+      // Add the OpenStreetMap tile layer.
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Sample data for European countries with their predominant religions.
+      var countryReligions = [
+        {
+          name: "France",
+          coords: [46.2276, 2.2137],
+          religion: "Christianity (Catholicism)",
+        },
+        {
+          name: "Germany",
+          coords: [51.1657, 10.4515],
+          religion: "Christianity (Protestantism & Catholicism)",
+        },
+        {
+          name: "Italy",
+          coords: [41.8719, 12.5674],
+          religion: "Christianity (Catholicism)",
+        },
+        {
+          name: "United Kingdom",
+          coords: [55.3781, -3.436],
+          religion: "Christianity (Anglican)",
+        },
+        {
+          name: "Spain",
+          coords: [40.4637, -3.7492],
+          religion: "Christianity (Catholicism)",
+        },
+        {
+          name: "Russia",
+          coords: [61.524, 105.3188],
+          religion: "Christianity (Orthodox)",
+        },
+        {
+          name: "Greece",
+          coords: [39.0742, 21.8243],
+          religion: "Christianity (Orthodox)",
+        },
+        { name: "Turkey", coords: [38.9637, 35.2433], religion: "Islam" },
+      ];
+
+      // Add markers with popups that display the country's name and religion.
+      countryReligions.forEach(function (country) {
+        var marker = L.marker(country.coords).addTo(map);
+        marker.bindPopup(
+          "<strong>" + country.name + "</strong><br>" + country.religion
+        );
+      });
+    </script>
+  </body>
+</html>
