@@ -17,7 +17,12 @@ We want to show a map of Europe where each country could be colored according to
 - Predominant religion
 - Economic state perception
 - How safe people feel? (we don't know if that's in the data)
-- ..... (look more in to the survey questions)
+- Civil partnership (QMARRIED)
+- How old were you at your last birthday ( may show the age who believe the religion)
+- Frequency of religious activities
+- Support for same-sex marriage or not
+- Does religion give meaning to life (Happiness) 
+
 
 Coloring would be done based on the survey results and the color would correspond to the most common answer.
 
