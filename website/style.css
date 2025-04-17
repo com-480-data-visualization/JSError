@@ -25,3 +25,18 @@ footer {
   padding: 10px 0;
   text-align: center;
 }
+
+
+/* style the control panel */
+.view‑control {
+  background: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+/* ensure it sits above the map tiles */
+.leaflet-top .view‑control {
+  margin: 10px;
+}
