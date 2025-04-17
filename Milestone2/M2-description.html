@@ -46,12 +46,12 @@
           <li><a href="#map-of-europe-minimal-viable-product"
           id="toc-map-of-europe-minimal-viable-product">Map of Europe
           (minimal viable product)</a></li>
-          <li><a href="#individual-country-plots"
-          id="toc-individual-country-plots">Individual country
+          <li><a href="#comparison-country-plots"
+          id="toc-comparison-country-plots">Comparison country
           plots</a></li>
-          <li><a href="#general-correlation-analysis"
-          id="toc-general-correlation-analysis">General correlation
-          analysis</a></li>
+          <li><a href="#general-correlation-analysis-extra-idea"
+          id="toc-general-correlation-analysis-extra-idea">General
+          correlation analysis (extra idea)</a></li>
           </ul></li>
           </ul>
         </div>
@@ -71,24 +71,54 @@ challenging) that will enhance the visualization but could be dropped
 without endangering the meaning of the project.</li>
 </ul>
 </blockquote>
+<p>Our sketch is on the website.</p>
 <h2 id="implementation-pieces">Implementation pieces</h2>
 <h3 id="map-of-europe-minimal-viable-product">Map of Europe (minimal
 viable product)</h3>
 <p>We want to show a map of Europe where each country could be colored
 according to the selected parameters:</p>
 <ul>
-<li>Religion</li>
+<li>Predominant religion</li>
 <li>Economic state perception</li>
-<li>…..</li>
+<li>How safe people feel? (we don’t know if that’s in the data)</li>
+<li>Civil partnership approval</li>
+<li>How old were you at your last birthday ( may show the age who
+believe the religion)</li>
+<li>Frequency of religious activities</li>
+<li>Support for same-sex marriage or not</li>
+<li>Does religion give meaning to life (Happiness)</li>
 </ul>
+<p>Coloring would be done based on the survey results and the color
+would correspond to the most common answer.</p>
 <p>For each of the countries, we want to be able to click and compare
-the selected parameters with another country in plots.</p>
-<h3 id="individual-country-plots">Individual country plots</h3>
-<p>When comparing countries</p>
-<h3 id="general-correlation-analysis">General correlation analysis</h3>
-<p>We want to answer a question if there is a correlation between
-economic state perception and religious groups, and if there is which
-religions stand out.</p>
+the selected parameters with another country in plots. Right now, we
+have used OpenStreetMap to display the map, and we use markers to be
+able to click on the countries to see the according value. We will do
+this, using D3.js map coloring as it will be way more countries than
+currently we have hardcoded on the website.</p>
+<p>For this section we would use the lecture about maps.</p>
+<h3 id="comparison-country-plots">Comparison country plots</h3>
+<p>When comparing countries we want to show the same plot for two
+different countries to highlight the differences or similarities of
+them. Currently we have a functionality implemented that for the
+selected parameter (e.g. “Predominant religion”), we can select two
+countries for comparison. When two countries are selected, we show the
+pie charts under the map. We will not use only pie charts as they are
+not suitable for every type of parameter, as there is both numerical and
+categorical data.</p>
+<p>We will use interactive pie charts, and other graphs to show
+numerical and categorical data. Lecture on graphs.</p>
+<h3 id="general-correlation-analysis-extra-idea">General correlation
+analysis (extra idea)</h3>
+<p>Lastly, we want to answer a question if there is a correlation
+between economic state perception and religious groups, and if there is
+which religions stand out. We will therefore make an interactive chart
+that will be linked to the map, which will show both economic state
+(combination of survey answers) and religious group distributions in the
+European countries.</p>
+<p>This chart is an additional piece to our story telling, as it
+encapsulates all parts of the data set, and in general can be
+represented in words.</p>
         </div>
       </div>
     </div>
