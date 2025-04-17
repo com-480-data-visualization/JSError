@@ -35,53 +35,86 @@
         attribution: "© OpenStreetMap contributors",
       }).addTo(map);
 
-      // Sample data for European countries with their predominant religions.
-      var countryReligions = [
+      var countries = [
         {
           name: "France",
           coords: [46.2276, 2.2137],
           religion: "Christianity (Catholicism)",
+          economic: "Moderately prosperous",
+          feelingSafe: "Yes",
+          qMarried: "Civil partnership allowed",
+          age: 42,
+          freqReligious: "Monthly",
+          supportSSM: "Yes",
+          meaningInLife: "High",
         },
-        {
-          name: "Germany",
-          coords: [51.1657, 10.4515],
-          religion: "Christianity (Protestantism & Catholicism)",
-        },
-        {
-          name: "Italy",
-          coords: [41.8719, 12.5674],
-          religion: "Christianity (Catholicism)",
-        },
-        {
-          name: "United Kingdom",
-          coords: [55.3781, -3.436],
-          religion: "Christianity (Anglican)",
-        },
-        {
-          name: "Spain",
-          coords: [40.4637, -3.7492],
-          religion: "Christianity (Catholicism)",
-        },
-        {
-          name: "Russia",
-          coords: [61.524, 105.3188],
-          religion: "Christianity (Orthodox)",
-        },
-        {
-          name: "Greece",
-          coords: [39.0742, 21.8243],
-          religion: "Christianity (Orthodox)",
-        },
-        { name: "Turkey", coords: [38.9637, 35.2433], religion: "Islam" },
+        // … etc for Germany, Italy, …
       ];
 
-      // Add markers with popups that display the country's name and religion.
-      countryReligions.forEach(function (country) {
-        var marker = L.marker(country.coords).addTo(map);
-        marker.bindPopup(
-          "<strong>" + country.name + "</strong><br>" + country.religion
-        );
-      });
+      var views = [
+        { key: "religion", label: "Predominant religion" },
+        { key: "economic", label: "Economic state perception" },
+        { key: "feelingSafe", label: "How safe people feel?" },
+        { key: "qMarried", label: "Civil partnership" },
+        { key: "age", label: "Average surveyee's age" },
+        { key: "freqReligious", label: "Frequency of religious activities" },
+        { key: "supportSSM", label: "Support for same‑sex marriage" },
+        { key: "meaningInLife", label: "Religion's meaning to life" },
+      ];
+
+      // 3) create an empty layer‑group to hold markers
+      var markersGroup = L.layerGroup().addTo(map);
+
+      // 4) build the control container
+      var viewControl = L.control({ position: "topright" });
+      viewControl.onAdd = function () {
+        var div = L.DomUtil.create("div", "view‑control");
+        views.forEach(function (v, i) {
+          // default‐check the first
+          var checked = i === 0 ? "checked" : "";
+          div.innerHTML +=
+            '<input type="radio" id="' +
+            v.key +
+            '" name="view" value="' +
+            v.key +
+            '" ' +
+            checked +
+            ">" +
+            '<label for="' +
+            v.key +
+            '"> ' +
+            v.label +
+            "</label><br>";
+        });
+        // prevent map‐drag when interacting with the radios
+        L.DomEvent.disableClickPropagation(div);
+        return div;
+      };
+      viewControl.addTo(map);
+
+      // 5) listen for changes and redraw
+      function drawMarkers(viewKey) {
+        markersGroup.clearLayers();
+        countries.forEach(function (c) {
+          var val = c[viewKey];
+          var marker = L.marker(c.coords).bindPopup(
+            "<strong>" + c.name + "</strong><br>" + val
+          );
+          markersGroup.addLayer(marker);
+        });
+      }
+
+      // initial draw
+      drawMarkers(views[0].key);
+
+      // wire up the radios
+      document
+        .querySelectorAll('.view‑control input[name="view"]')
+        .forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            drawMarkers(this.value);
+          });
+        });
     </script>
   </body>
 </html>
