@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Map of Europe's Predominant Religions</title>
-    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -12,109 +11,42 @@
     <header>
       <h1>Interactive Map of Europe's Predominant Religions</h1>
       <p>
-        The map will be colored by the colors of religions/economic state/....
+        The map will be colored by the colors of religions/economic state/….
       </p>
     </header>
 
-    <!-- Map container -->
+    <!-- 1) Map -->
     <div id="map"></div>
 
-    <footer>
-      <p>&copy; 2025 team JSError</p>
-    </footer>
+    <!-- 2) Charts: hidden until you select two countries in “Compare” mode -->
+    <div
+      id="charts"
+      style="
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+      "
+    >
+      <canvas
+        id="chart1"
+        width="300"
+        height="300"
+        style="margin: 10px"
+      ></canvas>
+      <canvas
+        id="chart2"
+        width="300"
+        height="300"
+        style="margin: 10px"
+      ></canvas>
+    </div>
 
-    <!-- Leaflet JavaScript -->
+    <footer><p>&copy; 2025 team JSError</p></footer>
+
+    <!-- 3) Scripts at the end, after all DOM elements -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-      // Initialize the map centered on Europe.
-      var map = L.map("map").setView([54.526, 15.2551], 4);
-
-      // Add the OpenStreetMap tile layer.
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 18,
-        attribution: "© OpenStreetMap contributors",
-      }).addTo(map);
-
-      var countries = [
-        {
-          name: "France",
-          coords: [46.2276, 2.2137],
-          religion: "Christianity (Catholicism)",
-          economic: "Moderately prosperous",
-          feelingSafe: "Yes",
-          qMarried: "Civil partnership allowed",
-          age: 42,
-          freqReligious: "Monthly",
-          supportSSM: "Yes",
-          meaningInLife: "High",
-        },
-        // … etc for Germany, Italy, …
-      ];
-
-      var views = [
-        { key: "religion", label: "Predominant religion" },
-        { key: "economic", label: "Economic state perception" },
-        { key: "feelingSafe", label: "How safe people feel?" },
-        { key: "qMarried", label: "Civil partnership" },
-        { key: "age", label: "Average surveyee's age" },
-        { key: "freqReligious", label: "Frequency of religious activities" },
-        { key: "supportSSM", label: "Support for same‑sex marriage" },
-        { key: "meaningInLife", label: "Religion's meaning to life" },
-      ];
-
-      // 3) create an empty layer‑group to hold markers
-      var markersGroup = L.layerGroup().addTo(map);
-
-      // 4) build the control container
-      var viewControl = L.control({ position: "topright" });
-      viewControl.onAdd = function () {
-        var div = L.DomUtil.create("div", "view‑control");
-        views.forEach(function (v, i) {
-          // default‐check the first
-          var checked = i === 0 ? "checked" : "";
-          div.innerHTML +=
-            '<input type="radio" id="' +
-            v.key +
-            '" name="view" value="' +
-            v.key +
-            '" ' +
-            checked +
-            ">" +
-            '<label for="' +
-            v.key +
-            '"> ' +
-            v.label +
-            "</label><br>";
-        });
-        // prevent map‐drag when interacting with the radios
-        L.DomEvent.disableClickPropagation(div);
-        return div;
-      };
-      viewControl.addTo(map);
-
-      // 5) listen for changes and redraw
-      function drawMarkers(viewKey) {
-        markersGroup.clearLayers();
-        countries.forEach(function (c) {
-          var val = c[viewKey];
-          var marker = L.marker(c.coords).bindPopup(
-            "<strong>" + c.name + "</strong><br>" + val
-          );
-          markersGroup.addLayer(marker);
-        });
-      }
-
-      // initial draw
-      drawMarkers(views[0].key);
-
-      // wire up the radios
-      document
-        .querySelectorAll('.view‑control input[name="view"]')
-        .forEach(function (radio) {
-          radio.addEventListener("change", function () {
-            drawMarkers(this.value);
-          });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

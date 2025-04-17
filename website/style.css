@@ -26,17 +26,44 @@ footer {
   text-align: center;
 }
 
-
-/* style the control panel */
-.view‑control {
+.view-control {
   background: #fff;
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.65);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
   font-size: 0.9em;
-  line-height: 1.4;
 }
-/* ensure it sits above the map tiles */
-.leaflet-top .view‑control {
+.view-control input {
+  margin-right: 4px;
+}
+
+/* 2) style the compare button */
+.compare-control {
+  background: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
   margin: 10px;
+}
+.compare-control button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* charts container (hidden by default, flex when visible) */
+#charts {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* make sure Chart.js knows exactly how big to draw */
+#charts canvas {
+  width: 300px;
+  height: 300px;
 }
