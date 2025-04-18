@@ -69,6 +69,8 @@ We found this infographic that was based on the same data: https://www.visualcap
 
 **10% of the final grade**
 
+The milestone 2 file
+
 ## Milestone 3 (30th May, 5pm)
 
 **80% of the final grade**
