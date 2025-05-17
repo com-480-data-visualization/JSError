@@ -1,0 +1,141 @@
+country,same_sex_support,percentage
+Armenia,Favor,2.188328912466844
+Armenia,Oppose,4.509283819628647
+Armenia,Strongly favor,0.5968169761273209
+Armenia,Strongly oppose,92.70557029177718
+Belarus,Favor,12.8099173553719
+Belarus,Oppose,19.903581267217632
+Belarus,Strongly favor,4.476584022038567
+Belarus,Strongly oppose,62.8099173553719
+Bosnia,Favor,9.966555183946488
+Bosnia,Oppose,14.180602006688964
+Bosnia,Strongly favor,2.140468227424749
+Bosnia,Strongly oppose,73.7123745819398
+Bulgaria,Favor,15.897435897435896
+Bulgaria,Oppose,29.03846153846154
+Bulgaria,Strongly favor,2.628205128205128
+Bulgaria,Strongly oppose,52.43589743589744
+Croatia,Favor,21.671018276762403
+Croatia,Oppose,21.34464751958225
+Croatia,Strongly favor,13.185378590078328
+Croatia,Strongly oppose,43.79895561357702
+Czech Republic,Favor,54.23487544483986
+Czech Republic,Oppose,20.4982206405694
+Czech Republic,Strongly favor,15.373665480427048
+Czech Republic,Strongly oppose,9.8932384341637
+Estonia,Favor,16.67719519898926
+Estonia,Oppose,24.952621604548327
+Estonia,Strongly favor,5.116866708780796
+Estonia,Strongly oppose,53.253316487681616
+Georgia,Favor,2.395209580838324
+Georgia,Oppose,5.056553559547571
+Georgia,Strongly favor,0.2661343978709248
+Georgia,Strongly oppose,92.28210246174318
+Greece,Favor,20.82444918265814
+Greece,Oppose,35.678749111584935
+Greece,Strongly favor,10.44776119402985
+Greece,Strongly oppose,33.04904051172708
+Hungary,Favor,25.46262028127313
+Hungary,Oppose,41.598815692079945
+Hungary,Strongly favor,4.58919319022946
+Hungary,Strongly oppose,28.34937083641747
+Kazakhstan,Favor,5.5
+Kazakhstan,Oppose,12.5
+Kazakhstan,Strongly favor,1.5625
+Kazakhstan,Strongly oppose,80.4375
+Latvia,Favor,13.9198949441891
+Latvia,Oppose,22.193040052527905
+Latvia,Strongly favor,3.545633617859488
+Latvia,Strongly oppose,60.34143138542351
+Lithuania,Favor,10.059563203176705
+Lithuania,Oppose,32.428855062872266
+Lithuania,Strongly favor,1.1912640635340834
+Lithuania,Strongly oppose,56.32031767041694
+Moldova,Favor,3.897550111358575
+Moldova,Oppose,5.79064587973274
+Moldova,Strongly favor,0.3340757238307349
+Moldova,Strongly oppose,89.97772828507794
+Poland,Favor,26.26797880393641
+Poland,Oppose,31.642694928084783
+Poland,Strongly favor,7.721423164269494
+Poland,Strongly oppose,34.36790310370931
+Romania,Favor,19.83594332587621
+Romania,Oppose,7.979120059656973
+Romania,Strongly favor,8.053691275167784
+Romania,Strongly oppose,64.13124533929903
+Russia,Favor,4.473796335747763
+Russia,Oppose,12.05794631444397
+Russia,Strongly favor,0.6391137622496805
+Russia,Strongly oppose,82.82914358755859
+Serbia,Favor,10.127431254191816
+Serbia,Oppose,18.77934272300469
+Serbia,Strongly favor,2.548625083836352
+Serbia,Strongly oppose,68.54460093896714
+Ukraine,Favor,7.712648743940062
+Ukraine,Oppose,14.89643014543852
+Ukraine,Strongly favor,1.4543851917144115
+Ukraine,Strongly oppose,75.93653591890701
+Austria,Favor,65.15580736543909
+Austria,Oppose,12.35127478753541
+Austria,Strongly favor,15.58073654390935
+Austria,Strongly oppose,6.912181303116147
+Belgium,Favor,49.358974358974365
+Belgium,Oppose,6.339031339031339
+Belgium,Strongly favor,41.66666666666667
+Belgium,Strongly oppose,2.635327635327636
+Denmark,Favor,45.56962025316456
+Denmark,Oppose,6.329113924050633
+Denmark,Strongly favor,45.56962025316456
+Denmark,Strongly oppose,2.5316455696202533
+Finland,Favor,45.556385362210605
+Finland,Oppose,20.089619118745333
+Finland,Strongly favor,23.52501867064974
+Finland,Strongly oppose,10.828976848394325
+France,Favor,63.59976998274871
+France,Oppose,13.80103507763082
+France,Strongly favor,16.27372052903968
+France,Strongly oppose,6.325474410580793
+Germany,Favor,63.71965185524508
+Germany,Oppose,11.818598259276223
+Germany,Strongly favor,18.781493357764543
+Germany,Strongly oppose,5.680256527714154
+Ireland,Favor,59.43134535367545
+Ireland,Oppose,15.256588072122051
+Ireland,Strongly favor,17.05963938973648
+Ireland,Strongly oppose,8.25242718446602
+Italy,Favor,56.7062818336163
+Italy,Oppose,18.9586870401811
+Italy,Strongly favor,13.582342954159593
+Italy,Strongly oppose,10.75268817204301
+Netherlands,Favor,63.547486033519554
+Netherlands,Oppose,7.0530726256983245
+Netherlands,Strongly favor,27.02513966480447
+Netherlands,Strongly oppose,2.3743016759776534
+Norway,Favor,52.38095238095239
+Norway,Oppose,13.690476190476192
+Norway,Strongly favor,25.66964285714285
+Norway,Strongly oppose,8.258928571428571
+Portugal,Favor,55.824508320726174
+Portugal,Oppose,15.204236006051437
+Portugal,Strongly favor,20.347957639939484
+Portugal,Strongly oppose,8.623298033282904
+Slovak Republic,Favor,28.062678062678064
+Slovak Republic,Oppose,17.59259259259259
+Slovak Republic,Strongly favor,23.005698005698004
+Slovak Republic,Strongly oppose,31.339031339031337
+Spain,Favor,57.635829662261386
+Spain,Oppose,9.030837004405283
+Spain,Strongly favor,30.76358296622614
+Spain,Strongly oppose,2.5697503671071957
+Sweden,Favor,41.39142656359803
+Sweden,Oppose,4.778636683063949
+Sweden,Strongly favor,51.37034434293746
+Sweden,Strongly oppose,2.459592410400562
+Switzerland,Favor,65.74685062987402
+Switzerland,Oppose,11.337732453509298
+Switzerland,Strongly favor,16.556688662267547
+Switzerland,Strongly oppose,6.35872825434913
+United Kingdom,Favor,65.73002754820936
+United Kingdom,Oppose,11.515151515151516
+United Kingdom,Strongly favor,16.088154269972453
+United Kingdom,Strongly oppose,6.666666666666667
