@@ -1,0 +1,141 @@
+country,economic_perception,percentage
+Armenia,Somewhat bad,23.35766423357664
+Armenia,Somewhat good,19.64167219641672
+Armenia,Very bad,55.14266755142667
+Armenia,Very good,1.85799601857996
+Belarus,Somewhat bad,44.36519258202568
+Belarus,Somewhat good,31.24108416547789
+Belarus,Very bad,14.407988587731811
+Belarus,Very good,9.98573466476462
+Bosnia,Somewhat bad,25.032258064516128
+Bosnia,Somewhat good,13.35483870967742
+Bosnia,Very bad,60.70967741935483
+Bosnia,Very good,0.903225806451613
+Bulgaria,Somewhat bad,31.51969981238274
+Bulgaria,Somewhat good,23.07692307692308
+Bulgaria,Very bad,44.71544715447154
+Bulgaria,Very good,0.6879299562226392
+Croatia,Somewhat bad,34.49564134495641
+Croatia,Somewhat good,21.29514321295143
+Croatia,Very bad,43.33748443337485
+Croatia,Very good,0.8717310087173101
+Czech Republic,Somewhat bad,36.141304347826086
+Czech Republic,Somewhat good,48.02989130434783
+Czech Republic,Very bad,10.597826086956522
+Czech Republic,Very good,5.230978260869565
+Estonia,Somewhat bad,46.18669920683344
+Estonia,Somewhat good,44.78340451494814
+Estonia,Very bad,7.687614399023795
+Estonia,Very good,1.342281879194631
+Georgia,Somewhat bad,37.142857142857146
+Georgia,Somewhat good,15.016611295681065
+Georgia,Very bad,46.44518272425249
+Georgia,Very good,1.3953488372093024
+Greece,Somewhat bad,16.403568977350723
+Greece,Somewhat good,2.8140013726835966
+Greece,Very bad,78.38023335621139
+Greece,Very good,2.4021962937542893
+Hungary,Somewhat bad,38.29201101928375
+Hungary,Somewhat good,39.25619834710744
+Hungary,Very bad,20.66115702479339
+Hungary,Very good,1.790633608815427
+Kazakhstan,Somewhat bad,18.20480404551201
+Kazakhstan,Somewhat good,60.36662452591656
+Kazakhstan,Very bad,2.0859671302149176
+Kazakhstan,Very good,19.342604298356516
+Latvia,Somewhat bad,56.82539682539682
+Latvia,Somewhat good,25.77777777777778
+Latvia,Very bad,16.380952380952383
+Latvia,Very good,1.0158730158730158
+Lithuania,Somewhat bad,50.53475935828877
+Lithuania,Somewhat good,35.89572192513369
+Lithuania,Very bad,12.633689839572192
+Lithuania,Very good,0.9358288770053476
+Moldova,Somewhat bad,39.25967470555244
+Moldova,Somewhat good,6.28154795288839
+Moldova,Very bad,53.95401009534493
+Moldova,Very good,0.5047672462142456
+Poland,Somewhat bad,46.39608117564731
+Poland,Somewhat good,39.67809657102869
+Poland,Very bad,11.966410076976906
+Poland,Very good,1.959412176347096
+Romania,Somewhat bad,39.985272459499264
+Romania,Somewhat good,36.156111929307805
+Romania,Very bad,18.77761413843888
+Romania,Very good,5.08100147275405
+Russia,Somewhat bad,44.27839453458582
+Russia,Somewhat good,37.53202391118702
+Russia,Very bad,14.005123825789925
+Russia,Very good,4.184457728437233
+Serbia,Somewhat bad,31.666666666666664
+Serbia,Somewhat good,26.346153846153847
+Serbia,Very bad,41.21794871794872
+Serbia,Very good,0.7692307692307693
+Ukraine,Somewhat bad,27.080692860160543
+Ukraine,Somewhat good,1.4786649767638362
+Ukraine,Very bad,71.31389945078158
+Ukraine,Very good,0.126742712294043
+Austria,Somewhat bad,5.2100840336134455
+Austria,Somewhat good,74.17366946778712
+Austria,Very bad,2.4649859943977592
+Austria,Very good,18.15126050420168
+Belgium,Somewhat bad,12.550607287449392
+Belgium,Somewhat good,68.82591093117408
+Belgium,Very bad,3.8461538461538463
+Belgium,Very good,14.777327935222672
+Denmark,Somewhat bad,8.221024258760108
+Denmark,Somewhat good,64.75741239892183
+Denmark,Very bad,2.964959568733154
+Denmark,Very good,24.056603773584907
+Finland,Somewhat bad,14.882154882154882
+Finland,Somewhat good,71.91919191919192
+Finland,Very bad,2.087542087542088
+Finland,Very good,11.11111111111111
+France,Somewhat bad,11.701526286037309
+France,Somewhat good,72.47032221594121
+France,Very bad,3.22215941209723
+France,Very good,12.60599208592425
+Germany,Somewhat bad,6.494096276112625
+Germany,Somewhat good,74.29609445958219
+Germany,Very bad,1.6802906448683013
+Germany,Very good,17.529518619436875
+Ireland,Somewhat bad,8.10448760884126
+Ireland,Somewhat good,70.52913596784997
+Ireland,Very bad,3.6168787675820497
+Ireland,Very good,17.749497655726724
+Italy,Somewhat bad,11.52770005595971
+Italy,Somewhat good,71.40458869613879
+Italy,Very bad,5.260212646894236
+Italy,Very good,11.807498601007277
+Netherlands,Somewhat bad,9.103078982597054
+Netherlands,Somewhat good,71.15127175368139
+Netherlands,Very bad,2.610441767068273
+Netherlands,Very good,17.13520749665328
+Norway,Somewhat bad,8.293998651382333
+Norway,Somewhat good,74.03910991233985
+Norway,Very bad,2.832097100472016
+Norway,Very good,14.834794335805798
+Portugal,Somewhat bad,25.42837559972584
+Portugal,Somewhat good,61.75462645647704
+Portugal,Very bad,9.184372858122002
+Portugal,Very good,3.63262508567512
+Slovak Republic,Somewhat bad,24.10533423362593
+Slovak Republic,Somewhat good,60.70222822417286
+Slovak Republic,Very bad,7.157326130992573
+Slovak Republic,Very good,8.035111411208643
+Spain,Somewhat bad,24.52185792349727
+Spain,Somewhat good,56.76229508196722
+Spain,Very bad,12.636612021857925
+Spain,Very good,6.079234972677596
+Sweden,Somewhat bad,10.547667342799189
+Sweden,Somewhat good,68.22177146720757
+Sweden,Very bad,3.3806626098715347
+Sweden,Very good,17.849898580121703
+Switzerland,Somewhat bad,5.472932778108269
+Switzerland,Somewhat good,67.16240333135039
+Switzerland,Very bad,2.914931588340273
+Switzerland,Very good,24.44973230220107
+United Kingdom,Somewhat bad,7.69650655021834
+United Kingdom,Somewhat good,73.47161572052401
+United Kingdom,Very bad,1.6375545851528384
+United Kingdom,Very good,17.194323144104803

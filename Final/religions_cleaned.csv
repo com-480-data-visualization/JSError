@@ -1,0 +1,180 @@
+country,religion,percentage
+Armenia,Atheist,1.31
+Armenia,Christian,97.24
+Armenia,Other,1.45
+Belgium,Atheist,1.73
+Belgium,Christian,93.55
+Belgium,Jewish,2.4
+Belgium,Nothing in particular,1.8
+Belgium,Other,0.53
+Bosnia,Agnostic,0.97
+Bosnia,Atheist,1.75
+Bosnia,Christian,45.64
+Bosnia,Muslim,50.94
+Bosnia,Other,0.71
+Bulgaria,Agnostic,0.81
+Bulgaria,Atheist,2.04
+Bulgaria,Christian,82.9
+Bulgaria,Muslim,12.39
+Bulgaria,Nothing in particular,1.67
+Bulgaria,Other,0.19
+Croatia,Agnostic,1.8
+Croatia,Atheist,3.79
+Croatia,Christian,91.12
+Croatia,Muslim,1.12
+Croatia,Nothing in particular,1.24
+Croatia,Other,0.93
+Czech Republic,Atheist,25.1
+Czech Republic,Christian,25.85
+Czech Republic,Nothing in particular,46.89
+Czech Republic,Other,2.17
+Estonia,Agnostic,1.02
+Estonia,Atheist,7.28
+Estonia,Christian,55.62
+Estonia,Nothing in particular,31.69
+Estonia,Old believer/old ritualist,0.84
+Estonia,Other,3.55
+Georgia,Christian,91.45
+Georgia,Muslim,8.02
+Georgia,Other,0.52
+Greece,Atheist,3.09
+Greece,Christian,93.41
+Greece,Muslim,2.06
+Greece,Nothing in particular,0.89
+Greece,Other,0.55
+Hungary,Atheist,5.18
+Hungary,Christian,77.16
+Hungary,Nothing in particular,14.79
+Hungary,Other,2.86
+Kazakhstan,Atheist,3.52
+Kazakhstan,Christian,32.02
+Kazakhstan,Muslim,61.65
+Kazakhstan,Nothing in particular,2.39
+Kazakhstan,Other,0.42
+Latvia,Atheist,2.38
+Latvia,Christian,78.77
+Latvia,Nothing in particular,17.08
+Latvia,Old believer/old ritualist,1.22
+Latvia,Other,0.55
+Lithuania,Atheist,1.02
+Lithuania,Christian,92.73
+Lithuania,Nothing in particular,4.21
+Lithuania,Other,2.04
+Moldova,Atheist,0.93
+Moldova,Christian,98.14
+Moldova,Other,0.93
+Poland,Atheist,1.84
+Poland,Christian,93.99
+Poland,Nothing in particular,3.21
+Poland,Other,0.96
+Romania,Christian,97.2
+Romania,Other,2.8
+Russia,Agnostic,0.57
+Russia,Atheist,3.42
+Russia,Buddhist,0.53
+Russia,Christian,60.31
+Russia,Muslim,25.88
+Russia,Nothing in particular,8.76
+Russia,Other,0.53
+Serbia,Atheist,2.93
+Serbia,Christian,93.3
+Serbia,Muslim,1.4
+Serbia,Nothing in particular,1.47
+Serbia,Other,0.89
+Ukraine,Atheist,1.5
+Ukraine,Christian,94.63
+Ukraine,Muslim,0.42
+Ukraine,Nothing in particular,2.96
+Ukraine,Other,0.5
+Austria,Agnostic,1.12
+Austria,Atheist,7.61
+Austria,Christian,77.06
+Austria,Nothing in particular,10.86
+Austria,Other,3.36
+Belgium,Agnostic,5.01
+Belgium,Atheist,18.62
+Belgium,Christian,55.34
+Belgium,Don't know,0.2
+Belgium,Nothing in particular,14.69
+Belgium,Other,6.14
+Denmark,Agnostic,2.08
+Denmark,Atheist,15.11
+Denmark,Christian,68.17
+Denmark,Don't know,0.34
+Denmark,Nothing in particular,10.01
+Denmark,Other,4.3
+Finland,Agnostic,2.27
+Finland,Atheist,4.68
+Finland,Christian,78.62
+Finland,Don't know,0.13
+Finland,Nothing in particular,12.96
+Finland,Other,1.34
+France,Agnostic,1.23
+France,Atheist,12.45
+France,Christian,66.24
+France,Don't know,0.17
+France,Nothing in particular,12.73
+France,Other,7.18
+Germany,Agnostic,1.04
+Germany,Atheist,11.55
+Germany,Christian,69.29
+Germany,Nothing in particular,14.31
+Germany,Other,3.8
+Ireland,Agnostic,1.34
+Ireland,Atheist,6.42
+Ireland,Christian,80.74
+Ireland,Don't know,0.13
+Ireland,Nothing in particular,7.63
+Ireland,Other,3.75
+Italy,Agnostic,1.17
+Italy,Atheist,6.44
+Italy,Christian,79.61
+Italy,Don't know,0.06
+Italy,Nothing in particular,8.83
+Italy,Other,3.89
+Netherlands,Agnostic,3.41
+Netherlands,Atheist,13.45
+Netherlands,Christian,42.64
+Netherlands,Don't know,0.07
+Netherlands,Nothing in particular,31.19
+Netherlands,Other,9.24
+Norway,Agnostic,5.21
+Norway,Atheist,11.16
+Norway,Christian,53.77
+Norway,Don't know,0.07
+Norway,Nothing in particular,24.65
+Norway,Other,5.14
+Portugal,Agnostic,4.14
+Portugal,Atheist,6.34
+Portugal,Christian,78.79
+Portugal,Don't know,0.07
+Portugal,Nothing in particular,8.74
+Portugal,Other,1.93
+Slovak Republic,Agnostic,0.74
+Slovak Republic,Atheist,15.48
+Slovak Republic,Christian,72.86
+Slovak Republic,Nothing in particular,8.78
+Slovak Republic,Other,2.14
+Spain,Agnostic,6.37
+Spain,Atheist,9.85
+Spain,Christian,64.08
+Spain,Don't know,0.13
+Spain,Nothing in particular,16.22
+Spain,Other,3.35
+Sweden,Agnostic,4.9
+Sweden,Atheist,14.17
+Sweden,Christian,53.73
+Sweden,Don't know,0.74
+Sweden,Nothing in particular,21.22
+Sweden,Other,5.24
+Switzerland,Agnostic,1.07
+Switzerland,Atheist,8.9
+Switzerland,Christian,75.73
+Switzerland,Nothing in particular,10.98
+Switzerland,Other,3.32
+United Kingdom,Agnostic,1.41
+United Kingdom,Atheist,9.89
+United Kingdom,Christian,69.36
+United Kingdom,Don't know,0.05
+United Kingdom,Nothing in particular,15.05
+United Kingdom,Other,4.24

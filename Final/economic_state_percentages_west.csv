@@ -1,0 +1,65 @@
+country,economic_perception,percentage
+Austria,Somewhat bad,5.2100840336134455
+Austria,Somewhat good,74.17366946778712
+Austria,Very bad,2.4649859943977592
+Austria,Very good,18.15126050420168
+Belgium,Somewhat bad,12.550607287449392
+Belgium,Somewhat good,68.82591093117408
+Belgium,Very bad,3.8461538461538463
+Belgium,Very good,14.777327935222672
+Denmark,Somewhat bad,8.221024258760108
+Denmark,Somewhat good,64.75741239892183
+Denmark,Very bad,2.964959568733154
+Denmark,Very good,24.056603773584907
+Finland,Somewhat bad,14.882154882154882
+Finland,Somewhat good,71.91919191919192
+Finland,Very bad,2.087542087542088
+Finland,Very good,11.11111111111111
+France,Somewhat bad,11.701526286037309
+France,Somewhat good,72.47032221594121
+France,Very bad,3.22215941209723
+France,Very good,12.60599208592425
+Germany,Somewhat bad,6.494096276112625
+Germany,Somewhat good,74.29609445958219
+Germany,Very bad,1.6802906448683013
+Germany,Very good,17.529518619436875
+Ireland,Somewhat bad,8.10448760884126
+Ireland,Somewhat good,70.52913596784997
+Ireland,Very bad,3.6168787675820497
+Ireland,Very good,17.749497655726724
+Italy,Somewhat bad,11.52770005595971
+Italy,Somewhat good,71.40458869613879
+Italy,Very bad,5.260212646894236
+Italy,Very good,11.807498601007275
+Netherlands,Somewhat bad,9.103078982597054
+Netherlands,Somewhat good,71.15127175368139
+Netherlands,Very bad,2.610441767068273
+Netherlands,Very good,17.13520749665328
+Norway,Somewhat bad,8.293998651382333
+Norway,Somewhat good,74.03910991233985
+Norway,Very bad,2.832097100472016
+Norway,Very good,14.834794335805798
+Portugal,Somewhat bad,25.42837559972584
+Portugal,Somewhat good,61.754626456477034
+Portugal,Very bad,9.184372858122002
+Portugal,Very good,3.6326250856751203
+Slovak Republic,Somewhat bad,24.10533423362593
+Slovak Republic,Somewhat good,60.70222822417286
+Slovak Republic,Very bad,7.157326130992573
+Slovak Republic,Very good,8.035111411208643
+Spain,Somewhat bad,24.52185792349727
+Spain,Somewhat good,56.76229508196722
+Spain,Very bad,12.636612021857923
+Spain,Very good,6.079234972677596
+Sweden,Somewhat bad,10.547667342799189
+Sweden,Somewhat good,68.22177146720757
+Sweden,Very bad,3.3806626098715347
+Sweden,Very good,17.849898580121703
+Switzerland,Somewhat bad,5.472932778108269
+Switzerland,Somewhat good,67.16240333135039
+Switzerland,Very bad,2.9149315883402735
+Switzerland,Very good,24.44973230220107
+United Kingdom,Somewhat bad,7.6965065502183405
+United Kingdom,Somewhat good,73.47161572052401
+United Kingdom,Very bad,1.6375545851528384
+United Kingdom,Very good,17.194323144104803
