@@ -1,344 +1,269 @@
-// script.js
+const width = document.getElementById("map").clientWidth;
+const height = document.getElementById("map").clientHeight;
 
-document.addEventListener("DOMContentLoaded", function () {
-  // --- Leaflet map init ---
-  var map = L.map("map").setView([54.526, 15.2551], 4);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 18,
-    attribution: "© OpenStreetMap contributors",
-  }).addTo(map);
+const svg = d3
+  .select("#map")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
 
-  // --- Countries data ---
-  var countries = [
-    {
-      name: "France",
-      coords: [46.2276, 2.2137],
-      religion: "Christianity (Catholicism)",
-      economic: "Moderately prosperous",
-      feelingSafe: "Yes",
-      qMarried: "Civil partnership allowed",
-      age: 42,
-      freqReligious: "Monthly",
-      supportSSM: "Yes",
-      meaningInLife: "High",
-      religionDist: {
-        "Catholic Christianity": 70,
-        Muslim: 15,
-        Atheist: 15,
-      },
-    },
-    {
-      name: "Germany",
-      coords: [51.1657, 10.4515],
-      religion: "Christianity (Protestantism & Catholicism)",
-      economic: "Prosperous",
-      feelingSafe: "Mostly safe",
-      qMarried: "Civil partnership legal",
-      age: 45,
-      freqReligious: "Weekly",
-      supportSSM: "Yes",
-      meaningInLife: "Medium",
-      religionDist: {
-        "Protestant Christianity": 45,
-        "Catholic Christianity": 40,
-        Atheist: 15,
-      },
-    },
-    {
-      name: "Italy",
-      coords: [41.8719, 12.5674],
-      religion: "Christianity (Catholicism)",
-      economic: "Moderately prosperous",
-      feelingSafe: "Safe",
-      qMarried: "Civil partnership recognized",
-      age: 43,
-      freqReligious: "Monthly",
-      supportSSM: "Yes",
-      meaningInLife: "High",
-      religionDist: {
-        "Catholic Christianity": 80,
-        Atheist: 10,
-        Other: 10,
-      },
-    },
-    {
-      name: "United Kingdom",
-      coords: [55.3781, -3.436],
-      religion: "Christianity (Anglican)",
-      economic: "Prosperous",
-      feelingSafe: "Safe",
-      qMarried: "Civil partnership recognized",
-      age: 40,
-      freqReligious: "Weekly",
-      supportSSM: "Yes",
-      meaningInLife: "Medium",
-      religionDist: {
-        "Anglican Christianity": 50,
-        "Catholic Christianity": 20,
-        Atheist: 30,
-      },
-    },
-    {
-      name: "Spain",
-      coords: [40.4637, -3.7492],
-      religion: "Christianity (Catholicism)",
-      economic: "Moderately prosperous",
-      feelingSafe: "Mostly safe",
-      qMarried: "Civil partnership recognized",
-      age: 41,
-      freqReligious: "Monthly",
-      supportSSM: "Yes",
-      meaningInLife: "High",
-      religionDist: {
-        "Catholic Christianity": 75,
-        Atheist: 15,
-        Muslim: 10,
-      },
-    },
-    {
-      name: "Russia",
-      coords: [61.524, 105.3188],
-      religion: "Christianity (Orthodox)",
-      economic: "Mixed",
-      feelingSafe: "Somewhat safe",
-      qMarried: "Not recognized",
-      age: 38,
-      freqReligious: "Rarely",
-      supportSSM: "No",
-      meaningInLife: "Medium",
-      religionDist: {
-        "Orthodox Christianity": 72,
-        Atheist: 16,
-        Muslim: 10,
-        Other: 2,
-      },
-    },
-    {
-      name: "Greece",
-      coords: [39.0742, 21.8243],
-      religion: "Christianity (Orthodox)",
-      economic: "Moderately prosperous",
-      feelingSafe: "Safe",
-      qMarried: "Not recognized",
-      age: 44,
-      freqReligious: "Weekly",
-      supportSSM: "No",
-      meaningInLife: "High",
-      religionDist: {
-        "Orthodox Christianity": 90,
-        Atheist: 5,
-        Other: 5,
-      },
-    },
-    {
-      name: "Turkey",
-      coords: [38.9637, 35.2433],
-      religion: "Islam",
-      economic: "Mixed",
-      feelingSafe: "Somewhat safe",
-      qMarried: "Not recognized",
-      age: 30,
-      freqReligious: "Daily",
-      supportSSM: "No",
-      meaningInLife: "High",
-      religionDist: {
-        Muslim: 98,
-        Other: 2,
-      },
-    },
-    {
-      name: "Lithuania",
-      coords: [55.1694, 23.8813],
-      religion: "Christianity (Catholicism)",
-      economic: "Average economic state perception",
-      feelingSafe: "Mostly safe",
-      qMarried: "Civil partnerships not recognized",
-      age: 39,
-      freqReligious: "Monthly",
-      supportSSM: "No",
-      meaningInLife: "High",
-      religionDist: {
-        "Catholic Christianity": 80,
-        Judaism: 5,
-        "Orthodox Christianity": 5,
-        Atheist: 10,
-      },
-    },
-  ];
+// projection & path
+const projection = d3
+  .geoNaturalEarth1()
+  .scale(1050)
+  .center([15, 55]) // roughly Europe
+  .translate([width / 2, height / 2]);
+const path = d3.geoPath().projection(projection);
 
-  // --- Views & state ---
-  var views = [
-    { key: "religion", label: "Predominant religion" },
-    { key: "economic", label: "Economic state perception" },
-    { key: "feelingSafe", label: "How safe people feel?" },
-    { key: "qMarried", label: "Civil partnership (QMARRIED)" },
-    { key: "age", label: "Age at last birthday" },
-    { key: "freqReligious", label: "Frequency of religious activities" },
-    { key: "supportSSM", label: "Support for same-sex marriage" },
-    { key: "meaningInLife", label: "Does religion give meaning to life?" },
-  ];
+// the “countries” data from your Leaflet example
+const countries = [
+  {
+    name: "France",
+    coords: [2.2137, 46.2276],
+    religionDist: { Catholic: 70, Muslim: 15, Atheist: 15 },
+    religion: "Christianity (Catholicism)" /*…*/,
+  },
+  {
+    name: "Germany",
+    coords: [10.4515, 51.1657],
+    religionDist: { Protestant: 45, Catholic: 40, Atheist: 15 },
+    religion: "Christianity (Protestantism & Catholicism)",
+  },
+  {
+    name: "Italy",
+    coords: [12.5674, 41.8719],
+    religionDist: { Catholic: 80, Atheist: 10, Other: 10 },
+    religion: "Christianity (Catholicism)",
+  },
+  {
+    name: "United Kingdom",
+    coords: [-3.436, 55.3781],
+    religionDist: { Anglican: 50, Catholic: 20, Atheist: 30 },
+    religion: "Christianity (Anglican)",
+  },
+  {
+    name: "Spain",
+    coords: [-3.7492, 40.4637],
+    religionDist: { Catholic: 75, Atheist: 15, Muslim: 10 },
+    religion: "Christianity (Catholicism)",
+  },
+  {
+    name: "Russia",
+    coords: [105.3188, 61.524],
+    religionDist: { Orthodox: 72, Atheist: 16, Muslim: 10, Other: 2 },
+    religion: "Christianity (Orthodox)",
+  },
+  {
+    name: "Greece",
+    coords: [21.8243, 39.0742],
+    religionDist: { Orthodox: 90, Atheist: 5, Other: 5 },
+    religion: "Christianity (Orthodox)",
+  },
+  {
+    name: "Turkey",
+    coords: [35.2433, 38.9637],
+    religionDist: { Muslim: 98, Other: 2 },
+    religion: "Islam",
+  },
+  {
+    name: "Lithuania",
+    coords: [23.8813, 55.1694],
+    religionDist: { Catholic: 80, Judaism: 5, Orthodox: 5, Atheist: 10 },
+    religion: "Christianity (Catholicism)",
+  },
+];
 
-  var currentView = views[0].key;
-  var compareMode = false;
-  var selected = [];
-  // Marker layer group
-  var markersGroup = L.layerGroup().addTo(map);
+// the “views”
+const views = [
+  { key: "religion", label: "Predominant religion" },
+  { key: "meaningInLife", label: "Does religion give meaning to life?" },
+  // … add the rest
+];
 
-  // Build the radio control
-  var viewControl = L.control({ position: "topright" });
-  viewControl.onAdd = function () {
-    var div = L.DomUtil.create("div", "view-control");
-    views.forEach(function (v, i) {
-      div.innerHTML +=
-        '<input type="radio" name="view" id="' +
-        v.key +
-        '" value="' +
-        v.key +
-        '" ' +
-        (i === 0 ? "checked" : "") +
-        '> <label for="' +
-        v.key +
-        '">' +
-        v.label +
-        "</label><br>";
-    });
-    L.DomEvent.disableClickPropagation(div);
-    return div;
-  };
-  viewControl.addTo(map);
+let currentView = views[0].key;
+let compareMode = false;
+let selected = [];
 
-  // Build the Compare toggle button
-  var cmpControl = L.control({ position: "topright" });
-  cmpControl.onAdd = function () {
-    var div = L.DomUtil.create("div", "compare-control");
-    div.innerHTML = '<button id="compareBtn">Compare</button>';
-    L.DomEvent.disableClickPropagation(div);
-    return div;
-  };
-  cmpControl.addTo(map);
+// tooltip
+const tooltip = d3.select("#tooltip");
 
-  // Draw markers for a given view
-  function drawMarkers(viewKey) {
-    currentView = viewKey;
-    resetSelection();
-    markersGroup.clearLayers();
-    countries.forEach(function (c) {
-      var marker = L.marker(c.coords).addTo(markersGroup);
-      marker._country = c;
-      marker.on("click", function () {
-        if (compareMode) {
-          selectCountry(c, marker);
-        } else {
-          var val = c[currentView];
-          marker
-            .bindPopup("<strong>" + c.name + "</strong><br>" + val)
-            .openPopup();
-        }
-      });
-    });
-  }
+// load Europe topojson
+d3.json("data/europe-topo.json").then((topo) => {
+  const geo = topojson.feature(topo, topo.objects.europe);
+  const countryGroup = svg.append("g").attr("id", "countries");
 
-  // Handle radio changes
-  document
-    .querySelectorAll('.view-control input[name="view"]')
-    .forEach(function (r) {
-      r.addEventListener("change", function () {
-        drawMarkers(this.value);
-      });
+  countryGroup
+    .selectAll("path")
+    .data(geo.features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", "#ddd")
+    .attr("stroke", "#999")
+    .style("cursor", "pointer")
+    .on("click", (event, d) => {
+      event.stopPropagation();
+
+      const country = countries.find((c) => c.name === d.properties.NAME);
+      if (!country) return;
+
+      if (!compareMode) {
+        // remove any old highlight
+        svg
+          .selectAll("#countries path")
+          .classed("country-highlight", false)
+          .attr("fill", "#ddd");
+
+        // highlight this one
+        const thisPath = d3.select(event.currentTarget);
+        thisPath.classed("country-highlight", true);
+
+        // show tooltip bubble
+        tooltip
+          .style("display", "block")
+          .html(
+            `
+          <strong>${country.name}</strong><br>
+          ${country[currentView]}
+        `
+          )
+          // offset a bit from mouse
+          .style("left", event.pageX + 12 + "px")
+          .style("top", event.pageY - 28 + "px");
+      } else {
+        selectCountry(country, d3.select(event.currentTarget));
+      }
     });
 
-  // Compare button toggling
-  document.getElementById("compareBtn").addEventListener("click", function () {
-    compareMode = !compareMode;
-    this.textContent = compareMode ? "Select 2 countries" : "Compare";
-    resetSelection();
+  // hide tooltip & clear highlight on background click
+  svg.on("click.tooltip", () => {
+    if (!compareMode) {
+      tooltip.style("display", "none");
+      svg
+        .selectAll("#countries path")
+        .classed("country-highlight", false)
+        .attr("fill", "#ddd");
+    }
   });
 
-  // Reset selections & hide charts
-  function resetSelection() {
-    selected.forEach(function (s) {
-      s.marker.setIcon(new L.Icon.Default());
+  // marker layer
+  // const markers = svg.append("g").attr("id", "markers");
+
+  // function drawMarkers() {
+  //   markers
+  //     .selectAll("circle")
+  //     .data(countries, (d) => d.name)
+  //     .join("circle")
+  //     .attr("class", "marker")
+  //     .attr("r", 5)
+  //     .attr("transform", (d) => `translate(${projection(d.coords)})`)
+  //     .on("click", (ev, d) => {
+  //       if (!compareMode) {
+  //         // show tooltip
+  //         tooltip
+  //           .style("display", "block")
+  //           .html(`<strong>${d.name}</strong><br>${d[currentView]}`)
+  //           .style("left", ev.pageX + 10 + "px")
+  //           .style("top", ev.pageY + 10 + "px");
+  //       } else {
+  //         selectCountry(d, d3.select(ev.currentTarget));
+  //       }
+  //     });
+  // }
+
+  // drawMarkers();
+
+  const zoom = d3
+    .zoom()
+    .scaleExtent([1, 8]) // how far users can zoom in/out
+    .on("zoom", (event) => {
+      svg
+        .selectAll("g") // apply transform to *all* your layers
+        .attr("transform", event.transform);
     });
+
+  svg.call(zoom);
+
+  // view radio controls
+  const vp = d3.select("#view-panel");
+  vp.selectAll("label")
+    .data(views)
+    .enter()
+    .append("label")
+    .html(
+      (d) =>
+        `<input type="radio" name="view" value="${d.key}" ${
+          d.key === currentView ? "checked" : ""
+        }> ${d.label}`
+    )
+    .on("change", (_, d) => {
+      currentView = d.key;
+      tooltip.style("display", "none");
+    });
+
+  // compare button
+  d3.select("#compareBtn").on("click", function () {
+    compareMode = !compareMode;
     selected = [];
-    document.getElementById("charts").style.display = "none";
-  }
+    d3.selectAll(".marker").classed("selected", false);
+    d3.select(this).text(compareMode ? "Select up to 2" : "Compare");
+    d3.select("#charts").style("display", "none");
+  });
 
-  // --- Select up to two countries ---
-  function selectCountry(country, marker) {
-    if (selected.find((s) => s.country.name === country.name)) return;
+  function selectCountry(country, node) {
+    if (selected.find((s) => s.name === country.name)) return;
     if (selected.length >= 2) return;
-
-    // highlight marker
-    marker.setIcon(
-      L.icon({
-        iconUrl:
-          "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-        shadowUrl: "https://unpkg.com/leaflet/dist/images/marker-shadow.png",
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
-      })
-    );
-
-    selected.push({ country: country, marker: marker });
+    node.classed("selected", true);
+    selected.push(country);
     if (selected.length === 2) {
-      showComparisonCharts();
+      showComparison(selected[0], selected[1]);
     }
   }
 
-  // --- Show comparison pie charts ---
-  function showComparisonCharts() {
-    var chartsDiv = document.getElementById("charts");
-    chartsDiv.style.display = "flex";
-
-    // Destroy previous charts if any
-    //   if (window.chart1) window.chart1.destroy();
-    //   if (window.chart2) window.chart2.destroy();
-
-    // Country data
-    var c1 = selected[0].country;
-    var c2 = selected[1].country;
-    var d1 = c1.religionDist;
-    var d2 = c2.religionDist;
-
-    // Ensure data exists
-    if (!d1 || !d2) {
-      alert("No distribution data available for this view.");
-      return;
-    }
-
-    // Create pie chart for country 1
-    var canvas1 = document.getElementById("chart1");
-    var ctx1 = canvas1.getContext("2d");
-    window.chart1 = new Chart(ctx1, {
-      type: "pie",
-      data: {
-        labels: Object.keys(d1),
-        datasets: [{ data: Object.values(d1) }],
-      },
-      options: {
-        responsive: false,
-        plugins: { title: { display: true, text: c1.name } },
-      },
-    });
-
-    // Create pie chart for country 2
-    var canvas2 = document.getElementById("chart2");
-    var ctx2 = canvas2.getContext("2d");
-    window.chart2 = new Chart(ctx2, {
-      type: "pie",
-      data: {
-        labels: Object.keys(d2),
-        datasets: [{ data: Object.values(d2) }],
-      },
-      options: {
-        responsive: false,
-        plugins: { title: { display: true, text: c2.name } },
-      },
+  function showComparison(c1, c2) {
+    d3.select("#charts").style("display", "flex");
+    [
+      { c: c1, id: "#chart1" },
+      { c: c2, id: "#chart2" },
+    ].forEach((obj) => {
+      renderPie(obj.c.religionDist, obj.id, obj.c.name);
     });
   }
 
-  // initial draw
-  drawMarkers();
+  // draw a pie chart into <svg> at selector
+  function renderPie(data, selector, title) {
+    const svgC = d3.select(selector);
+    svgC.selectAll("*").remove();
+    const w = +svgC.attr("width"),
+      h = +svgC.attr("height");
+    const radius = Math.min(w, h) / 2 - 10;
+    const g = svgC
+      .append("g")
+      .attr("transform", `translate(${w / 2},${h / 2})`);
+
+    const pie = d3.pie().value((d) => d[1]);
+    const arcs = pie(Object.entries(data));
+    const arcGen = d3.arc().innerRadius(0).outerRadius(radius);
+
+    const color = d3
+      .scaleOrdinal(d3.schemeCategory10)
+      .domain(Object.keys(data));
+
+    g.selectAll("path")
+      .data(arcs)
+      .enter()
+      .append("path")
+      .attr("d", arcGen)
+      .attr("fill", (d) => color(d.data[0]))
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1);
+
+    // title
+    svgC
+      .append("text")
+      .attr("x", w / 2)
+      .attr("y", 15)
+      .attr("text-anchor", "middle")
+      .attr("font-weight", "bold")
+      .text(title);
+  }
 });

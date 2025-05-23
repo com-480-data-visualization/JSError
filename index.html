@@ -18,6 +18,14 @@
     <!-- 1) Map -->
     <div id="map"></div>
 
+    <div class="control-panel" id="view-panel">
+      <!-- radios will be injected here -->
+    </div>
+
+    <div class="control-panel" style="top: auto; bottom: 10px; left: 10px">
+      <button id="compareBtn">Compare</button>
+    </div>
+
     <!-- 2) Charts: hidden until you select two countries in “Compare” mode -->
     <div
       id="charts"
@@ -42,11 +50,15 @@
       ></canvas>
     </div>
 
+    <div class="tooltip" id="tooltip" style="display: none"></div>
+
     <footer><p>&copy; 2025 team JSError</p></footer>
 
     <!-- 3) Scripts at the end, after all DOM elements -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
     <script src="script.js"></script>
   </body>
 </html>
