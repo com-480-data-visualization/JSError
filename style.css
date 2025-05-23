@@ -15,7 +15,8 @@ header {
 }
 /* Map container styling */
 #map {
-  overflow: auto;
+  position: relative;
+  /* overflow: auto; */
   height: 80vh;
   width: 100%;
 }
@@ -71,19 +72,18 @@ footer {
 
 /* Tooltip bubble */
 #tooltip {
-  position: absolute;
+  position: absolute; /* now positioned inside #map */
+  display: none; /* we'll toggle it via JS */
   background: #fff;
   border-radius: 8px;
   padding: 8px 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  pointer-events: none;
   font-size: 0.9em;
-  line-height: 1.4;
-  display: none; /* keep hidden until used */
-  z-index: 10;
+  pointer-events: none; /* clicks go “through” to the map */
+  z-index: 1000;
 }
 
-/* When a country path has this class, it will turn blue */
+/* when applied, makes the country steel-blue */
 .country-highlight {
   fill: steelblue !important;
 }

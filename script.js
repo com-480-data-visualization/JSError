@@ -85,7 +85,7 @@ let compareMode = false;
 let selected = [];
 
 // tooltip
-const tooltip = d3.select("#tooltip");
+const tooltip = d3.select("#tooltip").style("position", "absolute");
 
 // load Europe topojson
 d3.json("data/europe-topo.json").then((topo) => {
@@ -107,70 +107,32 @@ d3.json("data/europe-topo.json").then((topo) => {
       if (!country) return;
 
       if (!compareMode) {
-        // remove any old highlight
-        svg
-          .selectAll("#countries path")
-          .classed("country-highlight", false)
-          .attr("fill", "#ddd");
+        // 1) clear old highlight
+        svg.selectAll("#countries path").classed("country-highlight", false);
 
-        // highlight this one
-        const thisPath = d3.select(event.currentTarget);
-        thisPath.classed("country-highlight", true);
+        // 2) highlight this one
+        d3.select(event.currentTarget).classed("country-highlight", true);
 
-        // show tooltip bubble
+        // 3) compute pointer coords *inside* the SVG
+        const [mx, my] = d3.pointer(event, svg.node());
+
+        // 4) show & position tooltip
         tooltip
-          .style("display", "block")
-          .html(
-            `
-          <strong>${country.name}</strong><br>
-          ${country[currentView]}
-        `
-          )
-          // offset a bit from mouse
-          .style("left", event.pageX + 12 + "px")
-          .style("top", event.pageY - 28 + "px");
+          .html(`<strong>${country.name}</strong><br>${country[currentView]}`)
+          .style("left", `${mx + 10}px`)
+          .style("top", `${my - 28}px`)
+          .style("display", "block");
       } else {
         selectCountry(country, d3.select(event.currentTarget));
       }
     });
-
   // hide tooltip & clear highlight on background click
   svg.on("click.tooltip", () => {
     if (!compareMode) {
       tooltip.style("display", "none");
-      svg
-        .selectAll("#countries path")
-        .classed("country-highlight", false)
-        .attr("fill", "#ddd");
+      svg.selectAll("#countries path").classed("country-highlight", false);
     }
   });
-
-  // marker layer
-  // const markers = svg.append("g").attr("id", "markers");
-
-  // function drawMarkers() {
-  //   markers
-  //     .selectAll("circle")
-  //     .data(countries, (d) => d.name)
-  //     .join("circle")
-  //     .attr("class", "marker")
-  //     .attr("r", 5)
-  //     .attr("transform", (d) => `translate(${projection(d.coords)})`)
-  //     .on("click", (ev, d) => {
-  //       if (!compareMode) {
-  //         // show tooltip
-  //         tooltip
-  //           .style("display", "block")
-  //           .html(`<strong>${d.name}</strong><br>${d[currentView]}`)
-  //           .style("left", ev.pageX + 10 + "px")
-  //           .style("top", ev.pageY + 10 + "px");
-  //       } else {
-  //         selectCountry(d, d3.select(ev.currentTarget));
-  //       }
-  //     });
-  // }
-
-  // drawMarkers();
 
   const zoom = d3
     .zoom()
