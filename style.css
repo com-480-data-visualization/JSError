@@ -1,18 +1,29 @@
+:root {
+  --body-color: #f2f2f2;
+  --body-text-color: #333;
+  --header-color: #4a90e2;
+  --footer-background-color: #333;
+  --shadow-color: rgba(0, 0, 0, 0.65);
+  --highlight-color: steelblue;
+}
+
 /* General body styling */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  color: #333;
+  background-color: var(--body-color);
+  color: var(--body-text-color);
   line-height: 1.6;
 }
+
 /* Header styling */
 header {
-  background-color: #4a90e2;
-  color: #fff;
+  background-color: var(--header-color);
+  color: var(--body-color);
   padding: 20px;
   text-align: center;
 }
+
 /* Map container styling */
 #map {
   position: relative;
@@ -20,19 +31,20 @@ header {
   height: 80vh;
   width: 100%;
 }
+
 /* Footer styling */
 footer {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--footer-background-color);
+  color: var(--body-color);
   padding: 10px 0;
   text-align: center;
 }
 
 .view-control {
-  background: #fff;
+  background: var(--body-color);
   padding: 10px;
   border-radius: 4px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 1px 5px var(--shadow-color);
   font-size: 0.9em;
 }
 .view-control input {
@@ -41,15 +53,15 @@ footer {
 
 /* 2) style the compare button */
 .compare-control {
-  background: #fff;
+  background: var(--body-color);
   padding: 5px;
   border-radius: 4px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 1px 5px var(--shadow-color);
   margin: 10px;
 }
 .compare-control button {
-  background: #4a90e2;
-  color: #fff;
+  background: var(--header-color);
+  color: var(--body-color);
   border: none;
   padding: 5px 10px;
   border-radius: 3px;
@@ -74,10 +86,10 @@ footer {
 #tooltip {
   position: absolute; /* now positioned inside #map */
   display: none; /* we'll toggle it via JS */
-  background: #fff;
+  background: var(--body-color);
   border-radius: 8px;
   padding: 8px 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 8px var(--shadow-color);
   font-size: 0.9em;
   pointer-events: none; /* clicks go “through” to the map */
   z-index: 1000;
@@ -86,4 +98,12 @@ footer {
 /* when applied, makes the country steel-blue */
 .country-highlight {
   fill: steelblue !important;
+}
+
+/* links */
+a:link,
+a:visited {
+  color: var(--header-color);
+  background-color: transparent;
+  text-decoration: none;
 }
