@@ -1,6 +1,31 @@
-const width = document.getElementById("map").clientWidth;
-const height = document.getElementById("map").clientHeight;
-const religionColors = d3.scaleOrdinal()
+(async function () {
+  // --- Constants & Setup ---
+  const width = document.getElementById("map").clientWidth;
+  const height = document.getElementById("map").clientHeight;
+
+  const svg = d3
+    .select("#map")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  const projection = d3
+    .geoNaturalEarth1()
+    .scale(1050)
+    .center([15, 55])
+    .translate([width / 2, height / 2]);
+  const path = d3.geoPath().projection(projection);
+
+  const dataFiles = {
+    religion: "data/religions_cleaned.csv",
+    economic: "data/economic_state_percentages.csv",
+    marriage: "data/marriage_status_percentages.csv",
+    age: "data/median_age.csv",
+    abortion: "data/support_abortion.csv",
+    sameSex: "data/support_same_sex_marriage.csv",
+  };
+
+  const religionColors = d3.scaleOrdinal()
   .domain([
     "Christian", "Catholic", "Protestant", "Orthodox",
     "Muslim", "Jewish", "Atheist", "Nothing in particular", "Other"
@@ -37,130 +62,181 @@ religionColors.domain().forEach(r => {
     .style("font-size", "14px")
     .text(r);
 });
-let countries = [];
 
-function loadReligionData(callback) {
-  d3.csv("data/religions_cleaned.csv").then(data => {
-    const grouped = d3.group(data, d => d.country);
-    countries = [];
+  const views = [
+    { key: "religion", label: "Predominant religion" },
+    { key: "median_age", label: "Median Age" },
+    { key: "marriage_status", label: "Marriage Status" },
+    { key: "economic_state", label: "Perception of Economic State" },
+    { key: "abortion_support", label: "Support for Abortion Rights" },
+    { key: "same_sex_support", label: "Support for Same Sex Marriage" },
+  ];
 
-    grouped.forEach((records, country) => {
-      let max = -Infinity;
-      let mainReligion = "Other";
-      let dist = {};
-      records.forEach(row => {
-        const p = parseFloat(row.percentage);
-        dist[row.religion] = p;
-        if (p > max) {
-          max = p;
-          mainReligion = row.religion;
-        }
-      });
-      countries.push({
+  let currentView = views[0].key;
+  let compareMode = false;
+  let selected = [];
+
+  const tooltip = d3.select("#tooltip").style("position", "absolute");
+
+  // --- Utility Functions ---
+  function getCoordsByCountry(geoJSON) {
+    return geoJSON.features.reduce((acc, feature) => {
+      const name = feature.properties.name || feature.properties.NAME;
+      acc[name] = d3.geoCentroid(feature);
+      return acc;
+    }, {});
+  }
+
+  async function loadDistribution(path) {
+    const rows = await d3.csv(path);
+    const categoryCol = Object.keys(rows[0]).find(
+      (k) => k !== "country" && k !== "percentage"
+    );
+    const long = rows.map((d) => ({
+      country: d.country,
+      key: d[categoryCol],
+      value: +d.percentage,
+    }));
+    return d3.group(long, (d) => d.country);
+  }
+
+  async function loadMedianAge(path) {
+    const rows = await d3.csv(path);
+    const map = new Map();
+    rows.forEach((d) => map.set(d.country, +d.median_age));
+    return map;
+  }
+
+  async function loadAllData() {
+    const [religion, economic, marriage, abortion, sameSex] = await Promise.all(
+      [
+        loadDistribution(dataFiles.religion),
+        loadDistribution(dataFiles.economic),
+        loadDistribution(dataFiles.marriage),
+        loadDistribution(dataFiles.abortion),
+        loadDistribution(dataFiles.sameSex),
+      ]
+    );
+    const age = await loadMedianAge(dataFiles.age);
+    return { religion, economic, marriage, abortion, sameSex, age };
+  }
+
+  function processCountries(dataMaps, coordsByCountry) {
+    const religionDist = dataMaps.religion;
+    const economicDist = dataMaps.economic;
+    const marriageDist = dataMaps.marriage;
+    const abortionDist = dataMaps.abortion;
+    const sameSexDist = dataMaps.sameSex;
+    const ageMap = dataMaps.age;
+
+    const allNames = new Set([
+      ...religionDist.keys(),
+      ...economicDist.keys(),
+      ...marriageDist.keys(),
+      ...abortionDist.keys(),
+      ...sameSexDist.keys(),
+      ...ageMap.keys(),
+    ]);
+
+    const makeDist = (distMap, country) => {
+      const recs = distMap.get(country) || [];
+      return Object.fromEntries(recs.map((d) => [d.key, d.value]));
+    };
+
+    const maxKey = (dist) => {
+      const entries = Object.entries(dist);
+      if (entries.length === 0) return null;
+      return entries.reduce((best, curr) =>
+        curr[1] > best[1] ? curr : best
+      )[0];
+    };
+
+    return Array.from(allNames).map((country) => {
+      const rDist = makeDist(religionDist, country);
+      const eDist = makeDist(economicDist, country);
+      const mDist = makeDist(marriageDist, country);
+      const aDist = makeDist(abortionDist, country);
+      const sDist = makeDist(sameSexDist, country);
+
+      return {
         name: country,
-        religionDist: dist,
-        religion: mainReligion
-      });
+        coords: coordsByCountry[country] || [0, 0],
+
+        rDist,
+        religionMajority: maxKey(rDist),
+
+        eDist,
+        economicMajority: maxKey(eDist),
+
+        mDist,
+        marriageMajority: maxKey(mDist),
+
+        aDist,
+        abortionMajority: maxKey(aDist),
+
+        sDist,
+        sameSexMajority: maxKey(sDist),
+
+        medianAge: ageMap.get(country) ?? null,
+      };
     });
+  }
 
-    callback(); // trigger rendering
-  });
-}
-
-console.log("log");
-const svg = d3
-  .select("#map")
-  .append("svg")
-  .attr("width", width)
-  .attr("height", height);
-
-// projection & path
-const projection = d3
-  .geoNaturalEarth1()
-  .scale(1050)
-  .center([15, 55]) // roughly Europe
-  .translate([width / 2, height / 2]);
-const path = d3.geoPath().projection(projection);
-
-// the “views”
-const views = [
-  { key: "religion", label: "Predominant religion" },
-  { key: "meaningInLife", label: "Does religion give meaning to life?" },
-  // … add the rest
-];
-
-let currentView = views[0].key;
-let compareMode = false;
-let selected = [];
-
-// tooltip
-const tooltip = d3.select("#tooltip").style("position", "absolute");
-
-const zoom = d3
-  .zoom()
-  .scaleExtent([1, 8]) // how far users can zoom in/out
-  .on("zoom", (event) => {
-    svg
-      .selectAll("g") // apply transform to *all* your layers
-      .attr("transform", event.transform);
-  });
-
-loadReligionData(() => {
-  d3.json("data/europe-topo.json").then((topo) => {
+  // --- Main Initialization ---
+  async function init() {
+    const topo = await d3.json("data/europe-topo.json");
     const geo = topojson.feature(topo, topo.objects.europe);
-    const countryGroup = svg.append("g").attr("id", "countries");
+    const coordsByCountry = getCoordsByCountry(geo);
+    console.log("Country coordinates:", coordsByCountry);
 
-    countryGroup
+    const dataMaps = await loadAllData();
+    const countries = processCountries(dataMaps, coordsByCountry);
+    initUI(geo, coordsByCountry, countries);
+  }
+
+  init();
+
+  // --- UI Setup & Interaction ---
+  function initUI(geo, coordsByCountry, countries) {
+    // Draw countries
+    const countryLayer = svg.append("g").attr("id", "countries");
+    countryLayer
       .selectAll("path")
       .data(geo.features)
       .join("path")
       .attr("d", path)
-      .attr("fill", d => {
-        const country = countries.find(c => c.name === d.properties.NAME);
-        return country ? religionColors(country.religion) : "#ccc";
-      })
+      .attr("fill", "#ddd")
       .attr("stroke", "#999")
       .style("cursor", "pointer")
-      .on("click", (event, d) => {
-        event.stopPropagation();
+      .on("click", handleCountryClick);
 
-        const country = countries.find((c) => c.name === d.properties.NAME);
-        if (!country) return;
+    // Zoom behavior
+    svg.call(
+      d3
+        .zoom()
+        .scaleExtent([1, 8])
+        .on("zoom", ({ transform }) =>
+          svg.selectAll("g").attr("transform", transform)
+        )
+    );
 
-        if (!compareMode) {
-          svg.selectAll("#countries path").classed("country-highlight", false);
-          d3.select(event.currentTarget).classed("country-highlight", true);
-
-          const [mx, my] = d3.pointer(event, svg.node());
-          tooltip
-            .html(`<strong>${country.name}</strong><br>${country.religion}`)
-            .style("left", `${mx + 10}px`)
-            .style("top", `${my - 28}px`)
-            .style("display", "block");
-        } else {
-          selectCountry(country, d3.select(event.currentTarget));
-        }
-      });
-
+    // Tooltip & background
     svg.on("click.tooltip", () => {
       if (!compareMode) {
         tooltip.style("display", "none");
-        svg.selectAll("#countries path").classed("country-highlight", false);
+        countryLayer.selectAll("path").classed("country-highlight", false);
       }
     });
 
-    svg.call(zoom);
-
-    // view radio controls
-    const vp = d3.select("#view-panel");
-    vp.selectAll("label")
+    // View selectors
+    d3.select("#view-panel")
+      .selectAll("label")
       .data(views)
-      .enter()
-      .append("label")
+      .join("label")
       .html(
         (d) =>
-          `<input type="radio" name="view" value="${d.key}" ${
-            d.key === currentView ? "checked" : ""
+          `<input type=\"radio\" name=\"view\" value=\"${d.key}\"${
+            d.key === currentView ? " checked" : ""
           }> ${d.label}`
       )
       .on("change", (_, d) => {
@@ -168,36 +244,123 @@ loadReligionData(() => {
         tooltip.style("display", "none");
       });
 
-    // compare button
-    d3.select("#compareBtn").on("click", function () {
+    // Compare button
+    d3.select("#compareBtn").on("click", () => {
       compareMode = !compareMode;
       selected = [];
       d3.selectAll(".marker").classed("selected", false);
-      d3.select(this).text(compareMode ? "Select up to 2" : "Compare");
       d3.select("#charts").style("display", "none");
+      d3.select("#compareBtn").text(compareMode ? "Select up to 2" : "Compare");
     });
 
-    function selectCountry(country, node) {
-      if (selected.find((s) => s.name === country.name)) return;
-      if (selected.length >= 2) return;
+    // Country click handler
+    function handleCountryClick(event, d) {
+      event.stopPropagation();
+      const propName =
+        d.properties.NAME ||
+        d.properties.name ||
+        d.properties.ADMIN ||
+        d.properties.admin ||
+        "";
+      let country = countries.find(
+        (c) =>
+          c.name && propName && c.name.toLowerCase() === propName.toLowerCase()
+      );
+      if (!country) {
+        country = {
+          name: propName,
+          medianAge: null,
+          rDist: {},
+          eDist: {},
+          mDist: {},
+          aDist: {},
+          sDist: {},
+          religionMajority: null,
+          economicMajority: null,
+          marriageMajority: null,
+          abortionMajority: null,
+          sameSexMajority: null,
+        };
+      }
+
+      if (!compareMode) showSingle(country, event.currentTarget, event);
+      else selectForCompare(country, d3.select(event.currentTarget));
+    }
+
+    function showSingle(country, node, event) {
+      const sel = d3.select(node);
+      countryLayer.selectAll("path").classed("country-highlight", false);
+      sel.classed("country-highlight", true);
+
+      const [mx, my] = d3.pointer(event, svg.node());
+      let html = `<strong>${country.name}</strong><br>`;
+      if (currentView === "median_age") {
+        // explicit null check
+        if (country.medianAge == null) {
+          html += "No available data";
+        } else {
+          html += `Median Age: ${country.medianAge}`;
+        }
+      } else {
+        let dist, majority;
+        switch (currentView) {
+          case "religion":
+            dist = country.rDist;
+            majority = country.religionMajority;
+            break;
+          case "economic_state":
+            dist = country.eDist;
+            majority = country.economicMajority;
+            break;
+          case "marriage_status":
+            dist = country.mDist;
+            majority = country.marriageMajority;
+            break;
+          case "abortion_support":
+            dist = country.aDist;
+            majority = country.abortionMajority;
+            break;
+          case "same_sex_support":
+            dist = country.sDist;
+            majority = country.sameSexMajority;
+            break;
+        }
+        const entries = Object.entries(dist).sort((a, b) => b[1] - a[1]);
+        if (entries.length === 0) {
+          html += "No available data";
+        } else {
+          html += "<ul>";
+          entries.forEach(([k, v]) => {
+            const pct = v.toFixed(2) + "%";
+            if (k === majority)
+              html += `<li><strong>${k}: ${pct}</strong></li>`;
+            else html += `<li>${k}: ${pct}</li>`;
+          });
+          html += "</ul>";
+        }
+      }
+      tooltip
+        .html(html)
+        .style("left", `${mx + 10}px`)
+        .style("top", `${my - 28}px`)
+        .style("display", "block");
+    }
+
+    function selectForCompare(country, node) {
+      if (selected.some((s) => s.name === country.name) || selected.length >= 2)
+        return;
       node.classed("selected", true);
       selected.push(country);
-      if (selected.length === 2) {
-        showComparison(selected[0], selected[1]);
-      }
+      if (selected.length === 2) renderComparison();
     }
 
-    function showComparison(c1, c2) {
+    function renderComparison() {
       d3.select("#charts").style("display", "flex");
-      [
-        { c: c1, id: "#chart1" },
-        { c: c2, id: "#chart2" },
-      ].forEach((obj) => {
-        renderPie(obj.c.religionDist, obj.id, obj.c.name);
-      });
+      selected.forEach((c, i) =>
+        renderPie(c.religionDist, `#chart${i + 1}`, c.name)
+      );
     }
 
-    // draw a pie chart into <svg> at selector
     function renderPie(data, selector, title) {
       const svgC = d3.select(selector);
       svgC.selectAll("*").remove();
@@ -208,24 +371,19 @@ loadReligionData(() => {
         .append("g")
         .attr("transform", `translate(${w / 2},${h / 2})`);
 
-      const pie = d3.pie().value((d) => d[1]);
-      const arcs = pie(Object.entries(data));
-      const arcGen = d3.arc().innerRadius(0).outerRadius(radius);
-
+      const pie = d3.pie().value((d) => d[1])(Object.entries(data));
+      const arc = d3.arc().innerRadius(0).outerRadius(radius);
       const color = d3
         .scaleOrdinal(d3.schemeCategory10)
         .domain(Object.keys(data));
 
       g.selectAll("path")
-        .data(arcs)
-        .enter()
-        .append("path")
-        .attr("d", arcGen)
+        .data(pie)
+        .join("path")
+        .attr("d", arc)
         .attr("fill", (d) => color(d.data[0]))
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1);
+        .attr("stroke", "#fff");
 
-      // title
       svgC
         .append("text")
         .attr("x", w / 2)
@@ -234,5 +392,5 @@ loadReligionData(() => {
         .attr("font-weight", "bold")
         .text(title);
     }
-  });
-});
+  }
+})();
