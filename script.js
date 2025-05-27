@@ -1,10 +1,42 @@
 const width = document.getElementById("map").clientWidth;
 const height = document.getElementById("map").clientHeight;
-
 const religionColors = d3.scaleOrdinal()
-  .domain(["Christian", "Catholic", "Protestant", "Orthodox", "Muslim", "Jewish", "Atheist", "Other"])
-  .range(["#66c2a5", "#1f78b4", "#a6cee3", "#b2df8a", "#fb9a99", "#cab2d6", "#fdbf6f", "#b3b3b3"]);
+  .domain([
+    "Christian", "Catholic", "Protestant", "Orthodox",
+    "Muslim", "Jewish", "Atheist", "Nothing in particular", "Other"
+  ])
+  .range([
+    "#1f77b4", // Christian
+    "#4daf4a", // Catholic
+    "#377eb8", // Protestant
+    "#984ea3", // Orthodox
+    "#e41a1c", // Muslim
+    "#ff7f00", // Jewish
+    "#a65628", // Atheist
+    "#f781bf", // Nothing in particular 
+    "#999999"  // Other
+  ]);
+  const legend = d3.select("#legend")
+  .style("display", "flex")
+  .style("flex-wrap", "wrap")
+  .style("gap", "10px");
 
+religionColors.domain().forEach(r => {
+  const item = legend.append("div")
+    .style("display", "flex")
+    .style("align-items", "center");
+
+  item.append("div")
+    .style("width", "16px")
+    .style("height", "16px")
+    .style("margin-right", "6px")
+    .style("background-color", religionColors(r))
+    .style("border", "1px solid #ccc");
+
+  item.append("span")
+    .style("font-size", "14px")
+    .text(r);
+});
 let countries = [];
 
 function loadReligionData(callback) {
@@ -35,7 +67,7 @@ function loadReligionData(callback) {
   });
 }
 
-console.log("✅ 当前脚本已加载");
+console.log("log");
 const svg = d3
   .select("#map")
   .append("svg")
