@@ -71,29 +71,59 @@ let topoData = null;
 
 // Initialize the visualization
 async function init() {
+    console.log('Starting initialization...');
+    
     try {
-        // Load data
-        const [countries, topology] = await Promise.all([
-            d3.json('data/countries.json'),
-            d3.json('data/europe-topo.json')
-        ]);
+        console.log('Attempting to load data files...');
+        
+        // Try loading countries.json first
+        console.log('Loading countries.json...');
+        const countries = await d3.json('data/countries.json');
+        console.log('Countries data loaded:', countries);
+        
+        // Try loading topology
+        console.log('Loading europe-topo.json...');
+        const topology = await d3.json('data/europe-topo.json');
+        console.log('Topology data loaded:', topology);
 
         countriesData = countries;
         topoData = topology;
 
+        console.log('Data loaded successfully, setting up map...');
+        
         // Set up the map
         setupMap();
         setupControls();
         updateVisualization();
 
+        console.log('Initialization complete!');
+
     } catch (error) {
-        console.error('Error loading data:', error);
-        document.querySelector('.map-container').innerHTML = 
-            '<div class="no-data">Error loading data. Please check that all data files are available.</div>';
+        console.error('Detailed error information:', error);
+        console.error('Error type:', error.name);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+        
+        // More specific error messages
+        if (error.message.includes('404') || error.message.includes('Not Found')) {
+            document.querySelector('.map-container').innerHTML = 
+                '<div class="no-data">Data files not found. Please check that:<br>' +
+                '• data/countries.json exists<br>' +
+                '• data/europe-topo.json exists<br>' +
+                '• Files are accessible from your web server</div>';
+        } else if (error.message.includes('SyntaxError') || error.message.includes('JSON')) {
+            document.querySelector('.map-container').innerHTML = 
+                '<div class="no-data">JSON parsing error. Please check that your data files contain valid JSON.</div>';
+        } else {
+            document.querySelector('.map-container').innerHTML = 
+                '<div class="no-data">Error loading data: ' + error.message + '<br>' +
+                'Please check the browser console for more details.</div>';
+        }
     }
 }
 
 function setupMap() {
+    console.log('Setting up map...');
     const svg = d3.select('#map');
     const width = 800;
     const height = 600;
@@ -108,16 +138,39 @@ function setupMap() {
 
     const path = d3.geoPath().projection(projection);
 
-    // Convert topojson to geojson
-    const countries = topojson.feature(topoData, topoData.objects.europe);
+    console.log('Converting topology to geojson...');
+    console.log('TopoData objects:', Object.keys(topoData.objects));
+    
+    // Try different possible object names
+    let europeData = null;
+    const possibleNames = ['europe', 'countries', 'collection', 'subunits'];
+    
+    for (const name of possibleNames) {
+        if (topoData.objects[name]) {
+            console.log(`Found topology object: ${name}`);
+            europeData = topojson.feature(topoData, topoData.objects[name]);
+            break;
+        }
+    }
+    
+    if (!europeData) {
+        console.error('Could not find valid topology object. Available objects:', Object.keys(topoData.objects));
+        return;
+    }
+
+    console.log('Countries features:', europeData.features.length);
+    console.log('Sample country properties:', europeData.features[0]?.properties);
 
     // Draw countries
     svg.selectAll('.country')
-        .data(countries.features)
+        .data(europeData.features)
         .enter()
         .append('path')
         .attr('class', 'country-path')
         .attr('d', path)
+        .attr('fill', '#f0f0f0') // Default color
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 0.5)
         .on('click', handleCountryClick)
         .on('mouseover', handleMouseOver)
         .on('mouseout', handleMouseOut);
@@ -131,6 +184,7 @@ function setupMap() {
         });
 
     svg.call(zoom);
+    console.log('Map setup complete!');
 }
 
 function setupControls() {
@@ -170,8 +224,10 @@ function toggleCompareMode() {
 }
 
 function handleCountryClick(event, d) {
-    const countryName = d.properties.NAME || d.properties.name;
+    const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
+    console.log('Clicked country:', countryName);
     const countryData = countriesData.find(c => c.country === countryName);
+    console.log('Found country data:', countryData);
 
     if (compareMode) {
         handleCountrySelection(event, d, countryData);
@@ -181,7 +237,7 @@ function handleCountryClick(event, d) {
 }
 
 function handleCountrySelection(event, geoData, countryData) {
-    const countryName = geoData.properties.NAME || geoData.properties.name;
+    const countryName = geoData.properties.NAME || geoData.properties.name || geoData.properties.COUNTRY || geoData.properties.country;
     const countryElement = d3.select(event.currentTarget);
 
     // Check if already selected
@@ -211,7 +267,7 @@ function handleCountrySelection(event, geoData, countryData) {
 
 function handleMouseOver(event, d) {
     if (!compareMode) {
-        const countryName = d.properties.NAME || d.properties.name;
+        const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
         const countryData = countriesData.find(c => c.country === countryName);
         showTooltip(countryData, event);
     }
@@ -231,14 +287,18 @@ function showCountryDetails(countryData, event) {
 
 function updateVisualization() {
     const config = DATA_CONFIG[currentView];
+    console.log('Updating visualization for view:', currentView);
     
     // Update country colors
     d3.selectAll('.country-path')
         .attr('fill', d => {
-            const countryName = d.properties.NAME || d.properties.name;
+            const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
             const countryData = countriesData.find(c => c.country === countryName);
             
-            if (!countryData) return '#f0f0f0';
+            if (!countryData) {
+                console.log('No data found for country:', countryName);
+                return '#f0f0f0';
+            }
             
             if (config.type === 'continuous') {
                 const value = countryData[config.key];
@@ -531,5 +591,6 @@ function showAgeComparison(chartId, countryData) {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, starting init...');
     init();
 });
