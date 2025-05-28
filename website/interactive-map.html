@@ -439,13 +439,10 @@
         let countriesData = [];
         let topoData = null;
 
-        // Data processing functions
+        // FIXED: Data processing functions with correct majority calculation
         function processReligionData(data) {
             return data.map(row => {
                 const country = row.Country || row.country;
-                const total = parseFloat(row.Christian || 0) + parseFloat(row.Muslim || 0) + 
-                             parseFloat(row.Atheist || 0) + parseFloat(row['Nothing in particular'] || 0) + 
-                             parseFloat(row.Other || 0);
                 
                 const distribution = {
                     'Christian': parseFloat(row.Christian || 0),
@@ -455,9 +452,9 @@
                     'Other': parseFloat(row.Other || 0)
                 };
                 
-                // Find majority
+                // FIXED: Find majority by comparing VALUES, not keys
                 const majority = Object.entries(distribution)
-                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                    .reduce((a, b) => a[1] > b[1] ? a : b)[0];
                 
                 return {
                     country,
@@ -478,8 +475,9 @@
                     'Very bad': parseFloat(row['Very bad'] || 0)
                 };
                 
+                // FIXED: Find majority by comparing VALUES, not keys
                 const majority = Object.entries(distribution)
-                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                    .reduce((a, b) => a[1] > b[1] ? a : b)[0];
                 
                 return {
                     country,
@@ -503,8 +501,9 @@
                     'Separated': parseFloat(row.Separated || 0)
                 };
                 
+                // FIXED: Find majority by comparing VALUES, not keys
                 const majority = Object.entries(distribution)
-                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                    .reduce((a, b) => a[1] > b[1] ? a : b)[0];
                 
                 return {
                     country,
@@ -525,8 +524,9 @@
                     'Illegal in all cases': parseFloat(row['Illegal in all cases'] || 0)
                 };
                 
+                // FIXED: Find majority by comparing VALUES, not keys
                 const majority = Object.entries(distribution)
-                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                    .reduce((a, b) => a[1] > b[1] ? a : b)[0];
                 
                 return {
                     country,
@@ -547,8 +547,9 @@
                     'Strongly oppose': parseFloat(row['Strongly oppose'] || 0)
                 };
                 
+                // FIXED: Find majority by comparing VALUES, not keys
                 const majority = Object.entries(distribution)
-                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                    .reduce((a, b) => a[1] > b[1] ? a : b)[0];
                 
                 return {
                     country,
