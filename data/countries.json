@@ -1,0 +1,1521 @@
+[
+  {
+    "country": "Armenia",
+    "coords": [44.95696736793875, 40.28247309435489],
+    "rDist": {
+      "Atheist": 1.31,
+      "Christian": 97.24,
+      "Other": 1.45
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 23.35766423357664,
+      "Somewhat good": 19.64167219641672,
+      "Very bad": 55.14266755142667,
+      "Very good": 1.85799601857996
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 3.620803159973667,
+      "Living with a partner": 1.7116524028966424,
+      "Married": 63.85780118499012,
+      "Never been married": 14.944042132982224,
+      "Widowed": 15.86570111915734
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 25.90567327409433,
+      "Illegal in most cases": 12.303485987696511,
+      "Legal in all cases": 30.553656869446343,
+      "Legal in most cases": 31.237183868762813
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 2.188328912466844,
+      "Oppose": 4.509283819628647,
+      "Strongly favor": 0.5968169761273209,
+      "Strongly oppose": 92.70557029177718
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 47
+  },
+  {
+    "country": "Belgium",
+    "coords": [4.670867472854043, 50.641061461706826],
+    "rDist": {
+      "Atheist": 18.62,
+      "Christian": 55.34,
+      "Jewish": 2.4,
+      "Nothing in particular": 14.69,
+      "Other": 6.14,
+      "Agnostic": 5.01,
+      "Don't know": 0.2
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 12.550607287449392,
+      "Somewhat good": 68.82591093117408,
+      "Very bad": 3.8461538461538463,
+      "Very good": 14.777327935222672
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 11.489645958583834,
+      "In a civil partnership": 9.01803607214429,
+      "Living with a partner": 5.344021376085505,
+      "Married": 44.82297929191717,
+      "Never been married": 20.975283901135604,
+      "Separated": 1.5364061456245823,
+      "Widowed": 6.813627254509018
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 2.2618231665524333,
+      "Illegal in most cases": 8.224811514736121,
+      "Legal in all cases": 36.943111720356406,
+      "Legal in most cases": 52.57025359835503
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 49.358974358974365,
+      "Oppose": 6.339031339031339,
+      "Strongly favor": 41.66666666666667,
+      "Strongly oppose": 2.635327635327636
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 50
+  },
+  {
+    "country": "Bosnia",
+    "coords": [0, 0],
+    "rDist": {
+      "Agnostic": 0.97,
+      "Atheist": 1.75,
+      "Christian": 45.64,
+      "Muslim": 50.94,
+      "Other": 0.71
+    },
+    "religionMajority": "Muslim",
+    "eDist": {
+      "Somewhat bad": 25.032258064516128,
+      "Somewhat good": 13.35483870967742,
+      "Very bad": 60.70967741935483,
+      "Very good": 0.903225806451613
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 4.25531914893617,
+      "Living with a partner": 1.9342359767891684,
+      "Married": 57.1244358478401,
+      "Never been married": 16.312056737588655,
+      "Separated": 0.5802707930367506,
+      "Widowed": 19.79368149580916
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 22.573984858912592,
+      "Illegal in most cases": 24.63867859600826,
+      "Legal in all cases": 17.687543014452856,
+      "Legal in most cases": 35.099793530626286
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 9.966555183946488,
+      "Oppose": 14.180602006688964,
+      "Strongly favor": 2.140468227424749,
+      "Strongly oppose": 73.7123745819398
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 52
+  },
+  {
+    "country": "Bulgaria",
+    "coords": [25.224253046158246, 42.76198753056887],
+    "rDist": {
+      "Agnostic": 0.81,
+      "Atheist": 2.04,
+      "Christian": 82.9,
+      "Muslim": 12.39,
+      "Nothing in particular": 1.67,
+      "Other": 0.19
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 31.51969981238274,
+      "Somewhat good": 23.07692307692308,
+      "Very bad": 44.71544715447154,
+      "Very good": 0.6879299562226392
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 7.1517412935323375,
+      "Living with a partner": 7.898009950248756,
+      "Married": 51.24378109452736,
+      "Never been married": 12.56218905472637,
+      "Separated": 2.4875621890547266,
+      "Widowed": 18.65671641791045
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 8.960104643557882,
+      "Illegal in most cases": 5.624591236102027,
+      "Legal in all cases": 57.8155657292348,
+      "Legal in most cases": 27.599738391105294
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 15.897435897435896,
+      "Oppose": 29.03846153846154,
+      "Strongly favor": 2.628205128205128,
+      "Strongly oppose": 52.43589743589744
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 54
+  },
+  {
+    "country": "Croatia",
+    "coords": [16.404243249436572, 45.03934695869211],
+    "rDist": {
+      "Agnostic": 1.8,
+      "Atheist": 3.79,
+      "Christian": 91.12,
+      "Muslim": 1.12,
+      "Nothing in particular": 1.24,
+      "Other": 0.93
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 34.49564134495641,
+      "Somewhat good": 21.29514321295143,
+      "Very bad": 43.33748443337485,
+      "Very good": 0.8717310087173101
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 7.395898073337477,
+      "Living with a partner": 4.039776258545681,
+      "Married": 53.1385954008701,
+      "Never been married": 16.718458669981352,
+      "Separated": 2.858918582970789,
+      "Widowed": 15.848353014294592
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 12.917737789203084,
+      "Illegal in most cases": 23.20051413881748,
+      "Legal in all cases": 24.48586118251928,
+      "Legal in most cases": 39.39588688946015
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 21.671018276762403,
+      "Oppose": 21.34464751958225,
+      "Strongly favor": 13.185378590078328,
+      "Strongly oppose": 43.79895561357702
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 53
+  },
+  {
+    "country": "Czech Republic",
+    "coords": [15.344278412714962, 49.74641012793551],
+    "rDist": {
+      "Atheist": 25.1,
+      "Christian": 25.85,
+      "Nothing in particular": 46.89,
+      "Other": 2.17
+    },
+    "religionMajority": "Nothing in particular",
+    "eDist": {
+      "Somewhat bad": 36.141304347826086,
+      "Somewhat good": 48.02989130434783,
+      "Very bad": 10.597826086956522,
+      "Very good": 5.230978260869565
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 9.939556749496306,
+      "Living with a partner": 12.424445936870384,
+      "Married": 49.69778374748153,
+      "Never been married": 17.730020147750167,
+      "Separated": 0.4029550033579583,
+      "Widowed": 9.805238415043654
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 3.645116918844567,
+      "Illegal in most cases": 11.141678129298487,
+      "Legal in all cases": 41.95323246217332,
+      "Legal in most cases": 43.259972489683626
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 54.23487544483986,
+      "Oppose": 20.4982206405694,
+      "Strongly favor": 15.373665480427048,
+      "Strongly oppose": 9.8932384341637
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 47
+  },
+  {
+    "country": "Estonia",
+    "coords": [25.526429847124415, 58.67462214731587],
+    "rDist": {
+      "Agnostic": 1.02,
+      "Atheist": 7.28,
+      "Christian": 55.62,
+      "Nothing in particular": 31.69,
+      "Old believer/old ritualist": 0.84,
+      "Other": 3.55
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 46.18669920683344,
+      "Somewhat good": 44.78340451494814,
+      "Very bad": 7.687614399023795,
+      "Very good": 1.342281879194631
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 13.001797483523069,
+      "Living with a partner": 12.941881366087475,
+      "Married": 37.08807669263032,
+      "Never been married": 13.121629718394248,
+      "Separated": 5.152786099460755,
+      "Widowed": 18.693828639904133
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 3.5264483627204037,
+      "Illegal in most cases": 13.350125944584384,
+      "Legal in all cases": 48.2367758186398,
+      "Legal in most cases": 34.886649874055415
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 16.67719519898926,
+      "Oppose": 24.952621604548327,
+      "Strongly favor": 5.116866708780796,
+      "Strongly oppose": 53.253316487681616
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 55
+  },
+  {
+    "country": "Georgia",
+    "coords": [43.534558436043824, 42.17903824498467],
+    "rDist": {
+      "Christian": 91.45,
+      "Muslim": 8.02,
+      "Other": 0.52
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 37.142857142857146,
+      "Somewhat good": 15.016611295681065,
+      "Very bad": 46.44518272425249,
+      "Very good": 1.3953488372093024
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 4.512753433616743,
+      "Living with a partner": 6.867233485938522,
+      "Married": 53.30281229561805,
+      "Never been married": 17.004578155657292,
+      "Separated": 1.831262262916939,
+      "Widowed": 16.481360366252453
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 34.20150788211104,
+      "Illegal in most cases": 54.4893762851268,
+      "Legal in all cases": 4.729266620973269,
+      "Legal in most cases": 6.579849211788896
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 2.395209580838324,
+      "Oppose": 5.056553559547571,
+      "Strongly favor": 0.2661343978709248,
+      "Strongly oppose": 92.28210246174318
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 48
+  },
+  {
+    "country": "Greece",
+    "coords": [22.99699701433105, 39.01611174228942],
+    "rDist": {
+      "Atheist": 3.09,
+      "Christian": 93.41,
+      "Muslim": 2.06,
+      "Nothing in particular": 0.89,
+      "Other": 0.55
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 16.403568977350723,
+      "Somewhat good": 2.8140013726835966,
+      "Very bad": 78.38023335621139,
+      "Very good": 2.4021962937542893
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 5.942622950819672,
+      "Living with a partner": 3.415300546448088,
+      "Married": 56.4207650273224,
+      "Never been married": 23.15573770491803,
+      "Separated": 1.5710382513661203,
+      "Widowed": 9.494535519125682
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 12.438162544169613,
+      "Illegal in most cases": 36.32508833922262,
+      "Legal in all cases": 18.51590106007067,
+      "Legal in most cases": 32.72084805653711
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 20.82444918265814,
+      "Oppose": 35.678749111584935,
+      "Strongly favor": 10.44776119402985,
+      "Strongly oppose": 33.04904051172708
+    },
+    "sameSexMajority": "Oppose",
+    "medianAge": 48
+  },
+  {
+    "country": "Hungary",
+    "coords": [19.396478656854484, 47.16873817245416],
+    "rDist": {
+      "Atheist": 5.18,
+      "Christian": 77.16,
+      "Nothing in particular": 14.79,
+      "Other": 2.86
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 38.29201101928375,
+      "Somewhat good": 39.25619834710744,
+      "Very bad": 20.66115702479339,
+      "Very good": 1.790633608815427
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 12.719891745602164,
+      "Living with a partner": 14.884979702300406,
+      "Married": 45.39918809201624,
+      "Never been married": 10.690121786197563,
+      "Separated": 1.7591339648173208,
+      "Widowed": 14.546684709066309
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 3.9914468995010695,
+      "Illegal in most cases": 22.16678545972915,
+      "Legal in all cases": 21.311475409836063,
+      "Legal in most cases": 52.53029223093372
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 25.46262028127313,
+      "Oppose": 41.598815692079945,
+      "Strongly favor": 4.58919319022946,
+      "Strongly oppose": 28.34937083641747
+    },
+    "sameSexMajority": "Oppose",
+    "medianAge": 50
+  },
+  {
+    "country": "Kazakhstan",
+    "coords": [0, 0],
+    "rDist": {
+      "Atheist": 3.52,
+      "Christian": 32.02,
+      "Muslim": 61.65,
+      "Nothing in particular": 2.39,
+      "Other": 0.42
+    },
+    "religionMajority": "Muslim",
+    "eDist": {
+      "Somewhat bad": 18.20480404551201,
+      "Somewhat good": 60.36662452591656,
+      "Very bad": 2.0859671302149176,
+      "Very good": 19.342604298356516
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 7.701564380264742,
+      "Living with a partner": 3.0084235860409145,
+      "Married": 59.56678700361011,
+      "Never been married": 20.517448856799035,
+      "Separated": 1.5042117930204573,
+      "Widowed": 7.701564380264742
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 20.916334661354583,
+      "Illegal in most cases": 40.37184594953519,
+      "Legal in all cases": 15.670650730411689,
+      "Legal in most cases": 23.04116865869854
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 5.5,
+      "Oppose": 12.5,
+      "Strongly favor": 1.5625,
+      "Strongly oppose": 80.4375
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 38
+  },
+  {
+    "country": "Latvia",
+    "coords": [24.935695844081405, 56.86593550980574],
+    "rDist": {
+      "Atheist": 2.38,
+      "Christian": 78.77,
+      "Nothing in particular": 17.08,
+      "Old believer/old ritualist": 1.22,
+      "Other": 0.55
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 56.82539682539682,
+      "Somewhat good": 25.77777777777778,
+      "Very bad": 16.380952380952383,
+      "Very good": 1.0158730158730158
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 10.279805352798054,
+      "Living with a partner": 15.75425790754258,
+      "Married": 40.20681265206812,
+      "Never been married": 17.822384428223845,
+      "Separated": 3.2846715328467155,
+      "Widowed": 12.652068126520682
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 6.955380577427822,
+      "Illegal in most cases": 32.808398950131235,
+      "Legal in all cases": 31.2992125984252,
+      "Legal in most cases": 28.937007874015748
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 13.9198949441891,
+      "Oppose": 22.193040052527905,
+      "Strongly favor": 3.545633617859488,
+      "Strongly oppose": 60.34143138542351
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 47
+  },
+  {
+    "country": "Lithuania",
+    "coords": [23.90707905478308, 55.332402864104374],
+    "rDist": {
+      "Atheist": 1.02,
+      "Christian": 92.73,
+      "Nothing in particular": 4.21,
+      "Other": 2.04
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 50.53475935828877,
+      "Somewhat good": 35.89572192513369,
+      "Very bad": 12.633689839572192,
+      "Very good": 0.9358288770053476
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 12.571793235481811,
+      "Living with a partner": 7.849393746011486,
+      "Married": 49.39374601148692,
+      "Never been married": 12.699425654116144,
+      "Separated": 0.8296107211231653,
+      "Widowed": 16.65603063178047
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 10.950413223140496,
+      "Illegal in most cases": 33.88429752066116,
+      "Legal in all cases": 10.46831955922865,
+      "Legal in most cases": 44.696969696969695
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 10.059563203176705,
+      "Oppose": 32.428855062872266,
+      "Strongly favor": 1.1912640635340834,
+      "Strongly oppose": 56.32031767041694
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 54
+  },
+  {
+    "country": "Moldova",
+    "coords": [0, 0],
+    "rDist": {
+      "Atheist": 0.93,
+      "Christian": 98.14,
+      "Other": 0.93
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 39.25967470555244,
+      "Somewhat good": 6.28154795288839,
+      "Very bad": 53.95401009534493,
+      "Very good": 0.5047672462142456
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 5.228758169934641,
+      "Living with a partner": 1.5250544662309369,
+      "Married": 59.3681917211329,
+      "Never been married": 13.562091503267974,
+      "Separated": 1.5250544662309369,
+      "Widowed": 18.79084967320261
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 35.1335656213705,
+      "Illegal in most cases": 49.07084785133566,
+      "Legal in all cases": 6.736353077816492,
+      "Legal in most cases": 9.059233449477352
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 3.897550111358575,
+      "Oppose": 5.79064587973274,
+      "Strongly favor": 0.3340757238307349,
+      "Strongly oppose": 89.97772828507794
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 50
+  },
+  {
+    "country": "Poland",
+    "coords": [19.430286372192906, 52.10833023440264],
+    "rDist": {
+      "Atheist": 1.84,
+      "Christian": 93.99,
+      "Nothing in particular": 3.21,
+      "Other": 0.96
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 46.39608117564731,
+      "Somewhat good": 39.67809657102869,
+      "Very bad": 11.966410076976906,
+      "Very good": 1.959412176347096
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 5.416666666666667,
+      "Living with a partner": 7.013888888888889,
+      "Married": 55.76388888888889,
+      "Never been married": 15.069444444444445,
+      "Separated": 1.25,
+      "Widowed": 15.48611111111111
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 15.022421524663676,
+      "Illegal in most cases": 41.33034379671151,
+      "Legal in all cases": 8.071748878923767,
+      "Legal in most cases": 35.57548579970104
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 26.26797880393641,
+      "Oppose": 31.642694928084783,
+      "Strongly favor": 7.721423164269494,
+      "Strongly oppose": 34.36790310370931
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 50
+  },
+  {
+    "country": "Romania",
+    "coords": [24.978958364603713, 45.83759203425114],
+    "rDist": {
+      "Christian": 97.2,
+      "Other": 2.8
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 39.985272459499264,
+      "Somewhat good": 36.156111929307805,
+      "Very bad": 18.77761413843888,
+      "Very good": 5.08100147275405
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 3.911439114391144,
+      "Living with a partner": 4.723247232472325,
+      "Married": 64.64944649446494,
+      "Never been married": 13.653136531365314,
+      "Separated": 1.2546125461254614,
+      "Widowed": 11.808118081180812
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 14.05775075987842,
+      "Illegal in most cases": 24.62006079027356,
+      "Legal in all cases": 20.060790273556236,
+      "Legal in most cases": 41.26139817629179
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 19.83594332587621,
+      "Oppose": 7.979120059656973,
+      "Strongly favor": 8.053691275167784,
+      "Strongly oppose": 64.13124533929903
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 46
+  },
+  {
+    "country": "Russia",
+    "coords": [39.124838137850105, 54.60659282459383],
+    "rDist": {
+      "Agnostic": 0.57,
+      "Atheist": 3.42,
+      "Buddhist": 0.53,
+      "Christian": 60.31,
+      "Muslim": 25.88,
+      "Nothing in particular": 8.76,
+      "Other": 0.53
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 44.27839453458582,
+      "Somewhat good": 37.53202391118702,
+      "Very bad": 14.005123825789925,
+      "Very good": 4.184457728437233
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 11.01105198526402,
+      "Living with a partner": 4.993860008186656,
+      "Married": 51.1665984445354,
+      "Never been married": 17.928776094965208,
+      "Separated": 2.5787965616045847,
+      "Widowed": 12.320916905444127
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 18.53486319505737,
+      "Illegal in most cases": 43.998234774933806,
+      "Legal in all cases": 15.62224183583407,
+      "Legal in most cases": 21.84466019417476
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 4.473796335747763,
+      "Oppose": 12.05794631444397,
+      "Strongly favor": 0.6391137622496805,
+      "Strongly oppose": 82.82914358755859
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 42
+  },
+  {
+    "country": "Serbia",
+    "coords": [20.821614739362868, 44.016688983683366],
+    "rDist": {
+      "Atheist": 2.93,
+      "Christian": 93.3,
+      "Muslim": 1.4,
+      "Nothing in particular": 1.47,
+      "Other": 0.89
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 31.666666666666664,
+      "Somewhat good": 26.346153846153847,
+      "Very bad": 41.21794871794872,
+      "Very good": 0.7692307692307693
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 6.82110682110682,
+      "Living with a partner": 2.702702702702702,
+      "Married": 49.29214929214929,
+      "Never been married": 20.463320463320464,
+      "Separated": 1.48005148005148,
+      "Widowed": 19.24066924066924
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 14.673913043478262,
+      "Illegal in most cases": 16.915760869565215,
+      "Legal in all cases": 31.25,
+      "Legal in most cases": 37.16032608695652
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 10.127431254191816,
+      "Oppose": 18.77934272300469,
+      "Strongly favor": 2.548625083836352,
+      "Strongly oppose": 68.54460093896714
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 54
+  },
+  {
+    "country": "Ukraine",
+    "coords": [31.46557664267496, 49.0405027014934],
+    "rDist": {
+      "Atheist": 1.5,
+      "Christian": 94.63,
+      "Muslim": 0.42,
+      "Nothing in particular": 2.96,
+      "Other": 0.5
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 27.080692860160543,
+      "Somewhat good": 1.4786649767638362,
+      "Very bad": 71.31389945078158,
+      "Very good": 0.126742712294043
+    },
+    "economicMajority": "Very bad",
+    "mDist": {
+      "Divorced": 6.192851205320033,
+      "Living with a partner": 3.657522859517872,
+      "Married": 62.92601828761429,
+      "Never been married": 14.921030756442228,
+      "Separated": 1.163757273482959,
+      "Widowed": 11.13881961762261
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 24.643678160919546,
+      "Illegal in most cases": 42.39080459770115,
+      "Legal in all cases": 13.379310344827584,
+      "Legal in most cases": 19.58620689655173
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 7.712648743940062,
+      "Oppose": 14.89643014543852,
+      "Strongly favor": 1.4543851917144115,
+      "Strongly oppose": 75.93653591890701
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 44
+  },
+  {
+    "country": "Austria",
+    "coords": [14.125005814544695, 47.59886478572964],
+    "rDist": {
+      "Agnostic": 1.12,
+      "Atheist": 7.61,
+      "Christian": 77.06,
+      "Nothing in particular": 10.86,
+      "Other": 3.36
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 5.2100840336134455,
+      "Somewhat good": 74.17366946778712,
+      "Very bad": 2.4649859943977592,
+      "Very good": 18.15126050420168
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 3.249299719887956,
+      "In a civil partnership": 4.033613445378151,
+      "Living with a partner": 14.173669467787114,
+      "Married": 63.0812324929972,
+      "Never been married": 12.492997198879552,
+      "Separated": 0.8403361344537815,
+      "Widowed": 2.1288515406162465
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 5.769230769230769,
+      "Illegal in most cases": 13.12217194570136,
+      "Legal in all cases": 17.647058823529413,
+      "Legal in most cases": 63.46153846153846
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 65.15580736543909,
+      "Oppose": 12.35127478753541,
+      "Strongly favor": 15.58073654390935,
+      "Strongly oppose": 6.912181303116147
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 42
+  },
+  {
+    "country": "Denmark",
+    "coords": [10.064056365385548, 55.95590194972299],
+    "rDist": {
+      "Agnostic": 2.08,
+      "Atheist": 15.11,
+      "Christian": 68.17,
+      "Don't know": 0.34,
+      "Nothing in particular": 10.01,
+      "Other": 4.3
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 8.221024258760108,
+      "Somewhat good": 64.75741239892183,
+      "Very bad": 2.964959568733154,
+      "Very good": 24.056603773584907
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 11.201079622132252,
+      "In a civil partnership": 1.0796221322537112,
+      "Living with a partner": 12.34817813765182,
+      "Married": 45.00674763832658,
+      "Never been married": 20.91767881241565,
+      "Separated": 1.0796221322537112,
+      "Widowed": 8.367071524966262
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 1.36986301369863,
+      "Illegal in most cases": 3.8356164383561646,
+      "Legal in all cases": 56.232876712328775,
+      "Legal in most cases": 38.56164383561644
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 45.56962025316456,
+      "Oppose": 6.329113924050633,
+      "Strongly favor": 45.56962025316456,
+      "Strongly oppose": 2.5316455696202533
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 52
+  },
+  {
+    "country": "Finland",
+    "coords": [26.193231895976684, 64.25842496305258],
+    "rDist": {
+      "Agnostic": 2.27,
+      "Atheist": 4.68,
+      "Christian": 78.62,
+      "Don't know": 0.13,
+      "Nothing in particular": 12.96,
+      "Other": 1.34
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 14.882154882154882,
+      "Somewhat good": 71.91919191919192,
+      "Very bad": 2.087542087542088,
+      "Very good": 11.11111111111111
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 11.311914323962515,
+      "In a civil partnership": 0.2677376171352075,
+      "Living with a partner": 14.323962516733602,
+      "Married": 48.25970548862115,
+      "Never been married": 17.202141900937082,
+      "Separated": 0.4685408299866131,
+      "Widowed": 8.165997322623829
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 2.8551532033426184,
+      "Illegal in most cases": 6.337047353760446,
+      "Legal in all cases": 47.07520891364902,
+      "Legal in most cases": 43.73259052924791
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 45.556385362210605,
+      "Oppose": 20.089619118745333,
+      "Strongly favor": 23.52501867064974,
+      "Strongly oppose": 10.828976848394325
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 58
+  },
+  {
+    "country": "France",
+    "coords": [2.574441032870136, 46.514281062078204],
+    "rDist": {
+      "Agnostic": 1.23,
+      "Atheist": 12.45,
+      "Christian": 66.24,
+      "Don't know": 0.17,
+      "Nothing in particular": 12.73,
+      "Other": 7.18
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 11.701526286037309,
+      "Somewhat good": 72.47032221594121,
+      "Very bad": 3.22215941209723,
+      "Very good": 12.60599208592425
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 3.254769921436588,
+      "In a civil partnership": 3.6475869809203134,
+      "Living with a partner": 11.447811447811448,
+      "Married": 59.31537598204265,
+      "Never been married": 18.181818181818183,
+      "Separated": 1.4590347923681255,
+      "Widowed": 2.6936026936026933
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 5.454545454545454,
+      "Illegal in most cases": 9.943181818181818,
+      "Legal in all cases": 28.18181818181818,
+      "Legal in most cases": 56.42045454545455
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 63.59976998274871,
+      "Oppose": 13.80103507763082,
+      "Strongly favor": 16.27372052903968,
+      "Strongly oppose": 6.325474410580793
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 43
+  },
+  {
+    "country": "Germany",
+    "coords": [10.371626222356005, 51.052678538008145],
+    "rDist": {
+      "Agnostic": 1.04,
+      "Atheist": 11.55,
+      "Christian": 69.29,
+      "Nothing in particular": 14.31,
+      "Other": 3.8
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 6.494096276112625,
+      "Somewhat good": 74.29609445958219,
+      "Very bad": 1.6802906448683013,
+      "Very good": 17.529518619436875
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 2.8662420382165608,
+      "In a civil partnership": 2.4112829845313923,
+      "Living with a partner": 15.286624203821656,
+      "Married": 60.509554140127385,
+      "Never been married": 15.059144676979072,
+      "Separated": 1.0919017288444042,
+      "Widowed": 2.775250227479527
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 4.814305364511692,
+      "Illegal in most cases": 11.600183402109124,
+      "Legal in all cases": 19.16552040348464,
+      "Legal in most cases": 64.41999082989454
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 63.71965185524508,
+      "Oppose": 11.818598259276223,
+      "Strongly favor": 18.781493357764543,
+      "Strongly oppose": 5.680256527714154
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 42
+  },
+  {
+    "country": "Ireland",
+    "coords": [-8.159604641971635, 53.16317668675601],
+    "rDist": {
+      "Agnostic": 1.34,
+      "Atheist": 6.42,
+      "Christian": 80.74,
+      "Don't know": 0.13,
+      "Nothing in particular": 7.63,
+      "Other": 3.75
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 8.10448760884126,
+      "Somewhat good": 70.52913596784997,
+      "Very bad": 3.6168787675820497,
+      "Very good": 17.749497655726724
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 3.355704697986577,
+      "In a civil partnership": 4.161073825503356,
+      "Living with a partner": 10.268456375838928,
+      "Married": 59.19463087248322,
+      "Never been married": 18.859060402684563,
+      "Separated": 1.6778523489932886,
+      "Widowed": 2.4832214765100677
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 8.749145591250855,
+      "Illegal in most cases": 16.609706083390293,
+      "Legal in all cases": 13.397129186602871,
+      "Legal in most cases": 61.24401913875598
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 59.43134535367545,
+      "Oppose": 15.256588072122051,
+      "Strongly favor": 17.05963938973648,
+      "Strongly oppose": 8.25242718446602
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 42
+  },
+  {
+    "country": "Italy",
+    "coords": [12.202550605846096, 42.70834099653781],
+    "rDist": {
+      "Agnostic": 1.17,
+      "Atheist": 6.44,
+      "Christian": 79.61,
+      "Don't know": 0.06,
+      "Nothing in particular": 8.83,
+      "Other": 3.89
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 11.52770005595971,
+      "Somewhat good": 71.40458869613879,
+      "Very bad": 5.260212646894236,
+      "Very good": 11.807498601007277
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 3.611111111111111,
+      "In a civil partnership": 4.777777777777778,
+      "Living with a partner": 9.722222222222223,
+      "Married": 62.33333333333333,
+      "Never been married": 15.222222222222223,
+      "Separated": 1.8333333333333333,
+      "Widowed": 2.5
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 8.526256352343308,
+      "Illegal in most cases": 16.149068322981368,
+      "Legal in all cases": 17.6171654432524,
+      "Legal in most cases": 57.70750988142292
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 56.7062818336163,
+      "Oppose": 18.9586870401811,
+      "Strongly favor": 13.582342954159593,
+      "Strongly oppose": 10.75268817204301
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 44
+  },
+  {
+    "country": "Netherlands",
+    "coords": [5.591010025359968, 52.24807280898244],
+    "rDist": {
+      "Agnostic": 3.41,
+      "Atheist": 13.45,
+      "Christian": 42.64,
+      "Don't know": 0.07,
+      "Nothing in particular": 31.19,
+      "Other": 9.24
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 9.103078982597054,
+      "Somewhat good": 71.15127175368139,
+      "Very bad": 2.610441767068273,
+      "Very good": 17.13520749665328
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 10.268456375838928,
+      "In a civil partnership": 3.624161073825504,
+      "Living with a partner": 8.456375838926174,
+      "Married": 44.0268456375839,
+      "Never been married": 21.409395973154364,
+      "Separated": 1.74496644295302,
+      "Widowed": 10.46979865771812
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 4.582763337893296,
+      "Illegal in most cases": 8.002735978112176,
+      "Legal in all cases": 37.14090287277701,
+      "Legal in most cases": 50.27359781121751
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 63.547486033519554,
+      "Oppose": 7.0530726256983245,
+      "Strongly favor": 27.02513966480447,
+      "Strongly oppose": 2.3743016759776534
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 52
+  },
+  {
+    "country": "Norway",
+    "coords": [12.299372165844586, 63.97137746751481],
+    "rDist": {
+      "Agnostic": 5.21,
+      "Atheist": 11.16,
+      "Christian": 53.77,
+      "Don't know": 0.07,
+      "Nothing in particular": 24.65,
+      "Other": 5.14
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 8.293998651382333,
+      "Somewhat good": 74.03910991233985,
+      "Very bad": 2.832097100472016,
+      "Very good": 14.834794335805798
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 8.344549125168237,
+      "In a civil partnership": 3.768506056527591,
+      "Living with a partner": 9.488559892328398,
+      "Married": 48.25033647375505,
+      "Never been married": 20.524899057873487,
+      "Separated": 1.1440107671601614,
+      "Widowed": 8.47913862718708
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 4.732510288065844,
+      "Illegal in most cases": 11.385459533607682,
+      "Legal in all cases": 40.46639231824417,
+      "Legal in most cases": 43.41563786008231
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 52.38095238095239,
+      "Oppose": 13.690476190476192,
+      "Strongly favor": 25.66964285714285,
+      "Strongly oppose": 8.258928571428571
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 54
+  },
+  {
+    "country": "Portugal",
+    "coords": [-7.969490859801847, 39.66445621187581],
+    "rDist": {
+      "Agnostic": 4.14,
+      "Atheist": 6.34,
+      "Christian": 78.79,
+      "Don't know": 0.07,
+      "Nothing in particular": 8.74,
+      "Other": 1.93
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 25.42837559972584,
+      "Somewhat good": 61.75462645647704,
+      "Very bad": 9.184372858122002,
+      "Very good": 3.63262508567512
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 6.908115358819584,
+      "In a civil partnership": 10.999329309188465,
+      "Living with a partner": 0.8718980549966466,
+      "Married": 50.30181086519114,
+      "Never been married": 24.413145539906104,
+      "Separated": 1.6096579476861168,
+      "Widowed": 4.896042924211938
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 9.058988764044944,
+      "Illegal in most cases": 20.435393258426966,
+      "Legal in all cases": 19.9438202247191,
+      "Legal in most cases": 50.56179775280899
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 55.824508320726174,
+      "Oppose": 15.204236006051437,
+      "Strongly favor": 20.347957639939484,
+      "Strongly oppose": 8.623298033282904
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 44
+  },
+  {
+    "country": "Slovak Republic",
+    "coords": [0, 0],
+    "rDist": {
+      "Agnostic": 0.74,
+      "Atheist": 15.48,
+      "Christian": 72.86,
+      "Nothing in particular": 8.78,
+      "Other": 2.14
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 24.10533423362593,
+      "Somewhat good": 60.70222822417286,
+      "Very bad": 7.157326130992573,
+      "Very good": 8.035111411208643
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 7.307171853856563,
+      "In a civil partnership": 1.0148849797023003,
+      "Living with a partner": 8.660351826792963,
+      "Married": 41.40730717185386,
+      "Never been married": 33.22056833558864,
+      "Separated": 1.0825439783491204,
+      "Widowed": 7.307171853856563
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 13.276231263383298,
+      "Illegal in most cases": 12.776588151320489,
+      "Legal in all cases": 40.32833690221271,
+      "Legal in most cases": 33.61884368308351
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 28.062678062678064,
+      "Oppose": 17.59259259259259,
+      "Strongly favor": 23.005698005698004,
+      "Strongly oppose": 31.339031339031337
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 36
+  },
+  {
+    "country": "Spain",
+    "coords": [-3.4996327731506547, 40.35578128609642],
+    "rDist": {
+      "Agnostic": 6.37,
+      "Atheist": 9.85,
+      "Christian": 64.08,
+      "Don't know": 0.13,
+      "Nothing in particular": 16.22,
+      "Other": 3.35
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 24.52185792349727,
+      "Somewhat good": 56.76229508196722,
+      "Very bad": 12.636612021857925,
+      "Very good": 6.079234972677596
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 6.237424547283702,
+      "In a civil partnership": 4.560697518443997,
+      "Living with a partner": 9.859154929577464,
+      "Married": 51.44198524480215,
+      "Never been married": 19.3158953722334,
+      "Separated": 2.2132796780684103,
+      "Widowed": 6.371562709590879
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 7.329462989840348,
+      "Illegal in most cases": 10.88534107402032,
+      "Legal in all cases": 32.075471698113205,
+      "Legal in most cases": 49.709724238026126
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 57.635829662261386,
+      "Oppose": 9.030837004405283,
+      "Strongly favor": 30.76358296622614,
+      "Strongly oppose": 2.5697503671071957
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 46.5
+  },
+  {
+    "country": "Sweden",
+    "coords": [16.262922046477865, 62.39170571010467],
+    "rDist": {
+      "Agnostic": 4.9,
+      "Atheist": 14.17,
+      "Christian": 53.73,
+      "Don't know": 0.74,
+      "Nothing in particular": 21.22,
+      "Other": 5.24
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 10.547667342799189,
+      "Somewhat good": 68.22177146720757,
+      "Very bad": 3.3806626098715347,
+      "Very good": 17.849898580121703
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 8.384043272481406,
+      "In a civil partnership": 0.676132521974307,
+      "Living with a partner": 17.173766058147397,
+      "Married": 45.30087897227857,
+      "Never been married": 18.255578093306287,
+      "Separated": 4.056795131845842,
+      "Widowed": 6.152805949966194
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 1.307639366827254,
+      "Illegal in most cases": 2.271163110805231,
+      "Legal in all cases": 70.95664143152099,
+      "Legal in most cases": 25.464556090846525
+    },
+    "abortionMajority": "Legal in all cases",
+    "sDist": {
+      "Favor": 41.39142656359803,
+      "Oppose": 4.778636683063949,
+      "Strongly favor": 51.37034434293746,
+      "Strongly oppose": 2.459592410400562
+    },
+    "sameSexMajority": "Strongly favor",
+    "medianAge": 54
+  },
+  {
+    "country": "Switzerland",
+    "coords": [8.231655800487019, 46.80265178115436],
+    "rDist": {
+      "Agnostic": 1.07,
+      "Atheist": 8.9,
+      "Christian": 75.73,
+      "Nothing in particular": 10.98,
+      "Other": 3.32
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 5.472932778108269,
+      "Somewhat good": 67.16240333135039,
+      "Very bad": 2.914931588340273,
+      "Very good": 24.44973230220107
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 2.433234421364985,
+      "In a civil partnership": 5.816023738872404,
+      "Living with a partner": 15.845697329376854,
+      "Married": 61.89910979228487,
+      "Never been married": 10.919881305637984,
+      "Separated": 1.0089020771513353,
+      "Widowed": 2.0771513353115725
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 6.65068903535051,
+      "Illegal in most cases": 11.324146195326543,
+      "Legal in all cases": 15.278609946075496,
+      "Legal in most cases": 66.74655482324745
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 65.74685062987402,
+      "Oppose": 11.337732453509298,
+      "Strongly favor": 16.556688662267547,
+      "Strongly oppose": 6.35872825434913
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 42
+  },
+  {
+    "country": "United Kingdom",
+    "coords": [-2.790035506842795, 54.04518974732521],
+    "rDist": {
+      "Agnostic": 1.41,
+      "Atheist": 9.89,
+      "Christian": 69.36,
+      "Don't know": 0.05,
+      "Nothing in particular": 15.05,
+      "Other": 4.24
+    },
+    "religionMajority": "Christian",
+    "eDist": {
+      "Somewhat bad": 7.69650655021834,
+      "Somewhat good": 73.47161572052401,
+      "Very bad": 1.6375545851528384,
+      "Very good": 17.194323144104803
+    },
+    "economicMajority": "Somewhat good",
+    "mDist": {
+      "Divorced": 3.259098316132537,
+      "In a civil partnership": 4.562737642585551,
+      "Living with a partner": 14.44866920152091,
+      "Married": 62.03150461705594,
+      "Never been married": 12.656165127648016,
+      "Separated": 0.7604562737642585,
+      "Widowed": 2.281368821292776
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 6.191780821917808,
+      "Illegal in most cases": 11.123287671232877,
+      "Legal in all cases": 15.616438356164384,
+      "Legal in most cases": 67.06849315068493
+    },
+    "abortionMajority": "Legal in most cases",
+    "sDist": {
+      "Favor": 65.73002754820936,
+      "Oppose": 11.515151515151516,
+      "Strongly favor": 16.088154269972453,
+      "Strongly oppose": 6.666666666666667
+    },
+    "sameSexMajority": "Favor",
+    "medianAge": 42
+  },
+  {
+    "country": "Belarus",
+    "coords": [28.02974873494892, 53.527260421025346],
+    "rDist": {},
+    "religionMajority": null,
+    "eDist": {
+      "Somewhat bad": 44.36519258202568,
+      "Somewhat good": 31.24108416547789,
+      "Very bad": 14.407988587731811,
+      "Very good": 9.98573466476462
+    },
+    "economicMajority": "Somewhat bad",
+    "mDist": {
+      "Divorced": 6.25,
+      "Living with a partner": 5.38563829787234,
+      "Married": 53.52393617021277,
+      "Never been married": 21.875,
+      "Separated": 1.795212765957447,
+      "Widowed": 11.170212765957446
+    },
+    "marriageMajority": "Married",
+    "aDist": {
+      "Illegal in all cases": 13.440111420612814,
+      "Illegal in most cases": 42.4791086350975,
+      "Legal in all cases": 15.87743732590529,
+      "Legal in most cases": 28.203342618384404
+    },
+    "abortionMajority": "Illegal in most cases",
+    "sDist": {
+      "Favor": 12.8099173553719,
+      "Oppose": 19.903581267217632,
+      "Strongly favor": 4.476584022038567,
+      "Strongly oppose": 62.8099173553719
+    },
+    "sameSexMajority": "Strongly oppose",
+    "medianAge": 42
+  }
+]
