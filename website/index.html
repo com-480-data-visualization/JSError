@@ -1,75 +1,934 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Map of Europe's Predominant Religions</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Interactive Map of Europe's Predominant Religions</h1>
-      <p>
-        The map will be colored by the colors of religions/economic state/….
-      </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Social & Economic Atlas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-color: #4f46e5;
+            --background-color: #0f0f23;
+            --surface-color: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border-color: #374151;
+            --highlight-color: #10b981;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--primary-gradient);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%"><stop offset="0%" stop-color="%23fff" stop-opacity=".05"/><stop offset="99%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Control Panel */
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .view-selector {
+            background: var(--surface-color);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .view-selector h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .radio-item {
+            position: relative;
+        }
+
+        .radio-item input[type="radio"] {
+            display: none;
+        }
+
+        .radio-item label {
+            display: block;
+            padding: 0.5rem 1rem;
+            background: var(--background-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .radio-item input[type="radio"]:checked + label {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .radio-item label:hover {
+            border-color: var(--accent-color);
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        .compare-btn {
+            background: var(--secondary-gradient);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.9rem;
+        }
+
+        .compare-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .compare-btn.active {
+            background: var(--highlight-color);
+        }
+
+        /* Map Container */
+        .map-section {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        #map {
+            background: var(--surface-color);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Legend */
+        .legend {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            min-width: 250px;
+            height: fit-content;
+        }
+
+        .legend h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 0.75rem;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 300px;
+            display: none;
+        }
+
+        .tooltip h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .tooltip-content {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .tooltip-list {
+            list-style: none;
+            margin: 0.5rem 0;
+        }
+
+        .tooltip-list li {
+            margin-bottom: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tooltip-list .majority {
+            font-weight: 600;
+            color: var(--highlight-color);
+        }
+
+        /* Comparison Charts */
+        .comparison-section {
+            display: none;
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .comparison-section.active {
+            display: block;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .chart-wrapper {
+            background: var(--background-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-title {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Country Styles */
+        .country {
+            stroke: var(--border-color);
+            stroke-width: 0.5;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .country:hover {
+            stroke: var(--text-primary);
+            stroke-width: 1.5;
+            filter: brightness(1.2);
+        }
+
+        .country.selected {
+            stroke: var(--highlight-color);
+            stroke-width: 2;
+        }
+
+        .country.highlighted {
+            stroke: var(--accent-color);
+            stroke-width: 2;
+            filter: brightness(1.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .map-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .legend {
+                min-width: auto;
+            }
+            
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+            
+            .radio-group {
+                justify-content: center;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>European Social & Economic Atlas</h1>
+        <p>Explore demographic, social, and economic patterns across European countries</p>
     </header>
 
-    <!-- 1) Map -->
-    <div id="map">
-      <div class="tooltip" id="tooltip"></div>
-      <div id="legend" style="margin-top: 20px; padding: 10px;"></div>
+    <div class="container">
+        <div class="controls">
+            <div class="view-selector">
+                <h3>Select Data View</h3>
+                <div class="radio-group" id="viewSelector">
+                    <!-- Radio buttons will be generated here -->
+                </div>
+            </div>
+            <button class="compare-btn" id="compareBtn">Compare Countries</button>
+        </div>
+
+        <div class="map-section">
+            <div id="map">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading map data...
+                </div>
+                <div class="tooltip" id="tooltip">
+                    <h4 id="tooltipTitle"></h4>
+                    <div class="tooltip-content" id="tooltipContent"></div>
+                </div>
+            </div>
+            <div class="legend" id="legend">
+                <h3>Legend</h3>
+                <div id="legendContent"></div>
+            </div>
+        </div>
+
+        <div class="comparison-section" id="comparisonSection">
+            <h2 class="comparison-title">Country Comparison</h2>
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <div class="chart-title" id="chart1Title">Select first country</div>
+                    <canvas id="chart1" width="400" height="300"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <div class="chart-title" id="chart2Title">Select second country</div>
+                    <canvas id="chart2" width="400" height="300"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="control-panel" id="view-panel">
-      <!-- radios will be injected here -->
-    </div>
-
-    <div class="control-panel" style="top: auto; bottom: 10px; left: 10px">
-      <button id="compareBtn">Compare</button>
-    </div>
-
-    <!-- 2) Charts: hidden until you select two countries in “Compare” mode -->
-    <div
-      id="charts"
-      style="
-        display: none;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-      "
-    >
-      <canvas
-        id="chart1"
-        width="300"
-        height="300"
-        style="margin: 10px"
-      ></canvas>
-      <canvas
-        id="chart2"
-        width="300"
-        height="300"
-        style="margin: 10px"
-      ></canvas>
-    </div>
-
-    <footer>
-      <p>&copy; 2025 team JSError</p>
-      <p>
-        TopoJSON is adapted from a map made by
-        <a
-          href="https://github.com/leakyMirror/map-of-europe/tree/master"
-          target="_blank"
-          >@leakyMirror on GitHub</a
-        >
-      </p>
+    <footer class="footer">
+        <p>&copy; 2025 European Social & Economic Atlas | Data Visualization Project</p>
+        <p>Built with D3.js, Chart.js | <a href="#" target="_blank">View Source</a></p>
     </footer>
 
-    <!-- 3) Scripts at the end, after all DOM elements -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
-    <script src="script.js"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Application State
+        let appState = {
+            currentView: 'religion',
+            compareMode: false,
+            selectedCountries: [],
+            countries: [],
+            geoData: null,
+            charts: { chart1: null, chart2: null }
+        };
+
+        // Color schemes for different data types
+        const colorSchemes = {
+            religion: {
+                'Christian': '#3b82f6',
+                'Muslim': '#10b981',
+                'Atheist': '#f59e0b',
+                'Nothing in particular': '#8b5cf6',
+                'Other': '#6b7280',
+                'Jewish': '#ef4444',
+                'Agnostic': '#06b6d4',
+                'Buddhist': '#f97316',
+                'Old believer/old ritualist': '#84cc16',
+                "Don't know": '#64748b'
+            },
+            economic: {
+                'Very good': '#10b981',
+                'Somewhat good': '#84cc16',
+                'Somewhat bad': '#f59e0b',
+                'Very bad': '#ef4444'
+            },
+            marriage: {
+                'Married': '#3b82f6',
+                'Never been married': '#8b5cf6',
+                'Divorced': '#f59e0b',
+                'Widowed': '#6b7280',
+                'Living with a partner': '#06b6d4',
+                'In a civil partnership': '#10b981',
+                'Separated': '#ef4444'
+            },
+            abortion: {
+                'Legal in all cases': '#10b981',
+                'Legal in most cases': '#84cc16',
+                'Illegal in most cases': '#f59e0b',
+                'Illegal in all cases': '#ef4444'
+            },
+            sameSex: {
+                'Strongly favor': '#10b981',
+                'Favor': '#84cc16',
+                'Oppose': '#f59e0b',
+                'Strongly oppose': '#ef4444'
+            }
+        };
+
+        // Data views configuration
+        const dataViews = [
+            { key: 'religion', label: 'Predominant Religion', dataKey: 'religionMajority' },
+            { key: 'economic', label: 'Economic Perception', dataKey: 'economicMajority' },
+            { key: 'marriage', label: 'Marriage Status', dataKey: 'marriageMajority' },
+            { key: 'abortion', label: 'Abortion Support', dataKey: 'abortionMajority' },
+            { key: 'sameSex', label: 'Same-Sex Marriage Support', dataKey: 'sameSexMajority' }
+        ];
+
+        // Initialize the application
+        async function initApp() {
+            try {
+                // Load and process data
+                await loadData();
+                
+                // Setup UI
+                setupViewSelector();
+                setupEventListeners();
+                
+                // Render initial view
+                renderMap();
+                updateLegend();
+                
+                console.log('App initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize app:', error);
+                document.getElementById('map').innerHTML = '<div class="loading">Failed to load data. Please refresh the page.</div>';
+            }
+        }
+
+        // Load and process all data
+        async function loadData() {
+            // Sample data - in production, this would load from your CSV files
+            const sampleCountries = [
+                {
+                    name: 'France',
+                    coords: [2.2137, 46.2276],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat good',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Legal in most cases',
+                    sameSexMajority: 'Favor',
+                    medianAge: 43,
+                    rDist: { 'Christian': 66.24, 'Atheist': 12.45, 'Nothing in particular': 12.73, 'Other': 7.18, 'Agnostic': 1.23, "Don't know": 0.17 }
+                },
+                {
+                    name: 'Germany',
+                    coords: [10.4515, 51.1657],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat good',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Legal in most cases',
+                    sameSexMajority: 'Favor',
+                    medianAge: 42,
+                    rDist: { 'Christian': 69.29, 'Nothing in particular': 14.31, 'Atheist': 11.55, 'Other': 3.8, 'Agnostic': 1.04 }
+                },
+                {
+                    name: 'Italy',
+                    coords: [12.5674, 41.8719],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat good',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Legal in most cases',
+                    sameSexMajority: 'Favor',
+                    medianAge: 44,
+                    rDist: { 'Christian': 79.61, 'Nothing in particular': 8.83, 'Atheist': 6.44, 'Other': 3.89, 'Agnostic': 1.17, "Don't know": 0.06 }
+                },
+                {
+                    name: 'Spain',
+                    coords: [-3.7492, 40.4637],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat good',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Legal in most cases',
+                    sameSexMajority: 'Favor',
+                    medianAge: 46.5,
+                    rDist: { 'Christian': 64.08, 'Nothing in particular': 16.22, 'Atheist': 9.85, 'Agnostic': 6.37, 'Other': 3.35, "Don't know": 0.13 }
+                },
+                {
+                    name: 'United Kingdom',
+                    coords: [-3.436, 55.3781],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat good',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Legal in most cases',
+                    sameSexMajority: 'Favor',
+                    medianAge: 42,
+                    rDist: { 'Christian': 69.36, 'Nothing in particular': 15.05, 'Atheist': 9.89, 'Other': 4.24, 'Agnostic': 1.41, "Don't know": 0.05 }
+                },
+                {
+                    name: 'Poland',
+                    coords: [19.1343, 51.9194],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat bad',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Illegal in most cases',
+                    sameSexMajority: 'Strongly oppose',
+                    medianAge: 50,
+                    rDist: { 'Christian': 93.99, 'Nothing in particular': 3.21, 'Atheist': 1.84, 'Other': 0.96 }
+                },
+                {
+                    name: 'Russia',
+                    coords: [105.3188, 61.524],
+                    religionMajority: 'Christian',
+                    economicMajority: 'Somewhat bad',
+                    marriageMajority: 'Married',
+                    abortionMajority: 'Illegal in most cases',
+                    sameSexMajority: 'Strongly oppose',
+                    medianAge: 42,
+                    rDist: { 'Christian': 60.31, 'Muslim': 25.88, 'Nothing in particular': 8.76, 'Atheist': 3.42, 'Agnostic': 0.57, 'Buddhist': 0.53, 'Other': 0.53 }
+                }
+            ];
+
+            // Load TopoJSON for Europe
+            const europeGeo = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
+            
+            appState.countries = sampleCountries;
+            appState.geoData = europeGeo;
+        }
+
+        // Setup view selector UI
+        function setupViewSelector() {
+            const container = document.getElementById('viewSelector');
+            dataViews.forEach((view, index) => {
+                const item = document.createElement('div');
+                item.className = 'radio-item';
+                item.innerHTML = `
+                    <input type="radio" id="view-${view.key}" name="view" value="${view.key}" ${index === 0 ? 'checked' : ''}>
+                    <label for="view-${view.key}">${view.label}</label>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // View selector change
+            document.addEventListener('change', (e) => {
+                if (e.target.name === 'view') {
+                    appState.currentView = e.target.value;
+                    renderMap();
+                    updateLegend();
+                    hideTooltip();
+                }
+            });
+
+            // Compare button
+            document.getElementById('compareBtn').addEventListener('click', () => {
+                appState.compareMode = !appState.compareMode;
+                appState.selectedCountries = [];
+                updateCompareButton();
+                hideComparison();
+                renderMap();
+            });
+
+            // Hide tooltip on map click
+            document.getElementById('map').addEventListener('click', (e) => {
+                if (e.target.id === 'map') {
+                    hideTooltip();
+                }
+            });
+        }
+
+        // Render the map
+        function renderMap() {
+            const mapContainer = document.getElementById('map');
+            mapContainer.innerHTML = '';
+
+            // Create SVG
+            const width = mapContainer.clientWidth;
+            const height = 600;
+            
+            const svg = d3.select('#map')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            // Create projection focused on Europe
+            const projection = d3.geoNaturalEarth1()
+                .scale(700)
+                .center([15, 55])
+                .translate([width / 2, height / 2]);
+
+            const path = d3.geoPath().projection(projection);
+
+            // Add countries as circles (simplified for demo)
+            const countries = svg.selectAll('.country')
+                .data(appState.countries)
+                .enter()
+                .append('circle')
+                .attr('class', 'country')
+                .attr('cx', d => projection(d.coords)[0])
+                .attr('cy', d => projection(d.coords)[1])
+                .attr('r', 12)
+                .attr('fill', d => getCountryColor(d))
+                .on('mouseover', showTooltip)
+                .on('mouseout', hideTooltip)
+                .on('click', handleCountryClick);
+
+            // Add country labels
+            svg.selectAll('.country-label')
+                .data(appState.countries)
+                .enter()
+                .append('text')
+                .attr('class', 'country-label')
+                .attr('x', d => projection(d.coords)[0])
+                .attr('y', d => projection(d.coords)[1] + 25)
+                .attr('text-anchor', 'middle')
+                .attr('fill', 'var(--text-secondary)')
+                .attr('font-size', '12px')
+                .attr('font-weight', '500')
+                .text(d => d.name)
+                .style('pointer-events', 'none');
+        }
+
+        // Get color for country based on current view
+        function getCountryColor(country) {
+            const currentViewConfig = dataViews.find(v => v.key === appState.currentView);
+            const majority = country[currentViewConfig.dataKey];
+            const colorScheme = colorSchemes[appState.currentView];
+            
+            return colorScheme[majority] || '#6b7280';
+        }
+
+        // Show tooltip
+        function showTooltip(event, d) {
+            if (appState.compareMode) return;
+
+            const tooltip = document.getElementById('tooltip');
+            const title = document.getElementById('tooltipTitle');
+            const content = document.getElementById('tooltipContent');
+
+            title.textContent = d.name;
+            
+            const currentViewConfig = dataViews.find(v => v.key === appState.currentView);
+            const majority = d[currentViewConfig.dataKey];
+            
+            let contentHTML = `<div><strong>${currentViewConfig.label}:</strong> ${majority}</div>`;
+            
+            if (d.rDist && appState.currentView === 'religion') {
+                contentHTML += '<ul class="tooltip-list">';
+                Object.entries(d.rDist)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 4)
+                    .forEach(([key, value]) => {
+                        const isMajority = key === majority;
+                        contentHTML += `<li${isMajority ? ' class="majority"' : ''}><span>${key}</span><span>${value.toFixed(1)}%</span></li>`;
+                    });
+                contentHTML += '</ul>';
+            }
+            
+            content.innerHTML = contentHTML;
+            
+            const rect = event.target.getBoundingClientRect();
+            const mapRect = document.getElementById('map').getBoundingClientRect();
+            
+            tooltip.style.display = 'block';
+            tooltip.style.left = (rect.left - mapRect.left + 20) + 'px';
+            tooltip.style.top = (rect.top - mapRect.top - 10) + 'px';
+
+            // Highlight country
+            d3.select(event.target).classed('highlighted', true);
+        }
+
+        // Hide tooltip
+        function hideTooltip() {
+            document.getElementById('tooltip').style.display = 'none';
+            d3.selectAll('.country').classed('highlighted', false);
+        }
+
+        // Handle country click
+        function handleCountryClick(event, d) {
+            if (!appState.compareMode) return;
+
+            if (appState.selectedCountries.find(c => c.name === d.name)) return;
+            if (appState.selectedCountries.length >= 2) return;
+
+            appState.selectedCountries.push(d);
+            d3.select(event.target).classed('selected', true);
+
+            if (appState.selectedCountries.length === 2) {
+                showComparison();
+            }
+        }
+
+        // Update compare button
+        function updateCompareButton() {
+            const btn = document.getElementById('compareBtn');
+            if (appState.compareMode) {
+                btn.textContent = `Select Countries (${appState.selectedCountries.length}/2)`;
+                btn.classList.add('active');
+            } else {
+                btn.textContent = 'Compare Countries';
+                btn.classList.remove('active');
+                d3.selectAll('.country').classed('selected', false);
+            }
+        }
+
+        // Show comparison charts
+        function showComparison() {
+            const section = document.getElementById('comparisonSection');
+            section.classList.add('active');
+
+            // Create charts
+            appState.selectedCountries.forEach((country, index) => {
+                const chartId = `chart${index + 1}`;
+                const titleId = `chart${index + 1}Title`;
+                
+                document.getElementById(titleId).textContent = country.name;
+                
+                if (appState.charts[chartId]) {
+                    appState.charts[chartId].destroy();
+                }
+                
+                createPieChart(chartId, country.rDist, country.name);
+            });
+        }
+
+        // Hide comparison
+        function hideComparison() {
+            document.getElementById('comparisonSection').classList.remove('active');
+            
+            // Destroy existing charts
+            Object.values(appState.charts).forEach(chart => {
+                if (chart) chart.destroy();
+            });
+            appState.charts = { chart1: null, chart2: null };
+        }
+
+        // Create pie chart
+        function createPieChart(canvasId, data, title) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+            const colors = labels.map(label => colorSchemes.religion[label] || '#6b7280');
+            
+            appState.charts[canvasId] = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: colors,
+                        borderColor: '#1a1a2e',
+                        borderWidth: 2,
+                        hoverBorderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#ffffff',
+                                font: {
+                                    size: 11,
+                                    family: 'Inter'
+                                },
+                                padding: 15,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#1a1a2e',
+                            titleColor: '#ffffff',
+                            bodyColor: '#a1a1aa',
+                            borderColor: '#374151',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '60%',
+                    animation: {
+                        animateScale: true,
+                        animateRotate: true
+                    }
+                }
+            });
+        }
+
+        // Update legend
+        function updateLegend() {
+            const legendContent = document.getElementById('legendContent');
+            const currentViewConfig = dataViews.find(v => v.key === appState.currentView);
+            const colorScheme = colorSchemes[appState.currentView];
+            
+            let html = '';
+            Object.entries(colorScheme).forEach(([key, color]) => {
+                html += `
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: ${color}"></div>
+                        <span>${key}</span>
+                    </div>
+                `;
+            });
+            
+            legendContent.innerHTML = html;
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
 </html>
