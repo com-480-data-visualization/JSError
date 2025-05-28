@@ -25,43 +25,52 @@
     sameSex: "data/support_same_sex_marriage.csv",
   };
 
-  const religionColors = d3.scaleOrdinal()
-  .domain([
-    "Christian", "Catholic", "Protestant", "Orthodox",
-    "Muslim", "Jewish", "Atheist", "Nothing in particular", "Other"
-  ])
-  .range([
-    "#1f77b4", // Christian
-    "#4daf4a", // Catholic
-    "#377eb8", // Protestant
-    "#984ea3", // Orthodox
-    "#e41a1c", // Muslim
-    "#ff7f00", // Jewish
-    "#a65628", // Atheist
-    "#f781bf", // Nothing in particular 
-    "#999999"  // Other
-  ]);
-  const legend = d3.select("#legend")
-  .style("display", "flex")
-  .style("flex-wrap", "wrap")
-  .style("gap", "10px");
-
-religionColors.domain().forEach(r => {
-  const item = legend.append("div")
+  const religionColors = d3
+    .scaleOrdinal()
+    .domain([
+      "Christian",
+      "Catholic",
+      "Protestant",
+      "Orthodox",
+      "Muslim",
+      "Jewish",
+      "Atheist",
+      "Nothing in particular",
+      "Other",
+    ])
+    .range([
+      "#1f77b4", // Christian
+      "#4daf4a", // Catholic
+      "#377eb8", // Protestant
+      "#984ea3", // Orthodox
+      "#e41a1c", // Muslim
+      "#ff7f00", // Jewish
+      "#a65628", // Atheist
+      "#f781bf", // Nothing in particular
+      "#999999", // Other
+    ]);
+  const legend = d3
+    .select("#legend")
     .style("display", "flex")
-    .style("align-items", "center");
+    .style("flex-wrap", "wrap")
+    .style("gap", "10px");
 
-  item.append("div")
-    .style("width", "16px")
-    .style("height", "16px")
-    .style("margin-right", "6px")
-    .style("background-color", religionColors(r))
-    .style("border", "1px solid #ccc");
+  religionColors.domain().forEach((r) => {
+    const item = legend
+      .append("div")
+      .style("display", "flex")
+      .style("align-items", "center");
 
-  item.append("span")
-    .style("font-size", "14px")
-    .text(r);
-});
+    item
+      .append("div")
+      .style("width", "16px")
+      .style("height", "16px")
+      .style("margin-right", "6px")
+      .style("background-color", religionColors(r))
+      .style("border", "1px solid #ccc");
+
+    item.append("span").style("font-size", "14px").text(r);
+  });
 
   const views = [
     { key: "religion", label: "Predominant religion" },
