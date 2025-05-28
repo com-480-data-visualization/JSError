@@ -223,6 +223,12 @@ function handleMouseOut() {
     }
 }
 
+function showCountryDetails(countryData, event) {
+    // This function can be expanded to show detailed country information
+    // For now, it just shows the tooltip
+    showTooltip(countryData, event);
+}
+
 function updateVisualization() {
     const config = DATA_CONFIG[currentView];
     
@@ -467,20 +473,63 @@ function showAgeComparison(chartId, countryData) {
     const barWidth = (age / maxAge) * (width - 100);
 
     const g = svg.append('g')
-        .attr('transform', `translate(50, ${height/2})`);
+        .attr('transform', `translate(50, ${height/2 - 50})`);
 
     // Background bar
     g.append('rect')
         .attr('width', width - 100)
         .attr('height', barHeight)
         .attr('fill', '#f0f0f0')
-        .attr('stroke', '#ddd');
+        .attr('stroke', '#ddd')
+        .attr('rx', 10);
 
     // Age bar
     g.append('rect')
         .attr('width', barWidth)
         .attr('height', barHeight)
-        .attr('fill', DATA_CONFIG.age.colors(age));
+        .attr('fill', DATA_CONFIG.age.colors(age))
+        .attr('rx', 10);
 
     // Age text
-    
+    g.append('text')
+        .attr('x', (width - 100) / 2)
+        .attr('y', barHeight / 2)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .style('font-size', '20px')
+        .style('font-weight', 'bold')
+        .style('fill', '#333')
+        .text(`${age} years`);
+
+    // Scale labels
+    g.append('text')
+        .attr('x', 0)
+        .attr('y', barHeight + 20)
+        .attr('text-anchor', 'start')
+        .style('font-size', '12px')
+        .style('fill', '#666')
+        .text('0');
+
+    g.append('text')
+        .attr('x', width - 100)
+        .attr('y', barHeight + 20)
+        .attr('text-anchor', 'end')
+        .style('font-size', '12px')
+        .style('fill', '#666')
+        .text(`${maxAge} years`);
+
+    // Title
+    svg.append('text')
+        .attr('x', width / 2)
+        .attr('y', 30)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '16px')
+        .style('font-weight', 'bold')
+        .style('fill', '#667eea')
+        .text('Median Age');
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+});
