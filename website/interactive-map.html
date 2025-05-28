@@ -139,7 +139,7 @@
         }
 
         .tooltip {
-            position: absolute;
+            position: fixed;
             background: rgba(0, 0, 0, 0.9);
             color: white;
             padding: 10px 12px;
@@ -147,11 +147,13 @@
             font-size: 0.85rem;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             z-index: 1000;
             max-width: 250px;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .tooltip.visible {
@@ -459,10 +461,19 @@
             const countryName = getCountryName(d);
             const countryData = findCountryData(countryName);
             showTooltip(countryData, countryName, event);
+            
+            // Add mousemove listener to update tooltip position
+            d3.select(event.currentTarget)
+                .on('mousemove', function(moveEvent) {
+                    updateTooltipPosition(moveEvent);
+                });
         }
 
         function handleMouseOut() {
             hideTooltip();
+            // Remove mousemove listener
+            d3.selectAll('.country-path')
+                .on('mousemove', null);
         }
 
         function getCountryName(d) {
@@ -576,9 +587,8 @@
             if (!countryData) {
                 let content = `<h4>${countryName}</h4><div>No data available</div>`;
                 tooltip.html(content)
-                    .style('left', (event.pageX + 10) + 'px')
-                    .style('top', (event.pageY - 10) + 'px')
                     .classed('visible', true);
+                updateTooltipPosition(event);
                 return;
             }
 
@@ -602,9 +612,46 @@
             }
 
             tooltip.html(content)
-                .style('left', (event.pageX + 10) + 'px')
-                .style('top', (event.pageY - 10) + 'px')
                 .classed('visible', true);
+            
+            updateTooltipPosition(event);
+        }
+
+        function updateTooltipPosition(event) {
+            const tooltip = d3.select('#tooltip');
+            const tooltipNode = tooltip.node();
+            
+            if (!tooltipNode) return;
+            
+            // Get tooltip dimensions
+            const tooltipRect = tooltipNode.getBoundingClientRect();
+            const tooltipWidth = tooltipRect.width;
+            const tooltipHeight = tooltipRect.height;
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate position with offset
+            let left = event.clientX + 15;
+            let top = event.clientY - 10;
+            
+            // Adjust if tooltip would go off-screen
+            if (left + tooltipWidth > viewportWidth) {
+                left = event.clientX - tooltipWidth - 15;
+            }
+            
+            if (top + tooltipHeight > viewportHeight) {
+                top = event.clientY - tooltipHeight - 10;
+            }
+            
+            // Ensure tooltip doesn't go off the left or top edge
+            if (left < 0) left = 10;
+            if (top < 0) top = 10;
+            
+            tooltip
+                .style('left', left + 'px')
+                .style('top', top + 'px');
         }
 
         function hideTooltip() {
