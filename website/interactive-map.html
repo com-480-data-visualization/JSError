@@ -1,8 +1,4 @@
-// Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, starting init...');
-            init();
-        });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -372,13 +368,11 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
     <script>
-        // Copy your entire script.js content here, but modify the initialization
-        // to work within this single HTML file structure
-        
-        // Data and configuration for separate CSV files
+        // Data and configuration
         const DATA_CONFIG = {
             religion: {
                 file: 'data/religions_cleaned.csv',
+                key: 'religionMajority',
                 colors: {
                     'Christian': '#2E86AB',
                     'Muslim': '#A23B72',
@@ -389,6 +383,7 @@
             },
             economic: {
                 file: 'data/economic_state_percentages.csv',
+                key: 'economicMajority',
                 colors: {
                     'Very good': '#2D5016',
                     'Somewhat good': '#61A25C',
@@ -398,6 +393,7 @@
             },
             marriage: {
                 file: 'data/marriage_status_percentages.csv',
+                key: 'marriageMajority',
                 colors: {
                     'Married': '#2E86AB',
                     'Never been married': '#A23B72',
@@ -410,6 +406,7 @@
             },
             abortion: {
                 file: 'data/support_abortion.csv',
+                key: 'abortionMajority',
                 colors: {
                     'Legal in all cases': '#2D5016',
                     'Legal in most cases': '#61A25C',
@@ -419,6 +416,7 @@
             },
             sameSex: {
                 file: 'data/support_same_sex_marriage.csv',
+                key: 'sameSexMajority',
                 colors: {
                     'Strongly favor': '#2D5016',
                     'Favor': '#61A25C',
@@ -428,6 +426,7 @@
             },
             age: {
                 file: 'data/median_age.csv',
+                key: 'medianAge',
                 type: 'continuous',
                 colors: d3.scaleSequential(d3.interpolateViridis).domain([30, 60])
             }
@@ -437,25 +436,194 @@
         let currentView = 'religion';
         let compareMode = false;
         let selectedCountries = [];
-        let allData = {}; // Store all loaded CSV data
+        let countriesData = [];
         let topoData = null;
 
-        // Initialize the visualization with CSV loading
+        // Data processing functions
+        function processReligionData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                const total = parseFloat(row.Christian || 0) + parseFloat(row.Muslim || 0) + 
+                             parseFloat(row.Atheist || 0) + parseFloat(row['Nothing in particular'] || 0) + 
+                             parseFloat(row.Other || 0);
+                
+                const distribution = {
+                    'Christian': parseFloat(row.Christian || 0),
+                    'Muslim': parseFloat(row.Muslim || 0),
+                    'Atheist': parseFloat(row.Atheist || 0),
+                    'Nothing in particular': parseFloat(row['Nothing in particular'] || 0),
+                    'Other': parseFloat(row.Other || 0)
+                };
+                
+                // Find majority
+                const majority = Object.entries(distribution)
+                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                
+                return {
+                    country,
+                    religionMajority: majority,
+                    rDist: distribution
+                };
+            });
+        }
+
+        function processEconomicData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                
+                const distribution = {
+                    'Very good': parseFloat(row['Very good'] || 0),
+                    'Somewhat good': parseFloat(row['Somewhat good'] || 0),
+                    'Somewhat bad': parseFloat(row['Somewhat bad'] || 0),
+                    'Very bad': parseFloat(row['Very bad'] || 0)
+                };
+                
+                const majority = Object.entries(distribution)
+                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                
+                return {
+                    country,
+                    economicMajority: majority,
+                    eDist: distribution
+                };
+            });
+        }
+
+        function processMarriageData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                
+                const distribution = {
+                    'Married': parseFloat(row.Married || 0),
+                    'Never been married': parseFloat(row['Never been married'] || 0),
+                    'Divorced': parseFloat(row.Divorced || 0),
+                    'Widowed': parseFloat(row.Widowed || 0),
+                    'Living with a partner': parseFloat(row['Living with a partner'] || 0),
+                    'In a civil partnership': parseFloat(row['In a civil partnership'] || 0),
+                    'Separated': parseFloat(row.Separated || 0)
+                };
+                
+                const majority = Object.entries(distribution)
+                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                
+                return {
+                    country,
+                    marriageMajority: majority,
+                    mDist: distribution
+                };
+            });
+        }
+
+        function processAbortionData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                
+                const distribution = {
+                    'Legal in all cases': parseFloat(row['Legal in all cases'] || 0),
+                    'Legal in most cases': parseFloat(row['Legal in most cases'] || 0),
+                    'Illegal in most cases': parseFloat(row['Illegal in most cases'] || 0),
+                    'Illegal in all cases': parseFloat(row['Illegal in all cases'] || 0)
+                };
+                
+                const majority = Object.entries(distribution)
+                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                
+                return {
+                    country,
+                    abortionMajority: majority,
+                    aDist: distribution
+                };
+            });
+        }
+
+        function processSameSexData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                
+                const distribution = {
+                    'Strongly favor': parseFloat(row['Strongly favor'] || 0),
+                    'Favor': parseFloat(row.Favor || 0),
+                    'Oppose': parseFloat(row.Oppose || 0),
+                    'Strongly oppose': parseFloat(row['Strongly oppose'] || 0)
+                };
+                
+                const majority = Object.entries(distribution)
+                    .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+                
+                return {
+                    country,
+                    sameSexMajority: majority,
+                    sDist: distribution
+                };
+            });
+        }
+
+        function processAgeData(data) {
+            return data.map(row => {
+                const country = row.Country || row.country;
+                const medianAge = parseFloat(row['Median Age'] || row.medianAge || row['median_age']);
+                
+                return {
+                    country,
+                    medianAge: isNaN(medianAge) ? null : medianAge
+                };
+            });
+        }
+
+        // Initialize the visualization
         async function init() {
             console.log('Starting initialization...');
             
             try {
                 console.log('Loading data files...');
                 
-                // Load topology data
-                const topology = await d3.json('data/europe-topo.json');
+                // Load all CSV files
+                const [religionData, economicData, marriageData, abortionData, sameSexData, ageData, topology] = await Promise.all([
+                    d3.csv('data/religions_cleaned.csv'),
+                    d3.csv('data/economic_state_percentages.csv'),
+                    d3.csv('data/marriage_status_percentages.csv'),
+                    d3.csv('data/support_abortion.csv'),
+                    d3.csv('data/support_same_sex_marriage.csv'),
+                    d3.csv('data/median_age.csv'),
+                    d3.json('data/europe-topo.json')
+                ]);
+
+                console.log('Raw data loaded, processing...');
+                
+                // Process each dataset
+                const processedReligion = processReligionData(religionData);
+                const processedEconomic = processEconomicData(economicData);
+                const processedMarriage = processMarriageData(marriageData);
+                const processedAbortion = processAbortionData(abortionData);
+                const processedSameSex = processSameSexData(sameSexData);
+                const processedAge = processAgeData(ageData);
+                
+                // Merge all data by country
+                const countryMap = new Map();
+                
+                // Start with religion data as base
+                processedReligion.forEach(item => {
+                    countryMap.set(item.country, { ...item });
+                });
+                
+                // Merge other datasets
+                [processedEconomic, processedMarriage, processedAbortion, processedSameSex, processedAge].forEach(dataset => {
+                    dataset.forEach(item => {
+                        if (countryMap.has(item.country)) {
+                            Object.assign(countryMap.get(item.country), item);
+                        } else {
+                            countryMap.set(item.country, item);
+                        }
+                    });
+                });
+                
+                countriesData = Array.from(countryMap.values());
                 topoData = topology;
 
-                // Load all CSV files
-                await loadAllData();
-
-                console.log('Data loaded successfully, setting up map...');
+                console.log('Data processed successfully:', countriesData);
+                console.log('Sample country data:', countriesData[0]);
                 
+                // Set up the map
                 setupMap();
                 setupControls();
                 updateVisualization();
@@ -463,83 +631,30 @@
                 console.log('Initialization complete!');
 
             } catch (error) {
-                console.error('Error loading data:', error);
-                document.querySelector('.map-container').innerHTML = 
-                    '<div class="no-data">Data files not found. Please ensure data files are in the correct location.</div>';
+                console.error('Detailed error information:', error);
+                console.error('Error type:', error.name);
+                console.error('Error message:', error.message);
+                console.error('Error stack:', error.stack);
+                
+                // More specific error messages
+                if (error.message.includes('404') || error.message.includes('Not Found')) {
+                    document.querySelector('.map-container').innerHTML = 
+                        '<div class="no-data">Data files not found. Please check that all CSV files exist in the data folder:<br>' +
+                        '• religions_cleaned.csv<br>' +
+                        '• economic_state_percentages.csv<br>' +
+                        '• marriage_status_percentages.csv<br>' +
+                        '• support_abortion.csv<br>' +
+                        '• support_same_sex_marriage.csv<br>' +
+                        '• median_age.csv<br>' +
+                        '• europe-topo.json</div>';
+                } else {
+                    document.querySelector('.map-container').innerHTML = 
+                        '<div class="no-data">Error loading data: ' + error.message + '<br>' +
+                        'Please check the browser console for more details.</div>';
+                }
             }
         }
 
-        // Load all CSV data files
-        async function loadAllData() {
-            console.log('Loading CSV files...');
-            
-            for (const [key, config] of Object.entries(DATA_CONFIG)) {
-                try {
-                    const csvData = await d3.csv(config.file);
-                    allData[key] = csvData;
-                    console.log(`Loaded ${key}:`, csvData.length, 'rows');
-                } catch (error) {
-                    console.error(`Error loading ${config.file}:`, error);
-                }
-            }
-        }
-
-        // Get country data for current view
-        function getCountryData(countryName, view) {
-            const data = allData[view];
-            if (!data) return null;
-            
-            // Find country in the data (try different possible column names)
-            let countryRow = data.find(row => 
-                row.Country === countryName || 
-                row.country === countryName ||
-                row.NAME === countryName ||
-                row.name === countryName
-            );
-            
-            return countryRow;
-        }
-
-        // Calculate majority value from percentages
-        function getMajorityValue(countryRow) {
-            if (!countryRow) return null;
-            
-            let maxValue = 0;
-            let majorityKey = null;
-            
-            // Skip the country column and find the highest percentage
-            Object.entries(countryRow).forEach(([key, value]) => {
-                if (key.toLowerCase().includes('country') || key.toLowerCase().includes('name')) return;
-                
-                const numValue = parseFloat(value);
-                if (!isNaN(numValue) && numValue > maxValue) {
-                    maxValue = numValue;
-                    majorityKey = key;
-                }
-            });
-            
-            return majorityKey;
-        }
-
-        // Get distribution data for tooltip
-        function getDistribution(countryRow) {
-            if (!countryRow) return {};
-            
-            const distribution = {};
-            
-            Object.entries(countryRow).forEach(([key, value]) => {
-                if (key.toLowerCase().includes('country') || key.toLowerCase().includes('name')) return;
-                
-                const numValue = parseFloat(value);
-                if (!isNaN(numValue)) {
-                    distribution[key] = numValue;
-                }
-            });
-            
-            return distribution;
-        }
-
-        // Setup map (updated for CSV data)
         function setupMap() {
             console.log('Setting up map...');
             const svg = d3.select('#map');
@@ -605,7 +720,6 @@
             console.log('Map setup complete!');
         }
 
-        // Setup controls
         function setupControls() {
             // View selector
             d3.selectAll('input[name="view"]').on('change', function() {
@@ -620,7 +734,6 @@
             });
         }
 
-        // Toggle compare mode
         function toggleCompareMode() {
             compareMode = !compareMode;
             selectedCountries = [];
@@ -643,21 +756,47 @@
             hideTooltip();
         }
 
-        // Handle country click
         function handleCountryClick(event, d) {
             const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
             console.log('Clicked country:', countryName);
-            const countryData = getCountryData(countryName, currentView);
+            const countryData = findCountryData(countryName);
             console.log('Found country data:', countryData);
 
             if (compareMode) {
                 handleCountrySelection(event, d, countryData);
             } else {
-                showCountryDetails(countryData, event, countryName);
+                showCountryDetails(countryData, event);
             }
         }
 
-        // Handle country selection for comparison
+        function findCountryData(countryName) {
+            // Try exact match first
+            let countryData = countriesData.find(c => c.country === countryName);
+            
+            // If not found, try some common variations
+            if (!countryData) {
+                const variations = [
+                    countryName.replace(/\s+/g, ''),
+                    countryName.toLowerCase(),
+                    countryName.toUpperCase(),
+                    countryName.replace('United Kingdom', 'UK'),
+                    countryName.replace('UK', 'United Kingdom'),
+                    countryName.replace('Czech Republic', 'Czechia'),
+                    countryName.replace('Czechia', 'Czech Republic')
+                ];
+                
+                for (const variation of variations) {
+                    countryData = countriesData.find(c => 
+                        c.country.toLowerCase() === variation.toLowerCase() ||
+                        c.country.replace(/\s+/g, '').toLowerCase() === variation.replace(/\s+/g, '').toLowerCase()
+                    );
+                    if (countryData) break;
+                }
+            }
+            
+            return countryData;
+        }
+
         function handleCountrySelection(event, geoData, countryData) {
             const countryName = geoData.properties.NAME || geoData.properties.name || geoData.properties.COUNTRY || geoData.properties.country;
             const countryElement = d3.select(event.currentTarget);
@@ -687,28 +826,26 @@
             }
         }
 
-        // Handle mouse over
         function handleMouseOver(event, d) {
             if (!compareMode) {
                 const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
-                const countryData = getCountryData(countryName, currentView);
-                showTooltip(countryData, event, countryName);
+                const countryData = findCountryData(countryName);
+                showTooltip(countryData, event);
             }
         }
 
-        // Handle mouse out
         function handleMouseOut() {
             if (!compareMode) {
                 hideTooltip();
             }
         }
 
-        // Show country details
-        function showCountryDetails(countryData, event, countryName) {
-            showTooltip(countryData, event, countryName);
+        function showCountryDetails(countryData, event) {
+            // This function can be expanded to show detailed country information
+            // For now, it just shows the tooltip
+            showTooltip(countryData, event);
         }
 
-                // Update visualization for CSV data
         function updateVisualization() {
             const config = DATA_CONFIG[currentView];
             console.log('Updating visualization for view:', currentView);
@@ -717,7 +854,7 @@
             d3.selectAll('.country-path')
                 .attr('fill', d => {
                     const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
-                    const countryData = getCountryData(countryName, currentView);
+                    const countryData = findCountryData(countryName);
                     
                     if (!countryData) {
                         console.log('No data found for country:', countryName);
@@ -725,12 +862,10 @@
                     }
                     
                     if (config.type === 'continuous') {
-                        // For age data, look for Age or Median_Age column
-                        const ageValue = countryData.Age || countryData.Median_Age || countryData['Median Age'] || countryData.median_age;
-                        const value = parseFloat(ageValue);
+                        const value = countryData[config.key];
                         return value ? config.colors(value) : '#f0f0f0';
                     } else {
-                        const majority = getMajorityValue(countryData);
+                        const majority = countryData[config.key];
                         return config.colors[majority] || '#f0f0f0';
                     }
                 });
@@ -739,7 +874,6 @@
             updateLegend();
         }
 
-        // Update legend
         function updateLegend() {
             const config = DATA_CONFIG[currentView];
             const legendContent = d3.select('#legend-content');
@@ -802,8 +936,7 @@
             }
         }
 
-        // Show tooltip
-        function showTooltip(countryData, event, countryName) {
+        function showTooltip(countryData, event) {
             const tooltip = d3.select('#tooltip');
             
             if (!countryData) {
@@ -811,16 +944,21 @@
                 return;
             }
 
-            let content = `<h4>${countryName}</h4>`;
+            let content = `<h4>${countryData.country}</h4>`;
             
             const config = DATA_CONFIG[currentView];
             
             if (currentView === 'age') {
-                const ageValue = countryData.Age || countryData.Median_Age || countryData['Median Age'] || countryData.median_age;
-                content += `<div>Median Age: <strong>${ageValue || 'N/A'}</strong></div>`;
+                content += `<div>Median Age: <strong>${countryData.medianAge || 'N/A'}</strong></div>`;
             } else {
-                const distribution = getDistribution(countryData);
-                const majority = getMajorityValue(countryData);
+                const distKey = currentView === 'religion' ? 'rDist' :
+                               currentView === 'economic' ? 'eDist' :
+                               currentView === 'marriage' ? 'mDist' :
+                               currentView === 'abortion' ? 'aDist' :
+                               'sDist';
+                
+                const distribution = countryData[distKey];
+                const majority = countryData[config.key];
                 
                 if (distribution && Object.keys(distribution).length > 0) {
                     content += '<ul>';
@@ -842,12 +980,10 @@
                 .classed('visible', true);
         }
 
-        // Hide tooltip
         function hideTooltip() {
             d3.select('#tooltip').classed('visible', false);
         }
 
-        // Show comparison
         function showComparison() {
             d3.select('#comparison-charts').classed('visible', true);
             
@@ -865,12 +1001,17 @@
             });
         }
 
-        // Show distribution chart
         function showDistributionChart(chartId, countryData) {
             const svg = d3.select(`#${chartId}`);
             svg.selectAll('*').remove();
 
-            const distribution = getDistribution(countryData);
+            const distKey = currentView === 'religion' ? 'rDist' :
+                           currentView === 'economic' ? 'eDist' :
+                           currentView === 'marriage' ? 'mDist' :
+                           currentView === 'abortion' ? 'aDist' :
+                           'sDist';
+            
+            const distribution = countryData[distKey];
             
             if (!distribution || Object.keys(distribution).length === 0) {
                 svg.append('text')
@@ -885,7 +1026,7 @@
             }
 
             const width = 350;
-            const height = 300;
+            const height = 350;
             const radius = Math.min(width, height) / 2 - 40;
 
             const g = svg.append('g')
@@ -926,13 +1067,11 @@
                 .text(d => d.data.value > 5 ? `${d.data.value.toFixed(1)}%` : '');
         }
 
-        // Show age comparison
         function showAgeComparison(chartId, countryData) {
             const svg = d3.select(`#${chartId}`);
             svg.selectAll('*').remove();
 
-            const ageValue = countryData.Age || countryData.Median_Age || countryData['Median Age'] || countryData.median_age;
-            const age = parseFloat(ageValue);
+            const age = countryData.medianAge;
             
             if (!age) {
                 svg.append('text')
@@ -947,7 +1086,7 @@
             }
 
             const width = 350;
-            const height = 300;
+            const height = 350;
 
             // Create a simple bar chart for age
             const maxAge = 70;
@@ -1010,6 +1149,12 @@
                 .style('fill', '#667eea')
                 .text('Median Age');
         }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting init...');
+            init();
+        });
     </script>
 </body>
 </html>
