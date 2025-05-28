@@ -1,7 +1,7 @@
 // Data and configuration
 const DATA_CONFIG = {
     religion: {
-        file: 'data/countries.json',
+        file: 'data/religions_cleaned.csv',
         key: 'religionMajority',
         colors: {
             'Christian': '#2E86AB',
@@ -12,7 +12,7 @@ const DATA_CONFIG = {
         }
     },
     economic: {
-        file: 'data/countries.json',
+        file: 'data/economic_state_percentages.csv',
         key: 'economicMajority',
         colors: {
             'Very good': '#2D5016',
@@ -22,7 +22,7 @@ const DATA_CONFIG = {
         }
     },
     marriage: {
-        file: 'data/countries.json',
+        file: 'data/marriage_status_percentages.csv',
         key: 'marriageMajority',
         colors: {
             'Married': '#2E86AB',
@@ -35,7 +35,7 @@ const DATA_CONFIG = {
         }
     },
     abortion: {
-        file: 'data/countries.json',
+        file: 'data/support_abortion.csv',
         key: 'abortionMajority',
         colors: {
             'Legal in all cases': '#2D5016',
@@ -45,7 +45,7 @@ const DATA_CONFIG = {
         }
     },
     sameSex: {
-        file: 'data/countries.json',
+        file: 'data/support_same_sex_marriage.csv',
         key: 'sameSexMajority',
         colors: {
             'Strongly favor': '#2D5016',
@@ -55,7 +55,7 @@ const DATA_CONFIG = {
         }
     },
     age: {
-        file: 'data/countries.json',
+        file: 'data/median_age.csv',
         key: 'medianAge',
         type: 'continuous',
         colors: d3.scaleSequential(d3.interpolateViridis).domain([30, 60])
@@ -69,27 +69,189 @@ let selectedCountries = [];
 let countriesData = [];
 let topoData = null;
 
+// Data processing functions
+function processReligionData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        const total = parseFloat(row.Christian || 0) + parseFloat(row.Muslim || 0) + 
+                     parseFloat(row.Atheist || 0) + parseFloat(row['Nothing in particular'] || 0) + 
+                     parseFloat(row.Other || 0);
+        
+        const distribution = {
+            'Christian': parseFloat(row.Christian || 0),
+            'Muslim': parseFloat(row.Muslim || 0),
+            'Atheist': parseFloat(row.Atheist || 0),
+            'Nothing in particular': parseFloat(row['Nothing in particular'] || 0),
+            'Other': parseFloat(row.Other || 0)
+        };
+        
+        // Find majority
+        const majority = Object.entries(distribution)
+            .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+        
+        return {
+            country,
+            religionMajority: majority,
+            rDist: distribution
+        };
+    });
+}
+
+function processEconomicData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        
+        const distribution = {
+            'Very good': parseFloat(row['Very good'] || 0),
+            'Somewhat good': parseFloat(row['Somewhat good'] || 0),
+            'Somewhat bad': parseFloat(row['Somewhat bad'] || 0),
+            'Very bad': parseFloat(row['Very bad'] || 0)
+        };
+        
+        const majority = Object.entries(distribution)
+            .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+        
+        return {
+            country,
+            economicMajority: majority,
+            eDist: distribution
+        };
+    });
+}
+
+function processMarriageData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        
+        const distribution = {
+            'Married': parseFloat(row.Married || 0),
+            'Never been married': parseFloat(row['Never been married'] || 0),
+            'Divorced': parseFloat(row.Divorced || 0),
+            'Widowed': parseFloat(row.Widowed || 0),
+            'Living with a partner': parseFloat(row['Living with a partner'] || 0),
+            'In a civil partnership': parseFloat(row['In a civil partnership'] || 0),
+            'Separated': parseFloat(row.Separated || 0)
+        };
+        
+        const majority = Object.entries(distribution)
+            .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+        
+        return {
+            country,
+            marriageMajority: majority,
+            mDist: distribution
+        };
+    });
+}
+
+function processAbortionData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        
+        const distribution = {
+            'Legal in all cases': parseFloat(row['Legal in all cases'] || 0),
+            'Legal in most cases': parseFloat(row['Legal in most cases'] || 0),
+            'Illegal in most cases': parseFloat(row['Illegal in most cases'] || 0),
+            'Illegal in all cases': parseFloat(row['Illegal in all cases'] || 0)
+        };
+        
+        const majority = Object.entries(distribution)
+            .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+        
+        return {
+            country,
+            abortionMajority: majority,
+            aDist: distribution
+        };
+    });
+}
+
+function processSameSexData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        
+        const distribution = {
+            'Strongly favor': parseFloat(row['Strongly favor'] || 0),
+            'Favor': parseFloat(row.Favor || 0),
+            'Oppose': parseFloat(row.Oppose || 0),
+            'Strongly oppose': parseFloat(row['Strongly oppose'] || 0)
+        };
+        
+        const majority = Object.entries(distribution)
+            .reduce((a, b) => distribution[a] > distribution[b] ? a : b);
+        
+        return {
+            country,
+            sameSexMajority: majority,
+            sDist: distribution
+        };
+    });
+}
+
+function processAgeData(data) {
+    return data.map(row => {
+        const country = row.Country || row.country;
+        const medianAge = parseFloat(row['Median Age'] || row.medianAge || row['median_age']);
+        
+        return {
+            country,
+            medianAge: isNaN(medianAge) ? null : medianAge
+        };
+    });
+}
+
 // Initialize the visualization
 async function init() {
     console.log('Starting initialization...');
     
     try {
-        console.log('Attempting to load data files...');
+        console.log('Loading data files...');
         
-        // Try loading countries.json first
-        console.log('Loading countries.json...');
-        const countries = await d3.json('data/countries.json');
-        console.log('Countries data loaded:', countries);
-        
-        // Try loading topology
-        console.log('Loading europe-topo.json...');
-        const topology = await d3.json('data/europe-topo.json');
-        console.log('Topology data loaded:', topology);
+        // Load all CSV files
+        const [religionData, economicData, marriageData, abortionData, sameSexData, ageData, topology] = await Promise.all([
+            d3.csv('data/religions_cleaned.csv'),
+            d3.csv('data/economic_state_percentages.csv'),
+            d3.csv('data/marriage_status_percentages.csv'),
+            d3.csv('data/support_abortion.csv'),
+            d3.csv('data/support_same_sex_marriage.csv'),
+            d3.csv('data/median_age.csv'),
+            d3.json('data/europe-topo.json')
+        ]);
 
-        countriesData = countries;
+        console.log('Raw data loaded, processing...');
+        
+        // Process each dataset
+        const processedReligion = processReligionData(religionData);
+        const processedEconomic = processEconomicData(economicData);
+        const processedMarriage = processMarriageData(marriageData);
+        const processedAbortion = processAbortionData(abortionData);
+        const processedSameSex = processSameSexData(sameSexData);
+        const processedAge = processAgeData(ageData);
+        
+        // Merge all data by country
+        const countryMap = new Map();
+        
+        // Start with religion data as base
+        processedReligion.forEach(item => {
+            countryMap.set(item.country, { ...item });
+        });
+        
+        // Merge other datasets
+        [processedEconomic, processedMarriage, processedAbortion, processedSameSex, processedAge].forEach(dataset => {
+            dataset.forEach(item => {
+                if (countryMap.has(item.country)) {
+                    Object.assign(countryMap.get(item.country), item);
+                } else {
+                    countryMap.set(item.country, item);
+                }
+            });
+        });
+        
+        countriesData = Array.from(countryMap.values());
         topoData = topology;
 
-        console.log('Data loaded successfully, setting up map...');
+        console.log('Data processed successfully:', countriesData);
+        console.log('Sample country data:', countriesData[0]);
         
         // Set up the map
         setupMap();
@@ -107,13 +269,14 @@ async function init() {
         // More specific error messages
         if (error.message.includes('404') || error.message.includes('Not Found')) {
             document.querySelector('.map-container').innerHTML = 
-                '<div class="no-data">Data files not found. Please check that:<br>' +
-                '• data/countries.json exists<br>' +
-                '• data/europe-topo.json exists<br>' +
-                '• Files are accessible from your web server</div>';
-        } else if (error.message.includes('SyntaxError') || error.message.includes('JSON')) {
-            document.querySelector('.map-container').innerHTML = 
-                '<div class="no-data">JSON parsing error. Please check that your data files contain valid JSON.</div>';
+                '<div class="no-data">Data files not found. Please check that all CSV files exist in the data folder:<br>' +
+                '• religions_cleaned.csv<br>' +
+                '• economic_state_percentages.csv<br>' +
+                '• marriage_status_percentages.csv<br>' +
+                '• support_abortion.csv<br>' +
+                '• support_same_sex_marriage.csv<br>' +
+                '• median_age.csv<br>' +
+                '• europe-topo.json</div>';
         } else {
             document.querySelector('.map-container').innerHTML = 
                 '<div class="no-data">Error loading data: ' + error.message + '<br>' +
@@ -226,7 +389,7 @@ function toggleCompareMode() {
 function handleCountryClick(event, d) {
     const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
     console.log('Clicked country:', countryName);
-    const countryData = countriesData.find(c => c.country === countryName);
+    const countryData = findCountryData(countryName);
     console.log('Found country data:', countryData);
 
     if (compareMode) {
@@ -234,6 +397,34 @@ function handleCountryClick(event, d) {
     } else {
         showCountryDetails(countryData, event);
     }
+}
+
+function findCountryData(countryName) {
+    // Try exact match first
+    let countryData = countriesData.find(c => c.country === countryName);
+    
+    // If not found, try some common variations
+    if (!countryData) {
+        const variations = [
+            countryName.replace(/\s+/g, ''),
+            countryName.toLowerCase(),
+            countryName.toUpperCase(),
+            countryName.replace('United Kingdom', 'UK'),
+            countryName.replace('UK', 'United Kingdom'),
+            countryName.replace('Czech Republic', 'Czechia'),
+            countryName.replace('Czechia', 'Czech Republic')
+        ];
+        
+        for (const variation of variations) {
+            countryData = countriesData.find(c => 
+                c.country.toLowerCase() === variation.toLowerCase() ||
+                c.country.replace(/\s+/g, '').toLowerCase() === variation.replace(/\s+/g, '').toLowerCase()
+            );
+            if (countryData) break;
+        }
+    }
+    
+    return countryData;
 }
 
 function handleCountrySelection(event, geoData, countryData) {
@@ -268,7 +459,7 @@ function handleCountrySelection(event, geoData, countryData) {
 function handleMouseOver(event, d) {
     if (!compareMode) {
         const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
-        const countryData = countriesData.find(c => c.country === countryName);
+        const countryData = findCountryData(countryName);
         showTooltip(countryData, event);
     }
 }
@@ -293,7 +484,7 @@ function updateVisualization() {
     d3.selectAll('.country-path')
         .attr('fill', d => {
             const countryName = d.properties.NAME || d.properties.name || d.properties.COUNTRY || d.properties.country;
-            const countryData = countriesData.find(c => c.country === countryName);
+            const countryData = findCountryData(countryName);
             
             if (!countryData) {
                 console.log('No data found for country:', countryName);
