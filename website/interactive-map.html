@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive European Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .controls-section {
+            margin-bottom: 25px;
+        }
+
+        .controls-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .view-option {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .view-option:hover {
+            background: rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        .view-option input {
+            margin-right: 8px;
+        }
+
+        #compare-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        #compare-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        #compare-btn.active {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        #legend {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            max-width: 250px;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip h4 {
+            margin-bottom: 6px;
+            color: #667eea;
+            font-size: 0.95rem;
+        }
+
+        .tooltip ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tooltip li {
+            margin-bottom: 3px;
+            padding: 1px 0;
+        }
+
+        .tooltip .majority {
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .country-path {
+            stroke: #fff;
+            stroke-width: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .country-path:hover {
+            stroke-width: 2;
+            stroke: #667eea;
+            filter: brightness(1.1);
+        }
+
+        .country-path.selected {
+            stroke: #e74c3c;
+            stroke-width: 3;
+            filter: brightness(1.2);
+        }
+
+        .comparison-charts {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .comparison-charts.visible {
+            display: grid;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .chart-svg {
+            width: 100%;
+            height: 300px;
+        }
+
+        .no-data {
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-panel {
+                order: -1;
+                max-height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comparison-charts {
+                grid-template-columns: 1fr;
+                position: relative;
+                bottom: auto;
+                left: auto;
+                right: auto;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Interactive European Data Map</h1>
+            <p style="color: #666; font-size: 0.9rem;">Click on countries to explore data • Use comparison mode to analyze differences</p>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <svg id="map" width="100%" height="100%" viewBox="0 0 800 600"></svg>
+                <div class="tooltip" id="tooltip"></div>
+            </div>
+
+            <div class="controls-panel">
+                <div class="controls-section">
+                    <h3>📊 Data Views</h3>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="religion" checked>
+                        🛐 Religion
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="economic">
+                        💰 Economics
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="marriage">
+                        💑 Marriage
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="abortion">
+                        🏥 Abortion
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="sameSex">
+                        🏳️‍🌈 Same-Sex Marriage
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="age">
+                        👥 Median Age
+                    </label>
+                </div>
+
+                <div class="controls-section">
+                    <h3>🔍 Compare</h3>
+                    <button id="compare-btn">Compare Countries</button>
+                    <div id="compare-instructions" style="display: none; margin-top: 8px; font-size: 0.8rem; color: #666;">
+                        Click up to 2 countries to compare
+                    </div>
+                </div>
+
+                <div id="legend">
+                    <div class="legend-title">Legend</div>
+                    <div id="legend-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-charts" id="comparison-charts">
+            <div class="chart-container">
+                <div class="chart-title" id="chart1-title">Country 1</div>
+                <svg class="chart-svg" id="chart1"></svg>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title" id="chart2-title">Country 2</div>
+                <svg class="chart-svg" id="chart2"></svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script>
+        // Copy your entire script.js content here, but modify the initialization
+        // to work within this single HTML file structure
+        
+        // Data and configuration (same as original)
+        const DATA_CONFIG = {
+            religion: {
+                file: '../data/countries.json',
+                key: 'religionMajority',
+                colors: {
+                    'Christian': '#2E86AB',
+                    'Muslim': '#A23B72',
+                    'Nothing in particular': '#F18F01',
+                    'Atheist': '#C73E1D',
+                    'Other': '#8B8B8B'
+                }
+            },
+            economic: {
+                file: '../data/countries.json',
+                key: 'economicMajority',
+                colors: {
+                    'Very good': '#2D5016',
+                    'Somewhat good': '#61A25C',
+                    'Somewhat bad': '#FFB563',
+                    'Very bad': '#D2001C'
+                }
+            },
+            marriage: {
+                file: '../data/countries.json',
+                key: 'marriageMajority',
+                colors: {
+                    'Married': '#2E86AB',
+                    'Never been married': '#A23B72',
+                    'Divorced': '#F18F01',
+                    'Widowed': '#8B4A6B',
+                    'Living with a partner': '#61A25C',
+                    'In a civil partnership': '#C73E1D',
+                    'Separated': '#FF6B6B'
+                }
+            },
+            abortion: {
+                file: '../data/countries.json',
+                key: 'abortionMajority',
+                colors: {
+                    'Legal in all cases': '#2D5016',
+                    'Legal in most cases': '#61A25C',
+                    'Illegal in most cases': '#FFB563',
+                    'Illegal in all cases': '#D2001C'
+                }
+            },
+            sameSex: {
+                file: '../data/countries.json',
+                key: 'sameSexMajority',
+                colors: {
+                    'Strongly favor': '#2D5016',
+                    'Favor': '#61A25C',
+                    'Oppose': '#FFB563',
+                    'Strongly oppose': '#D2001C'
+                }
+            },
+            age: {
+                file: '../data/countries.json',
+                key: 'medianAge',
+                type: 'continuous',
+                colors: d3.scaleSequential(d3.interpolateViridis).domain([30, 60])
+            }
+        };
+
+        // Global state
+        let currentView = 'religion';
+        let compareMode = false;
+        let selectedCountries = [];
+        let countriesData = [];
+        let topoData = null;
+
+        // Initialize the visualization (same as original but with adjusted paths)
+        async function init() {
+            console.log('Starting initialization...');
+            
+            try {
+                console.log('Loading data files...');
+                
+                const countries = await d3.json('../data/countries.json');
+                const topology = await d3.json('../data/europe-topo.json');
+
+                countriesData = countries;
+                topoData = topology;
+
+                console.log('Data loaded successfully, setting up map...');
+                
+                setupMap();
+                setupControls();
+                updateVisualization();
+
+                console.log('Initialization complete!');
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.querySelector('.map-container').innerHTML = 
+                    '<div class="no-data">Data files not found. Please ensure data files are in the correct location.</div>';
+            }
+        }
+
+        // Include all other functions from your original script.js here
+        // (setupMap, setupControls, updateVisualization, etc.)
+        // Just copy them exactly as they are
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting init...');
+            init();
+        });
+    </script>
+</body>
+</html>
