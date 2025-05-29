@@ -397,10 +397,16 @@
             try {
                 await loadData();
                 setupControls();
-                updateVisualization();
                 
+                // Hide loading and show chart first
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('chart-svg').style.display = 'block';
+                
+                // Add a small delay to ensure SVG is rendered, then update visualization
+                setTimeout(() => {
+                    updateVisualization();
+                    updateSidebarLegend(currentView);
+                }, 100);
                 
                 console.log('Initialization complete!');
             } catch (error) {
@@ -638,9 +644,6 @@
                 .selectAll('text')
                 .attr('class', 'axis-label');
 
-            // Add legend to sidebar
-            updateSidebarLegend('belonging');
-
             // Add year indicator
             g.append('text')
                 .attr('x', width)
@@ -757,9 +760,6 @@
                 .selectAll('text')
                 .attr('class', 'axis-label');
 
-            // Add legend to sidebar
-            updateSidebarLegend('denominations');
-
             // Add year indicator
             g.append('text')
                 .attr('x', width)
@@ -843,11 +843,6 @@
                     legendContent.appendChild(legendItem);
                 });
             }
-        }
-
-        // Remove the old corner legend function since we're not using it anymore
-        function addCornerLegend(viewType, year) {
-            // This function is no longer used - legend is now in sidebar
         }
 
         // Initialize when DOM is loaded
