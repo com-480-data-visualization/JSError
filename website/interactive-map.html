@@ -525,7 +525,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson-client@3"></script>
     <script>
-        // Data configuration
+        // Data configuration - COMPLETE ORIGINAL VERSION
         const DATA_CONFIG = {
             religion: {
                 key: 'religionMajority',
@@ -591,6 +591,7 @@
         let countriesData = [];
         let topoData = null;
 
+        // COMPLETE INITIALIZATION FUNCTION
         async function init() {
             console.log('Starting initialization...');
             
@@ -910,3 +911,228 @@
                 });
 
             updateLegend();
+        }
+
+        function updateLegend() {
+            const config = DATA_CONFIG[currentView];
+            const legendContent = d3.select('#legend-content');
+            
+            legendContent.selectAll('*').remove();
+
+            Object.entries(config.colors).forEach(([key, color]) => {
+                const item = legendContent.append('div')
+                    .attr('class', 'legend-item');
+                
+                item.append('div')
+                    .attr('class', 'legend-color')
+                    .style('background-color', color);
+                
+                item.append('span')
+                    .text(key);
+            });
+        }
+
+        function showTooltip(countryData, countryName, event) {
+            const tooltip = d3.select('#tooltip');
+            
+            if (!countryData) {
+                let content = `<h4>${countryName}</h4><div>No data available</div>`;
+                tooltip.html(content)
+                    .classed('visible', true);
+                updateTooltipPosition(event);
+                return;
+            }
+
+            const config = DATA_CONFIG[currentView];
+            let content = `<h4>${countryData.country}</h4>`;
+            
+            const distribution = countryData[config.distKey];
+            const majority = countryData[config.key];
+            
+            if (distribution && Object.keys(distribution).length > 0) {
+                content += '<ul>';
+                Object.entries(distribution)
+                    .sort(([,a], [,b]) => b - a)
+                    .forEach(([key, value]) => {
+                        const className = key === majority ? 'majority' : '';
+                        content += `<li class="${className}">${key}: ${value.toFixed(1)}%</li>`;
+                    });
+                content += '</ul>';
+            } else {
+                content += '<div>No distribution data available</div>';
+            }
+
+            tooltip.html(content)
+                .classed('visible', true);
+            
+            updateTooltipPosition(event);
+        }
+
+        function updateTooltipPosition(event) {
+            const tooltip = d3.select('#tooltip');
+            const tooltipNode = tooltip.node();
+            
+            if (!tooltipNode) return;
+            
+            // Get tooltip dimensions
+            const tooltipRect = tooltipNode.getBoundingClientRect();
+            const tooltipWidth = tooltipRect.width;
+            const tooltipHeight = tooltipRect.height;
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate position with offset
+            let left = event.clientX + 15;
+            let top = event.clientY - 10;
+            
+            // Adjust if tooltip would go off-screen
+            if (left + tooltipWidth > viewportWidth) {
+                left = event.clientX - tooltipWidth - 15;
+            }
+            
+            if (top + tooltipHeight > viewportHeight) {
+                top = event.clientY - tooltipHeight - 10;
+            }
+            
+            // Ensure tooltip doesn't go off the left or top edge
+            if (left < 0) left = 10;
+            if (top < 0) top = 10;
+            
+            tooltip
+                .style('left', left + 'px')
+                .style('top', top + 'px');
+        }
+
+        function hideTooltip() {
+            d3.select('#tooltip').classed('visible', false);
+        }
+
+        function showPopup() {
+            const popup = d3.select('#popup-overlay');
+            popup.classed('visible', true);
+            
+            selectedCountries.forEach((country, index) => {
+                const chartId = `popup-chart${index + 1}`;
+                const titleId = `popup-chart${index + 1}-title`;
+                
+                d3.select(`#${titleId}`).text(country.name);
+                showDistributionChart(chartId, country.data);
+            });
+        }
+
+        function showDistributionChart(chartId, countryData) {
+            const svg = d3.select(`#${chartId}`);
+            svg.selectAll('*').remove();
+
+            const config = DATA_CONFIG[currentView];
+            const distKey = config.distKey;
+            const distribution = countryData[distKey];
+            
+            if (!distribution || Object.keys(distribution).length === 0) {
+                svg.append('text')
+                    .attr('x', '50%')
+                    .attr('y', '50%')
+                    .attr('text-anchor', 'middle')
+                    .attr('dominant-baseline', 'middle')
+                    .text('No data available')
+                    .style('font-size', '16px')
+                    .style('fill', '#999');
+                return;
+            }
+
+            const width = 350;
+            const height = 300;
+            const radius = Math.min(width, height) / 2 - 40;
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${width/2}, ${height/2})`);
+
+            const pie = d3.pie()
+                .value(d => d.value)
+                .sort(null);
+
+            const arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+
+            const data = Object.entries(distribution)
+                .filter(([key, value]) => value > 0)
+                .map(([key, value]) => ({ key, value }));
+
+            const arcs = g.selectAll('.arc')
+                .data(pie(data))
+                .enter().append('g')
+                .attr('class', 'arc');
+
+            arcs.append('path')
+                .attr('d', arc)
+                .attr('fill', d => config.colors[d.data.key] || '#999')
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2)
+                .style('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('transform', 'scale(1.05)');
+                        
+                    // Show value tooltip
+                    const tooltip = d3.select('body').append('div')
+                        .attr('class', 'chart-tooltip')
+                        .style('position', 'absolute')
+                        .style('background', 'rgba(0, 0, 0, 0.8)')
+                        .style('color', 'white')
+                        .style('padding', '8px 12px')
+                        .style('border-radius', '4px')
+                        .style('font-size', '12px')
+                        .style('pointer-events', 'none')
+                        .style('z-index', '2000')
+                        .text(`${d.data.key}: ${d.data.value.toFixed(1)}%`);
+                        
+                    tooltip.style('left', (event.pageX + 10) + 'px')
+                           .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseout', function() {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('transform', 'scale(1)');
+                        
+                    d3.selectAll('.chart-tooltip').remove();
+                });
+
+            arcs.append('text')
+                .attr('transform', d => `translate(${arc.centroid(d)})`)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'middle')
+                .style('font-size', '11px')
+                .style('font-weight', 'bold')
+                .style('fill', '#fff')
+                .style('text-shadow', '1px 1px 2px rgba(0,0,0,0.7)')
+                .text(d => d.data.value > 8 ? `${d.data.value.toFixed(1)}%` : '');
+
+            // Add a subtle animation
+            arcs.selectAll('path')
+                .style('opacity', 0)
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 100)
+                .style('opacity', 1)
+                .attrTween('d', function(d) {
+                    const interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
+                    return function(t) {
+                        return arc(interpolate(t));
+                    };
+                });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting init...');
+            init();
+        });
+    </script>
+</body>
+</html>
