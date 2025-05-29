@@ -117,869 +117,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .timeline-title {
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #667eea;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .year-slider-container {
-            position: relative;
-            margin: 20px 0;
-        }
-
-        .year-slider {
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            outline: none;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-            cursor: pointer;
-            appearance: none;
-        }
-
-        .year-slider:hover {
-            opacity: 1;
-        }
-
-        .year-slider::-webkit-slider-thumb {
-            appearance: none;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #667eea;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            border: 3px solid white;
-        }
-
-        .year-slider::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: #667eea;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            border: 3px solid white;
-            border: none;
-        }
-
-        .year-display {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #667eea;
-            margin: 15px 0;
-        }
-
-        .year-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        .chart-area {
-            flex: 1;
-            position: relative;
-            min-height: 400px;
-        }
-
-        .corner-legend {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            z-index: 10;
-            max-width: 250px;
-        }
-
-        .legend-title {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .legend-label {
-            color: #333;
-            line-height: 1.2;
-        }
-
-        .chart-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .bar {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .bar:hover {
-            opacity: 0.8;
-            stroke: #333;
-            stroke-width: 2;
-        }
-
-        .bar-label {
-            font-size: 12px;
-            fill: #333;
-            font-weight: 500;
-        }
-
-        .axis-label {
-            font-size: 11px;
-            fill: #666;
-        }
-
-        .chart-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #667eea;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .tooltip {
-            position: fixed;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 10px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            z-index: 999;
-            max-width: 250px;
-        }
-
-        .tooltip.visible {
-            opacity: 1;
-        }
-
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            font-size: 1.2rem;
-            color: #667eea;
-        }
-
-        .no-data {
-            color: #999;
-            font-style: italic;
-            padding: 20px;
-            text-align: center;
-        }
-
-        @media (max-width: 1400px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>European Religious Trends Over Time</h1>
-            <p style="color: #666; font-size: 0.9rem;">Explore how religious beliefs and belonging have evolved across Europe from 2002 to 2024</p>
-        </div>
-
-        <div class="main-content">
-            <div class="chart-container">
-                <div class="chart-title" id="chart-title">Religious Belonging in European Countries</div>
-                <div class="chart-area">
-                    <div class="loading" id="loading">Loading temporal data...</div>
-                    <svg class="chart-svg" id="chart-svg" style="display: none;"></svg>
-                </div>
-            </div>
-
-            <div class="controls-panel">
-                <div class="controls-section">
-                    <h3>📊 Data Views</h3>
-                    <label class="view-option">
-                        <input type="radio" name="view" value="belonging" checked>
-                        🛐 Religious Belonging
-                    </label>
-                    <label class="view-option">
-                        <input type="radio" name="view" value="denominations">
-                        ⛪ Religious Denominations
-                    </label>
-                </div>
-
-                <div class="timeline-container">
-                    <div class="timeline-title">📅 Time Period</div>
-                    <div class="year-display" id="year-display">2002</div>
-                    <div class="year-slider-container">
-                        <input type="range" id="year-slider" class="year-slider" 
-                               min="0" max="11" value="0" step="1">
-                        <div class="year-labels">
-                            <span>2002</span>
-                            <span>2024</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="tooltip" id="tooltip"></div>
-
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script>
-        // Configuration
-        const YEARS = [2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
-        const COLORS = {
-            belonging: {
-                'Yes': '#2E86AB',
-                'No': '#A23B72'
-            },
-            denominations: {
-                'Roman Catholic': '#2E86AB',
-                'Protestant': '#A23B72',
-                'Eastern Orthodox': '#F18F01',
-                'Other Christian denomination': '#61A25C',
-                'Jewish': '#8B8B8B',
-                'Islam': '#C73E1D',
-                'Eastern religions': '#9B59B6',
-                'Other Non-Christian religions': '#FF6B6B'
-            }
-        };
-
-        // Global state
-        let currentView = 'belonging';
-        let currentYearIndex = 0;
-        let allData = {};
-        let isDataLoaded = false;
-
-        // Initialize the visualization
-        async function init() {
-            console.log('Initializing temporal visualization...');
-            
-            try {
-                await loadData();
-                setupControls();
-                updateVisualization();
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('chart-svg').style.display = 'block';
-                
-                console.log('Initialization complete!');
-            } catch (error) {
-                console.error('Error initializing:', error);
-                document.getElementById('loading').innerHTML = 
-                    '<div class="no-data">Error loading temporal data. Please ensure temporal-data.json exists in the data folder.</div>';
-            }
-        }
-
-        async function loadData() {
-            try {
-                // Try to load processed temporal data first
-                const response = await fetch('data/temporal-data.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    allData = {
-                        belonging: data.belonging || {},
-                        denominations: data.denominations || {}
-                    };
-                    console.log('Loaded temporal data from JSON file');
-                } else {
-                    throw new Error('temporal-data.json not found');
-                }
-            } catch (error) {
-                console.warn('Could not load temporal-data.json, using sample data:', error.message);
-                // Fallback to sample data for demonstration
-                await loadSampleData();
-            }
-            
-            isDataLoaded = true;
-        }
-
-        async function loadSampleData() {
-            // Sample data for demonstration - replace with your actual data
-            const sampleData = {
-                belonging: {},
-                denominations: {}
-            };
-
-            // Generate sample belonging data for all years
-            YEARS.forEach(year => {
-                sampleData.belonging[year] = [
-                    { country: 'CZ - Czechia', Yes: 35 + Math.random() * 10, No: 65 - Math.random() * 10 },
-                    { country: 'EE - Estonia', Yes: 40 + Math.random() * 10, No: 60 - Math.random() * 10 },
-                    { country: 'NL - Netherlands', Yes: 45 + Math.random() * 10, No: 55 - Math.random() * 10 },
-                    { country: 'SE - Sweden', Yes: 50 + Math.random() * 10, No: 50 - Math.random() * 10 },
-                    { country: 'IS - Iceland', Yes: 52 + Math.random() * 10, No: 48 - Math.random() * 10 },
-                    { country: 'LV - Latvia', Yes: 55 + Math.random() * 10, No: 45 - Math.random() * 10 },
-                    { country: 'GB - United Kingdom', Yes: 58 + Math.random() * 10, No: 42 - Math.random() * 10 },
-                    { country: 'NO - Norway', Yes: 60 + Math.random() * 10, No: 40 - Math.random() * 10 },
-                    { country: 'BE - Belgium', Yes: 62 + Math.random() * 10, No: 38 - Math.random() * 10 },
-                    { country: 'HU - Hungary', Yes: 65 + Math.random() * 10, No: 35 - Math.random() * 10 },
-                    { country: 'FR - France', Yes: 68 + Math.random() * 10, No: 32 - Math.random() * 10 },
-                    { country: 'FI - Finland', Yes: 70 + Math.random() * 10, No: 30 - Math.random() * 10 },
-                    { country: 'SI - Slovenia', Yes: 72 + Math.random() * 10, No: 28 - Math.random() * 10 },
-                    { country: 'DE - Germany', Yes: 75 + Math.random() * 10, No: 25 - Math.random() * 10 },
-                    { country: 'CH - Switzerland', Yes: 78 + Math.random() * 10, No: 22 - Math.random() * 10 },
-                    { country: 'DK - Denmark', Yes: 80 + Math.random() * 10, No: 20 - Math.random() * 10 },
-                    { country: 'ES - Spain', Yes: 82 + Math.random() * 10, No: 18 - Math.random() * 10 },
-                    { country: 'IE - Ireland', Yes: 85 + Math.random() * 10, No: 15 - Math.random() * 10 },
-                    { country: 'HR - Croatia', Yes: 88 + Math.random() * 10, No: 12 - Math.random() * 10 },
-                    { country: 'SK - Slovakia', Yes: 90 + Math.random() * 5, No: 10 - Math.random() * 5 },
-                    { country: 'PT - Portugal', Yes: 92 + Math.random() * 5, No: 8 - Math.random() * 5 }
-                ];
-            });
-
-            allData = sampleData;
-            console.log('Generated sample temporal data');
-        }
-
-        function setupControls() {
-            // View selector
-            d3.selectAll('input[name="view"]').on('change', function() {
-                currentView = this.value;
-                updateVisualization();
-            });
-
-            // Year slider
-            const slider = document.getElementById('year-slider');
-            const yearDisplay = document.getElementById('year-display');
-            
-            slider.addEventListener('input', function() {
-                currentYearIndex = parseInt(this.value);
-                yearDisplay.textContent = YEARS[currentYearIndex];
-                updateVisualization();
-            });
-        }
-
-        function updateVisualization() {
-            if (!isDataLoaded) return;
-            
-            const currentYear = YEARS[currentYearIndex];
-            const data = allData[currentView]?.[currentYear];
-            
-            if (!data) {
-                console.error('No data found for', currentView, currentYear);
-                return;
-            }
-
-            // Update chart title
-            const titles = {
-                belonging: `Religious Belonging in European Countries (${currentYear})`,
-                denominations: `Religious Denominations in European Countries (${currentYear})`
-            };
-            
-            document.getElementById('chart-title').textContent = titles[currentView];
-
-            if (currentView === 'belonging') {
-                drawBelongingChart(data, currentYear);
-            } else {
-                drawDenominationsChart(data, currentYear);
-            }
-        }
-
-        function drawBelongingChart(data, year) {
-            const svg = d3.select('#chart-svg');
-            svg.selectAll('*').remove();
-
-            const margin = { top: 20, right: 30, bottom: 40, left: 150 };
-            const width = svg.node().getBoundingClientRect().width - margin.left - margin.right;
-            const height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
-
-            const g = svg.append('g')
-                .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-            // Sort data by Yes percentage (descending)
-            const sortedData = [...data].sort((a, b) => b.Yes - a.Yes);
-
-            // Scales
-            const xScale = d3.scaleLinear()
-                .domain([0, 100])
-                .range([0, width]);
-
-            const yScale = d3.scaleBand()
-                .domain(sortedData.map(d => d.country))
-                .range([0, height])
-                .padding(0.1);
-
-            // Create stacked data
-            const stackedData = sortedData.map(d => ({
-                country: d.country,
-                Yes: Math.max(0, d.Yes),
-                No: Math.max(0, d.No)
-            }));
-
-            // Draw bars with animation
-            const countries = g.selectAll('.country-group')
-                .data(stackedData)
-                .enter().append('g')
-                .attr('class', 'country-group')
-                .attr('transform', d => `translate(0, ${yScale(d.country)})`);
-
-            // Yes bars (left side)
-            countries.append('rect')
-                .attr('class', 'bar yes-bar')
-                .attr('x', 0)
-                .attr('width', 0) // Start with 0 width for animation
-                .attr('height', yScale.bandwidth())
-                .attr('fill', COLORS.belonging.Yes)
-                .on('mouseover', (event, d) => showTooltip(event, d, 'Yes'))
-                .on('mouseout', hideTooltip)
-                .transition()
-                .duration(800)
-                .delay((d, i) => i * 50)
-                .attr('width', d => xScale(d.Yes));
-
-            // No bars (right side)
-            countries.append('rect')
-                .attr('class', 'bar no-bar')
-                .attr('x', d => xScale(d.Yes))
-                .attr('width', 0) // Start with 0 width for animation
-                .attr('height', yScale.bandwidth())
-                .attr('fill', COLORS.belonging.No)
-                .on('mouseover', (event, d) => showTooltip(event, d, 'No'))
-                .on('mouseout', hideTooltip)
-                .transition()
-                .duration(800)
-                .delay((d, i) => i * 50 + 200)
-                .attr('width', d => xScale(d.No));
-
-            // Country labels
-            g.selectAll('.country-label')
-                .data(stackedData)
-                .enter().append('text')
-                .attr('class', 'country-label bar-label')
-                .attr('x', -10)
-                .attr('y', d => yScale(d.country) + yScale.bandwidth() / 2)
-                .attr('dy', '0.35em')
-                .attr('text-anchor', 'end')
-                .text(d => d.country)
-                .style('opacity', 0)
-                .transition()
-                .duration(600)
-                .delay((d, i) => i * 30)
-                .style('opacity', 1);
-
-            // Percentage labels on bars
-            countries.append('text')
-                .attr('class', 'percentage-label')
-                .attr('x', d => xScale(d.Yes) / 2)
-                .attr('y', yScale.bandwidth() / 2)
-                .attr('dy', '0.35em')
-                .attr('text-anchor', 'middle')
-                .style('fill', 'white')
-                .style('font-weight', 'bold')
-                .style('font-size', '11px')
-                .style('opacity', 0)
-                .text(d => d.Yes > 10 ? `${d.Yes.toFixed(1)}%` : '')
-                .transition()
-                .duration(600)
-                .delay((d, i) => i * 50 + 400)
-                .style('opacity', 1);
-
-            countries.append('text')
-                .attr('class', 'percentage-label')
-                .attr('x', d => xScale(d.Yes) + xScale(d.No) / 2)
-                .attr('y', yScale.bandwidth() / 2)
-                .attr('dy', '0.35em')
-                .attr('text-anchor', 'middle')
-                .style('fill', 'white')
-                .style('font-weight', 'bold')
-                .style('font-size', '11px')
-                .style('opacity', 0)
-                .text(d => d.No > 10 ? `${d.No.toFixed(1)}%` : '')
-                .transition()
-                .duration(600)
-                .delay((d, i) => i * 50 + 600)
-                .style('opacity', 1);
-
-            // Axes
-            g.append('g')
-                .attr('transform', `translate(0, ${height})`)
-                .call(d3.axisBottom(xScale).tickFormat(d => d + '%'))
-                .selectAll('text')
-                .attr('class', 'axis-label');
-
-            // Add legend to corner
-            addCornerLegend('belonging', year);
-
-            // Add year indicator
-            g.append('text')
-                .attr('x', width)
-                .attr('y', -5)
-                .attr('text-anchor', 'end')
-                .style('font-size', '14px')
-                .style('font-weight', 'bold')
-                .style('fill', '#667eea')
-                .style('opacity', 0)
-                .text(`Data for ${year}`)
-                .transition()
-                .duration(600)
-                .delay(1000)
-                .style('opacity', 0.7);
-        }
-
-        function drawDenominationsChart(data, year) {
-            const svg = d3.select('#chart-svg');
-            svg.selectAll('*').remove();
-
-            if (!data || data.length === 0) {
-                svg.append('text')
-                    .attr('x', '50%')
-                    .attr('y', '50%')
-                    .attr('text-anchor', 'middle')
-                    .attr('dominant-baseline', 'middle')
-                    .style('font-size', '18px')
-                    .style('fill', '#667eea')
-                    .text('Denominations data not available for this year');
-                return;
-            }
-
-            const margin = { top: 20, right: 30, bottom: 60, left: 150 };
-            const width = svg.node().getBoundingClientRect().width - margin.left - margin.right;
-            const height = svg.node().getBoundingClientRect().height - margin.top - margin.bottom;
-
-            const g = svg.append('g')
-                .attr('transform', `translate(${margin.left}, ${margin.top})`);
-
-            // Process data for stacked bar chart
-            const denominations = ['Roman Catholic', 'Protestant', 'Eastern Orthodox', 
-                                 'Other Christian denomination', 'Jewish', 'Islam', 
-                                 'Eastern religions', 'Other Non-Christian religions'];
-
-            // Sort countries by total Christian population (Catholic + Protestant + Orthodox)
-            const processedData = data.map(d => {
-                const total = denominations.reduce((sum, denom) => sum + (d[denom] || 0), 0);
-                const christianTotal = (d['Roman Catholic'] || 0) + (d['Protestant'] || 0) + (d['Eastern Orthodox'] || 0);
-                return { ...d, total, christianTotal };
-            }).sort((a, b) => b.christianTotal - a.christianTotal);
-
-            // Scales
-            const xScale = d3.scaleLinear()
-                .domain([0, 100])
-                .range([0, width]);
-
-            const yScale = d3.scaleBand()
-                .domain(processedData.map(d => d.country))
-                .range([0, height])
-                .padding(0.1);
-
-            // Stack generator
-            const stack = d3.stack()
-                .keys(denominations)
-                .value((d, key) => d[key] || 0);
-
-            const stackedData = stack(processedData);
-
-            // Draw stacked bars
-            const series = g.selectAll('.series')
-                .data(stackedData)
-                .enter().append('g')
-                .attr('class', 'series')
-                .attr('fill', d => COLORS.denominations[d.key] || '#999');
-
-            series.selectAll('rect')
-                .data(d => d)
-                .enter().append('rect')
-                .attr('class', 'bar')
-                .attr('x', d => xScale(d[0]))
-                .attr('y', d => yScale(d.data.country))
-                .attr('width', 0) // Start with 0 width for animation
-                .attr('height', yScale.bandwidth())
-                .on('mouseover', (event, d) => {
-                    const key = d3.select(event.currentTarget.parentNode).datum().key;
-                    showDenominationTooltip(event, d.data, key, d[1] - d[0]);
-                })
-                .on('mouseout', hideTooltip)
-                .transition()
-                .duration(800)
-                .delay((d, i) => i * 30)
-                .attr('width', d => xScale(d[1] - d[0]));
-
-            // Country labels
-            g.selectAll('.country-label')
-                .data(processedData)
-                .enter().append('text')
-                .attr('class', 'country-label bar-label')
-                .attr('x', -10)
-                .attr('y', d => yScale(d.country) + yScale.bandwidth() / 2)
-                .attr('dy', '0.35em')
-                .attr('text-anchor', 'end')
-                .text(d => d.country)
-                .style('opacity', 0)
-                .transition()
-                .duration(600)
-                .delay((d, i) => i * 30)
-                .style('opacity', 1);
-
-            // Axes
-            g.append('g')
-                .attr('transform', `translate(0, ${height})`)
-                .call(d3.axisBottom(xScale).tickFormat(d => d + '%'))
-                .selectAll('text')
-                .attr('class', 'axis-label');
-
-            // Add legend to corner
-            addCornerLegend('denominations', year);
-
-            // Add year indicator
-            g.append('text')
-                .attr('x', width)
-                .attr('y', -5)
-                .attr('text-anchor', 'end')
-                .style('font-size', '14px')
-                .style('font-weight', 'bold')
-                .style('fill', '#667eea')
-                .style('opacity', 0)
-                .text(`Data for ${year}`)
-                .transition()
-                .duration(600)
-                .delay(1000)
-                .style('opacity', 0.7);
-        }
-
-        function showTooltip(event, data, type) {
-            const tooltip = d3.select('#tooltip');
-            const value = type === 'Yes' ? data.Yes : data.No;
-            
-            tooltip.html(`
-                <strong>${data.country}</strong><br>
-                <strong>${type}:</strong> ${value.toFixed(1)}%<br>
-                <em>Religious belonging survey</em>
-            `)
-            .style('left', (event.pageX + 10) + 'px')
-            .style('top', (event.pageY - 10) + 'px')
-            .classed('visible', true);
-        }
-
-        function showDenominationTooltip(event, data, denomination, percentage) {
-            const tooltip = d3.select('#tooltip');
-            
-            tooltip.html(`
-                <strong>${data.country}</strong><br>
-                <strong>${denomination}:</strong> ${percentage.toFixed(1)}%<br>
-                <em>Religious denomination survey</em>
-            `)
-            .style('left', (event.pageX + 10) + 'px')
-            .style('top', (event.pageY - 10) + 'px')
-            .classed('visible', true);
-        }
-
-        function hideTooltip() {
-            d3.select('#tooltip').classed('visible', false);
-        }
-
-        function addCornerLegend(viewType, year) {
-            // Remove existing legend
-            d3.select('.corner-legend').remove();
-            
-            const chartContainer = document.querySelector('.chart-area');
-            const legend = document.createElement('div');
-            legend.className = 'corner-legend';
-            
-            let legendHTML = '<div class="legend-title">Legend</div>';
-            
-            if (viewType === 'belonging') {
-                const belongingLegend = [
-                    { label: 'Yes - Belongs to religion', color: COLORS.belonging.Yes },
-                    { label: 'No - Does not belong', color: COLORS.belonging.No }
-                ];
-                
-                belongingLegend.forEach(item => {
-                    legendHTML += `
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: ${item.color}"></div>
-                            <span class="legend-label">${item.label}</span>
-                        </div>
-                    `;
-                });
-            } else if (viewType === 'denominations') {
-                const denominationsLegend = [
-                    'Roman Catholic', 'Protestant', 'Eastern Orthodox', 
-                    'Other Christian denomination', 'Jewish', 'Islam', 
-                    'Eastern religions', 'Other Non-Christian religions'
-                ].filter(d => COLORS.denominations[d]);
-                
-                denominationsLegend.forEach(item => {
-                    legendHTML += `
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: ${COLORS.denominations[item]}"></div>
-                            <span class="legend-label">${item}</span>
-                        </div>
-                    `;
-                });
-            }
-            
-            legend.innerHTML = legendHTML;
-            chartContainer.appendChild(legend);
-            
-            // Add fade-in animation
-            legend.style.opacity = '0';
-            legend.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-                legend.style.transition = 'all 0.3s ease';
-                legend.style.opacity = '1';
-                legend.style.transform = 'translateY(0)';
-            }, 100);
-        }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>European Religious Trends Over Time</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .container {
-            height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 20px;
-            flex: 1;
-            min-height: 0;
-        }
-
-        .chart-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .controls-panel {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            height: fit-content;
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
-        }
-
-        .controls-section {
-            margin-bottom: 25px;
-        }
-
-        .controls-section h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 5px;
-        }
-
-        .view-option {
-            display: block;
-            margin-bottom: 8px;
-            cursor: pointer;
-            padding: 6px 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background: rgba(102, 126, 234, 0.05);
-            font-size: 0.9rem;
-        }
-
-        .view-option:hover {
-            background: rgba(102, 126, 234, 0.15);
-            transform: translateX(5px);
-        }
-
-        .view-option input {
-            margin-right: 8px;
-        }
-
-        .timeline-container {
+        .legend-container {
             margin-top: 20px;
             padding: 20px;
             background: rgba(255, 255, 255, 0.9);
@@ -987,12 +125,33 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .timeline-title {
+        .legend-title {
             font-weight: bold;
             margin-bottom: 15px;
             color: #667eea;
             font-size: 1rem;
             text-align: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-label {
+            color: #333;
+            line-height: 1.3;
         }
 
         .year-slider-container {
@@ -1061,45 +220,7 @@
         }
 
         .corner-legend {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            z-index: 10;
-            max-width: 250px;
-        }
-
-        .legend-title {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-        }
-
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-
-        .legend-label {
-            color: #333;
-            line-height: 1.2;
+            display: none; /* Hide corner legend - we'll use sidebar legend instead */
         }
 
         .chart-svg {
@@ -1231,6 +352,11 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="legend-container" id="legend-container">
+                    <div class="legend-title">🎨 Legend</div>
+                    <div id="legend-content"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -1350,6 +476,7 @@
             d3.selectAll('input[name="view"]').on('change', function() {
                 currentView = this.value;
                 updateVisualization();
+                updateSidebarLegend(currentView); // Update legend when view changes
             });
 
             // Year slider
@@ -1511,8 +638,8 @@
                 .selectAll('text')
                 .attr('class', 'axis-label');
 
-            // Add legend to corner
-            addCornerLegend('belonging', year);
+            // Add legend to sidebar
+            updateSidebarLegend('belonging');
 
             // Add year indicator
             g.append('text')
@@ -1630,8 +757,8 @@
                 .selectAll('text')
                 .attr('class', 'axis-label');
 
-            // Add legend to corner
-            addCornerLegend('denominations', year);
+            // Add legend to sidebar
+            updateSidebarLegend('denominations');
 
             // Add year indicator
             g.append('text')
@@ -1680,15 +807,9 @@
             d3.select('#tooltip').classed('visible', false);
         }
 
-        function addCornerLegend(viewType, year) {
-            // Remove existing legend
-            d3.select('.corner-legend').remove();
-            
-            const chartContainer = document.querySelector('.chart-area');
-            const legend = document.createElement('div');
-            legend.className = 'corner-legend';
-            
-            let legendHTML = '<div class="legend-title">Legend</div>';
+        function updateSidebarLegend(viewType) {
+            const legendContent = document.getElementById('legend-content');
+            legendContent.innerHTML = '';
             
             if (viewType === 'belonging') {
                 const belongingLegend = [
@@ -1697,12 +818,13 @@
                 ];
                 
                 belongingLegend.forEach(item => {
-                    legendHTML += `
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: ${item.color}"></div>
-                            <span class="legend-label">${item.label}</span>
-                        </div>
+                    const legendItem = document.createElement('div');
+                    legendItem.className = 'legend-item';
+                    legendItem.innerHTML = `
+                        <div class="legend-color" style="background-color: ${item.color}"></div>
+                        <span class="legend-label">${item.label}</span>
                     `;
+                    legendContent.appendChild(legendItem);
                 });
             } else if (viewType === 'denominations') {
                 const denominationsLegend = [
@@ -1712,26 +834,20 @@
                 ].filter(d => COLORS.denominations[d]);
                 
                 denominationsLegend.forEach(item => {
-                    legendHTML += `
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: ${COLORS.denominations[item]}"></div>
-                            <span class="legend-label">${item}</span>
-                        </div>
+                    const legendItem = document.createElement('div');
+                    legendItem.className = 'legend-item';
+                    legendItem.innerHTML = `
+                        <div class="legend-color" style="background-color: ${COLORS.denominations[item]}"></div>
+                        <span class="legend-label">${item}</span>
                     `;
+                    legendContent.appendChild(legendItem);
                 });
             }
-            
-            legend.innerHTML = legendHTML;
-            chartContainer.appendChild(legend);
-            
-            // Add fade-in animation
-            legend.style.opacity = '0';
-            legend.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-                legend.style.transition = 'all 0.3s ease';
-                legend.style.opacity = '1';
-                legend.style.transform = 'translateY(0)';
-            }, 100);
+        }
+
+        // Remove the old corner legend function since we're not using it anymore
+        function addCornerLegend(viewType, year) {
+            // This function is no longer used - legend is now in sidebar
         }
 
         // Initialize when DOM is loaded
