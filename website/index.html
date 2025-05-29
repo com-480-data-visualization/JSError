@@ -20,7 +20,6 @@
     }
     .section {
       height: 100%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
     iframe {
       width: 100%;
@@ -77,37 +76,69 @@
     .fp-right li a.active span {
       background: white !important;
     }
+
+    /* Special styling for temporal section */
+    #section5 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Add subtle animation for section transitions */
+    .section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
   </style>
 </head>
 <body>
   <div id="fullpage">
+    <!-- Home Section -->
     <div class="section" id="section1">
       <iframe src="home.html"></iframe>
     </div>
+    
+    <!-- About Section -->
     <div class="section" id="section2">
       <iframe src="about.html"></iframe>
     </div>
+    
+    <!-- Data Overview Section -->
     <div class="section" id="section3">
       <iframe src="data-overview.html"></iframe>
     </div>
+    
+    <!-- Interactive Map Section -->
     <div class="section" id="section4">
       <iframe src="interactive-map.html"></iframe>
     </div>
+    
+    <!-- NEW: Temporal Trends Section -->
+    <div class="section" id="section5">
+      <iframe src="temporal-visualization.html"></iframe>
+    </div>
   </div>
+  
   <footer>
     <div class="footer-content">
       <a href="https://github.com/your-repo" target="_blank">
         <i class="fab fa-github"></i>
       </a>
       <span>Team JSError</span>
+      <span>European Data Explorer v2.0</span>
     </div>
   </footer>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
   <script>
     new fullpage('#fullpage', {
       navigation: true,
       navigationPosition: 'right',
-      navigationTooltips: ['Home', 'About', 'Data Overview', 'Interactive Map'],
+      navigationTooltips: [
+        'Home', 
+        'About', 
+        'Data Overview', 
+        'Interactive Map', 
+        'Temporal Trends'  // New section
+      ],
       showActiveTooltip: true,
       scrollingSpeed: 700,
       autoScrolling: true,
@@ -117,6 +148,63 @@
       responsiveWidth: 0,
       responsiveHeight: 0,
       responsiveSlides: false,
+      
+      // Enhanced navigation options
+      keyboardScrolling: true,
+      animateAnchor: true,
+      recordHistory: true,
+      
+      // Callbacks for smooth transitions
+      onLeave: function(origin, destination, direction) {
+        // Add any custom animations when leaving sections
+        console.log('Navigating from section', origin.index, 'to section', destination.index);
+      },
+      
+      afterLoad: function(origin, destination, direction) {
+        // Trigger any section-specific initializations
+        if (destination.index === 4) { // Temporal trends section (0-indexed)
+          console.log('Loaded temporal trends section');
+        }
+      }
+    });
+
+    // Add keyboard shortcuts for better navigation
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'h':
+        case 'H':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(1); // Home
+          }
+          break;
+        case 'm':
+        case 'M':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(4); // Interactive Map
+          }
+          break;
+        case 't':
+        case 'T':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(5); // Temporal Trends
+          }
+          break;
+      }
+    });
+
+    // Add smooth loading indicator
+    window.addEventListener('load', function() {
+      console.log('European Data Explorer loaded successfully');
+      
+      // Optional: Add a brief loading animation
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
     });
   </script>
 </body>
