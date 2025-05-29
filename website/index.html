@@ -77,8 +77,8 @@
       background: white !important;
     }
 
-    /* Special styling for temporal section */
-    #section5 {
+    /* Special styling for sections */
+    #section5, #section6 {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
@@ -111,9 +111,14 @@
       <iframe src="interactive-map.html"></iframe>
     </div>
     
-    <!-- NEW: Temporal Trends Section -->
+    <!-- Temporal Trends Section -->
     <div class="section" id="section5">
       <iframe src="temporal-visualization.html"></iframe>
+    </div>
+    
+    <!-- NEW: Religious Denominations Map Section -->
+    <div class="section" id="section6">
+      <iframe src="religious-denominations-map.html"></iframe>
     </div>
   </div>
   
@@ -123,7 +128,7 @@
         <i class="fab fa-github"></i>
       </a>
       <span>Team JSError</span>
-      <span>European Data Explorer v2.0</span>
+      <span>European Data Explorer v3.0</span>
     </div>
   </footer>
 
@@ -137,7 +142,8 @@
         'About', 
         'Data Overview', 
         'Interactive Map', 
-        'Temporal Trends'  // New section
+        'Temporal Trends',
+        'Religious Denominations'  // New section
       ],
       showActiveTooltip: true,
       scrollingSpeed: 700,
@@ -156,7 +162,6 @@
       
       // Callbacks for smooth transitions
       onLeave: function(origin, destination, direction) {
-        // Add any custom animations when leaving sections
         console.log('Navigating from section', origin.index, 'to section', destination.index);
       },
       
@@ -164,6 +169,9 @@
         // Trigger any section-specific initializations
         if (destination.index === 4) { // Temporal trends section (0-indexed)
           console.log('Loaded temporal trends section');
+        }
+        if (destination.index === 5) { // Religious denominations section (0-indexed)
+          console.log('Loaded religious denominations section');
         }
       }
     });
@@ -190,6 +198,13 @@
           if (e.ctrlKey || e.metaKey) {
             e.preventDefault();
             fullpage_api.moveTo(5); // Temporal Trends
+          }
+          break;
+        case 'r':
+        case 'R':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(6); // Religious Denominations
           }
           break;
       }
