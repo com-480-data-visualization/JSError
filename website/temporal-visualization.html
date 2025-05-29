@@ -486,26 +486,51 @@
                     { country: 'SK - Slovakia', Yes: 90 + Math.random() * 5, No: 10 - Math.random() * 5 },
                     { country: 'PT - Portugal', Yes: 92 + Math.random() * 5, No: 8 - Math.random() * 5 }
                 ];
+
+                // Generate sample denominations data
+                sampleData.denominations[year] = [
+                    { country: 'CZ - Czechia', 'Roman Catholic': 25 + Math.random() * 5, 'Protestant': 5 + Math.random() * 3, 'Eastern Orthodox': 1, 'Other Christian denomination': 4, 'Jewish': 0.1, 'Islam': 0.2, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1 },
+                    { country: 'EE - Estonia', 'Roman Catholic': 10 + Math.random() * 3, 'Protestant': 30 + Math.random() * 5, 'Eastern Orthodox': 15 + Math.random() * 3, 'Other Christian denomination': 5, 'Jewish': 0.1, 'Islam': 0.3, 'Eastern religions': 0.2, 'Other Non-Christian religions': 1.5 },
+                    { country: 'NL - Netherlands', 'Roman Catholic': 35 + Math.random() * 5, 'Protestant': 25 + Math.random() * 5, 'Eastern Orthodox': 2, 'Other Christian denomination': 8, 'Jewish': 0.3, 'Islam': 4 + Math.random() * 2, 'Eastern religions': 1, 'Other Non-Christian religions': 2 },
+                    { country: 'SE - Sweden', 'Roman Catholic': 5 + Math.random() * 2, 'Protestant': 45 + Math.random() * 5, 'Eastern Orthodox': 3, 'Other Christian denomination': 7, 'Jewish': 0.2, 'Islam': 3 + Math.random() * 2, 'Eastern religions': 0.8, 'Other Non-Christian religions': 1.5 },
+                    { country: 'IS - Iceland', 'Roman Catholic': 8 + Math.random() * 2, 'Protestant': 70 + Math.random() * 5, 'Eastern Orthodox': 1, 'Other Christian denomination': 5, 'Jewish': 0.1, 'Islam': 0.5, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1 },
+                    { country: 'LV - Latvia', 'Roman Catholic': 25 + Math.random() * 3, 'Protestant': 20 + Math.random() * 3, 'Eastern Orthodox': 30 + Math.random() * 5, 'Other Christian denomination': 5, 'Jewish': 0.2, 'Islam': 0.3, 'Eastern religions': 0.2, 'Other Non-Christian religions': 1.5 },
+                    { country: 'GB - United Kingdom', 'Roman Catholic': 15 + Math.random() * 3, 'Protestant': 40 + Math.random() * 5, 'Eastern Orthodox': 2, 'Other Christian denomination': 12, 'Jewish': 0.5, 'Islam': 5 + Math.random() * 2, 'Eastern religions': 1.5, 'Other Non-Christian religions': 2 },
+                    { country: 'NO - Norway', 'Roman Catholic': 5 + Math.random() * 2, 'Protestant': 75 + Math.random() * 5, 'Eastern Orthodox': 1, 'Other Christian denomination': 8, 'Jewish': 0.1, 'Islam': 2 + Math.random() * 1, 'Eastern religions': 0.5, 'Other Non-Christian religions': 1.5 },
+                    { country: 'BE - Belgium', 'Roman Catholic': 60 + Math.random() * 5, 'Protestant': 5 + Math.random() * 2, 'Eastern Orthodox': 2, 'Other Christian denomination': 8, 'Jewish': 0.4, 'Islam': 6 + Math.random() * 2, 'Eastern religions': 0.8, 'Other Non-Christian religions': 2 },
+                    { country: 'HU - Hungary', 'Roman Catholic': 55 + Math.random() * 5, 'Protestant': 15 + Math.random() * 3, 'Eastern Orthodox': 3, 'Other Christian denomination': 7, 'Jewish': 0.3, 'Islam': 0.2, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1.5 },
+                    { country: 'FR - France', 'Roman Catholic': 50 + Math.random() * 5, 'Protestant': 8 + Math.random() * 2, 'Eastern Orthodox': 2, 'Other Christian denomination': 10, 'Jewish': 0.8, 'Islam': 8 + Math.random() * 3, 'Eastern religions': 1, 'Other Non-Christian religions': 2.5 },
+                    { country: 'FI - Finland', 'Roman Catholic': 3 + Math.random() * 1, 'Protestant': 80 + Math.random() * 3, 'Eastern Orthodox': 12 + Math.random() * 2, 'Other Christian denomination': 5, 'Jewish': 0.1, 'Islam': 0.8, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1 },
+                    { country: 'SI - Slovenia', 'Roman Catholic': 75 + Math.random() * 5, 'Protestant': 3 + Math.random() * 1, 'Eastern Orthodox': 5 + Math.random() * 2, 'Other Christian denomination': 6, 'Jewish': 0.1, 'Islam': 2.5 + Math.random() * 1, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1.5 },
+                    { country: 'DE - Germany', 'Roman Catholic': 35 + Math.random() * 3, 'Protestant': 32 + Math.random() * 3, 'Eastern Orthodox': 3, 'Other Christian denomination': 8, 'Jewish': 0.2, 'Islam': 5 + Math.random() * 2, 'Eastern religions': 0.8, 'Other Non-Christian religions': 2 },
+                    { country: 'CH - Switzerland', 'Roman Catholic': 40 + Math.random() * 3, 'Protestant': 30 + Math.random() * 3, 'Eastern Orthodox': 3, 'Other Christian denomination': 8, 'Jewish': 0.3, 'Islam': 5 + Math.random() * 2, 'Eastern religions': 1, 'Other Non-Christian religions': 2.5 },
+                    { country: 'DK - Denmark', 'Roman Catholic': 5 + Math.random() * 2, 'Protestant': 78 + Math.random() * 3, 'Eastern Orthodox': 2, 'Other Christian denomination': 6, 'Jewish': 0.2, 'Islam': 4 + Math.random() * 2, 'Eastern religions': 0.5, 'Other Non-Christian religions': 1.5 },
+                    { country: 'ES - Spain', 'Roman Catholic': 78 + Math.random() * 5, 'Protestant': 2 + Math.random() * 1, 'Eastern Orthodox': 1, 'Other Christian denomination': 4, 'Jewish': 0.1, 'Islam': 2.5 + Math.random() * 1, 'Eastern religions': 0.3, 'Other Non-Christian religions': 1 },
+                    { country: 'IE - Ireland', 'Roman Catholic': 85 + Math.random() * 3, 'Protestant': 5 + Math.random() * 2, 'Eastern Orthodox': 1, 'Other Christian denomination': 6, 'Jewish': 0.1, 'Islam': 1.5 + Math.random() * 1, 'Eastern religions': 0.5, 'Other Non-Christian religions': 1.5 },
+                    { country: 'HR - Croatia', 'Roman Catholic': 88 + Math.random() * 3, 'Protestant': 1, 'Eastern Orthodox': 8 + Math.random() * 2, 'Other Christian denomination': 2, 'Jewish': 0.1, 'Islam': 1.5, 'Eastern religions': 0.2, 'Other Non-Christian religions': 0.8 },
+                    { country: 'SK - Slovakia', 'Roman Catholic': 78 + Math.random() * 3, 'Protestant': 8 + Math.random() * 2, 'Eastern Orthodox': 5 + Math.random() * 1, 'Other Christian denomination': 5, 'Jewish': 0.1, 'Islam': 0.2, 'Eastern religions': 0.1, 'Other Non-Christian religions': 0.8 },
+                    { country: 'PT - Portugal', 'Roman Catholic': 88 + Math.random() * 3, 'Protestant': 3 + Math.random() * 1, 'Eastern Orthodox': 1, 'Other Christian denomination': 4, 'Jewish': 0.1, 'Islam': 0.5, 'Eastern religions': 0.2, 'Other Non-Christian religions': 1 }
+                ];
             });
 
             allData = sampleData;
-            console.log('Generated sample temporal data');
+            console.log('Generated sample temporal data with denominations');
         }
 
         function setupControls() {
             // View selector
             d3.selectAll('input[name="view"]').on('change', function() {
                 currentView = this.value;
+                console.log('View changed to:', currentView);
                 toggleReligionFilter();
                 updateVisualization();
-                updateSidebarLegend(currentView); // Update legend when view changes
             });
 
             // Religion filter selector
             d3.selectAll('input[name="religion-filter"]').on('change', function() {
                 currentReligionFilter = this.value;
+                console.log('Religion filter changed to:', currentReligionFilter);
                 updateVisualization();
-                updateSidebarLegend(currentView); // Update legend when filter changes
             });
 
             // Year slider
@@ -552,8 +577,10 @@
 
             if (currentView === 'belonging') {
                 drawBelongingChart(data, currentYear);
+                updateSidebarLegend('belonging');
             } else {
                 drawDenominationsChart(data, currentYear);
+                updateSidebarLegend('denominations');
             }
         }
 
@@ -798,8 +825,8 @@
                 .selectAll('text')
                 .attr('class', 'axis-label');
 
-            // Add legend to sidebar
-            updateSidebarLegend('denominations');
+            // Remove the legend call from here since it's called in updateVisualization
+            // updateSidebarLegend('denominations');
 
             // Add year indicator
             g.append('text')
