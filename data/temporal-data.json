@@ -1,0 +1,4655 @@
+{
+  "belonging": {
+    "2002": [
+      {
+        "country": "Czechia",
+        "Yes": 27.9,
+        "No": 72.2
+      },
+      {
+        "country": "Sweden",
+        "Yes": 29.2,
+        "No": 70.8
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 42.6,
+        "No": 57.5
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 49,
+        "No": 51
+      },
+      {
+        "country": "France",
+        "Yes": 49.2,
+        "No": 50.8
+      },
+      {
+        "country": "Belgium",
+        "Yes": 49.8,
+        "No": 50.2
+      },
+      {
+        "country": "Norway",
+        "Yes": 50.3,
+        "No": 49.7
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 51,
+        "No": 48.9
+      },
+      {
+        "country": "Denmark",
+        "Yes": 56.4,
+        "No": 43.6
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 61.6,
+        "No": 38.4
+      },
+      {
+        "country": "Hungary",
+        "Yes": 62.1,
+        "No": 37.9
+      },
+      {
+        "country": "Germany",
+        "Yes": 62.9,
+        "No": 37.1
+      },
+      {
+        "country": "Austria",
+        "Yes": 71.1,
+        "No": 28.9
+      },
+      {
+        "country": "Luxembourg",
+        "Yes": 75.6,
+        "No": 24.4
+      },
+      {
+        "country": "Finland",
+        "Yes": 75.8,
+        "No": 24.2
+      },
+      {
+        "country": "Italy",
+        "Yes": 76.4,
+        "No": 23.6
+      },
+      {
+        "country": "Spain",
+        "Yes": 77.7,
+        "No": 22.2
+      },
+      {
+        "country": "Ireland",
+        "Yes": 81.1,
+        "No": 18.9
+      },
+      {
+        "country": "Portugal",
+        "Yes": 85,
+        "No": 15
+      },
+      {
+        "country": "Poland",
+        "Yes": 93.2,
+        "No": 6.8
+      },
+      {
+        "country": "Greece",
+        "Yes": 97.1,
+        "No": 2.9
+      }
+    ],
+    "2004": [
+      {
+        "country": "Estonia",
+        "Yes": 21.4,
+        "No": 78.7
+      },
+      {
+        "country": "Czechia",
+        "Yes": 26.6,
+        "No": 73.4
+      },
+      {
+        "country": "Sweden",
+        "Yes": 32.1,
+        "No": 67.9
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 44.7,
+        "No": 55.3
+      },
+      {
+        "country": "Iceland",
+        "Yes": 45.6,
+        "No": 54.4
+      },
+      {
+        "country": "Belgium",
+        "Yes": 46,
+        "No": 54
+      },
+      {
+        "country": "France",
+        "Yes": 48.9,
+        "No": 51.1
+      },
+      {
+        "country": "Norway",
+        "Yes": 50.1,
+        "No": 49.9
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 51,
+        "No": 49
+      },
+      {
+        "country": "Hungary",
+        "Yes": 53.8,
+        "No": 46.2
+      },
+      {
+        "country": "Denmark",
+        "Yes": 60.4,
+        "No": 39.5
+      },
+      {
+        "country": "Germany",
+        "Yes": 62,
+        "No": 38
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 69.3,
+        "No": 30.7
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 69.4,
+        "No": 30.6
+      },
+      {
+        "country": "Ukraine",
+        "Yes": 70.3,
+        "No": 29.7
+      },
+      {
+        "country": "Luxembourg",
+        "Yes": 70.5,
+        "No": 29.5
+      },
+      {
+        "country": "Spain",
+        "Yes": 73.7,
+        "No": 26.4
+      },
+      {
+        "country": "Austria",
+        "Yes": 74.2,
+        "No": 25.7
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 75.7,
+        "No": 24.3
+      },
+      {
+        "country": "Ireland",
+        "Yes": 86.2,
+        "No": 13.8
+      },
+      {
+        "country": "Portugal",
+        "Yes": 87.8,
+        "No": 12.2
+      },
+      {
+        "country": "Greece",
+        "Yes": 90,
+        "No": 10
+      },
+      {
+        "country": "Poland",
+        "Yes": 92.2,
+        "No": 7.8
+      },
+      {
+        "country": "Turkey",
+        "Yes": 96.9,
+        "No": 3.1
+      }
+    ],
+    "2006": [
+      {
+        "country": "Estonia",
+        "Yes": 27.6,
+        "No": 72.4
+      },
+      {
+        "country": "Sweden",
+        "Yes": 31.6,
+        "No": 68.3
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 41,
+        "No": 59
+      },
+      {
+        "country": "Belgium",
+        "Yes": 43.8,
+        "No": 56.2
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 46.3,
+        "No": 53.7
+      },
+      {
+        "country": "Russian Federation",
+        "Yes": 48.6,
+        "No": 51.4
+      },
+      {
+        "country": "France",
+        "Yes": 48.7,
+        "No": 51.3
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 49.8,
+        "No": 50.2
+      },
+      {
+        "country": "Norway",
+        "Yes": 55.1,
+        "No": 44.9
+      },
+      {
+        "country": "Hungary",
+        "Yes": 56.5,
+        "No": 43.5
+      },
+      {
+        "country": "Denmark",
+        "Yes": 60,
+        "No": 40
+      },
+      {
+        "country": "Finland",
+        "Yes": 60.9,
+        "No": 39
+      },
+      {
+        "country": "Germany",
+        "Yes": 64.2,
+        "No": 35.8
+      },
+      {
+        "country": "Spain",
+        "Yes": 69.5,
+        "No": 30.5
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 70.5,
+        "No": 29.5
+      },
+      {
+        "country": "Ukraine",
+        "Yes": 71.9,
+        "No": 28.1
+      },
+      {
+        "country": "Austria",
+        "Yes": 73,
+        "No": 27
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 75.7,
+        "No": 24.3
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 76,
+        "No": 24
+      },
+      {
+        "country": "Ireland",
+        "Yes": 79.3,
+        "No": 20.7
+      },
+      {
+        "country": "Portugal",
+        "Yes": 85.6,
+        "No": 14.4
+      },
+      {
+        "country": "Poland",
+        "Yes": 92.8,
+        "No": 7.2
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 98.6,
+        "No": 1.4
+      }
+    ],
+    "2008": [
+      {
+        "country": "Czechia",
+        "Yes": 23.3,
+        "No": 76.7
+      },
+      {
+        "country": "Estonia",
+        "Yes": 25.2,
+        "No": 74.8
+      },
+      {
+        "country": "Sweden",
+        "Yes": 31.1,
+        "No": 68.9
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 41.3,
+        "No": 58.7
+      },
+      {
+        "country": "Belgium",
+        "Yes": 44.2,
+        "No": 55.8
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 46.8,
+        "No": 53.2
+      },
+      {
+        "country": "Latvia",
+        "Yes": 47.4,
+        "No": 52.6
+      },
+      {
+        "country": "France",
+        "Yes": 47.6,
+        "No": 52.4
+      },
+      {
+        "country": "Russian Federation",
+        "Yes": 54,
+        "No": 46
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 55.2,
+        "No": 44.8
+      },
+      {
+        "country": "Denmark",
+        "Yes": 56,
+        "No": 44.1
+      },
+      {
+        "country": "Norway",
+        "Yes": 57.2,
+        "No": 42.8
+      },
+      {
+        "country": "Finland",
+        "Yes": 58.4,
+        "No": 41.6
+      },
+      {
+        "country": "Germany",
+        "Yes": 61,
+        "No": 39
+      },
+      {
+        "country": "Hungary",
+        "Yes": 62.4,
+        "No": 37.7
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 68.4,
+        "No": 31.6
+      },
+      {
+        "country": "Ukraine",
+        "Yes": 68.9,
+        "No": 31.1
+      },
+      {
+        "country": "Spain",
+        "Yes": 71.8,
+        "No": 28.2
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 75.6,
+        "No": 24.5
+      },
+      {
+        "country": "Ireland",
+        "Yes": 78.9,
+        "No": 21.1
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 79.3,
+        "No": 20.7
+      },
+      {
+        "country": "Croatia",
+        "Yes": 81.4,
+        "No": 18.6
+      },
+      {
+        "country": "Portugal",
+        "Yes": 86.3,
+        "No": 13.7
+      },
+      {
+        "country": "Greece",
+        "Yes": 91.9,
+        "No": 8.1
+      },
+      {
+        "country": "Poland",
+        "Yes": 92.5,
+        "No": 7.5
+      },
+      {
+        "country": "Romania",
+        "Yes": 93.6,
+        "No": 6.4
+      },
+      {
+        "country": "Turkey",
+        "Yes": 97.1,
+        "No": 2.9
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 99.4,
+        "No": 0.6
+      }
+    ],
+    "2010": [
+      {
+        "country": "Estonia",
+        "Yes": 18.5,
+        "No": 81.5
+      },
+      {
+        "country": "Czechia",
+        "Yes": 21.9,
+        "No": 78.1
+      },
+      {
+        "country": "Sweden",
+        "Yes": 29.2,
+        "No": 70.8
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 39.8,
+        "No": 60.2
+      },
+      {
+        "country": "Belgium",
+        "Yes": 42.2,
+        "No": 57.8
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 44.3,
+        "No": 55.7
+      },
+      {
+        "country": "France",
+        "Yes": 49.1,
+        "No": 50.9
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 54.1,
+        "No": 45.9
+      },
+      {
+        "country": "Denmark",
+        "Yes": 57.6,
+        "No": 42.4
+      },
+      {
+        "country": "Russian Federation",
+        "Yes": 57.6,
+        "No": 42.4
+      },
+      {
+        "country": "Hungary",
+        "Yes": 58.8,
+        "No": 41.2
+      },
+      {
+        "country": "Norway",
+        "Yes": 59.1,
+        "No": 41
+      },
+      {
+        "country": "Finland",
+        "Yes": 59.8,
+        "No": 40.2
+      },
+      {
+        "country": "Germany",
+        "Yes": 63.1,
+        "No": 36.9
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 67.8,
+        "No": 32.2
+      },
+      {
+        "country": "Spain",
+        "Yes": 68.5,
+        "No": 31.5
+      },
+      {
+        "country": "Ukraine",
+        "Yes": 70.6,
+        "No": 29.4
+      },
+      {
+        "country": "Ireland",
+        "Yes": 77.1,
+        "No": 22.9
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 78.4,
+        "No": 21.6
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 80,
+        "No": 20
+      },
+      {
+        "country": "Croatia",
+        "Yes": 80.7,
+        "No": 19.3
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 81.8,
+        "No": 18.2
+      },
+      {
+        "country": "Portugal",
+        "Yes": 84.7,
+        "No": 15.3
+      },
+      {
+        "country": "Poland",
+        "Yes": 91,
+        "No": 9
+      },
+      {
+        "country": "Greece",
+        "Yes": 92.2,
+        "No": 7.8
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 98.4,
+        "No": 1.6
+      }
+    ],
+    "2012": [
+      {
+        "country": "Czechia",
+        "Yes": 19.2,
+        "No": 80.8
+      },
+      {
+        "country": "Estonia",
+        "Yes": 28.6,
+        "No": 71.4
+      },
+      {
+        "country": "Sweden",
+        "Yes": 32.3,
+        "No": 67.7
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 36.3,
+        "No": 63.7
+      },
+      {
+        "country": "Belgium",
+        "Yes": 41.4,
+        "No": 58.6
+      },
+      {
+        "country": "Iceland",
+        "Yes": 42,
+        "No": 58
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 47.3,
+        "No": 52.7
+      },
+      {
+        "country": "Hungary",
+        "Yes": 47.8,
+        "No": 52.2
+      },
+      {
+        "country": "France",
+        "Yes": 48,
+        "No": 52
+      },
+      {
+        "country": "Finland",
+        "Yes": 49,
+        "No": 51
+      },
+      {
+        "country": "Norway",
+        "Yes": 50.8,
+        "No": 49.2
+      },
+      {
+        "country": "Denmark",
+        "Yes": 54.4,
+        "No": 45.5
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 55.4,
+        "No": 44.5
+      },
+      {
+        "country": "Russian Federation",
+        "Yes": 55.6,
+        "No": 44.4
+      },
+      {
+        "country": "Germany",
+        "Yes": 63.1,
+        "No": 36.9
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 63.8,
+        "No": 36.2
+      },
+      {
+        "country": "Spain",
+        "Yes": 64.1,
+        "No": 35.9
+      },
+      {
+        "country": "Ukraine",
+        "Yes": 70.6,
+        "No": 29.4
+      },
+      {
+        "country": "Italy",
+        "Yes": 75.8,
+        "No": 24.3
+      },
+      {
+        "country": "Albania",
+        "Yes": 76.4,
+        "No": 23.6
+      },
+      {
+        "country": "Ireland",
+        "Yes": 76.5,
+        "No": 23.5
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 77,
+        "No": 22.9
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 77.6,
+        "No": 22.4
+      },
+      {
+        "country": "Portugal",
+        "Yes": 82.8,
+        "No": 17.2
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 87.2,
+        "No": 12.8
+      },
+      {
+        "country": "Poland",
+        "Yes": 89.7,
+        "No": 10.3
+      },
+      {
+        "country": "Kosovo",
+        "Yes": 97.1,
+        "No": 2.9
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 97.8,
+        "No": 2.2
+      }
+    ],
+    "2014": [
+      {
+        "country": "Czechia",
+        "Yes": 17.5,
+        "No": 82.5
+      },
+      {
+        "country": "Sweden",
+        "Yes": 29.6,
+        "No": 70.4
+      },
+      {
+        "country": "Estonia",
+        "Yes": 33.6,
+        "No": 66.4
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 35.9,
+        "No": 64.1
+      },
+      {
+        "country": "Belgium",
+        "Yes": 41.2,
+        "No": 58.8
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 48.1,
+        "No": 51.9
+      },
+      {
+        "country": "Finland",
+        "Yes": 48.6,
+        "No": 51.4
+      },
+      {
+        "country": "Hungary",
+        "Yes": 48.6,
+        "No": 51.4
+      },
+      {
+        "country": "Norway",
+        "Yes": 49.2,
+        "No": 50.8
+      },
+      {
+        "country": "France",
+        "Yes": 49.4,
+        "No": 50.6
+      },
+      {
+        "country": "Denmark",
+        "Yes": 55.5,
+        "No": 44.5
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 56.3,
+        "No": 43.7
+      },
+      {
+        "country": "Germany",
+        "Yes": 60.9,
+        "No": 39.1
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 62.7,
+        "No": 37.3
+      },
+      {
+        "country": "Spain",
+        "Yes": 65.6,
+        "No": 34.4
+      },
+      {
+        "country": "Austria",
+        "Yes": 70.6,
+        "No": 29.4
+      },
+      {
+        "country": "Portugal",
+        "Yes": 72.5,
+        "No": 27.5
+      },
+      {
+        "country": "Ireland",
+        "Yes": 73.6,
+        "No": 26.3
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 84.1,
+        "No": 15.9
+      },
+      {
+        "country": "Poland",
+        "Yes": 90.4,
+        "No": 9.6
+      }
+    ],
+    "2016": [
+      {
+        "country": "Czechia",
+        "Yes": 20.1,
+        "No": 79.9
+      },
+      {
+        "country": "Estonia",
+        "Yes": 27.8,
+        "No": 72.2
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 30.9,
+        "No": 69.1
+      },
+      {
+        "country": "Sweden",
+        "Yes": 37.9,
+        "No": 62.1
+      },
+      {
+        "country": "Iceland",
+        "Yes": 42.9,
+        "No": 57.1
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 44.4,
+        "No": 55.6
+      },
+      {
+        "country": "Belgium",
+        "Yes": 45.8,
+        "No": 54.2
+      },
+      {
+        "country": "Hungary",
+        "Yes": 49.5,
+        "No": 50.5
+      },
+      {
+        "country": "France",
+        "Yes": 52,
+        "No": 48
+      },
+      {
+        "country": "Norway",
+        "Yes": 53,
+        "No": 47.1
+      },
+      {
+        "country": "Finland",
+        "Yes": 54.5,
+        "No": 45.5
+      },
+      {
+        "country": "Russian Federation",
+        "Yes": 57.8,
+        "No": 42.2
+      },
+      {
+        "country": "Germany",
+        "Yes": 60.7,
+        "No": 39.3
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 61.1,
+        "No": 38.9
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 61.2,
+        "No": 38.8
+      },
+      {
+        "country": "Spain",
+        "Yes": 66.3,
+        "No": 33.7
+      },
+      {
+        "country": "Ireland",
+        "Yes": 72,
+        "No": 28.1
+      },
+      {
+        "country": "Austria",
+        "Yes": 73.6,
+        "No": 26.4
+      },
+      {
+        "country": "Portugal",
+        "Yes": 73.7,
+        "No": 26.3
+      },
+      {
+        "country": "Italy",
+        "Yes": 75.4,
+        "No": 24.6
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 89.1,
+        "No": 10.8
+      },
+      {
+        "country": "Poland",
+        "Yes": 91,
+        "No": 9
+      }
+    ],
+    "2018": [
+      {
+        "country": "Czechia",
+        "Yes": 20.6,
+        "No": 79.4
+      },
+      {
+        "country": "Estonia",
+        "Yes": 25.8,
+        "No": 74.2
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 31.4,
+        "No": 68.6
+      },
+      {
+        "country": "Sweden",
+        "Yes": 39.9,
+        "No": 60.1
+      },
+      {
+        "country": "Iceland",
+        "Yes": 40.3,
+        "No": 59.7
+      },
+      {
+        "country": "Latvia",
+        "Yes": 42.8,
+        "No": 57.2
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 44.9,
+        "No": 55.1
+      },
+      {
+        "country": "Norway",
+        "Yes": 45.2,
+        "No": 54.8
+      },
+      {
+        "country": "Belgium",
+        "Yes": 46.2,
+        "No": 53.8
+      },
+      {
+        "country": "Hungary",
+        "Yes": 48.8,
+        "No": 51.2
+      },
+      {
+        "country": "France",
+        "Yes": 52.2,
+        "No": 47.8
+      },
+      {
+        "country": "Finland",
+        "Yes": 54.3,
+        "No": 45.7
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 56.4,
+        "No": 43.5
+      },
+      {
+        "country": "Germany",
+        "Yes": 56.6,
+        "No": 43.4
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 57.5,
+        "No": 42.5
+      },
+      {
+        "country": "Denmark",
+        "Yes": 60.2,
+        "No": 39.8
+      },
+      {
+        "country": "Spain",
+        "Yes": 61.9,
+        "No": 38.1
+      },
+      {
+        "country": "Ireland",
+        "Yes": 64.9,
+        "No": 35.1
+      },
+      {
+        "country": "Croatia",
+        "Yes": 69.1,
+        "No": 30.9
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 70.6,
+        "No": 29.4
+      },
+      {
+        "country": "Portugal",
+        "Yes": 71.1,
+        "No": 28.9
+      },
+      {
+        "country": "Austria",
+        "Yes": 74.2,
+        "No": 25.8
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 78.6,
+        "No": 21.4
+      },
+      {
+        "country": "Italy",
+        "Yes": 79.2,
+        "No": 20.8
+      },
+      {
+        "country": "Montenegro",
+        "Yes": 82.8,
+        "No": 17.2
+      },
+      {
+        "country": "Serbia",
+        "Yes": 83,
+        "No": 17
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 84.2,
+        "No": 15.8
+      },
+      {
+        "country": "Poland",
+        "Yes": 86.7,
+        "No": 13.3
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 94.4,
+        "No": 5.6
+      }
+    ],
+    "2020": [
+      {
+        "country": "Czechia",
+        "Yes": 18.2,
+        "No": 81.8
+      },
+      {
+        "country": "Estonia",
+        "Yes": 24.6,
+        "No": 75.4
+      },
+      {
+        "country": "Netherlands",
+        "Yes": 27.2,
+        "No": 72.8
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 41.1,
+        "No": 58.9
+      },
+      {
+        "country": "Norway",
+        "Yes": 42,
+        "No": 58
+      },
+      {
+        "country": "Belgium",
+        "Yes": 42.3,
+        "No": 57.6
+      },
+      {
+        "country": "Iceland",
+        "Yes": 43.1,
+        "No": 56.9
+      },
+      {
+        "country": "Finland",
+        "Yes": 48.1,
+        "No": 51.9
+      },
+      {
+        "country": "France",
+        "Yes": 51.8,
+        "No": 48.2
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 53.8,
+        "No": 46.1
+      },
+      {
+        "country": "Hungary",
+        "Yes": 58.7,
+        "No": 41.3
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 59.2,
+        "No": 40.8
+      },
+      {
+        "country": "Ireland",
+        "Yes": 60.9,
+        "No": 39.1
+      },
+      {
+        "country": "Portugal",
+        "Yes": 71,
+        "No": 29
+      },
+      {
+        "country": "Croatia",
+        "Yes": 71.9,
+        "No": 28.1
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 73.5,
+        "No": 26.5
+      },
+      {
+        "country": "Italy",
+        "Yes": 74.8,
+        "No": 25.2
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 75.5,
+        "No": 24.5
+      },
+      {
+        "country": "Bulgaria",
+        "Yes": 86.4,
+        "No": 13.6
+      },
+      {
+        "country": "Montenegro",
+        "Yes": 91,
+        "No": 9
+      },
+      {
+        "country": "Greece",
+        "Yes": 91.5,
+        "No": 8.5
+      },
+      {
+        "country": "North Macedonia",
+        "Yes": 96.1,
+        "No": 3.9
+      }
+    ],
+    "2022": [
+      {
+        "country": "Netherlands",
+        "Yes": 27.6,
+        "No": 72.4
+      },
+      {
+        "country": "Sweden",
+        "Yes": 31.8,
+        "No": 68.2
+      },
+      {
+        "country": "Iceland",
+        "Yes": 38.2,
+        "No": 61.8
+      },
+      {
+        "country": "Norway",
+        "Yes": 38.7,
+        "No": 61.3
+      },
+      {
+        "country": "Belgium",
+        "Yes": 41.3,
+        "No": 58.7
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 41.8,
+        "No": 58.2
+      },
+      {
+        "country": "Finland",
+        "Yes": 47.9,
+        "No": 52.1
+      },
+      {
+        "country": "France",
+        "Yes": 48.7,
+        "No": 51.3
+      },
+      {
+        "country": "Germany",
+        "Yes": 50.2,
+        "No": 49.8
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 50.9,
+        "No": 49.1
+      },
+      {
+        "country": "Spain",
+        "Yes": 56.6,
+        "No": 43.4
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 61.1,
+        "No": 38.9
+      },
+      {
+        "country": "Hungary",
+        "Yes": 62.9,
+        "No": 37.1
+      },
+      {
+        "country": "Ireland",
+        "Yes": 68.1,
+        "No": 31.9
+      },
+      {
+        "country": "Austria",
+        "Yes": 68.4,
+        "No": 31.6
+      },
+      {
+        "country": "Portugal",
+        "Yes": 71.9,
+        "No": 28
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 74.1,
+        "No": 25.9
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 76.2,
+        "No": 23.8
+      },
+      {
+        "country": "Croatia",
+        "Yes": 76.6,
+        "No": 23.4
+      },
+      {
+        "country": "Italy",
+        "Yes": 78.2,
+        "No": 21.8
+      },
+      {
+        "country": "Poland",
+        "Yes": 83.5,
+        "No": 16.5
+      },
+      {
+        "country": "Serbia",
+        "Yes": 89.1,
+        "No": 10.9
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 90.2,
+        "No": 9.8
+      },
+      {
+        "country": "Greece",
+        "Yes": 93.3,
+        "No": 6.7
+      }
+    ],
+    "2024": [
+      {
+        "country": "Netherlands",
+        "Yes": 27.6,
+        "No": 72.4
+      },
+      {
+        "country": "Sweden",
+        "Yes": 31.8,
+        "No": 68.2
+      },
+      {
+        "country": "Iceland",
+        "Yes": 38.2,
+        "No": 61.8
+      },
+      {
+        "country": "Norway",
+        "Yes": 38.7,
+        "No": 61.3
+      },
+      {
+        "country": "Belgium",
+        "Yes": 41.3,
+        "No": 58.7
+      },
+      {
+        "country": "United Kingdom",
+        "Yes": 41.8,
+        "No": 58.2
+      },
+      {
+        "country": "Finland",
+        "Yes": 47.9,
+        "No": 52.1
+      },
+      {
+        "country": "France",
+        "Yes": 48.7,
+        "No": 51.3
+      },
+      {
+        "country": "Germany",
+        "Yes": 50.2,
+        "No": 49.8
+      },
+      {
+        "country": "Switzerland",
+        "Yes": 50.9,
+        "No": 49.1
+      },
+      {
+        "country": "Spain",
+        "Yes": 56.6,
+        "No": 43.4
+      },
+      {
+        "country": "Slovenia",
+        "Yes": 61.1,
+        "No": 38.9
+      },
+      {
+        "country": "Hungary",
+        "Yes": 62.9,
+        "No": 37.1
+      },
+      {
+        "country": "Ireland",
+        "Yes": 68.1,
+        "No": 31.9
+      },
+      {
+        "country": "Austria",
+        "Yes": 68.4,
+        "No": 31.6
+      },
+      {
+        "country": "Portugal",
+        "Yes": 71.9,
+        "No": 28
+      },
+      {
+        "country": "Slovakia",
+        "Yes": 74.1,
+        "No": 25.9
+      },
+      {
+        "country": "Lithuania",
+        "Yes": 76.2,
+        "No": 23.8
+      },
+      {
+        "country": "Croatia",
+        "Yes": 76.6,
+        "No": 23.4
+      },
+      {
+        "country": "Italy",
+        "Yes": 78.2,
+        "No": 21.8
+      },
+      {
+        "country": "Poland",
+        "Yes": 83.5,
+        "No": 16.5
+      },
+      {
+        "country": "Serbia",
+        "Yes": 89.1,
+        "No": 10.9
+      },
+      {
+        "country": "Cyprus",
+        "Yes": 90.2,
+        "No": 9.8
+      },
+      {
+        "country": "Greece",
+        "Yes": 93.3,
+        "No": 6.7
+      }
+    ]
+  },
+  "denominations": {
+    "2002": [
+      {
+        "country": "Greece",
+        "Roman Catholic": 0.4,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 95.6,
+        "Other Christian denomination": 0.2,
+        "Jewish": 0.2,
+        "Islam": 3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 17.7,
+        "Protestant": 66,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 4.1,
+        "Jewish": 0.9,
+        "Islam": 4.7,
+        "Eastern religions": 5,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 3.6,
+        "Protestant": 84,
+        "Eastern Orthodox": 2,
+        "Other Christian denomination": 3.3,
+        "Jewish": 0.2,
+        "Islam": 4.3,
+        "Eastern religions": 1.7,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 1.8,
+        "Protestant": 87.8,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 4.9,
+        "Jewish": 0,
+        "Islam": 2.3,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 2.2
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 1.5,
+        "Protestant": 92.4,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.1,
+        "Islam": 3.1,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 45.6,
+        "Protestant": 36.4,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 9.9,
+        "Jewish": 0.2,
+        "Islam": 5.7,
+        "Eastern religions": 1.5,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.2,
+        "Protestant": 95.8,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0,
+        "Islam": 0.3,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 41.7,
+        "Protestant": 47.9,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 3.5,
+        "Jewish": 0.2,
+        "Islam": 4.8,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Luxembourg",
+        "Roman Catholic": 72.7,
+        "Protestant": 1.5,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 22.3,
+        "Jewish": 0,
+        "Islam": 1.7,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 49.1,
+        "Protestant": 45.9,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.2,
+        "Islam": 1.5,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 88.2,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 2.7,
+        "Jewish": 0.3,
+        "Islam": 5.6,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 87.1,
+        "Protestant": 4.7,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 2.1,
+        "Jewish": 0.1,
+        "Islam": 2.8,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 71.4,
+        "Protestant": 25.8,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 85.9,
+        "Protestant": 10.1,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 3.2,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 93.4,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 2.5,
+        "Other Christian denomination": 0.4,
+        "Jewish": 0,
+        "Islam": 2.6,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 97,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.2,
+        "Islam": 1.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 95.2,
+        "Protestant": 3.2,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0.1,
+        "Islam": 0.2,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 97.3,
+        "Protestant": 0.9,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.6,
+        "Jewish": 0.1,
+        "Islam": 0.2,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.6,
+        "Protestant": 0.2,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 98.6,
+        "Protestant": 0.9,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2004": [
+      {
+        "country": "Turkey",
+        "Roman Catholic": 0,
+        "Protestant": 0,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 0,
+        "Jewish": 0.1,
+        "Islam": 98.8,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Greece",
+        "Roman Catholic": 1.2,
+        "Protestant": 0.5,
+        "Eastern Orthodox": 95.7,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 2.4,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Ukraine",
+        "Roman Catholic": 12.2,
+        "Protestant": 1.9,
+        "Eastern Orthodox": 83.1,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0,
+        "Islam": 1.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 2.6,
+        "Protestant": 36.9,
+        "Eastern Orthodox": 51.7,
+        "Other Christian denomination": 7.1,
+        "Jewish": 0,
+        "Islam": 1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 2.3,
+        "Protestant": 86.2,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 5.2,
+        "Jewish": 0,
+        "Islam": 2.8,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 2
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 3.2,
+        "Protestant": 87,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 4,
+        "Jewish": 0.2,
+        "Islam": 2.6,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 0,
+        "Protestant": 90.4,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 8.5,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 1.9,
+        "Protestant": 92.8,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.8,
+        "Jewish": 0,
+        "Islam": 2.1,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 48.6,
+        "Protestant": 38.4,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 7.3,
+        "Jewish": 0.2,
+        "Islam": 3.8,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Luxembourg",
+        "Roman Catholic": 72.7,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 22,
+        "Jewish": 0.3,
+        "Islam": 1.8,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 45.6,
+        "Protestant": 44,
+        "Eastern Orthodox": 1.5,
+        "Other Christian denomination": 2.6,
+        "Jewish": 0,
+        "Islam": 5.4,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 47.4,
+        "Protestant": 45.3,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 2,
+        "Jewish": 0.1,
+        "Islam": 2.6,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 86.9,
+        "Protestant": 1.1,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0,
+        "Islam": 8.5,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 79.3,
+        "Protestant": 9,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 8.3,
+        "Jewish": 0.3,
+        "Islam": 0.2,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 89.3,
+        "Protestant": 4.9,
+        "Eastern Orthodox": 1,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.1,
+        "Islam": 2,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 87.8,
+        "Protestant": 8.8,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 1,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.5
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 93.9,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0,
+        "Islam": 2.2,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 93.7,
+        "Protestant": 2.5,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 1.4,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 97.2,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0.2,
+        "Islam": 0,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 96.2,
+        "Protestant": 3,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.5,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2006": [
+      {
+        "country": "Russian Federation",
+        "Roman Catholic": 0.5,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 85.3,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 12.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Ukraine",
+        "Roman Catholic": 11.6,
+        "Protestant": 4.7,
+        "Eastern Orthodox": 80.3,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0.1,
+        "Islam": 0.9,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 3.4,
+        "Protestant": 25.9,
+        "Eastern Orthodox": 64.8,
+        "Other Christian denomination": 3.2,
+        "Jewish": 0.7,
+        "Islam": 1.2,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 4,
+        "Protestant": 83.4,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 3,
+        "Jewish": 0.4,
+        "Islam": 5.6,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 2.3,
+        "Protestant": 89,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 4,
+        "Jewish": 0,
+        "Islam": 2.7,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 1.1,
+        "Protestant": 92.3,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0,
+        "Islam": 3.3,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 42.5,
+        "Protestant": 37,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 11,
+        "Jewish": 0.1,
+        "Islam": 6.6,
+        "Eastern religions": 1.6,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0,
+        "Protestant": 96.4,
+        "Eastern Orthodox": 1.9,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 0.4,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 47,
+        "Protestant": 44.1,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 1,
+        "Jewish": 0.1,
+        "Islam": 4.8,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 43.5,
+        "Protestant": 48.8,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0.3,
+        "Islam": 4.9,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 83.1,
+        "Protestant": 2.6,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 2.5,
+        "Jewish": 1.1,
+        "Islam": 9.6,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 88.5,
+        "Protestant": 1.3,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0.5,
+        "Islam": 7.3,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 66.6,
+        "Protestant": 28.8,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 4.4,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 81.8,
+        "Protestant": 10.5,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 6.8,
+        "Jewish": 0.1,
+        "Islam": 0.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 90.1,
+        "Protestant": 4.8,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.2,
+        "Islam": 1.8,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 92.3,
+        "Protestant": 1.8,
+        "Eastern Orthodox": 2.4,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0,
+        "Islam": 2.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 93.9,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 2.1,
+        "Jewish": 0,
+        "Islam": 2.3,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 93.5,
+        "Protestant": 3.5,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0.1,
+        "Islam": 0.7,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 97.1,
+        "Protestant": 0.9,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.2,
+        "Islam": 0.2,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.7,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2008": [
+      {
+        "country": "Turkey",
+        "Roman Catholic": 0,
+        "Protestant": 0,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 98.9,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Bulgaria",
+        "Roman Catholic": 0.5,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 73,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 24.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Russian Federation",
+        "Roman Catholic": 0.5,
+        "Protestant": 0.2,
+        "Eastern Orthodox": 84.9,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0.2,
+        "Islam": 13.9,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Greece",
+        "Roman Catholic": 0.4,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 96.3,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 2.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 0.6,
+        "Protestant": 0,
+        "Eastern Orthodox": 98.8,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 0.2,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Romania",
+        "Roman Catholic": 5.3,
+        "Protestant": 4.1,
+        "Eastern Orthodox": 87.2,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0,
+        "Islam": 0.7,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Ukraine",
+        "Roman Catholic": 11.9,
+        "Protestant": 1,
+        "Eastern Orthodox": 82.8,
+        "Other Christian denomination": 2.7,
+        "Jewish": 0.4,
+        "Islam": 0.6,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 1.5,
+        "Protestant": 27.3,
+        "Eastern Orthodox": 64,
+        "Other Christian denomination": 5.1,
+        "Jewish": 0.5,
+        "Islam": 1,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 4,
+        "Protestant": 82.1,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 5.1,
+        "Jewish": 0.7,
+        "Islam": 4.7,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 21,
+        "Protestant": 64.6,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 2.6,
+        "Jewish": 0.8,
+        "Islam": 7.3,
+        "Eastern religions": 2.4,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 2.9,
+        "Protestant": 90.8,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.2,
+        "Islam": 2.4,
+        "Eastern religions": 1.7,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 1.9,
+        "Protestant": 92,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.1,
+        "Islam": 3.5,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 46.6,
+        "Protestant": 38,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 2.7,
+        "Jewish": 1.4,
+        "Islam": 7.3,
+        "Eastern religions": 2.7,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0,
+        "Protestant": 95.7,
+        "Eastern Orthodox": 2,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Latvia",
+        "Roman Catholic": 36.3,
+        "Protestant": 29.4,
+        "Eastern Orthodox": 27.1,
+        "Other Christian denomination": 6.7,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 45,
+        "Protestant": 42,
+        "Eastern Orthodox": 1.5,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.4,
+        "Islam": 6.6,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 44,
+        "Protestant": 47.4,
+        "Eastern Orthodox": 1,
+        "Other Christian denomination": 2.3,
+        "Jewish": 0.1,
+        "Islam": 4,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 83.5,
+        "Protestant": 2.2,
+        "Eastern Orthodox": 1,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.3,
+        "Islam": 9.3,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 84.3,
+        "Protestant": 3.5,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 1.2,
+        "Jewish": 1.4,
+        "Islam": 7.7,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 85.9,
+        "Protestant": 3.7,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 7.4,
+        "Jewish": 0.7,
+        "Islam": 0,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 72,
+        "Protestant": 24.8,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 2.8,
+        "Jewish": 0.1,
+        "Islam": 0.1,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 84.4,
+        "Protestant": 8.2,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 6.7,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 93.2,
+        "Protestant": 0.5,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0,
+        "Islam": 3.2,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 91.9,
+        "Protestant": 1.6,
+        "Eastern Orthodox": 3,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 1.7,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 91.6,
+        "Protestant": 5.1,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0,
+        "Islam": 0.9,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 93.3,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 5.1,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0.6,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 96.3,
+        "Protestant": 1.3,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0,
+        "Islam": 0.2,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.1,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2010": [
+      {
+        "country": "Bulgaria",
+        "Roman Catholic": 0.4,
+        "Protestant": 1,
+        "Eastern Orthodox": 80.2,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0.1,
+        "Islam": 17.7,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Russian Federation",
+        "Roman Catholic": 0.3,
+        "Protestant": 0.2,
+        "Eastern Orthodox": 87.7,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0.1,
+        "Islam": 10.4,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Greece",
+        "Roman Catholic": 1.6,
+        "Protestant": 0,
+        "Eastern Orthodox": 95.7,
+        "Other Christian denomination": 0.2,
+        "Jewish": 0,
+        "Islam": 2.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 0.6,
+        "Protestant": 0,
+        "Eastern Orthodox": 99,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 1.2,
+        "Protestant": 32.9,
+        "Eastern Orthodox": 57.5,
+        "Other Christian denomination": 5.6,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 2.5
+      },
+      {
+        "country": "Ukraine",
+        "Roman Catholic": 12.5,
+        "Protestant": 1.1,
+        "Eastern Orthodox": 81.8,
+        "Other Christian denomination": 3,
+        "Jewish": 0,
+        "Islam": 0.9,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 19.7,
+        "Protestant": 57.8,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 4.2,
+        "Jewish": 0.5,
+        "Islam": 9.8,
+        "Eastern religions": 6.8,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 3,
+        "Protestant": 79.6,
+        "Eastern Orthodox": 3.2,
+        "Other Christian denomination": 5,
+        "Jewish": 0.2,
+        "Islam": 7.3,
+        "Eastern religions": 1.8,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 3.8,
+        "Protestant": 87.8,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0.1,
+        "Islam": 4.6,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 2.3,
+        "Protestant": 90,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.1,
+        "Islam": 4.1,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.4,
+        "Protestant": 94.9,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0.1,
+        "Islam": 0.6,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 45.5,
+        "Protestant": 40.4,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 4.3,
+        "Jewish": 0,
+        "Islam": 6.7,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 46.2,
+        "Protestant": 41.5,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 1.6,
+        "Jewish": 0.1,
+        "Islam": 6.3,
+        "Eastern religions": 1.4,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 42.6,
+        "Protestant": 46.4,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 3.7,
+        "Jewish": 0.1,
+        "Islam": 4.7,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 79.5,
+        "Protestant": 3.6,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.9,
+        "Islam": 12.6,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 81.2,
+        "Protestant": 2.5,
+        "Eastern Orthodox": 1,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.6,
+        "Islam": 11.2,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 72.4,
+        "Protestant": 24.9,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 1.9,
+        "Jewish": 0.2,
+        "Islam": 0.2,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 83.5,
+        "Protestant": 8.9,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 6.9,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 90.6,
+        "Protestant": 4.1,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 3.1,
+        "Jewish": 0.2,
+        "Islam": 0,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 92.8,
+        "Protestant": 0.8,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 1.6,
+        "Jewish": 0,
+        "Islam": 2.9,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 92.2,
+        "Protestant": 2.8,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0.1,
+        "Islam": 1.2,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 90.7,
+        "Protestant": 1.7,
+        "Eastern Orthodox": 5.7,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.2,
+        "Islam": 0.5,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 93.6,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 1.9,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 95,
+        "Protestant": 0.9,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 3.1,
+        "Jewish": 0.1,
+        "Islam": 0.3,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 95.8,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 3.2,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0.2,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 97.8,
+        "Protestant": 0.9,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      }
+    ],
+    "2012": [
+      {
+        "country": "Kosovo",
+        "Roman Catholic": 5.4,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 3.2,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 90.9,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Albania",
+        "Roman Catholic": 11.7,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 12.4,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 74.1,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Bulgaria",
+        "Roman Catholic": 0.4,
+        "Protestant": 1.1,
+        "Eastern Orthodox": 80.1,
+        "Other Christian denomination": 1,
+        "Jewish": 0,
+        "Islam": 17.3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Russian Federation",
+        "Roman Catholic": 0.4,
+        "Protestant": 1.6,
+        "Eastern Orthodox": 81.4,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.2,
+        "Islam": 14.5,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 0.6,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 96.9,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 1.1,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 3,
+        "Protestant": 21.1,
+        "Eastern Orthodox": 68.4,
+        "Other Christian denomination": 4.1,
+        "Jewish": 0.2,
+        "Islam": 0.8,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Ukraine",
+        "Roman Catholic": 11.5,
+        "Protestant": 1.8,
+        "Eastern Orthodox": 82.8,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.2,
+        "Islam": 0.5,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 21.5,
+        "Protestant": 56.4,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 4.6,
+        "Jewish": 0.7,
+        "Islam": 9.3,
+        "Eastern religions": 6.1,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 3.9,
+        "Protestant": 76,
+        "Eastern Orthodox": 3,
+        "Other Christian denomination": 3.9,
+        "Jewish": 0.2,
+        "Islam": 11.1,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 1.7,
+        "Protestant": 89,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 1,
+        "Jewish": 0.2,
+        "Islam": 5.4,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 5.2,
+        "Protestant": 86.1,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.1,
+        "Islam": 3.8,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 1.9,
+        "Protestant": 93,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 0.3,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 2.9
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.4,
+        "Protestant": 93.1,
+        "Eastern Orthodox": 2,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0.1,
+        "Islam": 1,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 42.3,
+        "Protestant": 41.1,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 5.7,
+        "Jewish": 0,
+        "Islam": 6.3,
+        "Eastern religions": 2.7,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 76.8,
+        "Protestant": 2.6,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.5,
+        "Islam": 15.6,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 43.5,
+        "Protestant": 44.9,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 2.9,
+        "Jewish": 0.2,
+        "Islam": 5.4,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 48.4,
+        "Protestant": 39.7,
+        "Eastern Orthodox": 2.2,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.3,
+        "Islam": 6.7,
+        "Eastern religions": 1.5,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 77.4,
+        "Protestant": 5.1,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 2.2,
+        "Jewish": 1.4,
+        "Islam": 12,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 84.1,
+        "Protestant": 4.2,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 8.2,
+        "Jewish": 0.8,
+        "Islam": 0.5,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 73.4,
+        "Protestant": 24.5,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 83.4,
+        "Protestant": 8.8,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 7,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 91.9,
+        "Protestant": 1.4,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0,
+        "Islam": 2.7,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 91.8,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 3.6,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 2.7,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 93.5,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0.6,
+        "Islam": 2.7,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 91.7,
+        "Protestant": 3.5,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0,
+        "Islam": 1,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 93.6,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 5,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 95.5,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 3.7,
+        "Jewish": 0,
+        "Islam": 0.2,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.7,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2014": [
+      {
+        "country": "Estonia",
+        "Roman Catholic": 2.5,
+        "Protestant": 19.3,
+        "Eastern Orthodox": 73.1,
+        "Other Christian denomination": 3.9,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 4.4,
+        "Protestant": 76.3,
+        "Eastern Orthodox": 2.3,
+        "Other Christian denomination": 3.4,
+        "Jewish": 0.4,
+        "Islam": 8.9,
+        "Eastern religions": 1.9,
+        "Other Non-Christian religions": 2.5
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 22.6,
+        "Protestant": 57.1,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 3.8,
+        "Jewish": 0,
+        "Islam": 9.5,
+        "Eastern religions": 4.5,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 2.5,
+        "Protestant": 88.7,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.1,
+        "Islam": 4.7,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 3.4,
+        "Protestant": 87.3,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0,
+        "Islam": 4,
+        "Eastern religions": 1.4,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 42.6,
+        "Protestant": 38.1,
+        "Eastern Orthodox": 0.7,
+        "Other Christian denomination": 4.5,
+        "Jewish": 0,
+        "Islam": 10.9,
+        "Eastern religions": 2,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.2,
+        "Protestant": 92.5,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 2.7,
+        "Jewish": 0.1,
+        "Islam": 2.2,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 49.2,
+        "Protestant": 36.6,
+        "Eastern Orthodox": 2.9,
+        "Other Christian denomination": 1.9,
+        "Jewish": 0.4,
+        "Islam": 6.6,
+        "Eastern religions": 2,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 76.7,
+        "Protestant": 2.2,
+        "Eastern Orthodox": 3.1,
+        "Other Christian denomination": 2.5,
+        "Jewish": 0.1,
+        "Islam": 14,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 78,
+        "Protestant": 3.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.7,
+        "Islam": 14.2,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 44.2,
+        "Protestant": 44.9,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 3.2,
+        "Jewish": 0.2,
+        "Islam": 4.3,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 83.9,
+        "Protestant": 5,
+        "Eastern Orthodox": 2.2,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.2,
+        "Islam": 6,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 84.2,
+        "Protestant": 6.4,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 6.4,
+        "Jewish": 0.8,
+        "Islam": 0,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1.6
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 73.9,
+        "Protestant": 24.1,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.1,
+        "Islam": 0.1,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 91.1,
+        "Protestant": 2,
+        "Eastern Orthodox": 2.2,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0.1,
+        "Islam": 3.5,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 92.4,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0,
+        "Islam": 2.9,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 91.9,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 5.9,
+        "Other Christian denomination": 1,
+        "Jewish": 0.2,
+        "Islam": 0.3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 93.6,
+        "Protestant": 2.6,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 1.3,
+        "Jewish": 0.3,
+        "Islam": 0.7,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 94.6,
+        "Protestant": 0.8,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 3.4,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.6,
+        "Protestant": 0.5,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      }
+    ],
+    "2016": [
+      {
+        "country": "Russian Federation",
+        "Roman Catholic": 0.5,
+        "Protestant": 0.8,
+        "Eastern Orthodox": 86.8,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 10.6,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 5.8,
+        "Protestant": 25.9,
+        "Eastern Orthodox": 60.8,
+        "Other Christian denomination": 4.5,
+        "Jewish": 0.2,
+        "Islam": 0.4,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 5,
+        "Protestant": 76.9,
+        "Eastern Orthodox": 2.2,
+        "Other Christian denomination": 2.6,
+        "Jewish": 0.2,
+        "Islam": 10.8,
+        "Eastern religions": 1.4,
+        "Other Non-Christian religions": 1.2
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 26,
+        "Protestant": 54.9,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 6.3,
+        "Jewish": 0,
+        "Islam": 6.2,
+        "Eastern religions": 5.8,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 3.4,
+        "Protestant": 86.5,
+        "Eastern Orthodox": 1.1,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 5.2,
+        "Eastern religions": 1.7,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 37.3,
+        "Protestant": 42.5,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 9.1,
+        "Jewish": 0.4,
+        "Islam": 7.8,
+        "Eastern religions": 2.1,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.7,
+        "Protestant": 93,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0,
+        "Islam": 1.9,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 1.9,
+        "Protestant": 94.4,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 0.3,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 2.1
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 39.9,
+        "Protestant": 44.5,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 2.6,
+        "Jewish": 0.4,
+        "Islam": 9.3,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 76.6,
+        "Protestant": 1.7,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0.1,
+        "Islam": 16.2,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 50.1,
+        "Protestant": 35.5,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.8,
+        "Islam": 7.8,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 80.6,
+        "Protestant": 4.3,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 0.8,
+        "Jewish": 1,
+        "Islam": 10.9,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 82.9,
+        "Protestant": 6.2,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 1.2,
+        "Jewish": 0.3,
+        "Islam": 6.5,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 84,
+        "Protestant": 6,
+        "Eastern Orthodox": 1.6,
+        "Other Christian denomination": 5.6,
+        "Jewish": 0.7,
+        "Islam": 0,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 73.4,
+        "Protestant": 25.2,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0.3,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 90.6,
+        "Protestant": 1.3,
+        "Eastern Orthodox": 2.3,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0,
+        "Islam": 2.7,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 90,
+        "Protestant": 3.8,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0,
+        "Islam": 1.4,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 91.7,
+        "Protestant": 1,
+        "Eastern Orthodox": 3.5,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 3.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 93,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0.1,
+        "Islam": 2.4,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 94.3,
+        "Protestant": 0.8,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 3.3,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 94.9,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 4.8,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 99,
+        "Protestant": 0,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 0.5,
+        "Jewish": 0,
+        "Islam": 0.1,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2018": [
+      {
+        "country": "Montenegro",
+        "Roman Catholic": 3.1,
+        "Protestant": 0,
+        "Eastern Orthodox": 70.8,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 24.6,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Bulgaria",
+        "Roman Catholic": 0.7,
+        "Protestant": 1.1,
+        "Eastern Orthodox": 81,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0,
+        "Islam": 16.3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 1,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 97.7,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0.3,
+        "Islam": 0.3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Serbia",
+        "Roman Catholic": 5,
+        "Protestant": 1.1,
+        "Eastern Orthodox": 91.3,
+        "Other Christian denomination": 0.4,
+        "Jewish": 0,
+        "Islam": 2.2,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 1.8,
+        "Protestant": 30.7,
+        "Eastern Orthodox": 57.9,
+        "Other Christian denomination": 4.7,
+        "Jewish": 0.4,
+        "Islam": 0,
+        "Eastern religions": 2.2,
+        "Other Non-Christian religions": 2.5
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 3.5,
+        "Protestant": 74.6,
+        "Eastern Orthodox": 2.5,
+        "Other Christian denomination": 4.4,
+        "Jewish": 0.2,
+        "Islam": 13.3,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 22.8,
+        "Protestant": 54.9,
+        "Eastern Orthodox": 2.3,
+        "Other Christian denomination": 4.1,
+        "Jewish": 0,
+        "Islam": 7.6,
+        "Eastern religions": 6.4,
+        "Other Non-Christian religions": 1.9
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 35.8,
+        "Protestant": 41.2,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 5.8,
+        "Jewish": 0.2,
+        "Islam": 13.1,
+        "Eastern religions": 1.9,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 3.8,
+        "Protestant": 84.6,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 1.6,
+        "Jewish": 0,
+        "Islam": 4.5,
+        "Eastern religions": 2.4,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Latvia",
+        "Roman Catholic": 32.6,
+        "Protestant": 29.2,
+        "Eastern Orthodox": 28.2,
+        "Other Christian denomination": 7.4,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 1.3,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Denmark",
+        "Roman Catholic": 3.2,
+        "Protestant": 89.5,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 2,
+        "Jewish": 0.1,
+        "Islam": 4.1,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 38.2,
+        "Protestant": 45.4,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 3.6,
+        "Jewish": 0,
+        "Islam": 7.7,
+        "Eastern religions": 2.1,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 4.3,
+        "Protestant": 91.6,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 0.3,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 2.9
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.2,
+        "Protestant": 93.2,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 2.3,
+        "Jewish": 0.1,
+        "Islam": 1.5,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 72.7,
+        "Protestant": 3.1,
+        "Eastern Orthodox": 2.7,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0.4,
+        "Islam": 16.6,
+        "Eastern religions": 1.5,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 47.8,
+        "Protestant": 34,
+        "Eastern Orthodox": 4.2,
+        "Other Christian denomination": 1.8,
+        "Jewish": 0.3,
+        "Islam": 8.8,
+        "Eastern religions": 1.7,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 75.9,
+        "Protestant": 4.6,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 2.2,
+        "Jewish": 1.2,
+        "Islam": 13.4,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 79.1,
+        "Protestant": 6.3,
+        "Eastern Orthodox": 2.9,
+        "Other Christian denomination": 1.9,
+        "Jewish": 0.2,
+        "Islam": 8.9,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 78.9,
+        "Protestant": 7.7,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 11.9,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 86.6,
+        "Protestant": 1.4,
+        "Eastern Orthodox": 4.1,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.1,
+        "Islam": 6.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 86.3,
+        "Protestant": 5.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 4.8,
+        "Jewish": 0.6,
+        "Islam": 0,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 1.9
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 88.3,
+        "Protestant": 4.3,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 3.5,
+        "Jewish": 0.1,
+        "Islam": 1.9,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 91.8,
+        "Protestant": 0,
+        "Eastern Orthodox": 2,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0.1,
+        "Islam": 3.8,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 91.9,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 1.5,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0,
+        "Islam": 3.1,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 76.3,
+        "Protestant": 22.8,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 93.4,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 3.4,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 0.9,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 94.4,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 3.3,
+        "Jewish": 0.1,
+        "Islam": 0.3,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 95.9,
+        "Protestant": 0.5,
+        "Eastern Orthodox": 3.4,
+        "Other Christian denomination": 0.2,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 98.3,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      }
+    ],
+    "2020": [
+      {
+        "country": "Montenegro",
+        "Roman Catholic": 3.9,
+        "Protestant": 0,
+        "Eastern Orthodox": 64.6,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0,
+        "Islam": 29.9,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "North Macedonia",
+        "Roman Catholic": 0.1,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 75.4,
+        "Other Christian denomination": 0,
+        "Jewish": 0,
+        "Islam": 23.8,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Bulgaria",
+        "Roman Catholic": 0.2,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 82.9,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0.2,
+        "Islam": 15.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Greece",
+        "Roman Catholic": 0.6,
+        "Protestant": 0,
+        "Eastern Orthodox": 96.4,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0,
+        "Islam": 0.8,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Estonia",
+        "Roman Catholic": 2.7,
+        "Protestant": 26.5,
+        "Eastern Orthodox": 57.6,
+        "Other Christian denomination": 6.9,
+        "Jewish": 0.3,
+        "Islam": 0.5,
+        "Eastern religions": 1.1,
+        "Other Non-Christian religions": 4.5
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 18.1,
+        "Protestant": 58.7,
+        "Eastern Orthodox": 1.7,
+        "Other Christian denomination": 5.1,
+        "Jewish": 0,
+        "Islam": 9.8,
+        "Eastern religions": 3.8,
+        "Other Non-Christian religions": 3.2
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 2,
+        "Protestant": 87.8,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 1.9,
+        "Jewish": 0,
+        "Islam": 5.8,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 36.6,
+        "Protestant": 46,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 3.5,
+        "Jewish": 0,
+        "Islam": 10.6,
+        "Eastern religions": 1,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 7.8,
+        "Protestant": 86.2,
+        "Eastern Orthodox": 1,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 3.4
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 73.1,
+        "Protestant": 4.2,
+        "Eastern Orthodox": 0.9,
+        "Other Christian denomination": 1.3,
+        "Jewish": 1.3,
+        "Islam": 17.9,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.3,
+        "Protestant": 94.6,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 0.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 48,
+        "Protestant": 33.6,
+        "Eastern Orthodox": 4.4,
+        "Other Christian denomination": 2.5,
+        "Jewish": 0.2,
+        "Islam": 8,
+        "Eastern religions": 2.7,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 73.7,
+        "Protestant": 3.2,
+        "Eastern Orthodox": 3.9,
+        "Other Christian denomination": 1.8,
+        "Jewish": 0.4,
+        "Islam": 16.4,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Czechia",
+        "Roman Catholic": 83.8,
+        "Protestant": 3.7,
+        "Eastern Orthodox": 0.5,
+        "Other Christian denomination": 7.1,
+        "Jewish": 1.8,
+        "Islam": 0,
+        "Eastern religions": 0.9,
+        "Other Non-Christian religions": 2.1
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 77.6,
+        "Protestant": 10.4,
+        "Eastern Orthodox": 1.5,
+        "Other Christian denomination": 9.3,
+        "Jewish": 0,
+        "Islam": 0.3,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 85.7,
+        "Protestant": 4.4,
+        "Eastern Orthodox": 1.3,
+        "Other Christian denomination": 3.6,
+        "Jewish": 0.1,
+        "Islam": 2.3,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 2
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 90,
+        "Protestant": 1.4,
+        "Eastern Orthodox": 4.3,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 4.3,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 93.1,
+        "Protestant": 0.2,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.3,
+        "Islam": 2.9,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 77.3,
+        "Protestant": 21.1,
+        "Eastern Orthodox": 0.1,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.1,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 93.9,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.2,
+        "Islam": 1.8,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 93.1,
+        "Protestant": 1.4,
+        "Eastern Orthodox": 3.9,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0.3,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 93.6,
+        "Protestant": 3.1,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 1.5,
+        "Jewish": 0,
+        "Islam": 0.5,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.8
+      }
+    ],
+    "2022": [
+      {
+        "country": "Greece",
+        "Roman Catholic": 0,
+        "Protestant": 0,
+        "Eastern Orthodox": 98.3,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 0.8,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 96.3,
+        "Other Christian denomination": 1.8,
+        "Jewish": 0,
+        "Islam": 0.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Serbia",
+        "Roman Catholic": 3.4,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 93.4,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 2.5,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 21.7,
+        "Protestant": 48.8,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 3.8,
+        "Jewish": 0.7,
+        "Islam": 15.3,
+        "Eastern religions": 5.5,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 4.1,
+        "Protestant": 81,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.2,
+        "Islam": 8.6,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 2
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 32.5,
+        "Protestant": 46.9,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 2.8,
+        "Jewish": 0.6,
+        "Islam": 11.8,
+        "Eastern religions": 2.6,
+        "Other Non-Christian religions": 2.2
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 5.4,
+        "Protestant": 76.9,
+        "Eastern Orthodox": 5.1,
+        "Other Christian denomination": 3.1,
+        "Jewish": 0.3,
+        "Islam": 7.5,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 13.8,
+        "Protestant": 76.7,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0,
+        "Islam": 1.6,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 5.7
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.5,
+        "Protestant": 90.1,
+        "Eastern Orthodox": 3.6,
+        "Other Christian denomination": 2,
+        "Jewish": 0,
+        "Islam": 2.5,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 46.1,
+        "Protestant": 36.2,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 4,
+        "Jewish": 0,
+        "Islam": 10.2,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 74.6,
+        "Protestant": 3.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 2.1,
+        "Jewish": 0.6,
+        "Islam": 17.7,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 75.4,
+        "Protestant": 3.1,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0.3,
+        "Islam": 15.5,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 49.9,
+        "Protestant": 33.5,
+        "Eastern Orthodox": 3,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.7,
+        "Islam": 8.4,
+        "Eastern religions": 1.9,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 82.2,
+        "Protestant": 4.5,
+        "Eastern Orthodox": 2.9,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.4,
+        "Islam": 8.1,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 86.9,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 6.2,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 5.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 87,
+        "Protestant": 3.2,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 4.5,
+        "Jewish": 0,
+        "Islam": 2.1,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 1.7
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 88.2,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 3.5,
+        "Jewish": 0.1,
+        "Islam": 4,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 72,
+        "Protestant": 25.3,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0.2,
+        "Islam": 0,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 92,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0.2,
+        "Islam": 3.2,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 83.3,
+        "Protestant": 10.2,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 5.2,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 92.8,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 3.8,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.1,
+        "Islam": 0.1,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 93.4,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 4.1,
+        "Other Christian denomination": 0.2,
+        "Jewish": 0,
+        "Islam": 1.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 92,
+        "Protestant": 5.5,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 0.4,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 99.2,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      }
+    ],
+    "2024": [
+      {
+        "country": "Greece",
+        "Roman Catholic": 0,
+        "Protestant": 0,
+        "Eastern Orthodox": 98.3,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 1.1
+      },
+      {
+        "country": "Cyprus",
+        "Roman Catholic": 0.8,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 96.3,
+        "Other Christian denomination": 1.8,
+        "Jewish": 0,
+        "Islam": 0.5,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Serbia",
+        "Roman Catholic": 3.4,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 93.4,
+        "Other Christian denomination": 0.1,
+        "Jewish": 0,
+        "Islam": 2.5,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.1
+      },
+      {
+        "country": "United Kingdom",
+        "Roman Catholic": 21.7,
+        "Protestant": 48.8,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 3.8,
+        "Jewish": 0.7,
+        "Islam": 15.3,
+        "Eastern religions": 5.5,
+        "Other Non-Christian religions": 1.3
+      },
+      {
+        "country": "Norway",
+        "Roman Catholic": 4.1,
+        "Protestant": 81,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 1.4,
+        "Jewish": 0.2,
+        "Islam": 8.6,
+        "Eastern religions": 1.2,
+        "Other Non-Christian religions": 2
+      },
+      {
+        "country": "Netherlands",
+        "Roman Catholic": 32.5,
+        "Protestant": 46.9,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 2.8,
+        "Jewish": 0.6,
+        "Islam": 11.8,
+        "Eastern religions": 2.6,
+        "Other Non-Christian religions": 2.2
+      },
+      {
+        "country": "Sweden",
+        "Roman Catholic": 5.4,
+        "Protestant": 76.9,
+        "Eastern Orthodox": 5.1,
+        "Other Christian denomination": 3.1,
+        "Jewish": 0.3,
+        "Islam": 7.5,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1.8
+      },
+      {
+        "country": "Iceland",
+        "Roman Catholic": 13.8,
+        "Protestant": 76.7,
+        "Eastern Orthodox": 0.3,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0,
+        "Islam": 1.6,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 5.7
+      },
+      {
+        "country": "Finland",
+        "Roman Catholic": 0.5,
+        "Protestant": 90.1,
+        "Eastern Orthodox": 3.6,
+        "Other Christian denomination": 2,
+        "Jewish": 0,
+        "Islam": 2.5,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.8
+      },
+      {
+        "country": "Germany",
+        "Roman Catholic": 46.1,
+        "Protestant": 36.2,
+        "Eastern Orthodox": 2.8,
+        "Other Christian denomination": 4,
+        "Jewish": 0,
+        "Islam": 10.2,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.5
+      },
+      {
+        "country": "France",
+        "Roman Catholic": 74.6,
+        "Protestant": 3.4,
+        "Eastern Orthodox": 0.6,
+        "Other Christian denomination": 2.1,
+        "Jewish": 0.6,
+        "Islam": 17.7,
+        "Eastern religions": 0.2,
+        "Other Non-Christian religions": 0.7
+      },
+      {
+        "country": "Belgium",
+        "Roman Catholic": 75.4,
+        "Protestant": 3.1,
+        "Eastern Orthodox": 1.4,
+        "Other Christian denomination": 2.2,
+        "Jewish": 0.3,
+        "Islam": 15.5,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 1.4
+      },
+      {
+        "country": "Switzerland",
+        "Roman Catholic": 49.9,
+        "Protestant": 33.5,
+        "Eastern Orthodox": 3,
+        "Other Christian denomination": 2.4,
+        "Jewish": 0.7,
+        "Islam": 8.4,
+        "Eastern religions": 1.9,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Austria",
+        "Roman Catholic": 82.2,
+        "Protestant": 4.5,
+        "Eastern Orthodox": 2.9,
+        "Other Christian denomination": 0.8,
+        "Jewish": 0.4,
+        "Islam": 8.1,
+        "Eastern religions": 0.8,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Slovenia",
+        "Roman Catholic": 86.9,
+        "Protestant": 0.1,
+        "Eastern Orthodox": 6.2,
+        "Other Christian denomination": 0.7,
+        "Jewish": 0,
+        "Islam": 5.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.4
+      },
+      {
+        "country": "Ireland",
+        "Roman Catholic": 87,
+        "Protestant": 3.2,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 4.5,
+        "Jewish": 0,
+        "Islam": 2.1,
+        "Eastern religions": 0.6,
+        "Other Non-Christian religions": 1.7
+      },
+      {
+        "country": "Spain",
+        "Roman Catholic": 88.2,
+        "Protestant": 1.2,
+        "Eastern Orthodox": 1.8,
+        "Other Christian denomination": 3.5,
+        "Jewish": 0.1,
+        "Islam": 4,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 1
+      },
+      {
+        "country": "Hungary",
+        "Roman Catholic": 72,
+        "Protestant": 25.3,
+        "Eastern Orthodox": 0.2,
+        "Other Christian denomination": 1.7,
+        "Jewish": 0.2,
+        "Islam": 0,
+        "Eastern religions": 0.5,
+        "Other Non-Christian religions": 0
+      },
+      {
+        "country": "Italy",
+        "Roman Catholic": 92,
+        "Protestant": 0.7,
+        "Eastern Orthodox": 2.1,
+        "Other Christian denomination": 0.6,
+        "Jewish": 0.2,
+        "Islam": 3.2,
+        "Eastern religions": 0.4,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Slovakia",
+        "Roman Catholic": 83.3,
+        "Protestant": 10.2,
+        "Eastern Orthodox": 0.8,
+        "Other Christian denomination": 5.2,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.6
+      },
+      {
+        "country": "Lithuania",
+        "Roman Catholic": 92.8,
+        "Protestant": 0.6,
+        "Eastern Orthodox": 3.8,
+        "Other Christian denomination": 0.9,
+        "Jewish": 0.1,
+        "Islam": 0.1,
+        "Eastern religions": 0.7,
+        "Other Non-Christian religions": 0.9
+      },
+      {
+        "country": "Croatia",
+        "Roman Catholic": 93.4,
+        "Protestant": 0.3,
+        "Eastern Orthodox": 4.1,
+        "Other Christian denomination": 0.2,
+        "Jewish": 0,
+        "Islam": 1.7,
+        "Eastern religions": 0.1,
+        "Other Non-Christian religions": 0.3
+      },
+      {
+        "country": "Portugal",
+        "Roman Catholic": 92,
+        "Protestant": 5.5,
+        "Eastern Orthodox": 0.4,
+        "Other Christian denomination": 1.1,
+        "Jewish": 0,
+        "Islam": 0.4,
+        "Eastern religions": 0.3,
+        "Other Non-Christian religions": 0.2
+      },
+      {
+        "country": "Poland",
+        "Roman Catholic": 99.2,
+        "Protestant": 0.4,
+        "Eastern Orthodox": 0,
+        "Other Christian denomination": 0.3,
+        "Jewish": 0,
+        "Islam": 0,
+        "Eastern religions": 0,
+        "Other Non-Christian religions": 0.2
+      }
+    ]
+  },
+  "years": [
+    2002,
+    2004,
+    2006,
+    2008,
+    2010,
+    2012,
+    2014,
+    2016,
+    2018,
+    2020,
+    2022,
+    2024
+  ],
+  "metadata": {
+    "processedAt": "2025-05-29T19:32:49.060Z",
+    "totalYears": 12,
+    "dataTypes": [
+      "belonging",
+      "denominations"
+    ]
+  }
+}

@@ -1,75 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Map of Europe's Predominant Religions</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Interactive Map of Europe's Predominant Religions</h1>
-      <p>
-        The map will be colored by the colors of religions/economic state/….
-      </p>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>European Social & Economic Data Explorer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Georgia+Pro:wght@400&display=swap');
+    html, body, #fullpage {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .section {
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #section1 {
+      background-image: url('./images/home_background.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    footer {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; 
+      text-align: center; 
+      padding: 10px 0; 
+      width: 100%; 
+      height: 60px;  
+      font-size: 20px;  
+      line-height: 60px;  
+      position: relative;  
+    }
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Major Mono Display", sans-serif;  
+    }
+    .footer-content a {
+      color: rgb(255, 255, 255);
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 30px;
+    }
+    .footer-content span {
+      font-size: 20px;  
+      font-weight: bold;  
+    }
+    .footer-content span:not(:last-child)::after {
+      content: " | ";
+      margin: 0 5px;
+    }
 
-    <!-- 1) Map -->
-    <div id="map">
-      <div class="tooltip" id="tooltip"></div>
-      <div id="legend" style="margin-top: 20px; padding: 10px;"></div>
+    /* Custom styles for fullPage.js navigation dots */
+    .fp-right .fp-tooltip {
+      color: white !important;
+      font-family: "Major Mono Display", sans-serif !important;
+      font-size: 16px !important;
+    }
+    .fp-right li a span {
+      background: white !important;
+    }
+    .fp-right li a.active span {
+      background: white !important;
+    }
+
+    /* Special styling for sections */
+    #section5, #section6 {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Add subtle animation for section transitions */
+    .section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <div id="fullpage">
+    <!-- Home Section -->
+    <div class="section" id="section1">
+      <iframe src="home.html"></iframe>
     </div>
-
-    <div class="control-panel" id="view-panel">
-      <!-- radios will be injected here -->
+    
+    <!-- About Section -->
+    <div class="section" id="section2">
+      <iframe src="about.html"></iframe>
     </div>
-
-    <div class="control-panel" style="top: auto; bottom: 10px; left: 10px">
-      <button id="compareBtn">Compare</button>
+    
+    <!-- Data Overview Section -->
+    <div class="section" id="section3">
+      <iframe src="data-overview.html"></iframe>
     </div>
-
-    <!-- 2) Charts: hidden until you select two countries in “Compare” mode -->
-    <div
-      id="charts"
-      style="
-        display: none;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 10px;
-      "
-    >
-      <canvas
-        id="chart1"
-        width="300"
-        height="300"
-        style="margin: 10px"
-      ></canvas>
-      <canvas
-        id="chart2"
-        width="300"
-        height="300"
-        style="margin: 10px"
-      ></canvas>
+    
+    <!-- Interactive Map Section -->
+    <div class="section" id="section4">
+      <iframe src="interactive-map.html"></iframe>
     </div>
+    
+    <!-- Temporal Trends Section -->
+    <div class="section" id="section5">
+      <iframe src="temporal-visualization.html"></iframe>
+    </div>
+    
+    <!-- NEW: Religious Denominations Map Section -->
+    <div class="section" id="section6">
+      <iframe src="religious-denominations-map.html"></iframe>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+      <a href="https://github.com/your-repo" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+      <span>Team JSError</span>
+      <span>European Data Explorer </span>
+    </div>
+  </footer>
 
-    <footer>
-      <p>&copy; 2025 team JSError</p>
-      <p>
-        TopoJSON is adapted from a map made by
-        <a
-          href="https://github.com/leakyMirror/map-of-europe/tree/master"
-          target="_blank"
-          >@leakyMirror on GitHub</a
-        >
-      </p>
-    </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
+  <script>
+    new fullpage('#fullpage', {
+      navigation: true,
+      navigationPosition: 'right',
+      navigationTooltips: [
+        'Home', 
+        'About', 
+        'Data Overview', 
+        'Interactive Map', 
+        'Temporal Trends',
+        'Religious Denominations'  // New section
+      ],
+      showActiveTooltip: true,
+      scrollingSpeed: 700,
+      autoScrolling: true,
+      scrollBar: true,
+      fitToSection: true,
+      fitToSectionDelay: 100,
+      responsiveWidth: 0,
+      responsiveHeight: 0,
+      responsiveSlides: false,
+      
+      // Enhanced navigation options
+      keyboardScrolling: true,
+      animateAnchor: true,
+      recordHistory: true,
+      
+      // Callbacks for smooth transitions
+      onLeave: function(origin, destination, direction) {
+        console.log('Navigating from section', origin.index, 'to section', destination.index);
+      },
+      
+      afterLoad: function(origin, destination, direction) {
+        // Trigger any section-specific initializations
+        if (destination.index === 4) { // Temporal trends section (0-indexed)
+          console.log('Loaded temporal trends section');
+        }
+        if (destination.index === 5) { // Religious denominations section (0-indexed)
+          console.log('Loaded religious denominations section');
+        }
+      }
+    });
 
-    <!-- 3) Scripts at the end, after all DOM elements -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/topojson-client@3"></script>
-    <script src="script.js"></script>
-  </body>
+    // Add keyboard shortcuts for better navigation
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'h':
+        case 'H':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(1); // Home
+          }
+          break;
+        case 'm':
+        case 'M':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(4); // Interactive Map
+          }
+          break;
+        case 't':
+        case 'T':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(5); // Temporal Trends
+          }
+          break;
+        case 'r':
+        case 'R':
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            fullpage_api.moveTo(6); // Religious Denominations
+          }
+          break;
+      }
+    });
+
+    // Add smooth loading indicator
+    window.addEventListener('load', function() {
+      console.log('European Data Explorer loaded successfully');
+      
+      // Optional: Add a brief loading animation
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
 </html>

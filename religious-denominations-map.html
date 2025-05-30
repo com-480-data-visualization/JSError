@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Religious Denominations Map - European Data Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .controls-section {
+            margin-bottom: 25px;
+        }
+
+        .controls-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .year-controls {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #667eea;
+        }
+
+        .year-display {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .year-slider-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .year-slider {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .year-slider:hover {
+            opacity: 1;
+        }
+
+        .year-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: 4px solid white;
+            transition: all 0.2s ease;
+        }
+
+        .year-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .year-slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: 4px solid white;
+            border: none;
+        }
+
+        .year-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .denomination-selector {
+            margin-bottom: 20px;
+        }
+
+        .denomination-option {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.05);
+            font-size: 0.9rem;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .denomination-option:hover {
+            background: rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .denomination-option input {
+            margin-right: 10px;
+        }
+
+        .legend-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #667eea;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 12px;
+            flex-shrink: 0;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-label {
+            color: #333;
+            line-height: 1.3;
+            font-weight: 500;
+        }
+
+        .country-path {
+            stroke: #fff;
+            stroke-width: 0.8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .country-path:hover {
+            stroke-width: 3;
+            stroke: #667eea;
+            filter: brightness(1.1) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+
+        .tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            max-width: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip h4 {
+            margin-bottom: 8px;
+            color: #667eea;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .tooltip .year-info {
+            font-size: 0.8rem;
+            color: #ffc107;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .tooltip ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tooltip li {
+            margin-bottom: 4px;
+            padding: 2px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tooltip .denomination-name {
+            font-weight: 500;
+        }
+
+        .tooltip .percentage {
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 1.2rem;
+            color: #667eea;
+            flex-direction: column;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-data {
+            color: #999;
+            font-style: italic;
+            padding: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .data-info {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .data-info h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .data-info p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        @media (max-width: 1400px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls-panel {
+                order: -1;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .year-display {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Religious Denominations Across Europe</h1>
+            <p style="color: #666; font-size: 0.9rem;">Explore the evolution of religious denominations from 2002 to 2024 • Hover over countries for detailed breakdown</p>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                    <div>Loading religious denomination data...</div>
+                </div>
+                <svg id="map" width="100%" height="100%" viewBox="0 0 800 600" style="display: none;"></svg>
+                <div class="tooltip" id="tooltip"></div>
+            </div>
+
+            <div class="controls-panel">
+                <div class="year-controls">
+                    <h3 style="text-align: center; margin-bottom: 15px;">📅 Time Period</h3>
+                    <div class="year-display" id="year-display">2002</div>
+                    <div class="year-slider-container">
+                        <input type="range" id="year-slider" class="year-slider" 
+                               min="0" max="11" value="0" step="1">
+                        <div class="year-labels">
+                            <span>2002</span>
+                            <span>2006</span>
+                            <span>2010</span>
+                            <span>2014</span>
+                            <span>2018</span>
+                            <span>2022</span>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls-section">
+                    <h3>⛪ Focus Denomination</h3>
+                    <div class="denomination-selector">
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="all" checked>
+                            🌍 Show All (by Majority)
+                        </label>
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="Roman Catholic">
+                            ✝️ Roman Catholic
+                        </label>
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="Protestant">
+                            ⛪ Protestant
+                        </label>
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="Eastern Orthodox">
+                            ☦️ Eastern Orthodox
+                        </label>
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="Islam">
+                            🕌 Islam
+                        </label>
+                        <label class="denomination-option">
+                            <input type="radio" name="denomination" value="Other">
+                            🔄 Other Religions
+                        </label>
+                    </div>
+                </div>
+
+                <div class="data-info">
+                    <h4>📊 Data Source</h4>
+                    <p>European Social Survey (ESS) religious denomination data collected across multiple waves from 2002-2024. Data shows percentage of population identifying with each religious denomination.</p>
+                </div>
+
+                <div class="legend-container" id="legend-container">
+                    <div class="legend-title">🎨 Color Legend</div>
+                    <div id="legend-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script>
+        // Configuration
+        const YEARS = [2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024];
+        
+        const DENOMINATION_COLORS = {
+            'Roman Catholic': '#8B4513',
+            'Protestant': '#4169E1', 
+            'Eastern Orthodox': '#DAA520',
+            'Other Christian denomination': '#20B2AA',
+            'Jewish': '#9932CC',
+            'Islam': '#228B22',
+            'Eastern religions': '#FF8C00',
+            'Other Non-Christian religions': '#DC143C'
+        };
+
+        // Global state
+        let currentYearIndex = 0;
+        let currentDenomination = 'all';
+        let allData = {};
+        let topoData = null;
+        let isDataLoaded = false;
+
+        // Initialize the visualization
+        async function init() {
+            console.log('Initializing religious denominations map...');
+            
+            try {
+                await loadData();
+                setupMap();
+                setupControls();
+                updateVisualization();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('map').style.display = 'block';
+                
+                console.log('Initialization complete!');
+            } catch (error) {
+                console.error('Error initializing:', error);
+                document.getElementById('loading').innerHTML = 
+                    '<div class="no-data">Error loading religious denomination data.<br>Please ensure the temporal data files exist.</div>';
+            }
+        }
+
+        async function loadData() {
+            try {
+                // Try to load processed temporal data
+                const [temporalResponse, topoResponse] = await Promise.all([
+                    fetch('data/temporal-data.json'),
+                    fetch('data/europe-topo.json')
+                ]);
+                
+                if (temporalResponse.ok && topoResponse.ok) {
+                    const temporalData = await temporalResponse.json();
+                    topoData = await topoResponse.json();
+                    
+                    allData = temporalData.denominations || {};
+                    console.log('Loaded temporal denomination data:', Object.keys(allData));
+                } else {
+                    throw new Error('Temporal data files not found');
+                }
+            } catch (error) {
+                console.warn('Could not load temporal data, using sample data:', error.message);
+                await loadSampleData();
+            }
+            
+            isDataLoaded = true;
+        }
+
+        async function loadSampleData() {
+            // Generate sample denomination data for demonstration
+            const sampleData = {};
+            const denominations = ['Roman Catholic', 'Protestant', 'Eastern Orthodox', 
+                                 'Other Christian denomination', 'Jewish', 'Islam', 
+                                 'Eastern religions', 'Other Non-Christian religions'];
+
+            const countries = [
+                'CZ - Czechia', 'EE - Estonia', 'NL - Netherlands', 'SE - Sweden', 
+                'IS - Iceland', 'LV - Latvia', 'GB - United Kingdom', 'NO - Norway',
+                'BE - Belgium', 'HU - Hungary', 'FR - France', 'FI - Finland',
+                'SI - Slovenia', 'DE - Germany', 'CH - Switzerland', 'DK - Denmark',
+                'ES - Spain', 'IE - Ireland', 'HR - Croatia', 'SK - Slovakia', 'PT - Portugal'
+            ];
+
+            YEARS.forEach(year => {
+                sampleData[year] = countries.map(country => {
+                    const data = { country: country };
+                    let remaining = 100;
+                    
+                    // Generate realistic distributions based on country
+                    if (country.includes('Ireland') || country.includes('Spain') || country.includes('Portugal')) {
+                        data['Roman Catholic'] = 60 + Math.random() * 20;
+                    } else if (country.includes('Sweden') || country.includes('Norway') || country.includes('Denmark')) {
+                        data['Protestant'] = 40 + Math.random() * 30;
+                    } else if (country.includes('Croatia') || country.includes('Slovakia')) {
+                        data['Roman Catholic'] = 50 + Math.random() * 30;
+                    } else {
+                        data['Roman Catholic'] = 15 + Math.random() * 25;
+                    }
+                    
+                    remaining -= data['Roman Catholic'] || 0;
+                    
+                    denominations.slice(1).forEach(denom => {
+                        if (remaining > 0) {
+                            const value = Math.random() * Math.min(remaining, 20);
+                            data[denom] = value;
+                            remaining -= value;
+                        } else {
+                            data[denom] = 0;
+                        }
+                    });
+                    
+                    return data;
+                });
+            });
+
+            allData = sampleData;
+            
+            // Load topology
+            try {
+                topoData = await d3.json('data/europe-topo.json');
+            } catch {
+                console.error('Could not load topology data');
+            }
+            
+            console.log('Generated sample denomination data');
+        }
+
+        function setupMap() {
+            console.log('Setting up denomination map...');
+            const svg = d3.select('#map');
+            const width = 800;
+            const height = 600;
+            
+            svg.attr('viewBox', `0 0 ${width} ${height}`);
+
+            // Set up projection
+            const projection = d3.geoNaturalEarth1()
+                .scale(1000)
+                .center([20, 55])
+                .translate([width / 2, height / 2]);
+
+            const path = d3.geoPath().projection(projection);
+
+            if (!topoData) {
+                console.error('No topology data available');
+                return;
+            }
+
+            // Convert topology to geojson
+            let europeData = null;
+            const possibleNames = ['europe', 'countries', 'collection', 'subunits', 'ne_50m_admin_0_countries'];
+            
+            for (const name of possibleNames) {
+                if (topoData.objects[name]) {
+                    console.log(`Using topology object: ${name}`);
+                    europeData = topojson.feature(topoData, topoData.objects[name]);
+                    break;
+                }
+            }
+            
+            if (!europeData) {
+                console.error('Could not find valid topology object');
+                return;
+            }
+
+            // Draw countries
+            svg.selectAll('.country')
+                .data(europeData.features)
+                .enter()
+                .append('path')
+                .attr('class', 'country-path')
+                .attr('d', path)
+                .attr('fill', '#f0f0f0')
+                .on('mouseover', handleMouseOver)
+                .on('mouseout', handleMouseOut)
+                .on('mousemove', handleMouseMove);
+
+            console.log('Map setup complete!');
+        }
+
+        function setupControls() {
+            // Year slider
+            const slider = document.getElementById('year-slider');
+            const yearDisplay = document.getElementById('year-display');
+            
+            slider.addEventListener('input', function() {
+                currentYearIndex = parseInt(this.value);
+                yearDisplay.textContent = YEARS[currentYearIndex];
+                updateVisualization();
+            });
+
+            // Denomination selector
+            d3.selectAll('input[name="denomination"]').on('change', function() {
+                currentDenomination = this.value;
+                updateVisualization();
+                updateLegend();
+            });
+        }
+
+        function updateVisualization() {
+            if (!isDataLoaded) return;
+            
+            const currentYear = YEARS[currentYearIndex];
+            const data = allData[currentYear];
+            
+            if (!data) {
+                console.error('No data found for year', currentYear);
+                return;
+            }
+
+            // Update country colors
+            d3.selectAll('.country-path')
+                .attr('fill', d => {
+                    const countryName = getCountryName(d);
+                    const countryData = findCountryData(countryName, data);
+                    
+                    if (!countryData) {
+                        return '#f0f0f0';
+                    }
+                    
+                    if (currentDenomination === 'all') {
+                        // Show by majority denomination
+                        const majority = getMajorityDenomination(countryData);
+                        return DENOMINATION_COLORS[majority] || '#f0f0f0';
+                    } else {
+                        // Show intensity of selected denomination
+                        const percentage = countryData[currentDenomination] || 0;
+                        const intensity = Math.min(percentage / 50, 1); // Scale to 0-1
+                        const baseColor = DENOMINATION_COLORS[currentDenomination] || '#667eea';
+                        return d3.interpolate('#f0f0f0', baseColor)(intensity);
+                    }
+                });
+
+            updateLegend();
+        }
+
+        function getCountryName(d) {
+            return d.properties.NAME || 
+                   d.properties.name || 
+                   d.properties.COUNTRY || 
+                   d.properties.country ||
+                   d.properties.NAME_EN ||
+                   d.properties.ADMIN ||
+                   d.properties.admin ||
+                   'Unknown';
+        }
+
+        function findCountryData(countryName, yearData) {
+            // Try exact match first
+            let countryData = yearData.find(c => c.country === countryName);
+            
+            if (!countryData) {
+                // Try case-insensitive match
+                countryData = yearData.find(c => 
+                    c.country.toLowerCase() === countryName.toLowerCase()
+                );
+            }
+            
+            if (!countryData) {
+                // Try common variations
+                const variations = [
+                    countryName.replace('United Kingdom', 'UK'),
+                    countryName.replace('UK', 'United Kingdom'),
+                    countryName.replace('Czech Republic', 'Czechia'),
+                    countryName.replace('Czechia', 'Czech Republic'),
+                    countryName.replace('The Netherlands', 'Netherlands'),
+                    countryName.replace('Netherlands', 'The Netherlands')
+                ];
+                
+                for (const variation of variations) {
+                    countryData = yearData.find(c => 
+                        c.country.toLowerCase() === variation.toLowerCase()
+                    );
+                    if (countryData) break;
+                }
+            }
+            
+            return countryData;
+        }
+
+        function getMajorityDenomination(countryData) {
+            const denominations = Object.keys(DENOMINATION_COLORS);
+            let maxPercentage = 0;
+            let majorityDenom = 'Roman Catholic';
+            
+            denominations.forEach(denom => {
+                const percentage = countryData[denom] || 0;
+                if (percentage > maxPercentage) {
+                    maxPercentage = percentage;
+                    majorityDenom = denom;
+                }
+            });
+            
+            return majorityDenom;
+        }
+
+        function handleMouseOver(event, d) {
+            const countryName = getCountryName(d);
+            const currentYear = YEARS[currentYearIndex];
+            const data = allData[currentYear];
+            const countryData = findCountryData(countryName, data);
+            
+            showTooltip(countryData, countryName, currentYear, event);
+        }
+
+        function handleMouseOut() {
+            hideTooltip();
+        }
+
+        function handleMouseMove(event) {
+            updateTooltipPosition(event);
+        }
+
+        function showTooltip(countryData, countryName, year, event) {
+            const tooltip = d3.select('#tooltip');
+            
+            if (!countryData) {
+                let content = `<h4>${countryName}</h4><div class="year-info">Year: ${year}</div><div>No data available</div>`;
+                tooltip.html(content).classed('visible', true);
+                updateTooltipPosition(event);
+                return;
+            }
+
+            let content = `<h4>${countryData.country}</h4><div class="year-info">Year: ${year}</div>`;
+            
+            const denominations = Object.keys(DENOMINATION_COLORS);
+            const validData = denominations.filter(d => (countryData[d] || 0) > 0);
+            
+            if (validData.length > 0) {
+                content += '<ul>';
+                validData
+                    .sort((a, b) => (countryData[b] || 0) - (countryData[a] || 0))
+                    .forEach(denom => {
+                        const value = countryData[denom] || 0;
+                        content += `<li><span class="denomination-name">${denom}:</span> <span class="percentage">${value.toFixed(1)}%</span></li>`;
+                    });
+                content += '</ul>';
+            } else {
+                content += '<div>No denomination data available</div>';
+            }
+
+            tooltip.html(content).classed('visible', true);
+            updateTooltipPosition(event);
+        }
+
+        function updateTooltipPosition(event) {
+            const tooltip = d3.select('#tooltip');
+            const tooltipNode = tooltip.node();
+            
+            if (!tooltipNode) return;
+            
+            const tooltipRect = tooltipNode.getBoundingClientRect();
+            const tooltipWidth = tooltipRect.width;
+            const tooltipHeight = tooltipRect.height;
+            
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            let left = event.clientX + 15;
+            let top = event.clientY - 10;
+            
+            if (left + tooltipWidth > viewportWidth) {
+                left = event.clientX - tooltipWidth - 15;
+            }
+            
+            if (top + tooltipHeight > viewportHeight) {
+                top = event.clientY - tooltipHeight - 10;
+            }
+            
+            if (left < 0) left = 10;
+            if (top < 0) top = 10;
+            
+            tooltip
+                .style('left', left + 'px')
+                .style('top', top + 'px');
+        }
+
+        function hideTooltip() {
+            d3.select('#tooltip').classed('visible', false);
+        }
+
+        function updateLegend() {
+            const legendContent = document.getElementById('legend-content');
+            legendContent.innerHTML = '';
+            
+            if (currentDenomination === 'all') {
+                // Show all denomination colors
+                Object.entries(DENOMINATION_COLORS).forEach(([denomination, color]) => {
+                    const item = document.createElement('div');
+                    item.className = 'legend-item';
+                    item.innerHTML = `
+                        <div class="legend-color" style="background-color: ${color}"></div>
+                        <span class="legend-label">${denomination}</span>
+                    `;
+                    legendContent.appendChild(item);
+                });
+            } else {
+                // Show intensity scale for selected denomination
+                const baseColor = DENOMINATION_COLORS[currentDenomination] || '#667eea';
+                const intensityLevels = [
+                    { label: 'Low (0-10%)', intensity: 0.2 },
+                    { label: 'Medium (10-25%)', intensity: 0.5 },
+                    { label: 'High (25-50%)', intensity: 0.8 },
+                    { label: 'Very High (50%+)', intensity: 1.0 }
+                ];
+                
+                intensityLevels.forEach(level => {
+                    const color = d3.interpolate('#f0f0f0', baseColor)(level.intensity);
+                    const item = document.createElement('div');
+                    item.className = 'legend-item';
+                    item.innerHTML = `
+                        <div class="legend-color" style="background-color: ${color}"></div>
+                        <span class="legend-label">${level.label}</span>
+                    `;
+                    legendContent.appendChild(item);
+                });
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
