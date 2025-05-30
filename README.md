@@ -73,11 +73,8 @@ The milestone 2 file
 
 ## Milestone 3 (30th May, 5pm)
 
-https://com-480-data-visualization.github.io/JSError/
+Check Milestone 3 file read me
 
-https://youtu.be/KFgboshj0NI
-
-Process book: Milestone 3 file
 
 **80% of the final grade**
 
