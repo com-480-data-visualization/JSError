@@ -15,7 +15,7 @@ Video on Youtube: [https://youtu.be/KFgboshj0NI](https://youtu.be/KFgboshj0NI)
 
 PDF: [Process Book](<Process Book.pdf>)
 
-HTML: [Process Book HTML](process_book.html)
+HTML: [Process Book HTML](https://com-480-data-visualization.github.io/JSError/milestone3/process_book.html)
 
 ## ✨ Features
 ### 🗺️ Interactive Visualizations
