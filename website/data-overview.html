@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .overview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .overview-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .data-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffc107;
+            text-align: center;
+        }
+        
+        .category-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .category-examples {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .category-examples strong {
+            color: #ffc107;
+        }
+        
+        .methodology-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+        }
+        
+        .methodology-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #ffc107;
+            text-align: center;
+        }
+        
+        .methodology-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .methodology-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .methodology-list {
+            list-style: none;
+        }
+        
+        .methodology-list li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .methodology-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .data-sources {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .data-sources h4 {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        
+        .data-sources p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .overview-title {
+                font-size: 2.5rem;
+            }
+            
+            .data-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .methodology-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .methodology-section,
+            .category-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overview-container">
+        <h2 class="overview-title">Data Categories & Methodology</h2>
+        
+        <div class="data-categories">
+            <div class="category-card">
+                <div class="category-icon">🛐</div>
+                <h3 class="category-title">Religious Beliefs</h3>
+                <p class="category-description">
+                    Explore the predominant religious affiliations across European countries, 
+                    from Christianity to Islam, and secular perspectives.
+                </p>
+                <div class="category-examples">
+                    <strong>Examples:</strong> Christian, Muslim, Atheist, Nothing in particular, Other religions
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💰</div>
+                <h3 class="category-title">Economic Perception</h3>
+                <p class="category-description">
+                    Understand how citizens perceive their country's economic situation 
+                    and their personal financial outlook.
+                </p>
+                <div class="category-examples">
+                    <strong>Categories:</strong> Very good, Somewhat good, Somewhat bad, Very bad
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">💑</div>
+                <h3 class="category-title">Marriage Patterns</h3>
+                <p class="category-description">
+                    Analyze relationship status distributions and marriage trends 
+                    across different European societies.
+                </p>
+                <div class="category-examples">
+                    <strong>Status Types:</strong> Married, Single, Divorced, Widowed, Living together, Civil partnership
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🏥</div>
+                <h3 class="category-title">Abortion Attitudes</h3>
+                <p class="category-description">
+                    Survey public opinion on abortion policies and reproductive rights 
+                    across European nations.
+                </p>
+                <div class="category-examples">
+                    <strong>Positions:</strong> Legal in all cases, Legal in most cases, Illegal in most cases, Illegal in all cases
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">🏳️‍🌈</div>
+                <h3 class="category-title">Same-Sex Marriage</h3>
+                <p class="category-description">
+                    Examine public support for same-sex marriage and LGBTQ+ rights 
+                    across different European countries.
+                </p>
+                <div class="category-examples">
+                    <strong>Support Levels:</strong> Strongly favor, Favor, Oppose, Strongly oppose
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-icon">👥</div>
+                <h3 class="category-title">Demographics</h3>
+                <p class="category-description">
+                    Discover demographic trends including median age and population 
+                    characteristics across Europe.
+                </p>
+                <div class="category-examples">
+                    <strong>Metrics:</strong> Median age, Population trends, Age distribution patterns
+                </div>
+            </div>
+        </div>
+        
+        <div class="methodology-section">
+            <h3 class="methodology-title">Our Methodology</h3>
+            
+            <div class="methodology-content">
+                <div class="methodology-text">
+                    <p>
+                        Our data visualization platform combines multiple European social surveys 
+                        and demographic studies to provide comprehensive insights into the social 
+                        and economic landscape of Europe.
+                    </p>
+                    
+                    <ul class="methodology-list">
+                        <li>Data aggregation from multiple European surveys</li>
+                        <li>Statistical analysis and trend identification</li>
+                        <li>Interactive visualization development</li>
+                        <li>Cross-country comparison capabilities</li>
+                        <li>Real-time data exploration tools</li>
+                    </ul>
+                </div>
+                
+                <div class="data-sources">
+                    <h4>Data Sources</h4>
+                    <p>
+                        Our dataset combines information from European Social Survey (ESS), 
+                        Eurostat demographic data, Pew Research Center studies, and various 
+                        national statistical offices across Europe. All data has been standardized 
+                        and verified for accuracy and consistency.
+                    </p>
+                    
+                    <p style="margin-top: 15px;">
+                        <strong>Note:</strong> Data represents the most recent available information 
+                        for each country and may vary in collection dates. All percentages are 
+                        calculated based on valid responses excluding missing data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Data Explorer - Process Book</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* COVER PAGE */
+        .cover-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        .course-info {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            z-index: 1;
+        }
+        
+        .team-names {
+            font-size: 1.1rem;
+            line-height: 2;
+            z-index: 1;
+        }
+        
+        .team-names div {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* CONTENT PAGES */
+        .content-page {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-header {
+            border-bottom: 4px solid #667eea;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #764ba2;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid #667eea;
+            padding-left: 1rem;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .content-block {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 1rem 0;
+        }
+        
+        .content-block h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .content-block p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* VISUALIZATION SHOWCASE */
+        .viz-showcase {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .viz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .viz-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            border: 2px dashed #667eea;
+            font-weight: 500;
+        }
+        
+        .viz-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* PROCESS TIMELINE */
+        .timeline-section {
+            margin: 3rem 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.2rem;
+            top: 0.5rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .timeline-title {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* DATA EXAMPLES */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        /* TASK DISTRIBUTION */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+        
+        .task-card h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-list li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* COLOR PALETTE */
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-1 { background: #667eea; }
+        .color-2 { background: #764ba2; }
+        .color-3 { background: #2E86AB; }
+        .color-4 { background: #A23B72; }
+        .color-5 { background: #F18F01; }
+        
+        /* PRINT STYLES */
+        @media print {
+            body { 
+                background: white;
+                font-size: 12pt;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                min-height: 100vh;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- COVER PAGE -->
+    <div class="page cover-page">
+        <div class="project-title">EURODATA</div>
+        <div class="project-subtitle">Interactive European Social & Economic Data Explorer</div>
+        <div class="course-info">COM-480 Data Visualization<br>Process Book</div>
+        <div class="team-names">
+            <div><strong>Alaa El Ouahabi</strong></div>
+            <div><strong>Martynas Rimkevičius</strong></div>
+            <div><strong>Zheyang Lyu</strong></div>
+        </div>
+    </div>
+
+    <!-- PROJECT OVERVIEW PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Project Overview</h1>
+            <p class="page-subtitle">Understanding European Diversity Through Data</p>
+        </div>
+        
+        <div class="section-title">Mission Statement</div>
+        <div class="content-block">
+            <p>
+                The origins of religion can be traced back to at least 100,000 years ago, and it has continuously 
+                and profoundly influenced the development and continuation of human civilization. Our project aims 
+                to use data visualization to display the distribution, evolution, and societal impact of global 
+                religious patterns, specifically showcasing European data through interactive visualizations.
+            </p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Key Features</div>
+                <ul class="feature-list">
+                    <li>Interactive European map with multiple data layers</li>
+                    <li>Religious denomination temporal analysis</li>
+                    <li>Country comparison tools</li>
+                    <li>Economic perception visualization</li>
+                    <li>Social attitude exploration</li>
+                    <li>Responsive design across devices</li>
+                </ul>
+            </div>
+            <div>
+                <div class="section-title">Data Categories</div>
+                <ul class="feature-list">
+                    <li>🛐 Religious beliefs and belonging</li>
+                    <li>💰 Economic perception</li>
+                    <li>💑 Marriage patterns</li>
+                    <li>🏥 Abortion attitudes</li>
+                    <li>🏳️‍🌈 Same-sex marriage support</li>
+                    <li>📊 Demographic information</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-number">1</div>
+    </div>
+
+    <!-- DATASET PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Dataset</h1>
+            <p class="page-subtitle">Pew Research Center European Surveys</p>
+        </div>
+        
+        <div class="content-block">
+            <h3>Data Sources</h3>
+            <p>
+                All datasets used in this project are sourced from the <strong>Pew Research Center</strong>, 
+                a nonpartisan fact tank that informs the public about issues, attitudes and trends shaping the world.
+            </p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Western Europe Survey</div>
+                <div class="content-block">
+                    <p><strong>Period:</strong> April to August 2017</p>
+                    <p><strong>Sample:</strong> 26,000+ telephone interviews</p>
+                    <p><strong>Coverage:</strong> 16 countries, 14 languages</p>
+                    <p><strong>Focus:</strong> Role of religion in public and private life, views toward religious minorities</p>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">Central & Eastern Europe Survey</div>
+                <div class="content-block">
+                    <p><strong>Period:</strong> June 2015 to July 2016</p>
+                    <p><strong>Sample:</strong> 31,000+ face-to-face interviews</p>
+                    <p><strong>Coverage:</strong> 19 countries, 17 languages</p>
+                    <p><strong>Focus:</strong> Religion in public life and national identity post-Soviet Union</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Sample Data</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Christian</th>
+                    <th>Muslim</th>
+                    <th>Atheist</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Eastern Europe</td>
+                    <td>78%</td>
+                    <td>9.1%</td>
+                    <td>3.5%</td>
+                    <td>9.4%</td>
+                </tr>
+                <tr>
+                    <td>Western Europe</td>
+                    <td>68.1%</td>
+                    <td>1%</td>
+                    <td>10.7%</td>
+                    <td>20.2%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-number">2</div>
+    </div>
+
+    <!-- DESIGN CHOICES PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Design Choices</h1>
+            <p class="page-subtitle">Visual Identity & User Experience</p>
+        </div>
+
+        <div class="section-title">Color Palette</div>
+        <div class="color-palette">
+            <div class="color-swatch color-1">#667eea<br>Primary</div>
+            <div class="color-swatch color-2">#764ba2<br>Secondary</div>
+            <div class="color-swatch color-3">#2E86AB<br>Accent 1</div>
+            <div class="color-swatch color-4">#A23B72<br>Accent 2</div>
+            <div class="color-swatch color-5">#F18F01<br>Highlight</div>
+        </div>
+
+        <div class="content-block">
+            <p>
+                For our color scheme we chose a purple gradient with blue. As religion and various opinions are very 
+                abstract topics, we wanted something neutral but engaging. The smooth gradient coloring is kept 
+                consistent throughout all visualizations.
+            </p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Website Layout</div>
+                <div class="content-block">
+                    <p>
+                        From the start, we focused on country comparisons with the map as our centerpiece. 
+                        We chose to color countries according to their most common responses for immediate 
+                        surface-level insights.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Scrollable fullPage.js navigation</li>
+                        <li>Glassmorphism design elements</li>
+                        <li>Responsive grid layouts</li>
+                        <li>Interactive tooltips and legends</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">User Experience</div>
+                <div class="content-block">
+                    <p>
+                        Our goal was to make data exploration as smooth and intuitive as possible. 
+                        Users can seamlessly navigate between different data perspectives and compare countries interactively.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Hover interactions for data exploration</li>
+                        <li>Compare mode for country analysis</li>
+                        <li>Temporal slider for time-based data</li>
+                        <li>Emoji-based category selection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">3</div>
+    </div>
+
+    <!-- STORYTELLING PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Storytelling</h1>
+            <p class="page-subtitle">Guiding Users Through European Diversity</p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                We wanted to tell the story of how religions impact the way people perceive their countries and 
+                what beliefs they hold. However, during our exploration, we found that religions do not divide 
+                people as much as initially thought. We wanted users to experience this same realization through 
+                various topics such as economic state perception and social attitudes.
+            </p>
+        </div>
+
+        <div class="timeline-section">
+            <div class="section-title">User Journey</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">1. Introduction & Expectations</div>
+                        <div class="timeline-description">
+                            We start by introducing users to the available visualizations and pose leading 
+                            questions that create expectations and act as hooks for deeper exploration.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">2. Mission & Context</div>
+                        <div class="timeline-description">
+                            We explain our mission to show European diversity and the endless comparison 
+                            possibilities, providing context about data categories and processing methods.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">3. Interactive Exploration</div>
+                        <div class="timeline-description">
+                            Users explore the interactive map by selecting categories and hovering over countries, 
+                            with the option to compare two countries for deeper visual understanding.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">4. Temporal Analysis</div>
+                        <div class="timeline-description">
+                            The temporal visualization reveals how religious denominations have evolved 
+                            across Europe from 2002 to 2024, providing historical context.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">4</div>
+    </div>
+
+    <!-- VISUALIZATIONS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Visualizations</h1>
+            <p class="page-subtitle">Interactive Data Exploration Tools</p>
+        </div>
+
+        <div class="viz-showcase">
+            <div class="viz-title">Interactive European Map</div>
+            <div class="viz-placeholder">
+                [Interactive Map Visualization]<br>
+                Countries colored by majority responses
+            </div>
+            <div class="viz-description">
+                The main visualization allows users to explore different data categories by coloring countries 
+                according to their majority responses. Hover interactions provide detailed breakdowns, while 
+                compare mode enables side-by-side country analysis with pie chart comparisons.
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div class="viz-showcase">
+                <div class="viz-title">Temporal Trends</div>
+                <div class="viz-placeholder">
+                    [Timeline Visualization]<br>
+                    Religious belonging over time
+                </div>
+                <div class="viz-description">
+                    Bar chart animations showing how religious belonging and denominations have changed 
+                    across European countries from 2002 to 2024.
+                </div>
+            </div>
+            <div class="viz-showcase">
+                <div class="viz-title">Religious Denominations Map</div>
+                <div class="viz-placeholder">
+                    [Denomination Map]<br>
+                    Year-based exploration
+                </div>
+                <div class="viz-description">
+                    Specialized map focusing on religious denominations with year slider functionality 
+                    and intensity-based coloring for individual religions.
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Technical Implementation</div>
+        <div class="two-column">
+            <div class="content-block">
+                <h3>Frontend Technologies</h3>
+                <ul class="feature-list">
+                    <li>D3.js for interactive visualizations</li>
+                    <li>fullPage.js for smooth navigation</li>
+                    <li>TopoJSON for map data</li>
+                    <li>Custom CSS animations</li>
+                    <li>Responsive design principles</li>
+                </ul>
+            </div>
+            <div class="content-block">
+                <h3>Data Processing</h3>
+                <ul class="feature-list">
+                    <li>Node.js data aggregation scripts</li>
+                    <li>CSV parsing and cleaning</li>
+                    <li>JSON data structure optimization</li>
+                    <li>Temporal data organization</li>
+                    <li>Country name standardization</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-number">5</div>
+    </div>
+
+    <!-- CHALLENGES PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Challenges</h1>
+            <p class="page-subtitle">Technical and Design Obstacles</p>
+        </div>
+
+        <div class="timeline-section">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Dataset Selection</div>
+                        <div class="timeline-description">
+                            Initial challenge was finding standardized datasets across different countries. 
+                            Census data varied significantly between nations and didn't capture opinions and views. 
+                            We settled on Pew Research Center datasets for their comprehensive coverage and 
+                            standardized methodology.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Data Integration</div>
+                        <div class="timeline-description">
+                            Finding shared data across both Western and Eastern European datasets proved challenging. 
+                            We had to filter, clean, and process aggregated survey responses while maintaining 
+                            data integrity and comparability.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Geographic Mapping</div>
+                        <div class="timeline-description">
+                            Misalignment between country names in our datasets and topological data caused 
+                            visualization issues. Some countries appeared on the map but showed no data due to 
+                            naming inconsistencies that required manual mapping solutions.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Bias and Data Selection</div>
+                        <div class="timeline-description">
+                            Choosing which survey data to represent required careful consideration of our own 
+                            biases and interests. We focused on data potentially impacted by religious beliefs: 
+                            abortion rights, same-sex marriage, and marriage status.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Temporal Data Processing</div>
+                        <div class="timeline-description">
+                            Creating the temporal visualization required processing multiple years of data with 
+                            varying country coverage and question formats. Initial loading issues were resolved 
+                            by implementing proper data loading sequences and SVG rendering timing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">6</div>
+    </div>
+
+    <!-- TASK DISTRIBUTION PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Task Distribution</h1>
+            <p class="page-subtitle">Team Member Contributions</p>
+        </div>
+
+        <div class="task-grid">
+            <div class="task-card">
+                <h4>Alaa El Ouahabi</h4>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
+                <ul class="task-list">
+                    <li>Database discovery and book relation</li>
+                    <li>Related work description</li>
+                    <li>Data post-processing assistance</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
+                <ul class="task-list">
+                    <li>Initial website HTML draft</li>
+                    <li>Landing page with pop-up design</li>
+                    <li>Map drafting initiation</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
+                <ul class="task-list">
+                    <li>Story section HTML/CSS</li>
+                    <li>Text animations implementation</li>
+                    <li>SVG background graphics</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <h4>Martynas Rimkevičius</h4>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
+                <ul class="task-list">
+                    <li>Initial dataset analysis</li>
+                    <li>Feasibility assessment</li>
+                    <li>Survey data processing and merging</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
+                <ul class="task-list">
+                    <li>Website skeleton development</li>
+                    <li>Layout and visualization planning</li>
+                    <li>Website hosting configuration</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
+                <ul class="task-list">
+                    <li>Map interactivity implementation</li>
+                    <li>Tooltip functionality</li>
+                    <li>Data loading optimization</li>
+                    <li>Final report compilation</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <h4>Zheyang Lyu</h4>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
+                <ul class="task-list">
+                    <li>Exploratory data processing</li>
+                    <li>Data quality assessment</li>
+                    <li>Statistical analysis</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
+                <ul class="task-list">
+                    <li>Website graphics enhancement</li>
+                    <li>Age verification system</li>
+                    <li>Process documentation</li>
+                    <li>Visualization concepts</li>
+                </ul>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
+                <ul class="task-list">
+                    <li>Location points mapping</li>
+                    <li>Weather API integration</li>
+                    <li>Map layer implementation</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <h4>Team Collaboration</h4>
+                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Joint Efforts</div>
+                <ul class="task-list">
+                    <li>D3.js visualizations</li>
+                    <li>Interactive map development</li>
+                    <li>Temporal analysis implementation</li>
+                    <li>Religious denominations map</li>
+                    <li>Country comparison features</li>
+                    <li>Data processing pipelines</li>
+                    <li>Website styling and UX</li>
+                    <li>Testing and debugging</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Development Workflow</h3>
+            <p>
+                Our team adopted a collaborative approach with parallel development streams. Each member focused 
+                on their expertise areas while maintaining regular integration points. We used version control 
+                for code management and conducted regular reviews to ensure consistency across all website sections.
+            </p>
+        </div>
+        
+        <div class="page-number">7</div>
+    </div>
+
+    <!-- FUTURE WORK PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Future Work</h1>
+            <p class="page-subtitle">Potential Enhancements & Extensions</p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Technical Improvements</div>
+                <div class="content-block">
+                    <h3>Performance Optimization</h3>
+                    <ul class="feature-list">
+                        <li>Data caching mechanisms</li>
+                        <li>Lazy loading for large datasets</li>
+                        <li>WebGL acceleration for complex visualizations</li>
+                        <li>Progressive data loading</li>
+                    </ul>
+                </div>
+                
+                <div class="content-block">
+                    <h3>Enhanced Interactivity</h3>
+                    <ul class="feature-list">
+                        <li>Real-time data filtering</li>
+                        <li>Custom data range selection</li>
+                        <li>Advanced comparison matrices</li>
+                        <li>Bookmark and sharing features</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div>
+                <div class="section-title">Content Expansion</div>
+                <div class="content-block">
+                    <h3>Additional Data Sources</h3>
+                    <ul class="feature-list">
+                        <li>Eurostat integration</li>
+                        <li>World Values Survey data</li>
+                        <li>European Quality of Life Survey</li>
+                        <li>Real-time demographic updates</li>
+                    </ul>
+                </div>
+                
+                <div class="content-block">
+                    <h3>New Visualizations</h3>
+                    <ul class="feature-list">
+                        <li>Network analysis of cultural similarities</li>
+                        <li>3D geographic representations</li>
+                        <li>Animated flow maps for migration</li>
+                        <li>Machine learning clustering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="viz-showcase">
+            <div class="viz-title">Potential Extensions</div>
+            <div class="viz-description">
+                Future iterations could include predictive modeling based on demographic trends, 
+                integration with social media sentiment analysis, and expansion to global datasets 
+                for worldwide comparisons. Educational features like guided tours and data storytelling 
+                could enhance user engagement and learning outcomes.
+            </div>
+        </div>
+
+        <div class="section-title">Lessons Learned</div>
+        <div class="content-block">
+            <p>
+                This project taught us valuable lessons about data visualization complexity, user experience design, 
+                and collaborative development. The importance of data quality, consistent naming conventions, and 
+                user testing became apparent throughout the development process. Future projects would benefit from 
+                earlier user feedback integration and more robust data validation pipelines.
+            </p>
+        </div>
+        
+        <div class="page-number">8</div>
+    </div>
+
+    <script>
+        // Add any JavaScript for print functionality or interactive elements
+        window.addEventListener('load', function() {
+            // Optional: Add print button functionality
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'p') {
+                    window.print();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

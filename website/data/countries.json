@@ -86,8 +86,8 @@
     "medianAge": 50
   },
   {
-    "country": "Bosnia",
-    "coords": [0, 0],
+    "country": "Bosnia and Herzegovina",
+    "coords": [17.792465231153752, 44.16416423227342],
     "rDist": {
       "Agnostic": 0.97,
       "Atheist": 1.75,
@@ -557,7 +557,7 @@
     "medianAge": 54
   },
   {
-    "country": "Moldova",
+    "country": "Republic of Moldova",
     "coords": [0, 0],
     "rDist": {
       "Atheist": 0.93,
@@ -1259,8 +1259,8 @@
     "medianAge": 44
   },
   {
-    "country": "Slovak Republic",
-    "coords": [0, 0],
+    "country": "Slovakia",
+    "coords": [19.481494475374316, 48.71282812840974],
     "rDist": {
       "Agnostic": 0.74,
       "Atheist": 15.48,

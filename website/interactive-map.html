@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive European Map - With Popup Comparison</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 20px;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .map-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+        }
+
+        .controls-section {
+            margin-bottom: 25px;
+        }
+
+        .controls-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+
+        .view-option {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(102, 126, 234, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .view-option:hover {
+            background: rgba(102, 126, 234, 0.15);
+            transform: translateX(5px);
+        }
+
+        .view-option input {
+            margin-right: 8px;
+        }
+
+        #legend {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .comparison-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .comparison-header h3 {
+            color: #667eea;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .compare-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .compare-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .compare-button.active {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+        }
+
+        .compare-instructions {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .compare-instructions p {
+            margin: 0 0 10px 0;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .selected-countries {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .selected-country {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* POPUP STYLES */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8) translateY(50px);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .popup-overlay.visible .popup-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .popup-header h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .popup-close {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .popup-close:hover {
+            background: #c0392b;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .popup-charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .popup-chart-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .popup-chart-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .popup-chart-section svg {
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+        }
+
+        .country-path.selected {
+            stroke: #ffc107 !important;
+            stroke-width: 3px !important;
+            filter: brightness(1.2);
+        }
+
+        .country-path.compare-mode {
+            cursor: crosshair;
+        }
+
+        .tooltip {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            max-width: 250px;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .tooltip.visible {
+            opacity: 1;
+        }
+
+        .tooltip h4 {
+            margin-bottom: 6px;
+            color: #667eea;
+            font-size: 0.95rem;
+        }
+
+        .tooltip ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tooltip li {
+            margin-bottom: 3px;
+            padding: 1px 0;
+        }
+
+        .tooltip .majority {
+            font-weight: bold;
+            color: #ffc107;
+        }
+
+        .country-path {
+            stroke: #fff;
+            stroke-width: 0.5;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .country-path:hover {
+            stroke-width: 2;
+            stroke: #667eea;
+            filter: brightness(1.1);
+        }
+
+        .no-data {
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 1400px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-section {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .popup-charts-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .popup-content {
+                margin: 20px;
+                padding: 25px;
+            }
+            
+            .popup-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .popup-content {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .popup-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Interactive European Data Map</h1>
+            <p style="color: #666; font-size: 0.9rem;">Hover over countries to explore data • Use Compare Countries to analyze differences</p>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <svg id="map" width="100%" height="100%" viewBox="0 0 800 600"></svg>
+                <div class="tooltip" id="tooltip"></div>
+            </div>
+
+            <div class="controls-panel">
+                <div class="controls-section">
+                    <h3>📊 Data Views</h3>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="religion" checked>
+                        🛐 Religion
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="economic">
+                        💰 Economics
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="marriage">
+                        💑 Marriage
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="abortion">
+                        🏥 Abortion
+                    </label>
+                    <label class="view-option">
+                        <input type="radio" name="view" value="sameSex">
+                        🏳️‍🌈 Same-Sex Marriage
+                    </label>
+                </div>
+
+                <div id="legend">
+                    <div class="legend-title">Legend</div>
+                    <div id="legend-content"></div>
+                </div>
+
+                <div class="comparison-section">
+                    <div class="comparison-header">
+                        <h3>🔄 Country Comparison</h3>
+                        <button id="compare-btn" class="compare-button">Compare Countries</button>
+                    </div>
+                    
+                    <div id="compare-instructions" class="compare-instructions" style="display: none;">
+                        <p>Click on two countries to compare them</p>
+                        <div class="selected-countries">
+                            <div class="selected-country" id="selected-country-1">
+                                <span>Country 1: <strong id="country-1-name">Not selected</strong></span>
+                            </div>
+                            <div class="selected-country" id="selected-country-2">
+                                <span>Country 2: <strong id="country-2-name">Not selected</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP OVERLAY -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2>Country Comparison</h2>
+                <button class="popup-close" id="popup-close">×</button>
+            </div>
+            <div class="popup-charts-container">
+                <div class="popup-chart-section">
+                    <h3 id="popup-chart1-title">Country 1</h3>
+                    <svg id="popup-chart1" width="350" height="300"></svg>
+                </div>
+                <div class="popup-chart-section">
+                    <h3 id="popup-chart2-title">Country 2</h3>
+                    <svg id="popup-chart2" width="350" height="300"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script>
+        // Data configuration - COMPLETE ORIGINAL VERSION
+        const DATA_CONFIG = {
+            religion: {
+                key: 'religionMajority',
+                distKey: 'rDist',
+                colors: {
+                    'Christian': '#2E86AB',
+                    'Muslim': '#A23B72',
+                    'Nothing in particular': '#F18F01',
+                    'Atheist': '#C73E1D',
+                    'Jewish': '#8B8B8B',
+                    'Other': '#9B59B6'
+                }
+            },
+            economic: {
+                key: 'economicMajority',
+                distKey: 'eDist',
+                colors: {
+                    'Very good': '#2D5016',
+                    'Somewhat good': '#61A25C',
+                    'Somewhat bad': '#FFB563',
+                    'Very bad': '#D2001C'
+                }
+            },
+            marriage: {
+                key: 'marriageMajority',
+                distKey: 'mDist',
+                colors: {
+                    'Married': '#2E86AB',
+                    'Never been married': '#A23B72',
+                    'Divorced': '#F18F01',
+                    'Widowed': '#8B4A6B',
+                    'Living with a partner': '#61A25C',
+                    'In a civil partnership': '#C73E1D',
+                    'Separated': '#FF6B6B'
+                }
+            },
+            abortion: {
+                key: 'abortionMajority',
+                distKey: 'aDist',
+                colors: {
+                    'Legal in all cases': '#2D5016',
+                    'Legal in most cases': '#61A25C',
+                    'Illegal in most cases': '#FFB563',
+                    'Illegal in all cases': '#D2001C'
+                }
+            },
+            sameSex: {
+                key: 'sameSexMajority',
+                distKey: 'sDist',
+                colors: {
+                    'Strongly favor': '#2D5016',
+                    'Favor': '#61A25C',
+                    'Oppose': '#FFB563',
+                    'Strongly oppose': '#D2001C'
+                }
+            }
+        };
+
+        // Global state
+        let currentView = 'religion';
+        let compareMode = false;
+        let selectedCountries = [];
+        let countriesData = [];
+        let topoData = null;
+
+        // COMPLETE INITIALIZATION FUNCTION
+        async function init() {
+            console.log('Starting initialization...');
+            
+            try {
+                // Load your processed data
+                console.log('Loading countries.json...');
+                countriesData = await d3.json('data/countries.json');
+                console.log(`Loaded ${countriesData.length} countries`);
+                console.log('Sample data:', countriesData[0]);
+                
+                // Load topology
+                console.log('Loading topology...');
+                topoData = await d3.json('data/europe-topo.json');
+                console.log('Topology loaded, objects:', Object.keys(topoData.objects));
+                
+                // Set up the map
+                setupMap();
+                setupControls();
+                updateVisualization();
+
+                console.log('Initialization complete!');
+
+            } catch (error) {
+                console.error('Initialization error:', error);
+                document.querySelector('.map-container').innerHTML = 
+                    '<div class="no-data">Error loading data: ' + error.message + '<br>' +
+                    'Please check that both data/countries.json and data/europe-topo.json exist.</div>';
+            }
+        }
+
+        function setupMap() {
+            console.log('Setting up map...');
+            const svg = d3.select('#map');
+            const width = 800;
+            const height = 600;
+            
+            svg.attr('viewBox', `0 0 ${width} ${height}`);
+
+            // Set up projection
+            const projection = d3.geoNaturalEarth1()
+                .scale(1000)
+                .center([20, 55])
+                .translate([width / 2, height / 2]);
+
+            const path = d3.geoPath().projection(projection);
+
+            // Convert topology to geojson
+            let europeData = null;
+            const possibleNames = ['europe', 'countries', 'collection', 'subunits', 'ne_50m_admin_0_countries'];
+            
+            for (const name of possibleNames) {
+                if (topoData.objects[name]) {
+                    console.log(`Using topology object: ${name}`);
+                    europeData = topojson.feature(topoData, topoData.objects[name]);
+                    break;
+                }
+            }
+            
+            if (!europeData) {
+                console.error('Could not find valid topology object. Available:', Object.keys(topoData.objects));
+                document.querySelector('.map-container').innerHTML = 
+                    '<div class="no-data">Could not find valid map data in topology file.</div>';
+                return;
+            }
+
+            console.log(`Found ${europeData.features.length} features`);
+            console.log('Sample feature properties:', europeData.features[0]?.properties);
+
+            // Draw countries
+            svg.selectAll('.country')
+                .data(europeData.features)
+                .enter()
+                .append('path')
+                .attr('class', 'country-path')
+                .attr('d', path)
+                .attr('fill', '#f0f0f0')
+                .on('click', handleCountryClick)
+                .on('mouseover', handleMouseOver)
+                .on('mouseout', handleMouseOut);
+
+            console.log('Map setup complete!');
+        }
+
+        function setupControls() {
+            // View selector
+            d3.selectAll('input[name="view"]').on('change', function() {
+                currentView = this.value;
+                console.log('View changed to:', currentView);
+                updateVisualization();
+                hideTooltip();
+            });
+
+            // Compare button
+            d3.select('#compare-btn').on('click', function() {
+                toggleCompareMode();
+            });
+
+            // Popup close button
+            d3.select('#popup-close').on('click', function() {
+                closePopup();
+            });
+
+            // Close popup when clicking outside
+            d3.select('#popup-overlay').on('click', function(event) {
+                if (event.target.id === 'popup-overlay') {
+                    closePopup();
+                }
+            });
+
+            // Close popup with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closePopup();
+                }
+            });
+        }
+
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            selectedCountries = [];
+            
+            const btn = d3.select('#compare-btn');
+            const instructions = d3.select('#compare-instructions');
+            
+            if (compareMode) {
+                btn.text('Exit Compare Mode').classed('active', true);
+                instructions.style('display', 'block');
+                
+                // Update country names display
+                d3.select('#country-1-name').text('Not selected');
+                d3.select('#country-2-name').text('Not selected');
+                
+                // Add compare mode class to countries
+                d3.selectAll('.country-path').classed('compare-mode', true);
+            } else {
+                btn.text('Compare Countries').classed('active', false);
+                instructions.style('display', 'none');
+                closePopup();
+                
+                // Remove compare mode class and selections
+                d3.selectAll('.country-path')
+                    .classed('compare-mode', false)
+                    .classed('selected', false);
+            }
+
+            hideTooltip();
+        }
+
+        function closePopup() {
+            d3.select('#popup-overlay').classed('visible', false);
+            selectedCountries = [];
+            d3.selectAll('.country-path').classed('selected', false);
+            d3.select('#country-1-name').text('Not selected');
+            d3.select('#country-2-name').text('Not selected');
+        }
+
+        function handleCountryClick(event, d) {
+            const countryName = getCountryName(d);
+            const countryData = findCountryData(countryName);
+            
+            if (compareMode) {
+                handleCountrySelection(event, d, countryData, countryName);
+            }
+        }
+
+        function handleCountrySelection(event, geoData, countryData, countryName) {
+            const countryElement = d3.select(event.currentTarget);
+
+            // Check if already selected
+            const existingIndex = selectedCountries.findIndex(c => c.name === countryName);
+            
+            if (existingIndex !== -1) {
+                // Deselect
+                selectedCountries.splice(existingIndex, 1);
+                countryElement.classed('selected', false);
+                
+                // Update display
+                if (existingIndex === 0) {
+                    d3.select('#country-1-name').text('Not selected');
+                } else {
+                    d3.select('#country-2-name').text('Not selected');
+                }
+                
+                // Close popup if open
+                if (selectedCountries.length < 2) {
+                    d3.select('#popup-overlay').classed('visible', false);
+                }
+            } else if (selectedCountries.length < 2) {
+                // Select
+                const countryInfo = {
+                    name: countryName,
+                    data: countryData,
+                    element: countryElement
+                };
+                
+                selectedCountries.push(countryInfo);
+                countryElement.classed('selected', true);
+                
+                // Update display
+                if (selectedCountries.length === 1) {
+                    d3.select('#country-1-name').text(countryName);
+                } else {
+                    d3.select('#country-2-name').text(countryName);
+                }
+            }
+
+            // Show popup if we have 2 countries
+            if (selectedCountries.length === 2) {
+                showPopup();
+            }
+        }
+
+        function handleMouseOver(event, d) {
+            if (!compareMode) {
+                const countryName = getCountryName(d);
+                const countryData = findCountryData(countryName);
+                showTooltip(countryData, countryName, event);
+                
+                // Add mousemove listener to update tooltip position
+                d3.select(event.currentTarget)
+                    .on('mousemove', function(moveEvent) {
+                        updateTooltipPosition(moveEvent);
+                    });
+            }
+        }
+
+        function handleMouseOut() {
+            if (!compareMode) {
+                hideTooltip();
+                // Remove mousemove listener
+                d3.selectAll('.country-path')
+                    .on('mousemove', null);
+            }
+        }
+
+        function getCountryName(d) {
+            // Try different possible property names for country name
+            return d.properties.NAME || 
+                   d.properties.name || 
+                   d.properties.COUNTRY || 
+                   d.properties.country ||
+                   d.properties.NAME_EN ||
+                   d.properties.ADMIN ||
+                   d.properties.admin ||
+                   'Unknown';
+        }
+
+        function findCountryData(countryName) {
+            console.log('Looking for country:', countryName);
+            
+            // Try exact match first
+            let countryData = countriesData.find(c => c.country === countryName);
+            
+            if (!countryData) {
+                // Try case-insensitive match
+                countryData = countriesData.find(c => 
+                    c.country.toLowerCase() === countryName.toLowerCase()
+                );
+            }
+            
+            if (!countryData) {
+                // Try common variations
+                const variations = [
+                    countryName.replace('United Kingdom', 'UK'),
+                    countryName.replace('UK', 'United Kingdom'),
+                    countryName.replace('Czech Republic', 'Czechia'),
+                    countryName.replace('Czechia', 'Czech Republic'),
+                    countryName.replace('The Netherlands', 'Netherlands'),
+                    countryName.replace('Netherlands', 'The Netherlands')
+                ];
+                
+                for (const variation of variations) {
+                    countryData = countriesData.find(c => 
+                        c.country.toLowerCase() === variation.toLowerCase()
+                    );
+                    if (countryData) {
+                        console.log(`Found match with variation: ${variation} -> ${countryData.country}`);
+                        break;
+                    }
+                }
+            }
+            
+            if (countryData) {
+                console.log('Found data for:', countryData.country);
+            } else {
+                console.log('No data found for:', countryName);
+            }
+            
+            return countryData;
+        }
+
+        function updateVisualization() {
+            const config = DATA_CONFIG[currentView];
+            console.log('Updating visualization for view:', currentView);
+            
+            if (!config) {
+                console.error('No configuration found for view:', currentView);
+                return;
+            }
+            
+            // Update country colors
+            d3.selectAll('.country-path')
+                .attr('fill', d => {
+                    const countryName = getCountryName(d);
+                    const countryData = findCountryData(countryName);
+                    
+                    if (!countryData) {
+                        return '#f0f0f0';
+                    }
+                    
+                    const majority = countryData[config.key];
+                    const color = config.colors[majority];
+                    
+                    console.log(`${countryName}: majority=${majority}, color=${color}`);
+                    
+                    return color || '#f0f0f0';
+                });
+
+            updateLegend();
+        }
+
+        function updateLegend() {
+            const config = DATA_CONFIG[currentView];
+            const legendContent = d3.select('#legend-content');
+            
+            legendContent.selectAll('*').remove();
+
+            Object.entries(config.colors).forEach(([key, color]) => {
+                const item = legendContent.append('div')
+                    .attr('class', 'legend-item');
+                
+                item.append('div')
+                    .attr('class', 'legend-color')
+                    .style('background-color', color);
+                
+                item.append('span')
+                    .text(key);
+            });
+        }
+
+        function showTooltip(countryData, countryName, event) {
+            const tooltip = d3.select('#tooltip');
+            
+            if (!countryData) {
+                let content = `<h4>${countryName}</h4><div>No data available</div>`;
+                tooltip.html(content)
+                    .classed('visible', true);
+                updateTooltipPosition(event);
+                return;
+            }
+
+            const config = DATA_CONFIG[currentView];
+            let content = `<h4>${countryData.country}</h4>`;
+            
+            const distribution = countryData[config.distKey];
+            const majority = countryData[config.key];
+            
+            if (distribution && Object.keys(distribution).length > 0) {
+                content += '<ul>';
+                Object.entries(distribution)
+                    .sort(([,a], [,b]) => b - a)
+                    .forEach(([key, value]) => {
+                        const className = key === majority ? 'majority' : '';
+                        content += `<li class="${className}">${key}: ${value.toFixed(1)}%</li>`;
+                    });
+                content += '</ul>';
+            } else {
+                content += '<div>No distribution data available</div>';
+            }
+
+            tooltip.html(content)
+                .classed('visible', true);
+            
+            updateTooltipPosition(event);
+        }
+
+        function updateTooltipPosition(event) {
+            const tooltip = d3.select('#tooltip');
+            const tooltipNode = tooltip.node();
+            
+            if (!tooltipNode) return;
+            
+            // Get tooltip dimensions
+            const tooltipRect = tooltipNode.getBoundingClientRect();
+            const tooltipWidth = tooltipRect.width;
+            const tooltipHeight = tooltipRect.height;
+            
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            
+            // Calculate position with offset
+            let left = event.clientX + 15;
+            let top = event.clientY - 10;
+            
+            // Adjust if tooltip would go off-screen
+            if (left + tooltipWidth > viewportWidth) {
+                left = event.clientX - tooltipWidth - 15;
+            }
+            
+            if (top + tooltipHeight > viewportHeight) {
+                top = event.clientY - tooltipHeight - 10;
+            }
+            
+            // Ensure tooltip doesn't go off the left or top edge
+            if (left < 0) left = 10;
+            if (top < 0) top = 10;
+            
+            tooltip
+                .style('left', left + 'px')
+                .style('top', top + 'px');
+        }
+
+        function hideTooltip() {
+            d3.select('#tooltip').classed('visible', false);
+        }
+
+        function showPopup() {
+            const popup = d3.select('#popup-overlay');
+            popup.classed('visible', true);
+            
+            selectedCountries.forEach((country, index) => {
+                const chartId = `popup-chart${index + 1}`;
+                const titleId = `popup-chart${index + 1}-title`;
+                
+                d3.select(`#${titleId}`).text(country.name);
+                showDistributionChart(chartId, country.data);
+            });
+        }
+
+        function showDistributionChart(chartId, countryData) {
+            const svg = d3.select(`#${chartId}`);
+            svg.selectAll('*').remove();
+
+            const config = DATA_CONFIG[currentView];
+            const distKey = config.distKey;
+            const distribution = countryData[distKey];
+            
+            if (!distribution || Object.keys(distribution).length === 0) {
+                svg.append('text')
+                    .attr('x', '50%')
+                    .attr('y', '50%')
+                    .attr('text-anchor', 'middle')
+                    .attr('dominant-baseline', 'middle')
+                    .text('No data available')
+                    .style('font-size', '16px')
+                    .style('fill', '#999');
+                return;
+            }
+
+            const width = 350;
+            const height = 300;
+            const radius = Math.min(width, height) / 2 - 40;
+
+            const g = svg.append('g')
+                .attr('transform', `translate(${width/2}, ${height/2})`);
+
+            const pie = d3.pie()
+                .value(d => d.value)
+                .sort(null);
+
+            const arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+
+            const data = Object.entries(distribution)
+                .filter(([key, value]) => value > 0)
+                .map(([key, value]) => ({ key, value }));
+
+            const arcs = g.selectAll('.arc')
+                .data(pie(data))
+                .enter().append('g')
+                .attr('class', 'arc');
+
+            arcs.append('path')
+                .attr('d', arc)
+                .attr('fill', d => config.colors[d.data.key] || '#999')
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 2)
+                .style('cursor', 'pointer')
+                .on('mouseover', function(event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('transform', 'scale(1.05)');
+                        
+                    // Show value tooltip
+                    const tooltip = d3.select('body').append('div')
+                        .attr('class', 'chart-tooltip')
+                        .style('position', 'absolute')
+                        .style('background', 'rgba(0, 0, 0, 0.8)')
+                        .style('color', 'white')
+                        .style('padding', '8px 12px')
+                        .style('border-radius', '4px')
+                        .style('font-size', '12px')
+                        .style('pointer-events', 'none')
+                        .style('z-index', '2000')
+                        .text(`${d.data.key}: ${d.data.value.toFixed(1)}%`);
+                        
+                    tooltip.style('left', (event.pageX + 10) + 'px')
+                           .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseout', function() {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('transform', 'scale(1)');
+                        
+                    d3.selectAll('.chart-tooltip').remove();
+                });
+
+            arcs.append('text')
+                .attr('transform', d => `translate(${arc.centroid(d)})`)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'middle')
+                .style('font-size', '11px')
+                .style('font-weight', 'bold')
+                .style('fill', '#fff')
+                .style('text-shadow', '1px 1px 2px rgba(0,0,0,0.7)')
+                .text(d => d.data.value > 8 ? `${d.data.value.toFixed(1)}%` : '');
+
+            // Add a subtle animation
+            arcs.selectAll('path')
+                .style('opacity', 0)
+                .transition()
+                .duration(800)
+                .delay((d, i) => i * 100)
+                .style('opacity', 1)
+                .attrTween('d', function(d) {
+                    const interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
+                    return function(t) {
+                        return arc(interpolate(t));
+                    };
+                });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting init...');
+            init();
+        });
+    </script>
+</body>
+</html>
