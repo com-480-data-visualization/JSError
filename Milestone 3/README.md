@@ -2,7 +2,7 @@
 
 Interactive visualization of European social and economic data patterns
 
-Website: [https://com-480-data-visualization.github.io/JSError/](https://com-480-data-visualization.github.io/JSError/)
+Website (put the tab in full screen): [https://com-480-data-visualization.github.io/JSError/](https://com-480-data-visualization.github.io/JSError/)
 
 ## 🎯 Overview
 European Data Explorer is an interactive web application that visualizes social and economic patterns across European countries. Built with D3.js and modern web technologies, it provides intuitive exploration of religious beliefs, economic perceptions, marriage patterns, and social attitudes using data from the Pew Research Center.
