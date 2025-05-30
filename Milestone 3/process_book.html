@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Data Explorer - Process Book</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* COVER PAGE */
+        .cover-page {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+        
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+        
+        .project-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        .course-info {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            z-index: 1;
+        }
+        
+        .team-names {
+            font-size: 1.1rem;
+            line-height: 2;
+            z-index: 1;
+        }
+        
+        .team-names div {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* CONTENT PAGES */
+        .content-page {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .page-header {
+            border-bottom: 4px solid #667eea;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+        }
+        
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #764ba2;
+            margin: 2rem 0 1rem 0;
+            border-left: 5px solid #667eea;
+            padding-left: 1rem;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+        
+        .content-block {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin: 1rem 0;
+        }
+        
+        .content-block h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .content-block p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* VISUALIZATION SHOWCASE */
+        .viz-showcase {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .viz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .viz-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            border: 2px dashed #667eea;
+            font-weight: 500;
+        }
+        
+        .viz-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* PROCESS TIMELINE */
+        .timeline-section {
+            margin: 3rem 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.2rem;
+            top: 0.5rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .timeline-title {
+            font-size: 1.4rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .timeline-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* DATA EXAMPLES */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-table tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+        
+        /* TASK DISTRIBUTION */
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .task-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #667eea;
+        }
+        
+        .task-card h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-list li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* COLOR PALETTE */
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .color-1 { background: #667eea; }
+        .color-2 { background: #764ba2; }
+        .color-3 { background: #2E86AB; }
+        .color-4 { background: #A23B72; }
+        .color-5 { background: #F18F01; }
+        
+        /* PRINT STYLES */
+        @media print {
+            body { 
+                background: white;
+                font-size: 12pt;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                min-height: 100vh;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .page-number {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .sketch-image {
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1rem;
+            border: 2px dashed #667eea;
+            font-weight: 500;
+        }
+
+        .implementation-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            border: 2px dashed #667eea;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <!-- COVER PAGE -->
+    <div class="page cover-page">
+        <div class="project-title">EURODATA</div>
+        <div class="project-subtitle">Interactive European Social & Economic Data Explorer</div>
+        <div class="course-info">COM-480 Data Visualization<br>Process Book</div>
+        <div class="team-names">
+            <div><strong>Alaa El Ouahabi</strong></div>
+            <div><strong>Martynas Rimkevičius</strong></div>
+            <div><strong>Zheyang Lyu</strong></div>
+        </div>
+    </div>
+
+    <!-- PROJECT GOAL PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Project Goal</h1>
+            <p class="page-subtitle">Understanding European Diversity Through Religious Data</p>
+        </div>
+        
+        <div class="content-block">
+            <p>
+                The origins of religion can be traced back to at least 100,000 years ago, and it has continuously 
+                and profoundly influenced the development and continuation of human civilization. According to 
+                incomplete statistics, there are currently approximately 4,000 different religions and belief 
+                systems worldwide, closely linked to human social life, cultural traditions, and economic activities. 
+                Therefore, this project aims to use data visualization to display the distribution, evolution, and 
+                societal impact of religious patterns. We focus on linking these religious patterns with the various 
+                social questions, and we specifically showcase this with European data.
+            </p>
+        </div>
+        
+        <div class="page-number">1</div>
+    </div>
+
+    <!-- DATASET PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Dataset</h1>
+            <p class="page-subtitle">Pew Research Center & European Social Survey Data</p>
+        </div>
+        
+        <div class="content-block">
+            <h3>Primary Data Sources</h3>
+            <p>
+                All datasets used in this project are sourced from the <strong>Pew Research Center</strong>. 
+                Pew Research Center is a nonpartisan fact tank that informs the public about the issues, 
+                attitudes and trends shaping the world. This project primarily selects data from the 
+                International religion survey data. We used two European datasets - Western Europe survey 
+                and Central and Eastern Europe survey.
+            </p>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Western Europe Survey</div>
+                <div class="content-block">
+                    <p><strong>Period:</strong> April to August 2017</p>
+                    <p><strong>Sample:</strong> 26,000+ telephone interviews</p>
+                    <p><strong>Coverage:</strong> 16 countries, 14 languages</p>
+                    <p><strong>Focus:</strong> Role of religion in public and private life, views toward religious minorities</p>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">Central & Eastern Europe Survey</div>
+                <div class="content-block">
+                    <p><strong>Period:</strong> June 2015 to July 2016</p>
+                    <p><strong>Sample:</strong> 31,000+ face-to-face interviews</p>
+                    <p><strong>Coverage:</strong> 19 countries, 17 languages</p>
+                    <p><strong>Focus:</strong> Religion in public life and national identity post-Soviet Union</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>Dataset Challenges</h3>
+            <p>
+                These datasets are very broad and informative, but they were not unified, which restricted us 
+                in what we could show in our visualizations. If one dataset had the evaluation of respondent's 
+                happiness level, the other did not, and that meant that this kind of data could not be included.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <h3>Temporal Data - European Social Survey (ESS)</h3>
+            <p>
+                We also found datasets created by the European Social Survey (ESS) to showcase the temporal 
+                aspect of religions. We had 11 different datasets from 2002 to 2024 conducted every two years. 
+                We chose to use these datasets because the social climate changes and religious populations, 
+                especially with this information age evolve very quickly.
+            </p>
+        </div>
+        
+        <div class="page-number">2</div>
+    </div>
+
+    <!-- EXPLORATORY DATA ANALYSIS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Exploratory Data Analysis</h1>
+            <p class="page-subtitle">Understanding Dataset Boundaries and Potential</p>
+        </div>
+        
+        <div class="content-block">
+            <p>
+                In Milestone 1, we tried to find the boundaries of the datasets and find what exactly this 
+                kind of survey data can show to us. A lot of survey questions were specific to each country, 
+                such as how Lithuanians perceive the religious minorities population at the time of the question 
+                compared to the time in the Soviet Union. We discovered that these questions were not valuable 
+                as they did not give an insight into how the countries compare.
+            </p>
+        </div>
+
+        <div class="section-title">Sample Data Analysis</div>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Christian</th>
+                    <th>Muslim</th>
+                    <th>Atheist</th>
+                    <th>Other</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Eastern Europe</td>
+                    <td>78%</td>
+                    <td>9.1%</td>
+                    <td>3.5%</td>
+                    <td>9.4%</td>
+                </tr>
+                <tr>
+                    <td>Western Europe</td>
+                    <td>68.1%</td>
+                    <td>1%</td>
+                    <td>10.7%</td>
+                    <td>20.2%</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="page-number">3</div>
+    </div>
+
+    <!-- WEBSITE LAYOUT & COLOR SCHEME PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Design Choices</h1>
+            <p class="page-subtitle">Website Layout & Visual Identity</p>
+        </div>
+
+        <div class="section-title">Website Layout</div>
+        <div class="content-block">
+            <p>
+                From the start of the project we had an idea to compare countries, thus our main focus was 
+                always the map. To display the comparisons, we chose to color the countries according to their 
+                most common answers such that the user could immediately see results on a surface level. The 
+                goal was to make the experience of finding and interacting with data as smooth and easy as 
+                possible, thus we opted for a scrollable layout.
+            </p>
+        </div>
+
+        <div class="section-title">Website Color Scheme</div>
+        <div class="color-palette">
+            <div class="color-swatch color-1">#667eea<br>Primary</div>
+            <div class="color-swatch color-2">#764ba2<br>Secondary</div>
+            <div class="color-swatch color-3">#2E86AB<br>Accent 1</div>
+            <div class="color-swatch color-4">#A23B72<br>Accent 2</div>
+            <div class="color-swatch color-5">#F18F01<br>Highlight</div>
+        </div>
+
+        <div class="content-block">
+            <p>
+                For our color scheme we chose purple gradient with blue. As religion and various opinions are 
+                very abstract topics we wanted something neutral but engaging. Therefore we opted for a smooth 
+                gradient coloring that we kept consistent with the visualizations.
+            </p>
+        </div>
+        
+        <div class="page-number">4</div>
+    </div>
+
+    <!-- STORYTELLING PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Storytelling</h1>
+            <p class="page-subtitle">User Journey Through European Diversity</p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                We wanted to tell the story of how religions impact the way people perceive their countries and 
+                what beliefs they hold. However, during the project and our storytelling, we found that religions 
+                do not divide people as much as we thought they were. Therefore, we wanted the user to experience 
+                the same realization as we had through various topics such as economic state perception and 
+                abortion rights in the countries.
+            </p>
+        </div>
+
+        <div class="timeline-section">
+            <div class="section-title">User Journey</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">1. Introduction & Expectations</div>
+                        <div class="timeline-description">
+                            First, we start with the introduction to the user what visualizations they can expect 
+                            by listing all types of data the website showcases. We also add some leading questions 
+                            which creates expectation to find these answers later on and acts as a hook.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">2. Mission & Context</div>
+                        <div class="timeline-description">
+                            Second, we state our mission to show the diversity of European countries, and availability 
+                            of endless comparisons. In addition to that, we explain the categories mentioned in the 
+                            introduction more in depth, so that the user could understand what they will see in the map. 
+                            Then, we explain the datasets where the data was extracted, and how it was processed.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">3. Interactive Exploration</div>
+                        <div class="timeline-description">
+                            Lastly, we let the user explore the map by hovering over the map when their desired 
+                            comparison category is selected, and discover the data more in depth. If the user desires, 
+                            they can compare two countries over the selected category to have more visual understanding 
+                            where the difference lies.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">5</div>
+    </div>
+
+    <!-- VISUALIZATIONS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Visualizations</h1>
+            <p class="page-subtitle">Interactive Data Exploration Tools</p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                We initially started with the goal to implement one interactive map that would change the coloring 
+                depending on the selected topic. In addition to that, we wanted users to interact with the map and 
+                discover deeper information by comparing selected countries.
+            </p>
+        </div>
+
+        <div class="section-title">Sketches</div>
+        <div class="content-block">
+            <p>
+                Our initial sketches were barebones with the ideas for functionality and to be convincing. Our 
+                design was not fluid or intuitive to use, but we wanted our ideas to be represented in the sketches.
+            </p>
+        </div>
+
+        <div class="sketch-image">
+            [Design Sketches - Interactive Map Concepts]
+        </div>
+
+        <div class="content-block">
+            <p>
+                Once we made our prototype for Milestone 2 without using D3, we developed ideas how to guide the 
+                user's eye without the additional test explanations and tutorials. We needed to make our website intuitive.
+            </p>
+        </div>
+
+        <div class="section-title">Implementation</div>
+        <div class="implementation-image">
+            [First Implementation - Interactive Map Without D3]
+        </div>
+
+        <div class="two-column">
+            <div>
+                <div class="section-title">Main Map</div>
+                <div class="content-block">
+                    <p>
+                        Coloring the countries with the same color if they have the same highest ranked data item 
+                        (for example, Christianity when comparing religion), would already show the data in a simple 
+                        manner that is understandable with a legend. Moreover, to link our story and the map selector, 
+                        we kept the same radio buttons with emojis (🛐, 💰, 💑, 🏥, 🏳️‍🌈) for instant recognition of what the 
+                        user had seen on going through the website before. Then, to give quick insight on each country's 
+                        details, we have a dynamic tooltip, which appears next to the cursor when it is hovered over a 
+                        country in the map. The tooltip displays the percentages of the country's responses.
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="section-title">Compare Mode</div>
+                <div class="content-block">
+                    <p>
+                        To compare the countries, we implemented the generated pie charts once the two countries are 
+                        selected for it. This allows the user see in detail the visual comparison of what they could 
+                        read in text in the floating tooltip, but this time side by side.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">6</div>
+    </div>
+
+    <!-- DETAILED COMPARISON PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Detailed Comparison</h1>
+            <p class="page-subtitle">Religious Denominations Over Time</p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                Since our map is based on only a one year survey, we wanted the user to see how the religious 
+                belonging and denominations evolved in detail over the past 20 years. Therefore, we created a 
+                bar chart that compares all countries from that year's ESS data, and shows the detailed 
+                distribution of religious denominations. This is an interactive bar chart, which the user can 
+                hover and see the data without having to look at the axes carefully. For easier reading, the 
+                data is sorted from the highest values to lowest, which means that for religious belonging the 
+                first country shown is always going to be with the highest religious population percentile, and 
+                for the religious denomination will be the country with a single stand-out denomination.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                In addition to the bar chart, we added another map, which does not include the opinions of 
+                surveyees, but only their religious associations over the years. After gaining insight how the 
+                religious beliefs could have impacted surveyed opinions in the Pew Research data the user can 
+                gain insight how the same countries trended over the years.
+            </p>
+        </div>
+
+        <div class="viz-showcase">
+            <div class="viz-title">Temporal Bar Chart Visualization</div>
+            <div class="viz-placeholder">
+                [Interactive Bar Chart - Religious Demographics by Country]<br>
+                Sortable data from highest to lowest values
+            </div>
+            <div class="viz-description">
+                Interactive bar chart showing religious denominations across European countries with hover 
+                functionality for detailed data exploration without relying on axis labels.
+            </div>
+        </div>
+
+        <div class="viz-showcase">
+            <div class="viz-title">Religious Associations Map</div>
+            <div class="viz-placeholder">
+                [Temporal Map - Religious Associations 2002-2024]<br>
+                Year slider for temporal exploration
+            </div>
+            <div class="viz-description">
+                Specialized map focusing on religious associations over time, allowing users to understand 
+                how countries' religious landscapes have evolved across the past two decades.
+            </div>
+        </div>
+        
+        <div class="page-number">7</div>
+    </div>
+
+    <!-- CHALLENGES PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Challenges</h1>
+            <p class="page-subtitle">Technical and Design Obstacles</p>
+        </div>
+
+        <div class="timeline-section">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Dataset Selection</div>
+                        <div class="timeline-description">
+                            Our initial challenge once we decided to explore religions was picking the right dataset. 
+                            There are a lot of census datasets from different countries, but the census usually does 
+                            not represent the population's opinions and views. In addition to that, the census is not 
+                            standardized across different countries.                             Therefore we landed on Pew Research Center datasets from 2016 and 2017 as it 
+                            was open source and covered many topics.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Data Integration</div>
+                        <div class="timeline-description">
+                            Next challenge was finding the data that is shared across both datasets, and extracting it, 
+                            as data was the aggregated answers to the surveys. Once the data was selected, it had to be 
+                            filtered, cleaned and processed for visualizations.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Geographic Mapping</div>
+                        <div class="timeline-description">
+                            When it came to visualizing our data, we found that some countries that were drawn on the 
+                            map and were in the processed data, were not showing any results. This was because of 
+                            misalignment of country names between our datasets and topological data that we decided to use.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Bias and Data Selection</div>
+                        <div class="timeline-description">
+                            One of the more implicit challenges we had to solve was choosing what data we want to 
+                            represent from the surveys. We all have our biases and interests, but we ended up choosing 
+                            data that we thought would be impacted by the religious beliefs such as abortion rights, 
+                            same-sex marriage, and marriage status of the respondents.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-title">Temporal Data Processing</div>
+                        <div class="timeline-description">
+                            Another challenge we faced was that in the temporal datasets, the countries in one year 
+                            were not guaranteed to be in the other year. This missing data meant we had a lot of 
+                            empty data gaps to handle, which we ended up visualizing as missing data in the map, 
+                            and rerendering the bar chart once the year is selected.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-number">8</div>
+    </div>
+
+    <!-- TASK DISTRIBUTION PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Peer Assessment</h1>
+            <p class="page-subtitle">Team Member Contributions</p>
+        </div>
+
+        <div class="task-grid">
+            <div class="task-card">
+                <h4>Alaa El Ouahabi</h4>
+                <ul class="task-list">
+                    <li>Data collection for temporal data (religions belonging + nomination) + cleaning it</li>
+                    <li>Website design and coding of the whole website</li>
+                    <li>Code the html for the final report</li>
+                    <li>Record the screencast</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <h4>Martynas Rimkevičius</h4>
+                <ul class="task-list">
+                    <li>Initial dataset analysis + feasibility assessment</li>
+                    <li>Survey data processing and merging for the visualization use</li>
+                    <li>Initial website skeleton (layout + visualization ideas)</li>
+                    <li>Website hosting configuration</li>
+                    <li>Map interactivity implementation (showing tooltip) and loading data into the map</li>
+                    <li>Wrote the process book and made visuals of the evolution</li>
+                </ul>
+            </div>
+
+            <div class="task-card">
+                <h4>Zheyang Lyu</h4>
+                <ul class="task-list">
+                    <li>Join team discussions</li>
+                    <li>Made some visualisation code but it's not perfect</li>
+                    <li>Read code and report</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="page-number">9</div>
+    </div>
+
+    <script>
+        // Add any JavaScript for print functionality or interactive elements
+        window.addEventListener('load', function() {
+            // Optional: Add print button functionality
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'p') {
+                    window.print();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
