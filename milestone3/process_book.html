@@ -307,7 +307,7 @@
         /* TASK DISTRIBUTION */
         .task-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
             margin: 2rem 0;
         }
@@ -366,24 +366,168 @@
         
         /* PRINT STYLES */
         @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
             body { 
                 background: white;
-                font-size: 12pt;
+                font-size: 10pt;
+                margin: 0;
+                padding: 0;
             }
             
             .page {
                 box-shadow: none;
                 margin: 0;
-                width: 100%;
-                min-height: 100vh;
+                padding: 15mm;
+                width: 210mm;
+                height: 297mm;
+                min-height: 297mm;
+                max-height: 297mm;
+                page-break-after: always;
+                page-break-inside: avoid;
+                overflow: hidden;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .page:last-child {
+                page-break-after: auto;
+            }
+            
+            .content-page {
+                padding: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+            
+            .cover-page {
+                padding: 0;
+                height: 100%;
             }
             
             .page-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 0.3rem;
             }
             
             .project-title {
-                font-size: 3.5rem;
+                font-size: 2.8rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                margin: 1rem 0 0.5rem 0;
+            }
+            
+            .content-block {
+                margin: 0.5rem 0;
+                padding: 1rem;
+            }
+            
+            .content-block p {
+                margin-bottom: 0.5rem;
+                line-height: 1.4;
+                font-size: 9pt;
+            }
+            
+            .two-column {
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .timeline-item {
+                margin: 1rem 0;
+            }
+            
+            .timeline-content {
+                padding: 1rem;
+            }
+            
+            .timeline-title {
+                font-size: 1rem;
+            }
+            
+            .timeline-description {
+                font-size: 9pt;
+                line-height: 1.3;
+            }
+            
+            .viz-placeholder, .sketch-image, .implementation-image {
+                height: 150px;
+                margin: 0.5rem 0;
+            }
+            
+            .data-table {
+                margin: 1rem 0;
+                font-size: 9pt;
+            }
+            
+            .data-table th, .data-table td {
+                padding: 0.5rem;
+            }
+            
+            .task-grid {
+                gap: 0.5rem;
+                margin: 1rem 0;
+            }
+            
+            .task-card {
+                padding: 1rem;
+            }
+            
+            .task-list li {
+                font-size: 8pt;
+                padding: 0.2rem 0;
+            }
+            
+            .color-palette {
+                margin: 1rem 0;
+            }
+            
+            .color-swatch {
+                width: 60px;
+                height: 60px;
+                font-size: 0.7rem;
+            }
+            
+            .page-number {
+                position: absolute;
+                bottom: 10mm;
+                right: 10mm;
+                font-size: 10pt;
+            }
+            
+            .page-header {
+                margin-bottom: 1.5rem;
+                padding-bottom: 0.5rem;
+            }
+            
+            .feature-list li {
+                font-size: 9pt;
+                padding: 0.2rem 0;
+            }
+            
+            .team-names {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            .course-info {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
             }
         }
         
@@ -392,6 +536,37 @@
             bottom: 2rem;
             right: 2rem;
             color: #667eea;
+            font-weight: 500;
+        }
+
+        .sketch-image {
+            width: 100%;
+            max-width: 600px;
+            height: 250px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1rem;
+            border: 2px dashed #667eea;
+            font-weight: 500;
+        }
+
+        .implementation-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #f8f9ff, #f0f2ff);
+            border-radius: 15px;
+            margin: 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            border: 2px dashed #667eea;
             font-weight: 500;
         }
     </style>
@@ -409,46 +584,23 @@
         </div>
     </div>
 
-    <!-- PROJECT OVERVIEW PAGE -->
+    <!-- PROJECT GOAL PAGE -->
     <div class="page content-page">
         <div class="page-header">
-            <h1 class="page-title">Project Overview</h1>
-            <p class="page-subtitle">Understanding European Diversity Through Data</p>
+            <h1 class="page-title">Project Goal</h1>
+            <p class="page-subtitle">Understanding European Diversity Through Religious Data</p>
         </div>
         
-        <div class="section-title">Mission Statement</div>
         <div class="content-block">
             <p>
                 The origins of religion can be traced back to at least 100,000 years ago, and it has continuously 
-                and profoundly influenced the development and continuation of human civilization. Our project aims 
-                to use data visualization to display the distribution, evolution, and societal impact of global 
-                religious patterns, specifically showcasing European data through interactive visualizations.
+                and profoundly influenced the development and continuation of human civilization. According to 
+                incomplete statistics, there are currently approximately 4,000 different religions and belief 
+                systems worldwide, closely linked to human social life, cultural traditions, and economic activities. 
+                Therefore, this project aims to use data visualization to display the distribution, evolution, and 
+                societal impact of religious patterns. We focus on linking these religious patterns with the various 
+                social questions, and we specifically showcase this with European data.
             </p>
-        </div>
-
-        <div class="two-column">
-            <div>
-                <div class="section-title">Key Features</div>
-                <ul class="feature-list">
-                    <li>Interactive European map with multiple data layers</li>
-                    <li>Religious denomination temporal analysis</li>
-                    <li>Country comparison tools</li>
-                    <li>Economic perception visualization</li>
-                    <li>Social attitude exploration</li>
-                    <li>Responsive design across devices</li>
-                </ul>
-            </div>
-            <div>
-                <div class="section-title">Data Categories</div>
-                <ul class="feature-list">
-                    <li>🛐 Religious beliefs and belonging</li>
-                    <li>💰 Economic perception</li>
-                    <li>💑 Marriage patterns</li>
-                    <li>🏥 Abortion attitudes</li>
-                    <li>🏳️‍🌈 Same-sex marriage support</li>
-                    <li>📊 Demographic information</li>
-                </ul>
-            </div>
         </div>
         
         <div class="page-number">1</div>
@@ -458,14 +610,17 @@
     <div class="page content-page">
         <div class="page-header">
             <h1 class="page-title">Dataset</h1>
-            <p class="page-subtitle">Pew Research Center European Surveys</p>
+            <p class="page-subtitle">Pew Research Center & European Social Survey Data</p>
         </div>
         
         <div class="content-block">
-            <h3>Data Sources</h3>
+            <h3>Primary Data Sources</h3>
             <p>
-                All datasets used in this project are sourced from the <strong>Pew Research Center</strong>, 
-                a nonpartisan fact tank that informs the public about issues, attitudes and trends shaping the world.
+                All datasets used in this project are sourced from the <strong>Pew Research Center</strong>. 
+                Pew Research Center is a nonpartisan fact tank that informs the public about the issues, 
+                attitudes and trends shaping the world. This project primarily selects data from the 
+                International religion survey data. We used two European datasets - Western Europe survey 
+                and Central and Eastern Europe survey.
             </p>
         </div>
 
@@ -490,7 +645,46 @@
             </div>
         </div>
 
-        <div class="section-title">Sample Data</div>
+        <div class="content-block">
+            <h3>Dataset Challenges</h3>
+            <p>
+                These datasets are very broad and informative, but they were not unified, which restricted us 
+                in what we could show in our visualizations. If one dataset had the evaluation of respondent's 
+                happiness level, the other did not, and that meant that this kind of data could not be included.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <h3>Temporal Data - European Social Survey (ESS)</h3>
+            <p>
+                We also found datasets created by the European Social Survey (ESS) to showcase the temporal 
+                aspect of religions. We had 11 different datasets from 2002 to 2024 conducted every two years. 
+                We chose to use these datasets because the social climate changes and religious populations, 
+                especially with this information age evolve very quickly.
+            </p>
+        </div>
+        
+        <div class="page-number">2</div>
+    </div>
+
+    <!-- EXPLORATORY DATA ANALYSIS PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Exploratory Data Analysis</h1>
+            <p class="page-subtitle">Understanding Dataset Boundaries and Potential</p>
+        </div>
+        
+        <div class="content-block">
+            <p>
+                In Milestone 1, we tried to find the boundaries of the datasets and find what exactly this 
+                kind of survey data can show to us. A lot of survey questions were specific to each country, 
+                such as how Lithuanians perceive the religious minorities population at the time of the question 
+                compared to the time in the Soviet Union. We discovered that these questions were not valuable 
+                as they did not give an insight into how the countries compare.
+            </p>
+        </div>
+
+        <div class="section-title">Sample Data Analysis</div>
         <table class="data-table">
             <thead>
                 <tr>
@@ -519,17 +713,28 @@
             </tbody>
         </table>
         
-        <div class="page-number">2</div>
+        <div class="page-number">3</div>
     </div>
 
-    <!-- DESIGN CHOICES PAGE -->
+    <!-- WEBSITE LAYOUT & COLOR SCHEME PAGE -->
     <div class="page content-page">
         <div class="page-header">
             <h1 class="page-title">Design Choices</h1>
-            <p class="page-subtitle">Visual Identity & User Experience</p>
+            <p class="page-subtitle">Website Layout & Visual Identity</p>
         </div>
 
-        <div class="section-title">Color Palette</div>
+        <div class="section-title">Website Layout</div>
+        <div class="content-block">
+            <p>
+                From the start of the project we had an idea to compare countries, thus our main focus was 
+                always the map. To display the comparisons, we chose to color the countries according to their 
+                most common answers such that the user could immediately see results on a surface level. The 
+                goal was to make the experience of finding and interacting with data as smooth and easy as 
+                possible, thus we opted for a scrollable layout.
+            </p>
+        </div>
+
+        <div class="section-title">Website Color Scheme</div>
         <div class="color-palette">
             <div class="color-swatch color-1">#667eea<br>Primary</div>
             <div class="color-swatch color-2">#764ba2<br>Secondary</div>
@@ -540,62 +745,29 @@
 
         <div class="content-block">
             <p>
-                For our color scheme we chose a purple gradient with blue. As religion and various opinions are very 
-                abstract topics, we wanted something neutral but engaging. The smooth gradient coloring is kept 
-                consistent throughout all visualizations.
+                For our color scheme we chose purple gradient with blue. As religion and various opinions are 
+                very abstract topics we wanted something neutral but engaging. Therefore we opted for a smooth 
+                gradient coloring that we kept consistent with the visualizations.
             </p>
         </div>
-
-        <div class="two-column">
-            <div>
-                <div class="section-title">Website Layout</div>
-                <div class="content-block">
-                    <p>
-                        From the start, we focused on country comparisons with the map as our centerpiece. 
-                        We chose to color countries according to their most common responses for immediate 
-                        surface-level insights.
-                    </p>
-                    <ul class="feature-list">
-                        <li>Scrollable fullPage.js navigation</li>
-                        <li>Glassmorphism design elements</li>
-                        <li>Responsive grid layouts</li>
-                        <li>Interactive tooltips and legends</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <div class="section-title">User Experience</div>
-                <div class="content-block">
-                    <p>
-                        Our goal was to make data exploration as smooth and intuitive as possible. 
-                        Users can seamlessly navigate between different data perspectives and compare countries interactively.
-                    </p>
-                    <ul class="feature-list">
-                        <li>Hover interactions for data exploration</li>
-                        <li>Compare mode for country analysis</li>
-                        <li>Temporal slider for time-based data</li>
-                        <li>Emoji-based category selection</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
         
-        <div class="page-number">3</div>
+        <div class="page-number">4</div>
     </div>
 
     <!-- STORYTELLING PAGE -->
     <div class="page content-page">
         <div class="page-header">
             <h1 class="page-title">Storytelling</h1>
-            <p class="page-subtitle">Guiding Users Through European Diversity</p>
+            <p class="page-subtitle">User Journey Through European Diversity</p>
         </div>
 
         <div class="content-block">
             <p>
                 We wanted to tell the story of how religions impact the way people perceive their countries and 
-                what beliefs they hold. However, during our exploration, we found that religions do not divide 
-                people as much as initially thought. We wanted users to experience this same realization through 
-                various topics such as economic state perception and social attitudes.
+                what beliefs they hold. However, during the project and our storytelling, we found that religions 
+                do not divide people as much as we thought they were. Therefore, we wanted the user to experience 
+                the same realization as we had through various topics such as economic state perception and 
+                abortion rights in the countries.
             </p>
         </div>
 
@@ -606,8 +778,9 @@
                     <div class="timeline-content">
                         <div class="timeline-title">1. Introduction & Expectations</div>
                         <div class="timeline-description">
-                            We start by introducing users to the available visualizations and pose leading 
-                            questions that create expectations and act as hooks for deeper exploration.
+                            First, we start with the introduction to the user what visualizations they can expect 
+                            by listing all types of data the website showcases. We also add some leading questions 
+                            which creates expectation to find these answers later on and acts as a hook.
                         </div>
                     </div>
                 </div>
@@ -616,8 +789,10 @@
                     <div class="timeline-content">
                         <div class="timeline-title">2. Mission & Context</div>
                         <div class="timeline-description">
-                            We explain our mission to show European diversity and the endless comparison 
-                            possibilities, providing context about data categories and processing methods.
+                            Second, we state our mission to show the diversity of European countries, and availability 
+                            of endless comparisons. In addition to that, we explain the categories mentioned in the 
+                            introduction more in depth, so that the user could understand what they will see in the map. 
+                            Then, we explain the datasets where the data was extracted, and how it was processed.
                         </div>
                     </div>
                 </div>
@@ -626,25 +801,17 @@
                     <div class="timeline-content">
                         <div class="timeline-title">3. Interactive Exploration</div>
                         <div class="timeline-description">
-                            Users explore the interactive map by selecting categories and hovering over countries, 
-                            with the option to compare two countries for deeper visual understanding.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-title">4. Temporal Analysis</div>
-                        <div class="timeline-description">
-                            The temporal visualization reveals how religious denominations have evolved 
-                            across Europe from 2002 to 2024, providing historical context.
+                            Lastly, we let the user explore the map by hovering over the map when their desired 
+                            comparison category is selected, and discover the data more in depth. If the user desires, 
+                            they can compare two countries over the selected category to have more visual understanding 
+                            where the difference lies.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="page-number">4</div>
+        <div class="page-number">5</div>
     </div>
 
     <!-- VISUALIZATIONS PAGE -->
@@ -654,69 +821,98 @@
             <p class="page-subtitle">Interactive Data Exploration Tools</p>
         </div>
 
-        <div class="viz-showcase">
-            <div class="viz-title">Interactive European Map</div>
-            <div class="viz-placeholder">
-                [Interactive Map Visualization]<br>
-                Countries colored by majority responses
-            </div>
-            <div class="viz-description">
-                The main visualization allows users to explore different data categories by coloring countries 
-                according to their majority responses. Hover interactions provide detailed breakdowns, while 
-                compare mode enables side-by-side country analysis with pie chart comparisons.
-            </div>
+        <div class="content-block">
+            <p>
+                We initially started with the goal to implement one interactive map that would change the coloring 
+                depending on the selected topic. In addition to that, we wanted users to interact with the map and 
+                discover deeper information by comparing selected countries.
+            </p>
+        </div>
+
+        <div class="section-title">Sketches</div>
+        <div class="content-block">
+            <p>
+                Our initial sketches were barebones with the ideas for functionality and to be convincing. Our 
+                design was not fluid or intuitive to use, but we wanted our ideas to be represented in the sketches.
+            </p>
+        </div>
+
+        <div class="sketch-image">
+            <img src="first.png" alt="Design Sketches - Interactive Map Concepts" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+        </div>
+
+        <div class="content-block">
+            <p>
+                Once we made our prototype for Milestone 2 without using D3, we developed ideas how to guide the 
+                user's eye without the additional test explanations and tutorials. We needed to make our website intuitive.
+            </p>
+        </div>
+
+        <div class="section-title">Implementation</div>
+        <div class="implementation-image">
+            <img src="second.png" alt="First Implementation - Interactive Map Without D3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
         </div>
 
         <div class="two-column">
-            <div class="viz-showcase">
-                <div class="viz-title">Temporal Trends</div>
-                <div class="viz-placeholder">
-                    [Timeline Visualization]<br>
-                    Religious belonging over time
-                </div>
-                <div class="viz-description">
-                    Bar chart animations showing how religious belonging and denominations have changed 
-                    across European countries from 2002 to 2024.
-                </div>
-            </div>
-            <div class="viz-showcase">
-                <div class="viz-title">Religious Denominations Map</div>
-                <div class="viz-placeholder">
-                    [Denomination Map]<br>
-                    Year-based exploration
-                </div>
-                <div class="viz-description">
-                    Specialized map focusing on religious denominations with year slider functionality 
-                    and intensity-based coloring for individual religions.
+            <div>
+                <div class="section-title">Main Map</div>
+                <div class="content-block">
+                    <p>
+                        Coloring the countries with the same color if they have the same highest ranked data item 
+                        (for example, Christianity when comparing religion), would already show the data in a simple 
+                        manner that is understandable with a legend. Moreover, to link our story and the map selector, 
+                        we kept the same radio buttons with emojis (🛐, 💰, 💑, 🏥, 🏳️‍🌈) for instant recognition of what the 
+                        user had seen on going through the website before. Then, to give quick insight on each country's 
+                        details, we have a dynamic tooltip, which appears next to the cursor when it is hovered over a 
+                        country in the map. The tooltip displays the percentages of the country's responses.
+                    </p>
                 </div>
             </div>
-        </div>
-
-        <div class="section-title">Technical Implementation</div>
-        <div class="two-column">
-            <div class="content-block">
-                <h3>Frontend Technologies</h3>
-                <ul class="feature-list">
-                    <li>D3.js for interactive visualizations</li>
-                    <li>fullPage.js for smooth navigation</li>
-                    <li>TopoJSON for map data</li>
-                    <li>Custom CSS animations</li>
-                    <li>Responsive design principles</li>
-                </ul>
-            </div>
-            <div class="content-block">
-                <h3>Data Processing</h3>
-                <ul class="feature-list">
-                    <li>Node.js data aggregation scripts</li>
-                    <li>CSV parsing and cleaning</li>
-                    <li>JSON data structure optimization</li>
-                    <li>Temporal data organization</li>
-                    <li>Country name standardization</li>
-                </ul>
+            <div>
+                <div class="section-title">Compare Mode</div>
+                <div class="content-block">
+                    <p>
+                        To compare the countries, we implemented the generated pie charts once the two countries are 
+                        selected for it. This allows the user see in detail the visual comparison of what they could 
+                        read in text in the floating tooltip, but this time side by side.
+                    </p>
+                </div>
             </div>
         </div>
         
-        <div class="page-number">5</div>
+        <div class="page-number">6</div>
+    </div>
+
+    <!-- DETAILED COMPARISON PAGE -->
+    <div class="page content-page">
+        <div class="page-header">
+            <h1 class="page-title">Detailed Comparison</h1>
+            <p class="page-subtitle">Religious Denominations Over Time</p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                Since our map is based on only a one year survey, we wanted the user to see how the religious 
+                belonging and denominations evolved in detail over the past 20 years. Therefore, we created a 
+                bar chart that compares all countries from that year's ESS data, and shows the detailed 
+                distribution of religious denominations. This is an interactive bar chart, which the user can 
+                hover and see the data without having to look at the axes carefully. For easier reading, the 
+                data is sorted from the highest values to lowest, which means that for religious belonging the 
+                first country shown is always going to be with the highest religious population percentile, and 
+                for the religious denomination will be the country with a single stand-out denomination.
+            </p>
+        </div>
+
+        <div class="content-block">
+            <p>
+                In addition to the bar chart, we added another map, which does not include the opinions of 
+                surveyees, but only their religious associations over the years. After gaining insight how the 
+                religious beliefs could have impacted surveyed opinions in the Pew Research data the user can 
+                gain insight how the same countries trended over the years.
+            </p>
+        </div>
+
+        <div class="page-number">7</div>
     </div>
 
     <!-- CHALLENGES PAGE -->
@@ -732,10 +928,11 @@
                     <div class="timeline-content">
                         <div class="timeline-title">Dataset Selection</div>
                         <div class="timeline-description">
-                            Initial challenge was finding standardized datasets across different countries. 
-                            Census data varied significantly between nations and didn't capture opinions and views. 
-                            We settled on Pew Research Center datasets for their comprehensive coverage and 
-                            standardized methodology.
+                            Our initial challenge once we decided to explore religions was picking the right dataset. 
+                            There are a lot of census datasets from different countries, but the census usually does 
+                            not represent the population's opinions and views. In addition to that, the census is not 
+                            standardized across different countries.                             Therefore we landed on Pew Research Center datasets from 2016 and 2017 as it 
+                            was open source and covered many topics.
                         </div>
                     </div>
                 </div>
@@ -744,9 +941,9 @@
                     <div class="timeline-content">
                         <div class="timeline-title">Data Integration</div>
                         <div class="timeline-description">
-                            Finding shared data across both Western and Eastern European datasets proved challenging. 
-                            We had to filter, clean, and process aggregated survey responses while maintaining 
-                            data integrity and comparability.
+                            Next challenge was finding the data that is shared across both datasets, and extracting it, 
+                            as data was the aggregated answers to the surveys. Once the data was selected, it had to be 
+                            filtered, cleaned and processed for visualizations.
                         </div>
                     </div>
                 </div>
@@ -755,9 +952,9 @@
                     <div class="timeline-content">
                         <div class="timeline-title">Geographic Mapping</div>
                         <div class="timeline-description">
-                            Misalignment between country names in our datasets and topological data caused 
-                            visualization issues. Some countries appeared on the map but showed no data due to 
-                            naming inconsistencies that required manual mapping solutions.
+                            When it came to visualizing our data, we found that some countries that were drawn on the 
+                            map and were in the processed data, were not showing any results. This was because of 
+                            misalignment of country names between our datasets and topological data that we decided to use.
                         </div>
                     </div>
                 </div>
@@ -766,9 +963,10 @@
                     <div class="timeline-content">
                         <div class="timeline-title">Bias and Data Selection</div>
                         <div class="timeline-description">
-                            Choosing which survey data to represent required careful consideration of our own 
-                            biases and interests. We focused on data potentially impacted by religious beliefs: 
-                            abortion rights, same-sex marriage, and marriage status.
+                            One of the more implicit challenges we had to solve was choosing what data we want to 
+                            represent from the surveys. We all have our biases and interests, but we ended up choosing 
+                            data that we thought would be impacted by the religious beliefs such as abortion rights, 
+                            same-sex marriage, and marriage status of the respondents.
                         </div>
                     </div>
                 </div>
@@ -777,198 +975,62 @@
                     <div class="timeline-content">
                         <div class="timeline-title">Temporal Data Processing</div>
                         <div class="timeline-description">
-                            Creating the temporal visualization required processing multiple years of data with 
-                            varying country coverage and question formats. Initial loading issues were resolved 
-                            by implementing proper data loading sequences and SVG rendering timing.
+                            Another challenge we faced was that in the temporal datasets, the countries in one year 
+                            were not guaranteed to be in the other year. This missing data meant we had a lot of 
+                            empty data gaps to handle, which we ended up visualizing as missing data in the map, 
+                            and rerendering the bar chart once the year is selected.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="page-number">6</div>
+        <div class="page-number">8</div>
     </div>
 
     <!-- TASK DISTRIBUTION PAGE -->
     <div class="page content-page">
         <div class="page-header">
-            <h1 class="page-title">Task Distribution</h1>
+            <h1 class="page-title">Peer Assessment</h1>
             <p class="page-subtitle">Team Member Contributions</p>
         </div>
 
         <div class="task-grid">
             <div class="task-card">
                 <h4>Alaa El Ouahabi</h4>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
                 <ul class="task-list">
-                    <li>Database discovery and book relation</li>
-                    <li>Related work description</li>
-                    <li>Data post-processing assistance</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
-                <ul class="task-list">
-                    <li>Initial website HTML draft</li>
-                    <li>Landing page with pop-up design</li>
-                    <li>Map drafting initiation</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
-                <ul class="task-list">
-                    <li>Story section HTML/CSS</li>
-                    <li>Text animations implementation</li>
-                    <li>SVG background graphics</li>
+                    <li>Data collection for temporal data (religions belonging + nomination) + cleaning it</li>
+                    <li>Website design</li>
+                    <li>Code the whole website</li>
+                    <li>Work on all the visualisations</li>
+                    <li>Code the html for the final report</li>
+                    <li>Record the screencast</li>
                 </ul>
             </div>
 
             <div class="task-card">
                 <h4>Martynas Rimkevičius</h4>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
                 <ul class="task-list">
-                    <li>Initial dataset analysis</li>
-                    <li>Feasibility assessment</li>
-                    <li>Survey data processing and merging</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
-                <ul class="task-list">
-                    <li>Website skeleton development</li>
-                    <li>Layout and visualization planning</li>
+                    <li>Initial dataset analysis + feasibility assessment</li>
+                    <li>Survey data processing and merging for the visualization use</li>
+                    <li>Initial website skeleton (layout + visualization ideas)</li>
                     <li>Website hosting configuration</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
-                <ul class="task-list">
-                    <li>Map interactivity implementation</li>
-                    <li>Tooltip functionality</li>
-                    <li>Data loading optimization</li>
-                    <li>Final report compilation</li>
+                    <li>Map interactivity implementation (showing tooltip) and loading data into the map</li>
+                    <li>Wrote the process book and made visuals of the evolution</li>
                 </ul>
             </div>
 
             <div class="task-card">
                 <h4>Zheyang Lyu</h4>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 1</div>
                 <ul class="task-list">
-                    <li>Exploratory data processing</li>
-                    <li>Data quality assessment</li>
-                    <li>Statistical analysis</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 2</div>
-                <ul class="task-list">
-                    <li>Website graphics enhancement</li>
-                    <li>Age verification system</li>
-                    <li>Process documentation</li>
-                    <li>Visualization concepts</li>
-                </ul>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Milestone 3</div>
-                <ul class="task-list">
-                    <li>Location points mapping</li>
-                    <li>Weather API integration</li>
-                    <li>Map layer implementation</li>
+                    <li>Join team discussions</li>
+                    <li>Made some visualisation code but it's not perfect</li>
+                    <li>Read code and report</li>
                 </ul>
             </div>
-
-            <div class="task-card">
-                <h4>Team Collaboration</h4>
-                <div class="section-title" style="font-size: 1rem; margin: 1rem 0 0.5rem 0; border: none; padding: 0;">Joint Efforts</div>
-                <ul class="task-list">
-                    <li>D3.js visualizations</li>
-                    <li>Interactive map development</li>
-                    <li>Temporal analysis implementation</li>
-                    <li>Religious denominations map</li>
-                    <li>Country comparison features</li>
-                    <li>Data processing pipelines</li>
-                    <li>Website styling and UX</li>
-                    <li>Testing and debugging</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="content-block">
-            <h3>Development Workflow</h3>
-            <p>
-                Our team adopted a collaborative approach with parallel development streams. Each member focused 
-                on their expertise areas while maintaining regular integration points. We used version control 
-                for code management and conducted regular reviews to ensure consistency across all website sections.
-            </p>
         </div>
         
-        <div class="page-number">7</div>
-    </div>
-
-    <!-- FUTURE WORK PAGE -->
-    <div class="page content-page">
-        <div class="page-header">
-            <h1 class="page-title">Future Work</h1>
-            <p class="page-subtitle">Potential Enhancements & Extensions</p>
-        </div>
-
-        <div class="two-column">
-            <div>
-                <div class="section-title">Technical Improvements</div>
-                <div class="content-block">
-                    <h3>Performance Optimization</h3>
-                    <ul class="feature-list">
-                        <li>Data caching mechanisms</li>
-                        <li>Lazy loading for large datasets</li>
-                        <li>WebGL acceleration for complex visualizations</li>
-                        <li>Progressive data loading</li>
-                    </ul>
-                </div>
-                
-                <div class="content-block">
-                    <h3>Enhanced Interactivity</h3>
-                    <ul class="feature-list">
-                        <li>Real-time data filtering</li>
-                        <li>Custom data range selection</li>
-                        <li>Advanced comparison matrices</li>
-                        <li>Bookmark and sharing features</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div>
-                <div class="section-title">Content Expansion</div>
-                <div class="content-block">
-                    <h3>Additional Data Sources</h3>
-                    <ul class="feature-list">
-                        <li>Eurostat integration</li>
-                        <li>World Values Survey data</li>
-                        <li>European Quality of Life Survey</li>
-                        <li>Real-time demographic updates</li>
-                    </ul>
-                </div>
-                
-                <div class="content-block">
-                    <h3>New Visualizations</h3>
-                    <ul class="feature-list">
-                        <li>Network analysis of cultural similarities</li>
-                        <li>3D geographic representations</li>
-                        <li>Animated flow maps for migration</li>
-                        <li>Machine learning clustering</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="viz-showcase">
-            <div class="viz-title">Potential Extensions</div>
-            <div class="viz-description">
-                Future iterations could include predictive modeling based on demographic trends, 
-                integration with social media sentiment analysis, and expansion to global datasets 
-                for worldwide comparisons. Educational features like guided tours and data storytelling 
-                could enhance user engagement and learning outcomes.
-            </div>
-        </div>
-
-        <div class="section-title">Lessons Learned</div>
-        <div class="content-block">
-            <p>
-                This project taught us valuable lessons about data visualization complexity, user experience design, 
-                and collaborative development. The importance of data quality, consistent naming conventions, and 
-                user testing became apparent throughout the development process. Future projects would benefit from 
-                earlier user feedback integration and more robust data validation pipelines.
-            </p>
-        </div>
-        
-        <div class="page-number">8</div>
+        <div class="page-number">9</div>
     </div>
 
     <script>
