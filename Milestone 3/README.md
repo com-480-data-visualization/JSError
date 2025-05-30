@@ -9,7 +9,9 @@ European Data Explorer is an interactive web application that visualizes social 
 
 (Look at youtube video)
 
-https://youtu.be/4ZxsDsCqSVM
+https://youtu.be/KFgboshj0NI
+
+
 
 Process Book: PDF or HTML format (we prefer if you take a look at the html)
 
